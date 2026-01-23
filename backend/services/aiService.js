@@ -1,37 +1,34 @@
+import OpenAI from "openai";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const client = new OpenAI();
+
 /**
  * Generic AI service to handle completions.
  * This is designed to be provider-agnostic.
  */
 export const generateCompletion = async (prompt, options = {}) => {
-  // Currently simulating an AI response. 
-  // In the future, this is where you would integrate OpenAI, Anthropic, Vercel AI SDK, etc.
-  console.log('AI Service received prompt:', prompt);
+  console.log('AI Service received prompt');
 
-  // Mocking an AI processing delay
-  await new Promise(resolve => setTimeout(resolve, 500));
+  try {
+    const response = await client.chat.completions.create({
+      model: "gpt-5-nano",
+      messages: [
+        { role: "user", content: prompt }
+      ],
+      response_format: { type: "json_object" }
+    });
 
-  // For now, returning a mock response in the requested JSON format.
-  const mockResponse = {
-    "id": "generated-routine-123",
-    "name": "Back Recovery Routine",
-    "breakDuration": 10,
-    "preparationDuration": 5,
-    "exercises": [
-      {
-        "id": "d70415d950a2",
-        "name": "Rag Doll",
-        "duration": 30
-      },
-      {
-        "id": "7e6077a58ec2",
-        "name": "Upward Dog",
-        "duration": 30
-      }
-    ]
-  };
+    const content = response.choices[0].message.content;
 
-  return {
-    content: JSON.stringify(mockResponse),
-    raw: { provider: 'mock', usage: {} }
-  };
+    return {
+      content: content,
+      raw: response
+    };
+  } catch (error) {
+    console.error('OpenAI API Error:', error);
+    throw error;
+  }
 };

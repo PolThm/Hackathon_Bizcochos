@@ -10,10 +10,28 @@ export const generateCompletion = async (prompt, options = {}) => {
   // Mocking an AI processing delay
   await new Promise(resolve => setTimeout(resolve, 500));
 
-  // For now, returning a mock response. 
-  // This could be structured as JSON depending on the needs.
+  // For now, returning a mock response in the requested JSON format.
+  const mockResponse = {
+    "id": "generated-routine-123",
+    "name": "Back Recovery Routine",
+    "breakDuration": 10,
+    "preparationDuration": 5,
+    "exercises": [
+      {
+        "id": "d70415d950a2",
+        "name": "Rag Doll",
+        "duration": 30
+      },
+      {
+        "id": "7e6077a58ec2",
+        "name": "Upward Dog",
+        "duration": 30
+      }
+    ]
+  };
+
   return {
-    content: `AI response for: ${prompt}`,
+    content: JSON.stringify(mockResponse),
     raw: { provider: 'mock', usage: {} }
   };
 };

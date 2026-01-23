@@ -7,16 +7,16 @@ const client = new OpenAI();
 
 /**
  * Generic AI service to handle completions.
- * This is designed to be provider-agnostic.
  */
-export const generateCompletion = async (prompt, options = {}) => {
-  console.log('AI Service received prompt');
+export const generateCompletion = async (systemPrompt, userPrompt, options = {}) => {
+  console.log('AI Service: Generating completion...');
 
   try {
     const response = await client.chat.completions.create({
-      model: "gpt-5-nano",
+      model: "gpt-4o",
       messages: [
-        { role: "user", content: prompt }
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt }
       ],
       response_format: { type: "json_object" }
     });

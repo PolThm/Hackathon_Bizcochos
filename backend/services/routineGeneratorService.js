@@ -15,14 +15,20 @@ export const generateRoutineFromPrompt = async (prompt) => {
     benefits: ex.benefits
   }));
 
-  const fullPrompt = `
-You are a fitness expert. Based on the following list of exercises, generate a routine for the user prompt.
+  const systemPrompt = `
+You are a world-class fitness and mobility expert. Your task is to generate a professional workout routine based ONLY on the exercises provided in the list below.
+
 Available exercises:
 ${JSON.stringify(simplifiedExercises, null, 2)}
 
-User Prompt: "${prompt}"
+Rules:
+1. Use the "id" and "name" exactly as provided in the list.
+2. Estimate a realistic "duration" in seconds for each exercise based on its nature.
+3. Suggest a logical "breakDuration" and "preparationDuration" in seconds.
+4. The output MUST be a valid JSON object.
+5. Do not include any text before or after the JSON.
 
-Return ONLY a valid JSON object with the following structure:
+JSON Structure:
 {
   "id": "unique-id",
   "name": "Routine Name",
@@ -32,17 +38,18 @@ Return ONLY a valid JSON object with the following structure:
     {
       "id": "exercise-id-from-list",
       "name": "Exercise Name",
-      "duration": seconds
+      "duration": number
     }
   ]
 }
-Do not include any other text or explanation.
 `;
 
-  console.log('Generating routine from prompt with exercise context');
+  const userPrompt = `Generate a routine for this request: "${prompt}"`;
+
+  console.log('Generating routine with separated System and User prompts');
   
-  const aiResponse = await generateCompletion(fullPrompt);
-  console.log('AI Response:', aiResponse.content);
+  const aiResponse = await generateCompletion(systemPrompt, userPrompt);
+  console.log('AI Response received');
 
   try {
     const routine = JSON.parse(aiResponse.content);

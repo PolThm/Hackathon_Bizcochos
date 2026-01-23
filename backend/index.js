@@ -3,6 +3,7 @@ import cors from '@fastify/cors';
 import { supabase } from './supabase.js';
 import { getRoutine } from './services/routineService.js';
 import { getExercises } from './services/exerciseService.js';
+import { getRoutines } from './services/routinesService.js';
 
 const fastify = Fastify({
   logger: true
@@ -44,43 +45,8 @@ fastify.get('/api/health', async (request, reply) => {
   }
 });
 
-const routinesData = [
-  {
-    "id": "example",
-    "name": "Routine di Esempio",
-    "breakDuration": 5,
-    "preparationDuration": 5,
-    "exercises": [
-      {
-        "id": 1,
-        "name": "Stretching",
-        "duration": 30,
-        "isPaused": false
-      },
-      {
-        "id": 2,
-        "name": "Push-ups",
-        "duration": 45
-      }
-    ]
-  },
-  {
-    "id": "basic",
-    "name": "Basic Routine",
-    "breakDuration": 10,
-    "preparationDuration": 5,
-    "exercises": [
-      {
-        "id": 101,
-        "name": "Plank",
-        "duration": 60
-      }
-    ]
-  }
-];
-
 fastify.get('/api/routines', async (request, reply) => {
-  return routinesData;
+  return getRoutines();
 });
 
 fastify.get('/api/exercises', async (request, reply) => {

@@ -2,7 +2,7 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { supabase } from './supabase.js';
 import { getRoutine } from './services/routineService.js';
-import { getExercises } from './services/exerciseService.js';
+import { getExercises, getExerciseById } from './services/exerciseService.js';
 import { getRoutines } from './services/routinesService.js';
 
 const fastify = Fastify({
@@ -53,6 +53,20 @@ fastify.get('/api/exercises', async (request, reply) => {
   try {
     const exercises = await getExercises();
     return exercises;
+  } catch (err) {
+    fastify.log.error(err);
+    return reply.status(500).send({ error: err.message || 'Internal Server Error' });
+  }
+});
+
+fastify.get('/api/exercises/:id', async (request, reply) => {
+  try {
+    const { id } = request.params;
+    const exercise = await getExerciseById(id);
+    if (!exercise) {
+      return reply.status(404).send({ error: 'Exercise not found' });
+    }
+    return exercise;
   } catch (err) {
     fastify.log.error(err);
     return reply.status(500).send({ error: err.message || 'Internal Server Error' });

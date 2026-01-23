@@ -11,3 +11,16 @@ export const getExercises = async () => {
 
     return exercises;
 };
+export const getExerciseById = async (id) => {
+    const { data: exercise, error } = await supabase
+        .from('exercises')
+        .select('name, image')
+        .eq('id', id)
+        .single();
+
+    if (error) {
+        throw error;
+    }
+
+    return exercise;
+};

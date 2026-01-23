@@ -1,8 +1,8 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { supabase } from './supabase.js';
-
-
+import { getRoutine } from './services/routineService.js';
+import { getExercises } from './services/exerciseService.js';
 
 const fastify = Fastify({
   logger: true
@@ -13,42 +13,8 @@ await fastify.register(cors, {
   methods: ['GET']
 });
 
-const routineData = {
-  "id": "example",
-  "name": "Example",
-  "breakDuration": 5,
-  "preparationDuration": 5,
-  "exercises": [
-    {
-      "id": 15356,
-      "name": "Stretchingg",
-      "duration": 20
-    },
-    {
-      "id": 27543,
-      "name": "Squats",
-      "duration": 45
-    },
-    {
-      "id": 376453,
-      "name": "Push-ups",
-      "duration": 30
-    },
-    {
-      "id": 446654,
-      "name": "Abdominales",
-      "duration": 40
-    },
-    {
-      "id": 54356345,
-      "name": "Final stretching",
-      "duration": 20
-    }
-  ]
-};
-
 fastify.get('/api/routine', async (request, reply) => {
-  return routineData;
+  return getRoutine();
 });
 
 fastify.get('/api/health', async (request, reply) => {
@@ -119,19 +85,11 @@ fastify.get('/api/routines', async (request, reply) => {
 
 fastify.get('/api/exercises', async (request, reply) => {
   try {
-    const { data: exercises, error } = await supabase
-      .from('exercises')
-      .select('*');
-
-    if (error) {
-      fastify.log.error(error);
-      return reply.status(500).send({ error: error.message });
-    }
-
+    const exercises = await getExercises();
     return exercises;
   } catch (err) {
     fastify.log.error(err);
-    return reply.status(500).send({ error: 'Internal Server Error' });
+    return reply.status(500).send({ error: err.message || 'Internal Server Error' });
   }
 });
 

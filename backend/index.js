@@ -1,5 +1,8 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
+import { supabase } from './supabase.js';
+
+
 
 const fastify = Fastify({
   logger: true
@@ -48,6 +51,33 @@ fastify.get('/api/routine', async (request, reply) => {
   return routineData;
 });
 
+fastify.get('/api/health', async (request, reply) => {
+  try {
+    // Basic connectivity check: try to fetch 1 row from 'exercises' (assuming it exists)
+    // or just perform a simple select.
+    const { data, error } = await supabase.from('exercises').select('id').limit(1);
+
+    if (error) {
+      return reply.status(503).send({
+        status: 'error',
+        database: 'disconnected',
+        message: error.message
+      });
+    }
+
+    return {
+      status: 'ok',
+      database: 'connected'
+    };
+  } catch (err) {
+    fastify.log.error(err);
+    return reply.status(500).send({
+      status: 'error',
+      message: 'Internal Server Error'
+    });
+  }
+});
+
 const routinesData = [
   {
     "id": "example",
@@ -85,6 +115,24 @@ const routinesData = [
 
 fastify.get('/api/routines', async (request, reply) => {
   return routinesData;
+});
+
+fastify.get('/api/exercises', async (request, reply) => {
+  try {
+    const { data: exercises, error } = await supabase
+      .from('exercises')
+      .select('*');
+
+    if (error) {
+      fastify.log.error(error);
+      return reply.status(500).send({ error: error.message });
+    }
+
+    return exercises;
+  } catch (err) {
+    fastify.log.error(err);
+    return reply.status(500).send({ error: 'Internal Server Error' });
+  }
 });
 
 const start = async () => {

@@ -1,0 +1,45 @@
+{
+  "name": "Étirements",
+  "exercises": [
+    {
+      "name": "Mains en l’air",
+      "duration": "30s"
+    },
+    {
+      "name": "Toucher d’orteils",
+      "duration": "30s"
+    },
+    {
+      "name": "Fente côté 1",
+      "duration": "30s"
+    },
+    {
+      "name": "Fente côté 2",
+      "duration": "30s"
+    },
+    {
+      "name": "Figure 4 côté 1",
+      "duration": "30s"
+    },
+    {
+      "name": "Figure 4 côté 2",
+      "duration": "30s"
+    },
+    {
+      "name": "Chien tête en haut",
+      "duration": "30s"
+    },
+    {
+      "name": "Posture de l’enfant",
+      "duration": "30s"
+    },
+    {
+      "name": "Chien tête en bas",
+      "duration": "30s"
+    },
+    {
+      "name": "Main en l’air",
+      "duration": "30s"
+    }
+  ]
+}

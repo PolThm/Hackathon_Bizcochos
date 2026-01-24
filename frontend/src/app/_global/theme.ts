@@ -30,6 +30,9 @@ const theme = createTheme({
       default: '#fafafa',
       paper: '#ffffff',
     },
+    action: {
+      disabled: '#9e9e9e',
+    },
   },
   typography: {
     fontFamily: roboto.style.fontFamily,

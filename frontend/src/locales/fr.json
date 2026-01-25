@@ -92,7 +92,11 @@
     "propositionTitle": "Routine proposée",
     "retryButton": "Donne-moi un autre choix",
     "startPractice": "Commencer la séance",
-    "editRoutine": "Modifier la routine"
+    "editRoutine": "Modifier la routine",
+    "refineModalTitle": "Affiner votre routine",
+    "refinePlaceholder": "ex: moins d'intensité sur le dos, plus d'étirements...",
+    "refineButton": "Mettre à jour",
+    "startOverButton": "Recommencer de zéro"
   },
   "pwa": {
     "installPrompt": {

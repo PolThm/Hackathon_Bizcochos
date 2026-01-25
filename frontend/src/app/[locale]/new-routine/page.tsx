@@ -1,29 +1,45 @@
 'use client';
 
 import { useState } from 'react';
-
-import { Box, Typography, TextField, Button } from '@mui/material';
-
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Divider,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { useTranslations } from 'next-intl';
-
 import { useRouter } from '@/i18n/routing';
-
 import { getItem, setItem } from '@/utils/indexedDB';
-
 import { Routine, Exercise } from '@/types';
 
 export default function NewRoutinePage() {
   const t = useTranslations('newRoutine');
   const router = useRouter();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [userInput, setUserInput] = useState('');
+  const [refinementInput, setRefinementInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [proposedRoutine, setProposedRoutine] = useState<Routine | null>(null);
+  const [isRefineModalOpen, setIsRefineModalOpen] = useState(false);
 
-  const handleGenerateRoutine = async () => {
+  const handleGenerateRoutine = async (isRefinement = false) => {
+    const prompt = isRefinement
+      ? `Original request: ${userInput}. Refinement request: ${refinementInput}`
+      : userInput;
+
     if (!userInput.trim()) return;
 
     setIsGenerating(true);
+    if (isRefinement) setIsRefineModalOpen(false);
 
     try {
       const response = await fetch('/api/generateRoutine', {
@@ -31,7 +47,7 @@ export default function NewRoutinePage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt: userInput }),
+        body: JSON.stringify({ prompt }),
       });
 
       if (!response.ok) {
@@ -57,12 +73,20 @@ export default function NewRoutinePage() {
         };
 
         setProposedRoutine(newRoutine);
+        setRefinementInput(''); // Clear refinement after use
       }
     } catch (error) {
       console.error('Error generating routine:', error);
     } finally {
       setIsGenerating(false);
     }
+  };
+
+  const handleStartOver = () => {
+    setProposedRoutine(null);
+    setUserInput('');
+    setRefinementInput('');
+    setIsRefineModalOpen(false);
   };
 
   const handleSaveAndAction = async (path: '/' | '/setup') => {
@@ -188,16 +212,77 @@ export default function NewRoutinePage() {
             fullWidth
             variant='text'
             size='medium'
-            onClick={() => {
-              setProposedRoutine(null);
-              handleGenerateRoutine();
-            }}
+            onClick={() => setIsRefineModalOpen(true)}
             disabled={isGenerating}
             sx={{ py: 1, fontWeight: 500 }}
           >
             {isGenerating ? t('generating') : t('retryButton')}
           </Button>
         </Box>
+
+        <Dialog
+          open={isRefineModalOpen}
+          onClose={() => setIsRefineModalOpen(false)}
+          fullWidth
+          maxWidth='sm'
+          fullScreen={isMobile}
+          PaperProps={{
+            sx: {
+              borderRadius: isMobile ? 0 : 3,
+              p: isMobile ? 0 : 1,
+              maxHeight: isMobile ? '100%' : '90vh',
+            },
+          }}
+        >
+          <DialogTitle sx={{ fontWeight: 700, pb: 1 }}>
+            {t('refineModalTitle')}
+          </DialogTitle>
+          <DialogContent>
+            <Typography variant='body2' sx={{ mb: 2, color: 'text.secondary' }}>
+              {t('invitationText')}
+            </Typography>
+            <TextField
+              fullWidth
+              multiline
+              rows={3}
+              variant='outlined'
+              placeholder={t('refinePlaceholder')}
+              value={refinementInput}
+              onChange={(e) => setRefinementInput(e.target.value)}
+              sx={{
+                mb: 2,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                },
+              }}
+            />
+            <Button
+              fullWidth
+              variant='contained'
+              onClick={() => handleGenerateRoutine(true)}
+              disabled={!refinementInput.trim() || isGenerating}
+              sx={{ borderRadius: 2, py: 1.5, fontWeight: 600 }}
+            >
+              {t('refineButton')}
+            </Button>
+
+            <Divider sx={{ my: 3 }}>
+              <Typography variant='caption' color='text.secondary'>
+                OR
+              </Typography>
+            </Divider>
+
+            <Button
+              fullWidth
+              variant='outlined'
+              color='error'
+              onClick={handleStartOver}
+              sx={{ borderRadius: 2, py: 1, fontWeight: 500 }}
+            >
+              {t('startOverButton')}
+            </Button>
+          </DialogContent>
+        </Dialog>
       </Box>
     );
   }

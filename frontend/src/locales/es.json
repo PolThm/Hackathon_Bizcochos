@@ -92,7 +92,11 @@
     "propositionTitle": "Rutina propuesta",
     "retryButton": "Dame otra propuesta",
     "startPractice": "Empezar a practicar",
-    "editRoutine": "Editar la rutina"
+    "editRoutine": "Editar la rutina",
+    "refineModalTitle": "Ajustar tu rutina",
+    "refinePlaceholder": "p. ej. menos intensidad en los hombros, añadir más abdominales...",
+    "refineButton": "Actualizar rutina",
+    "startOverButton": "Empezar de cero"
   },
   "pwa": {
     "installPrompt": {

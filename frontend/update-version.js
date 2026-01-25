@@ -1,20 +1,25 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const envFile = path.join(__dirname, '.env');
-const envContent = fs.readFileSync(envFile, 'utf8');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const versionRegex = /NEXT_PUBLIC_APP_VERSION=V(\d+)\.(\d+)\.(\d+)/;
-const match = envContent.match(versionRegex);
+const versionFilePath = path.join(__dirname, 'src', 'version.json');
 
-if (match) {
-  const [, major, minor, patch] = match;
-  const newPatch = parseInt(patch) + 1;
-  const newVersion = `NEXT_PUBLIC_APP_VERSION=V${major}.${minor}.${newPatch}`;
-  const newContent = envContent.replace(versionRegex, newVersion);
-  fs.writeFileSync(envFile, newContent);
-  console.log(`Version updated to ${newVersion}`);
-} else {
-  console.error('Version not found in .env file');
+try {
+  const fileContent = fs.readFileSync(versionFilePath, 'utf8');
+  const data = JSON.parse(fileContent);
+  
+  const versionParts = data.version.split('.');
+  if (versionParts.length === 3) {
+    const patch = parseInt(versionParts[2]) + 1;
+    data.version = `${versionParts[0]}.${versionParts[1]}.${patch}`;
+    
+    fs.writeFileSync(versionFilePath, JSON.stringify(data, null, 2));
+    console.log(`Version updated to ${data.version} in version.json`);
+  }
+} catch (error) {
+  console.error('Error updating version.json:', error);
   process.exit(1);
 }

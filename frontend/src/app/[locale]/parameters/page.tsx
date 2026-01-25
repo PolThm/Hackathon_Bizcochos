@@ -23,10 +23,11 @@ import routinePolux from '@/mocks/routine-polux.json';
 import routineRapido from '@/mocks/routine-rapido.json';
 import ConfirmModal from '@/components/ConfirmModal';
 import { setItem, getItem, removeItem } from '@/utils/indexedDB';
+import versionData from '@/version.json';
 
 const { English, French, Spanish } = Language;
 
-const VERSION = process.env.NEXT_PUBLIC_APP_VERSION;
+const VERSION = `V${versionData.version}`;
 
 export default function ParametersPage() {
   const intlRouter = useIntlRouter();

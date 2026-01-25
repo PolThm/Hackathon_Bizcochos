@@ -157,8 +157,10 @@ export default function NewRoutinePage() {
           <Typography variant='body2' color='text.secondary' gutterBottom>
             {proposedRoutine.exercises.length} exercises •{' '}
             {Math.floor(
-              proposedRoutine.exercises.reduce((acc, ex) => acc + ex.duration, 0) /
-                60,
+              proposedRoutine.exercises.reduce(
+                (acc, ex) => acc + ex.duration,
+                0,
+              ) / 60,
             )}{' '}
             min
           </Typography>
@@ -347,7 +349,7 @@ export default function NewRoutinePage() {
         fullWidth
         variant='contained'
         size='large'
-        onClick={handleGenerateRoutine}
+        onClick={() => handleGenerateRoutine(false)}
         disabled={!userInput.trim() || isGenerating}
         sx={{
           mt: 'auto',

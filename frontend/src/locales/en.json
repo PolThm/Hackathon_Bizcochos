@@ -88,7 +88,11 @@
     "placeholder": "e.g. tight hips, limited shoulder mobility, feeling stiff after work, recovery after workouts...",
     "generateButton": "Generate my Routine",
     "generating": "Generating...",
-    "newRoutine": "New Routine"
+    "newRoutine": "New Routine",
+    "propositionTitle": "Proposed Routine",
+    "retryButton": "Give me another proposition",
+    "startPractice": "Start to practice",
+    "editRoutine": "Edit the Routine"
   },
   "pwa": {
     "installPrompt": {

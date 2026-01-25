@@ -86,9 +86,13 @@
     "description": "Ayúdanos a construir una rutina adaptada a tu cuerpo",
     "invitationText": "Cuéntanos sobre tus sensaciones, movilidad, comodidad física, y las áreas que te gustaría mejorar en tu vida diaria.",
     "placeholder": "ej. caderas apretadas, movilidad limitada de hombros, sensación de rigidez después del trabajo, recuperación después de entrenamientos...",
-    "generateButton": "Generar mi Rutina",
+    "generateButton": "Generar mi rutina",
     "generating": "Generando...",
-    "newRoutine": "Nueva Rutina"
+    "newRoutine": "Nueva rutina",
+    "propositionTitle": "Rutina propuesta",
+    "retryButton": "Dame otra propuesta",
+    "startPractice": "Empezar a practicar",
+    "editRoutine": "Editar la rutina"
   },
   "pwa": {
     "installPrompt": {

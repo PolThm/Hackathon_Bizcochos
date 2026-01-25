@@ -86,9 +86,13 @@
     "description": "Aidez-nous à construire une routine adaptée à votre corps",
     "invitationText": "Parlez-nous de vos sensations, mobilité, confort physique, et des zones que vous aimeriez améliorer dans votre vie quotidienne.",
     "placeholder": "ex. : hanches serrées, mobilité limitée des épaules, sensation de raideur après le travail, récupération après les entraînements...",
-    "generateButton": "Générer ma Routine",
-    "generating": "Génération en cours...",
-    "newRoutine": "Nouvelle Routine"
+    "generateButton": "Générer ma routine",
+    "generating": "Génération...",
+    "newRoutine": "Nouvelle routine",
+    "propositionTitle": "Routine proposée",
+    "retryButton": "Donne-moi un autre choix",
+    "startPractice": "Commencer la séance",
+    "editRoutine": "Modifier la routine"
   },
   "pwa": {
     "installPrompt": {

@@ -75,9 +75,14 @@ export default function Practice() {
   const [wasInBreakWhenPaused, setWasInBreakWhenPaused] = useState(false);
   const [wasInPreparationWhenPaused, setWasInPreparationWhenPaused] =
     useState(false);
+  const [wasInExerciseWhenPaused, setWasInExerciseWhenPaused] = useState(false);
+  const [pausedExerciseTimer, setPausedExerciseTimer] = useState<number | null>(
+    null,
+  ); // Store remaining exercise time when paused
 
   const isPreparationRef = useRef(true);
   const isBreakRef = useRef(false);
+  const isResumingFromExerciseRef = useRef(false);
 
   const nextExerciseIndexRef = useRef<number>(0);
 
@@ -145,16 +150,15 @@ export default function Practice() {
         // Store the current state (break/preparation/exercise)
         setWasInBreakWhenPaused(isBreakRef.current);
         setWasInPreparationWhenPaused(isPreparationRef.current);
+        const inExercise =
+          !isBreakRef.current && !isPreparationRef.current && isInExercise;
+        setWasInExerciseWhenPaused(inExercise);
 
-        // Store the elapsed time if in exercise
-        if (
-          !isBreakRef.current &&
-          !isPreparationRef.current &&
-          exerciseStartTime
-        ) {
-          const now = Date.now();
-          const elapsed = (now - exerciseStartTime) / 1000;
+        // Store the current visual position of the progress bar (freeze where it is)
+        if (inExercise && exerciseStartTime) {
+          const elapsed = (Date.now() - exerciseStartTime) / 1000;
           setPausedElapsedTime(elapsed);
+          setPausedExerciseTimer(timer); // Store remaining exercise time
         }
         if (intervalId) clearInterval(intervalId);
         getGlobalSounds()?.timerLoop?.pause();
@@ -170,6 +174,8 @@ export default function Practice() {
       isPaused,
       intervalId,
       exerciseStartTime,
+      timer,
+      isInExercise,
     ],
   );
 
@@ -296,8 +302,15 @@ export default function Practice() {
         isPreparationRef.current = true;
         isBreakRef.current = false;
         currentTimer = preparationTime;
+      } else if (wasInExerciseWhenPaused) {
+        // Resuming from exercise - show preparation first
+        isPreparationRef.current = true;
+        isBreakRef.current = false;
+        isResumingFromExerciseRef.current = true; // Mark that we're resuming from exercise
+        currentTimer = preparationTime;
+        // Keep isInExercise false during preparation, but keep pausedElapsedTime for progress bar
       } else {
-        // Was in exercise, start with preparation time
+        // Default: start with preparation time
         isPreparationRef.current = true;
         isBreakRef.current = false;
         currentTimer = preparationTime;
@@ -329,10 +342,26 @@ export default function Practice() {
           if (isPreparationRef.current) {
             isPreparationRef.current = false;
             getGlobalSounds()?.timerLoop?.play();
-            // When resuming, go back to the current exercise duration
-            const exerciseDuration = isResuming
-              ? timer
-              : activeExercises[loopExerciseIndex].duration;
+
+            // Check if we're resuming from a paused exercise
+            if (isResumingFromExerciseRef.current) {
+              isResumingFromExerciseRef.current = false;
+              // Use stored timer from when we paused
+              const exerciseDuration =
+                pausedExerciseTimer ??
+                activeExercises[loopExerciseIndex].duration;
+              // Calculate elapsed time synced with the stored timer
+              const syncedElapsed = currentExerciseDuration - exerciseDuration;
+              setExerciseStartTime(Date.now() - syncedElapsed * 1000);
+              setPausedElapsedTime(null);
+              setPausedExerciseTimer(null);
+              setIsInExercise(true);
+              return exerciseDuration;
+            }
+
+            // Normal start - full exercise duration
+            const exerciseDuration =
+              activeExercises[loopExerciseIndex].duration;
             setCurrentExerciseDuration(exerciseDuration);
             setExerciseStartTime(Date.now());
             setIsInExercise(true);
@@ -381,8 +410,11 @@ export default function Practice() {
     setExerciseStartTime(null);
     setCurrentExerciseDuration(0);
     setPausedElapsedTime(null);
+    setPausedExerciseTimer(null);
     setWasInBreakWhenPaused(false);
     setWasInPreparationWhenPaused(false);
+    setWasInExerciseWhenPaused(false);
+    isResumingFromExerciseRef.current = false;
     setIsInExercise(false);
 
     release(); // Releasing screen wake lock
@@ -427,29 +459,25 @@ export default function Practice() {
   const handlePauseResume = () => {
     setIsPaused((prevPaused) => !prevPaused);
     if (isPaused) {
-      // Resuming - restore break/preparation state and reset start time
-      if (!isBreakRef.current && !isPreparationRef.current) {
-        setExerciseStartTime(Date.now());
-        setPausedElapsedTime(null); // Clear paused elapsed time
-      }
+      // Resuming - keep pausedElapsedTime for now (will be cleared after preparation)
       // Clear the paused state flags
       setWasInBreakWhenPaused(false);
       setWasInPreparationWhenPaused(false);
+      setWasInExerciseWhenPaused(false);
       startRoutine(true); // Pass true to indicate resuming
     } else {
       // Pausing - store the current state (break/preparation/exercise)
       setWasInBreakWhenPaused(isBreakRef.current);
       setWasInPreparationWhenPaused(isPreparationRef.current);
+      const inExercise =
+        !isBreakRef.current && !isPreparationRef.current && isInExercise;
+      setWasInExerciseWhenPaused(inExercise);
 
-      // Store the elapsed time if in exercise
-      if (
-        !isBreakRef.current &&
-        !isPreparationRef.current &&
-        exerciseStartTime
-      ) {
-        const now = Date.now();
-        const elapsed = (now - exerciseStartTime) / 1000;
+      // Store the current visual position of the progress bar (freeze where it is)
+      if (inExercise && exerciseStartTime) {
+        const elapsed = (Date.now() - exerciseStartTime) / 1000;
         setPausedElapsedTime(elapsed);
+        setPausedExerciseTimer(timer); // Store remaining exercise time
       }
       if (intervalId) clearInterval(intervalId);
       getGlobalSounds()?.timerLoop?.pause();
@@ -487,8 +515,11 @@ export default function Practice() {
     setExerciseStartTime(null);
     setCurrentExerciseDuration(0);
     setPausedElapsedTime(null);
+    setPausedExerciseTimer(null);
     setWasInBreakWhenPaused(false);
     setWasInPreparationWhenPaused(false);
+    setWasInExerciseWhenPaused(false);
+    isResumingFromExerciseRef.current = false;
     setIsInExercise(false);
     if (intervalId) clearInterval(intervalId);
     setIsPaused(true);
@@ -592,6 +623,7 @@ export default function Practice() {
       isPreparationRef.current
     )
       return null;
+
     const currentExercise = activeExercises[exerciseIndex];
     if (!currentExercise.exerciseId) return null;
 
@@ -607,6 +639,20 @@ export default function Practice() {
 
   const getProgressPercentage = () => {
     if (!routine || exerciseIndex >= activeExercises.length) return 0;
+
+    // Special case: during preparation when resuming from exercise, show stored progress
+    if (
+      isPreparationRef.current &&
+      pausedElapsedTime !== null &&
+      currentExerciseDuration > 0
+    ) {
+      const progress = Math.min(
+        100,
+        (pausedElapsedTime / currentExerciseDuration) * 100,
+      );
+      return Math.max(0, progress);
+    }
+
     if (isBreakRef.current || isPreparationRef.current) return 0;
     if (!exerciseStartTime || currentExerciseDuration === 0) return 0;
 

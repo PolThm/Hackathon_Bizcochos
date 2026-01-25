@@ -1,0 +1,117 @@
+{
+  "parameters": {
+    "parameters": "Parameters",
+    "languages": "Languages",
+    "sound": "Sound",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "developedBy": "Developed by Pol Thomas & Alessio Pelliccione",
+    "english": "English",
+    "french": "Français",
+    "spanish": "Español",
+    "reference": "Reference",
+    "referenceValid": "A new routine has been added!",
+    "referenceInvalid": "Invalid reference",
+    "referenceAlreadyUsed": "This routine is already in your list",
+    "reset": "Reset",
+    "resetRoutinesConfirm": "Reset all routines? This action cannot be undone.",
+    "letsGo": "LET'S GO!"
+  },
+  "home": {
+    "start": "START",
+    "preparation": "Preparation",
+    "rest": "Rest",
+    "lastExercise": "Last exercise",
+    "exercise": "exercise",
+    "stop": "STOP",
+    "noActiveExercises": "No active exercises in this routine",
+    "next": "next:",
+    "welcome": "Welcome"
+  },
+  "setup": {
+    "chooseRoutine": "Choose my routine",
+    "preparationDuration": "Preparation duration",
+    "restDuration": "Rest duration",
+    "exercise": "Exercise",
+    "exercises": "Exercises",
+    "newExercise": "New exercise",
+    "reset": "Reset",
+    "resetRoutine": "Reset the routine?",
+    "delete": "Delete",
+    "deleteRoutine": "Delete the routine?",
+    "letsGo": "LET'S GO!",
+    "newRoutine": "Routine",
+    "createNewRoutine": "Create a new routine?",
+    "deleteExercise": "Delete this exercise?",
+    "pausedExercise": "Paused exercise"
+  },
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "error": "Oops, an error occurred...",
+    "refresh": "REFRESH",
+    "home": "HOME",
+    "pageNotFound": "Page not found",
+    "practice": "PRACTICE",
+    "edit": "EDIT",
+    "parameters": "PARAMETERS",
+    "library": "LIBRARY",
+    "newRoutine": "NEW ROUTINE",
+    "routinePolux": "Stretching & Musculation",
+    "routineExample": "Example",
+    "createNewRoutineWithAI": "Create new Routine with AI",
+    "goToPractice": "Start the practice",
+    "noRoutinesMessage": "You have no routines yet."
+  },
+  "library": {
+    "library": "Library",
+    "searchPlaceholder": "Search an exercise...",
+    "noExercisesFound": "No exercise found matching your search",
+    "addCustomExercise": "Add custom exercise"
+  },
+  "exerciseDetails": {
+    "notFound": "Exercise not found",
+    "backToLibrary": "Back to Library",
+    "benefits": "Benefits",
+    "instructions": "Instructions",
+    "tips": "Tips",
+    "modifications": "Modifications"
+  },
+  "metadata": {
+    "description": "Stretching app powered by AI. By Pol Thomas & Alessio Pelliccione.",
+    "title": "Routines"
+  },
+  "newRoutine": {
+    "title": "Create New Routine",
+    "description": "Help us build a routine tailored to your body",
+    "invitationText": "Tell us about your sensations, mobility, physical comfort, and the areas you'd like to improve in your daily life.",
+    "placeholder": "e.g. tight hips, limited shoulder mobility, feeling stiff after work, recovery after workouts...",
+    "generateButton": "Generate my Routine",
+    "generating": "Generating...",
+    "newRoutine": "New Routine"
+  },
+  "pwa": {
+    "installPrompt": {
+      "title": "Install the Routines app for a better experience",
+      "instructions": {
+        "title": "Installation instructions",
+        "intro": "Look for buttons in your browser, not in the app.",
+        "android1": "Find the menu button: (<b>⋮</b>)",
+        "android2": "Then « <b>Install App</b> »,",
+        "android3": "or « <b>Add to home screen</b> ».",
+        "ios1": "Find the share button:",
+        "ios2": "Then « <b>Add to home screen</b> ».",
+        "otherLabel": "Other browsers",
+        "other": "Look for « <b>Install</b> » or « <b>Add to home screen</b> » option in the browser menu.",
+        "close": "Close"
+      }
+    },
+    "offline": {
+      "message": "You are offline. Some features may be limited.",
+      "pageTitle": "Offline - Routines",
+      "pageMessage": "This page is not available offline.",
+      "pageInstruction": "Check your internet connection and try again.",
+      "contentUnavailable": "Content not available offline"
+    }
+  }
+}

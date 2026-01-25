@@ -1,3 +1,8 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+import withPWA from '@ducanh2912/next-pwa';
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
@@ -19,4 +24,16 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const pwaConfig = withPWA({
+  dest: 'public',
+  cacheOnFrontEndNav: true,
+  aggressiveFrontEndNavCaching: true,
+  reloadOnOnline: true,
+  swcMinify: true,
+  disable: false,
+  workboxOptions: {
+    disableDevLogs: true,
+  },
+});
+
+export default withNextIntl(pwaConfig(nextConfig));

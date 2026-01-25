@@ -1,0 +1,117 @@
+{
+  "parameters": {
+    "parameters": "Parámetros",
+    "languages": "Idiomas",
+    "sound": "Sonido",
+    "enabled": "Activado",
+    "disabled": "Desactivado",
+    "developedBy": "Desarrollado por Pol Thomas & Alessio Pelliccione",
+    "english": "English",
+    "french": "Français",
+    "spanish": "Español",
+    "reference": "Referencia",
+    "referenceValid": "¡Una nueva rutina ha sido agregada!",
+    "referenceInvalid": "Referencia inválida",
+    "referenceAlreadyUsed": "Esta rutina ya está en tu lista",
+    "reset": "Restablecimiento",
+    "resetRoutinesConfirm": "Restablecer todas las rutinas? Esta acción es irreversible.",
+    "letsGo": "¡VAMOS!"
+  },
+  "home": {
+    "start": "COMENZAR",
+    "preparation": "Preparación",
+    "rest": "Descanso",
+    "lastExercise": "Último ejercicio",
+    "exercise": "ejercicio",
+    "stop": "DETENER",
+    "noActiveExercises": "No hay ejercicios activos en esta rutina",
+    "next": "próximo:",
+    "welcome": "Bienvenido"
+  },
+  "setup": {
+    "chooseRoutine": "Elegir mi rutina",
+    "preparationDuration": "Duración de la preparación",
+    "restDuration": "Duración del descanso",
+    "exercise": "Ejercicio",
+    "exercises": "Ejercicios",
+    "newExercise": "Nuevo ejercicio",
+    "reset": "Reiniciar",
+    "resetRoutine": "Reiniciar la rutina?",
+    "delete": "Eliminar",
+    "deleteRoutine": "Eliminar la rutina?",
+    "letsGo": "¡VAMOS!",
+    "newRoutine": "Routine",
+    "createNewRoutine": "¿Crear una nueva rutina?",
+    "deleteExercise": "¿Eliminar este ejercicio?",
+    "pausedExercise": "Ejercicio en pausa"
+  },
+  "common": {
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "error": "Ups, ocurrió un error...",
+    "refresh": "ACTUALIZAR",
+    "home": "INICIO",
+    "pageNotFound": "Página no encontrada",
+    "practice": "PRÁCTICA",
+    "edit": "EDICIÓN",
+    "parameters": "PARÁMETROS",
+    "library": "BIBLIOTECA",
+    "newRoutine": "NUEVA RUTINA",
+    "routinePolux": "Estiramientos & Musculación",
+    "routineExample": "Ejemplo",
+    "createNewRoutineWithAI": "Crear nueva Rutina con IA",
+    "goToPractice": "Iniciar la práctica",
+    "noRoutinesMessage": "No tienes rutinas todavía."
+  },
+  "library": {
+    "library": "Biblioteca",
+    "searchPlaceholder": "Buscar un ejercicio...",
+    "noExercisesFound": "No se encontró ningún ejercicio",
+    "addCustomExercise": "Agregar ejercicio personalizado"
+  },
+  "exerciseDetails": {
+    "notFound": "Ejercicio no encontrado",
+    "backToLibrary": "Volver a la biblioteca",
+    "benefits": "Beneficios",
+    "instructions": "Instrucciones",
+    "tips": "Consejos",
+    "modifications": "Modificaciones"
+  },
+  "metadata": {
+    "description": "Aplicación de estiramientos impulsada por IA. Por Pol Thomas & Alessio Pelliccione.",
+    "title": "Routines"
+  },
+  "newRoutine": {
+    "title": "Crear Nueva Rutina",
+    "description": "Ayúdanos a construir una rutina adaptada a tu cuerpo",
+    "invitationText": "Cuéntanos sobre tus sensaciones, movilidad, comodidad física, y las áreas que te gustaría mejorar en tu vida diaria.",
+    "placeholder": "ej. caderas apretadas, movilidad limitada de hombros, sensación de rigidez después del trabajo, recuperación después de entrenamientos...",
+    "generateButton": "Generar mi Rutina",
+    "generating": "Generando...",
+    "newRoutine": "Nueva Rutina"
+  },
+  "pwa": {
+    "installPrompt": {
+      "title": "Instala la aplicación Routines para una mejor experiencia",
+      "instructions": {
+        "title": "Instrucciones de instalación",
+        "intro": "Busca los botones en tu navegador, no en la aplicación.",
+        "android1": "Encuentra el botón de menú: (<b>⋮</b>)",
+        "android2": "Luego « <b>Instalar aplicación</b> »,",
+        "android3": "o « <b>Añadir a pantalla de inicio</b> ».",
+        "ios1": "Encuentra el botón de compartir:",
+        "ios2": "Luego « <b>Añadir a pantalla de inicio</b> ».",
+        "otherLabel": "Otros navegadores",
+        "other": "Busca la opción « <b>Instalar</b> » o « <b>Añadir a pantalla de inicio</b> » en el menú del navegador.",
+        "close": "Cerrar"
+      }
+    },
+    "offline": {
+      "message": "Estás sin conexión. Algunas funciones pueden estar limitadas.",
+      "pageTitle": "Sin conexión - Routines",
+      "pageMessage": "Esta página no está disponible sin conexión.",
+      "pageInstruction": "Verifica tu conexión a internet e inténtalo de nuevo.",
+      "contentUnavailable": "Contenido no disponible sin conexión"
+    }
+  }
+}

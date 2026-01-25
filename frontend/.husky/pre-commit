@@ -1,0 +1,4 @@
+export PATH="/opt/homebrew/bin:$PATH"
+npm run update-version
+git add .env
+npx lint-staged

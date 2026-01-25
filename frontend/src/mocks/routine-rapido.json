@@ -1,0 +1,48 @@
+{
+  "id": "rapido",
+  "name": "Rápido",
+  "breakDuration": 5,
+  "preparationDuration": 5,
+  "exercises": [
+    {
+      "id": 11543534543423,
+      "name": "Mains en l’air",
+      "duration": 10
+    },
+    {
+      "id": 115435345443363,
+      "name": "Mouvements de bassin",
+      "duration": 30
+    },
+    {
+      "id": 55435435,
+      "name": "Touché d’orteils",
+      "duration": 60
+    },
+    {
+      "id": 633457746,
+      "name": "Chien tête en haut",
+      "duration": 15
+    },
+    {
+      "id": 76343245,
+      "name": "Posture de l’enfant",
+      "duration": 10
+    },
+    {
+      "id": 763435356245,
+      "name": "Posture du chat",
+      "duration": 15
+    },
+    {
+      "id": 11543534543,
+      "name": "Mains en l’air",
+      "duration": 5
+    },
+    {
+      "id": 17303792439233,
+      "name": "Lever de poids",
+      "duration": 70
+    }
+  ]
+}

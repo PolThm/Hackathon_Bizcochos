@@ -1,0 +1,3904 @@
+[
+    {
+        "id": "d70415d950a2",
+        "name": "Rag Doll",
+        "image": "/images/exercises/image_00056-ef377ae2cf4fd2b2bd5d4d55fa6e28fa.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your knees slightly bent.",
+            "Inhale and extend your arms overhead, lengthening your spine.",
+            "Exhale and slowly bend forward at the hips, letting your upper body hang down.",
+            "Grab your opposite elbows and let your head and arms hang heavy."
+        ],
+        "tips": [
+            "Keep your weight evenly distributed between your heels and the balls of your feet.",
+            "Focus on lengthening your spine rather than reaching for the floor."
+        ],
+        "modifications": [
+            "Bend your knees more to avoid straining your back.",
+            "Use a block or chair to rest your elbows on if reaching the floor is difficult."
+        ],
+        "benefits": [
+            "Calves, Shoulders, Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "7e6077a58ec2",
+        "name": "Upward Dog",
+        "image": "/images/exercises/image_00003-301c70a503de8d49452a3acbfce79c01.png",
+        "instructions": [
+            "Start lying on your stomach with your legs extended and your hands under your shoulders.",
+            "Press your palms into the floor, straightening your arms to lift your upper body and legs off the floor.",
+            "Lift your chest, relax your shoulders, and look slightly upward."
+        ],
+        "tips": [
+            "Only the tops of your feet and your palms should be touching the floor.",
+            "Keep your arms straight but avoid locking your elbows."
+        ],
+        "modifications": [
+            "For less intensity, keep your thighs on the floor."
+        ],
+        "benefits": [
+            "Psoas, Spine, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "f0e3ea656db8",
+        "name": "Child's Pose",
+        "image": "/images/exercises/image_00014-a1c5d8f2b298b4517ff22511b2826269.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Widen your knees and bring your big toes together so they're touching.",
+            "Sit back on your heels, then reach forward with your hands and lower your chest toward the floor.",
+            "Relax your hips and rest your forehead on the floor."
+        ],
+        "tips": [
+            "Walk your fingertips forward to increase the stretch.",
+            "Allow your chest to sink towards the floor."
+        ],
+        "modifications": [
+            "For less intensity, don't spread your knees as wide.",
+            "If your forehead doesn't reach the floor, rest it on a block or folded blanket."
+        ],
+        "benefits": [
+            "Feet, Shins, Shoulders, Hips, Lower Back, Ankles"
+        ]
+    },
+    {
+        "id": "0334bf01a6dd",
+        "name": "Knees-to-chest",
+        "image": "/images/exercises/image_00019-dd281b9bd56c8766e29fd9a8035bc02a.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms at your sides.",
+            "Bend your knees and draw them towards your chest.",
+            "Wrap your arms around your shins and gently pull them closer to your chest."
+        ],
+        "tips": [
+            "Relax your head and neck on the floor.",
+            "Keep your lower back pressed into the floor."
+        ],
+        "modifications": [
+            "If you can't reach your shins, wrap your arms behind your thighs."
+        ],
+        "benefits": [
+            "Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "db402a0655db",
+        "name": "Happy Baby",
+        "image": "/images/exercises/image_00050-356fb944e7492a8828f93ffd32d7adc1.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and feet flat on the floor.",
+            "Lift your feet off the floor to bring your knees towards your armpits.",
+            "Grasp the outer edges of your feet with your hands and gently pull your knees towards the floor."
+        ],
+        "tips": [
+            "Keep your lower back pressed into the floor.",
+            "Relax your shoulders and neck."
+        ],
+        "modifications": [
+            "If you can't reach your feet, hold onto your ankles or calves instead."
+        ],
+        "benefits": [
+            "Groin, Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "8f2083bb6cf0",
+        "name": "Reclined Butterfly",
+        "image": "/images/exercises/image_00042-5bb7eb8c7f348234048bbdbd5e29297c.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Bring the soles of your feet together and let your knees fall out to the sides.",
+            "Place your arms alongside your body with your palms facing up."
+        ],
+        "tips": [
+            "Allow gravity to gently open your hips without forcing them."
+        ],
+        "modifications": [
+            "Place cushions or blocks under your outer thighs for support."
+        ],
+        "benefits": [
+            "Groin, Spine, Hips"
+        ]
+    },
+    {
+        "id": "4ddbeefbc1a9",
+        "name": "Spinal Twist",
+        "image": "/images/exercises/image_00015-27422cdda838adeb1392e2d56079de3a.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms at your sides.",
+            "Bend one knee and place your foot flat on the floor.",
+            "Gently lower your bent knee across your body towards the opposite side, allowing your torso and hips to twist.",
+            "Place your opposite hand on the outside of your bent knee and extend your other arm out to the side."
+        ],
+        "tips": [
+            "Keep your shoulders flat on the floor."
+        ],
+        "modifications": [
+            "If the twist is too intense, place a cushion or block under your bent knee for support."
+        ],
+        "benefits": [
+            "Spine, IT Band, Upper Back, Obliques, Chest, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "e9bf3f02c64c",
+        "name": "Quad Stretch",
+        "image": "/images/exercises/image_00016-6524520bf715f734f439d732496b097c.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Bend one knee and bring your heel back towards your glutes.",
+            "Grab your ankle with your hand and gently pull your foot back so it's directly beneath your glute.",
+            "Slowly lean back to rest on your elbows."
+        ],
+        "tips": [
+            "Keep your hips, knees, and ankles aligned.",
+            "Make sure your foot stays underneath your glute and isn't out to the side."
+        ],
+        "modifications": [
+            "If reaching your ankle is difficult, use a strap or towel looped around your foot for assistance.",
+            "If you experience discomfort in your knee, try performing the exercise while lying on your side."
+        ],
+        "benefits": [
+            "Knees, Shins, Hips, Quadriceps, Lower Back, Ankles"
+        ]
+    },
+    {
+        "id": "32168ae5b509",
+        "name": "Legs-up-wall",
+        "image": "/images/exercises/image_00020-1ffae8024ac92bd46baec1c03157caf4.png",
+        "instructions": [
+            "Starting on the floor in a seated position with the side of your hip touching the wall.",
+            "Lie back and swing your legs up onto the wall in one motion.",
+            "Scoot your hips as close to the wall as comfortable and extend your legs straight up the wall.",
+            "Rest your arms by your sides with your palms facing up."
+        ],
+        "tips": [
+            "Keep your legs relatively relaxed and avoid locking your knees."
+        ],
+        "modifications": [
+            "If your hamstrings are tight, move your hips slightly away from the wall.",
+            "Place a cushion or folded blanket under your hips for extra support."
+        ],
+        "benefits": [
+            "Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "369d1020c63e",
+        "name": "Upward Salute",
+        "image": "/images/exercises/image_00000-89de3e43a7252c332f0d0df0efe89bd3.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Slowly sweep your arms out and up over your head.",
+            "Keep your hands shoulder-width apart and reach toward the ceiling.",
+            "Relax your shoulders and look slightly upward."
+        ],
+        "tips": [
+            "Ground your feet firmly into the floor and distribute your weight evenly between your feet.",
+            "Engage your core muscles to avoid arching your lower back."
+        ],
+        "modifications": [
+            "For less intensity, place your hands behind your head or on your hips."
+        ],
+        "benefits": [
+            "Spine, Upper Back, Obliques, Shoulders, Chest, Lats, Abdomen"
+        ]
+    },
+    {
+        "id": "f37b50d96b70",
+        "name": "Chest Opener",
+        "image": "/images/exercises/image_00036-24322f5ef4c83686782745b959a6d5df.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart.",
+            "Clasp your hands behind your head and widen your arms to bring your elbows out and back.",
+            "Gently squeeze your shoulder blades together and open your chest."
+        ],
+        "tips": [
+            "Lower your shoulders and relax your neck.",
+            "Keep your back and spine straight."
+        ],
+        "modifications": [
+            "If clasping your hands behind your head is difficult, use a strap or towel to hold onto."
+        ],
+        "benefits": [
+            "Shoulders, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "0fed7a6992c5",
+        "name": "Toe Touch",
+        "image": "/images/exercises/image_00001-c64f64fccf5a063895af2e58fb82ae3e.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Keeping your back straight, hinge at your hips to bend forward, lowering your upper body toward your legs.",
+            "Relax your head, neck, and arms and try to place your palms on the floor."
+        ],
+        "tips": [
+            "Focus on lengthening your spine as you fold forward.",
+            "Keep your legs straight but not locked."
+        ],
+        "modifications": [
+            "If you can't reach the floor, place your hands on your shins or thighs."
+        ],
+        "benefits": [
+            "Calves, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "754ef7ccdf4d",
+        "name": "Overhead Tricep",
+        "image": "/images/exercises/image_00040-c19c58a7a338542649f881d9c8ef7849.png",
+        "instructions": [
+            "Start from a standing position with your back straight and your arms resting at your sides.",
+            "Raise one arm overhead and bend your elbow, bringing your hand towards the opposite shoulder blade.",
+            "Use your opposite hand to gently press your elbow down towards the middle of your back"
+        ],
+        "tips": [],
+        "modifications": [],
+        "benefits": [
+            "Triceps, Upper Back, Obliques, Shoulders, Chest, Lower Back, Lats"
+        ]
+    },
+    {
+        "id": "2925907fccba",
+        "name": "Forward Fold",
+        "image": "/images/exercises/image_00053-02591bd1edcc65d6988c8e8f63ac5cc0.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands interlaced behind your back.",
+            "Slowly bend forward from your hips, letting your upper body hang down toward the floor.",
+            "Extend your arms and let your hands fall forward over your head."
+        ],
+        "tips": [
+            "Let your head and neck relax completely.",
+            "Keep your legs straight but not locked."
+        ],
+        "modifications": [
+            "If interlacing your fingers is difficult, hold a strap or towel between your hands."
+        ],
+        "benefits": [
+            "Calves, Upper Back, Shoulders, Hips, Hamstrings, Chest, Glutes"
+        ]
+    },
+    {
+        "id": "0e0cb7a25efc",
+        "name": "One Arm Hug",
+        "image": "/images/exercises/image_00038-990851a373536c46f0a5810798a94223.png",
+        "instructions": [
+            "Start from a standing position with your back straight and your arms resting at your sides.",
+            "Extend one arm across your body, bringing it towards the opposite shoulder.",
+            "Hook your other arm around your extended arm to pull it closer to your chest."
+        ],
+        "tips": [
+            "Maintain an upright posture and avoid leaning to either side.",
+            "Keep your extended arm relaxed."
+        ],
+        "modifications": [
+            "For a gentler stretch, lower your extended arm to your abdomen and pull it with your other hand."
+        ],
+        "benefits": [
+            "Triceps, Shoulders, Lats"
+        ]
+    },
+    {
+        "id": "abbc0b8df731",
+        "name": "Wide Leg Bend",
+        "image": "/images/exercises/image_00026-e28397c45d2e360a9678a7fb34e6b179.png",
+        "instructions": [
+            "Start from a standing position with your feet wide and your toes pointed forward.",
+            "Keeping your back straight, hinge at your hips to bend forward, lowering your upper body toward your legs.",
+            "Relax your head, neck, and arms and try to place your palms on the floor."
+        ],
+        "tips": [
+            "Focus on lengthening your spine as you fold forward.",
+            "Keep your legs straight but not locked.",
+            "To deepen the stretch, grab your ankles and pull your head closer to the floor."
+        ],
+        "modifications": [
+            "If you can't reach the floor, place your hands on your shins or blocks."
+        ],
+        "benefits": [
+            "Groin, Calves, Hips, Hamstrings, Lower Back"
+        ]
+    },
+    {
+        "id": "2e0d37224061",
+        "name": "Side Lunge",
+        "image": "/images/exercises/image_00023-8ac751e135290072d672e9774d48d722.png",
+        "instructions": [
+            "Start from a standing position with your feet wide apart.",
+            "Shift your weight to one side, bending your knee and keeping your other leg straight.",
+            "Place your hands on the floor and lower your hips until you feel a stretch in your inner thigh.",
+            "Rotate the foot on your straight leg so your heel is on the ground and your toes are pointed out."
+        ],
+        "tips": [
+            "Lift your chest and keep your back straight."
+        ],
+        "modifications": [
+            "If the stretch is too intense, don't lower your hips as much.",
+            "Use a chair or wall for balance support if needed."
+        ],
+        "benefits": [
+            "Groin, Calves, Hips, Hamstrings"
+        ]
+    },
+    {
+        "id": "06936e42e685",
+        "name": "Squat Stretch",
+        "image": "/images/exercises/image_00068-42a4e459d0d8ba5903b9d5cade6b15e4.png",
+        "instructions": [
+            "Start from a standing position with your feet shoulder-width apart and your toes pointed slightly outward.",
+            "Lower your hips down into a squat position, keeping your heels on the ground.",
+            "Place your elbows on the inside of your knees and press your palms together."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight.",
+            "Gently push your knees outward with your elbows."
+        ],
+        "modifications": [
+            "If your heels lift, place a folded towel under them for support.",
+            "Hold onto a chair or wall for balance if needed."
+        ],
+        "benefits": [
+            "Knees, Groin, Calves, Hips, Hamstrings, Quadriceps, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "a06ad46d3995",
+        "name": "Lunge",
+        "image": "/images/exercises/image_00002-60c3a51dfc4ad9568c68ce0e904d59f3.png",
+        "instructions": [
+            "Start from a kneeling position with your arms at your sides.",
+            "Step forward with one leg, placing your foot flat on the floor in front of you.",
+            "Push your hips forward and raise your arms overhead.",
+            "Lift your chest and reach toward the ceiling."
+        ],
+        "tips": [
+            "Keep your front knee stable and align it directly above your ankle.",
+            "Engage your back leg, pressing the top of your foot into the floor.",
+            "Keep your torso upright and avoid arching your lower back."
+        ],
+        "modifications": [
+            "For less intensity, keep your hands on your front thigh.",
+            "Place a towel or cushion under your back knee for support.",
+            "Hold onto a wall or chair for balance if needed."
+        ],
+        "benefits": [
+            "Psoas, Hips, Quadriceps, Lower Back, Abdomen"
+        ]
+    },
+    {
+        "id": "926501bf8420",
+        "name": "Reverse Lunge",
+        "image": "/images/exercises/image_00063-6deb3f75808a481a16888b0d9db4bfed.png",
+        "instructions": [
+            "Start from a kneeling position with your knees hip-width apart and the tops of your feet on the floor.",
+            "Extend one leg straight out in front of you, pressing your heel into the floor.",
+            "Hinge at your hips to lower your upper body toward the floor.",
+            "Place your hands on the floor in front of you for balance."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight."
+        ],
+        "modifications": [
+            "Place a folded blanket under your knee for additional support."
+        ],
+        "benefits": [
+            "Calves, Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "132a8793a0fc",
+        "name": "Kneeling Quad",
+        "image": "/images/exercises/image_00062-3f8e2bbdc586cd1eb4740c8fcdaa848e.png",
+        "instructions": [
+            "Start from a kneeling position with your knees hip-width apart and the tops of your feet on the floor.",
+            "Step one foot forward and bring your opposite foot up towards your glutes.",
+            "Please one hand on your front knee and reach back with your other hand to grab your ankle.",
+            "Gently push your hips forward and pull your heel closer to your glutes."
+        ],
+        "tips": [
+            "Maintain an upright posture, avoiding leaning forward or backward."
+        ],
+        "modifications": [
+            "If reaching your back foot is difficult, keep your foot on the floor."
+        ],
+        "benefits": [
+            "Psoas, Hips, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "eb66365e9571",
+        "name": "Downward Dog",
+        "image": "/images/exercises/image_00004-737b5dd92a3b5b0375d466abd191db35.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Tuck your toes under, press your palms into the floor, and straighten your arms and legs to lift your hips up and back.",
+            "Push your chest toward your thighs and your heels toward the floor."
+        ],
+        "tips": [
+            "Relax your shoulders and let your head hang between your arms.",
+            "Distribute your weight evenly between your hands and feet.",
+            "Keep a slight bend in your knees to avoid hyperextension"
+        ],
+        "modifications": [
+            "For less intensity, bend your knees more or place your hands on the edge of a chair.",
+            "To reduce pressure on your wrists, place your forearms on the floor or use a block under your hands."
+        ],
+        "benefits": [
+            "Calves, Shoulders, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "084fbcb06205",
+        "name": "Thunderbolt",
+        "image": "/images/exercises/image_00057-141722fa8344a8c99f6721016153b3ec.png",
+        "instructions": [
+            "Start from a kneeling position with your knees together and the tops of your feet on the floor.",
+            "Sit back on your heels with your big toes touching and your heels separated.",
+            "Place your hands on your thighs with your palms facing down.",
+            "Sit up tall with your back straight and your shoulders relaxed."
+        ],
+        "tips": [
+            "Engage your core to support your lower back."
+        ],
+        "modifications": [
+            "If sitting on your heels is uncomfortable, place a cushion or folded blanket between your heels and hips for added support.",
+            "Place a folded blanket under your knees if you feel any discomfort."
+        ],
+        "benefits": [
+            "Knees, Feet, Shins, Quadriceps, Ankles"
+        ]
+    },
+    {
+        "id": "26f95e129524",
+        "name": "Saddle Pose",
+        "image": "/images/exercises/image_00076-9972f56044cd60fbe7fc1ab3077752cf.png",
+        "instructions": [
+            "Start from a kneeling position with your knees hip-width apart.",
+            "Spread your knees and feet apart and sit down on the floor between them.",
+            "Slowly lean back onto your forearms, then continue lowering your upper body until your back is on the floor.",
+            "Cross your arms over your head or rest them by your sides."
+        ],
+        "tips": [],
+        "modifications": [
+            "If the stretch is too intense, use a cushion or block under your back for support.",
+            "For less intensity, keep your upper body propped up on your elbows."
+        ],
+        "benefits": [
+            "Knees, Feet, Psoas, Spine, Shins, Hips, Quadriceps, Lower Back, Ankles, Abdomen"
+        ]
+    },
+    {
+        "id": "19df9477d833",
+        "name": "Toe Squat",
+        "image": "/images/exercises/image_00071-c9f7d083634be1ccd88d779f78d69673.png",
+        "instructions": [
+            "Start from a kneeling position with the tops of your feet on the floor.",
+            "Tuck your toes under and slowly sit back on your heels, putting weight on your toes.",
+            "Sit up tall with your back straight, relax your shoulders and place your hands on your thighs."
+        ],
+        "tips": [
+            "Focus on distributing your weight evenly across all your toes."
+        ],
+        "modifications": [
+            "If the stretch is too intense, keep your hands on the floor in front of you."
+        ],
+        "benefits": [
+            "Calves, Feet, Ankles, Toes"
+        ]
+    },
+    {
+        "id": "122d7543e2cd",
+        "name": "Wrist Extension",
+        "image": "/images/exercises/image_00072-22e41429622501e69ff280d86f4a1f57.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position, with your palms flat on the floor.",
+            "Rotate your hands so your fingers are pointed towards your body.",
+            "Walk your knees closer to your hands, then slowly lean back and lower your hips towards your heels, while keeping your palms pressed into the floor."
+        ],
+        "tips": [
+            "Distribute your weight evenly across both palms."
+        ],
+        "modifications": [
+            "If kneeling is uncomfortable, perform this stretch standing up with your hands on a table."
+        ],
+        "benefits": [
+            "Forearms, Wrists, Fingers, Hands"
+        ]
+    },
+    {
+        "id": "2f04e58fce28",
+        "name": "Lizard Pose",
+        "image": "/images/exercises/image_00049-bdf345dd1bac163672e6993615cc7d80.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Step one foot forward, placing it outside your hand, and lower your hips towards the floor.",
+            "Extend your back leg straight behind you, keeping your knee and the top of your foot on the floor."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight.",
+            "Relax your hips and allow them to sink towards the floor.",
+            "For a deeper stretch, lift your back knee and lower your forearms to the floor."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Groin, Hips, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "b9e6ed3f0472",
+        "name": "Pigeon",
+        "image": "/images/exercises/image_00013-2162dd2031c60b45123392bd307189b5.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Bring one knee forward and place it behind your wrist on the same side, then slide your ankle towards your opposite hip.",
+            "Extend your other leg straight back behind you while keeping your hips square to the floor.",
+            "Gently lower your torso over your front leg and rest your forearms on the ground in front of you."
+        ],
+        "tips": [
+            "Keep your hips level and avoid leaning to one side."
+        ],
+        "modifications": [
+            "Place a folded blanket or block under the hip of the bent leg for support.",
+            "If folding forward is uncomfortable, stay upright and support yourself with your hands on the floor."
+        ],
+        "benefits": [
+            "Groin, Psoas, IT Band, Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "7dab9161999c",
+        "name": "Frog Pose",
+        "image": "/images/exercises/image_00069-33af808b4c3605e28b98c60a7e5ad769.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Lower your forearms to the ground and widen your knees out to sides, keeping your hips in line with your knees and your toes pointed outward.",
+            "Gently press your hips back towards your heels."
+        ],
+        "tips": [
+            "Keep your chest lifted and your gaze forward."
+        ],
+        "modifications": [
+            "Bring your knees closer together to reduce the intensity."
+        ],
+        "benefits": [
+            "Groin, Hips, Lower Back"
+        ]
+    },
+    {
+        "id": "df977a2256a1",
+        "name": "Puppy Pose",
+        "image": "/images/exercises/image_00075-063432153d85e81fab990403d0a0449d.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Walk your hands forward and lower your chest toward the floor.",
+            "Keep your hips lifted and stacked directly over your knees and lower your forehead to the floor."
+        ],
+        "tips": [
+            "Focus on creating a long line from your hips to your fingertips."
+        ],
+        "modifications": [
+            "If your forehead doesn't reach the floor, rest it on a yoga block or folded blanket.",
+            "For less intensity, don't walk your hands out as far."
+        ],
+        "benefits": [
+            "Spine, Upper Back, Shoulders, Chest, Lower Back, Abdomen"
+        ]
+    },
+    {
+        "id": "26ab7c2ef543",
+        "name": "Twisted Sphinx",
+        "image": "/images/exercises/image_00074-083408f8fd9da06a7a0ca117566922b2.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Extend one leg back and bring your other leg under your body, extending your foot straight out to the opposite side.",
+            "Lower your hips to the floor and rest your upper body on your forearms."
+        ],
+        "tips": [
+            "Relax your neck and shoulders and keep your gaze down."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Spine, IT Band, Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "cc83ff2baa66",
+        "name": "Seated Twist",
+        "image": "/images/exercises/image_00028-c3bd8036c30d4f67a5a5ce12f2b2e308.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Cross one leg over the other, placing your foot on the floor outside of your opposite thigh.",
+            "Rotate your torso and place your elbow on the outside of your top knee and your other hand behind you for support.",
+            "Continue to rotate your torso and turn your head to look behind you."
+        ],
+        "tips": [
+            "Lengthen your spine and keep your back straight."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Spine, IT Band, Upper Back, Obliques, Hips, Chest, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "ab5093db7e92",
+        "name": "Lying Figure Four",
+        "image": "/images/exercises/image_00025-e025b695536978822c6644cfa0c439dd.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and feet flat on the floor.",
+            "Cross one ankle over the opposite thigh, just above the knee.",
+            "Lift your bottom leg off the floor, bringing your knee towards your chest.",
+            "Reach forward and clasp your hands behind the thigh of your bottom leg.",
+            "Gently pull your leg towards your chest."
+        ],
+        "tips": [
+            "Keep your head and shoulders relaxed on the floor.",
+            "Keep your lower back pressed into the floor."
+        ],
+        "modifications": [
+            "If reaching behind your thigh is difficult, use a strap or towel to assist.",
+            "For a gentler stretch, keep your bottom foot on the floor."
+        ],
+        "benefits": [
+            "IT Band, Hips, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "a6819f0bca93",
+        "name": "Lying Hamstring",
+        "image": "/images/exercises/image_00024-75bc0a33a0b7716bec561503be0cf473.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Lift one leg straight up towards the ceiling while keeping your other foot flat on the floor.",
+            "Place your hands behind the thigh or calf of your raised leg and gently pull it towards your chest."
+        ],
+        "tips": [
+            "Keep your hips and lower back pressed into the floor.",
+            "Maintain a slight bend in the knee of your raised leg to avoid hyperextension."
+        ],
+        "modifications": [
+            "Use a yoga strap or towel looped around your foot if you can't reach your leg."
+        ],
+        "benefits": [
+            "Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "9fd8301ac24f",
+        "name": "Butterfly",
+        "image": "/images/exercises/image_00018-b517896280fb76029c44067a880ef2ad.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Bend your knees and bring the soles of your feet together, letting your knees fall out to the sides.",
+            "Hold your feet with your hands and gently press your knees towards the floor."
+        ],
+        "tips": [
+            "Pull your feet up and push your knees down with your elbows to deepen the stretch.",
+            "Keep your back straight and avoid rounding your spine."
+        ],
+        "modifications": [
+            "If your knees are high off the ground, place cushions under your thighs for support.",
+            "Sit on a folded blanket to raise your hips and improve comfort."
+        ],
+        "benefits": [
+            "Groin, Hips"
+        ]
+    },
+    {
+        "id": "1945a988a853",
+        "name": "Folded Butterfly",
+        "image": "/images/exercises/image_00051-d792f8a0aac5a903215e93a01755f5df.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Bend your knees and bring the soles of your feet together, letting your knees fall out to the sides.",
+            "Place your hands on the floor in front of you and hinge at your hips, folding forward over your feet."
+        ],
+        "tips": [
+            "Allow your head to relax towards your feet."
+        ],
+        "modifications": [
+            "If your hips are tight, sit on a folded blanket to elevate your hips.",
+            "For a gentler stretch, keep your torso more upright."
+        ],
+        "benefits": [
+            "Knees, Groin, Hips, Lower Back"
+        ]
+    },
+    {
+        "id": "78ca6cd5beca",
+        "name": "Double Pigeon",
+        "image": "/images/exercises/image_00070-c967c5dc622a222067ee9b0091ba1b57.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Bend one knee and bring your shin parallel to your shoulders.",
+            "Bend the opposite knee, stacking your shin on top of the other, and aligning your ankle over your bottom knee.",
+            "Sit up tall and rest your hands on the floor to your sides."
+        ],
+        "tips": [
+            "Keep your back straight and avoid rounding your spine.",
+            "Flex both feet to protect your knees."
+        ],
+        "modifications": [
+            "Perform the movement with one leg extended if necessary."
+        ],
+        "benefits": [
+            "Groin, IT Band, Hips, Hamstrings, Glutes"
+        ]
+    },
+    {
+        "id": "dca0dc236a34",
+        "name": "Seated Fold",
+        "image": "/images/exercises/image_00017-f905ab643987fc61003edf4df2e11d3d.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Extend your arms overhead to lengthen your spine.",
+            "Hinge at your hips and reach forward to grab your toes."
+        ],
+        "tips": [
+            "Keep your back flat and avoid rounding your spine."
+        ],
+        "modifications": [
+            "If reaching your toes is difficult, place your hands on your shins or use a strap around your feet.",
+            "Keep a slight bend in your knees if you have tight hamstrings."
+        ],
+        "benefits": [
+            "Calves, Spine, Upper Back, Shoulders, Hamstrings, Lower Back"
+        ]
+    },
+    {
+        "id": "4c760d6becd5",
+        "name": "Seated Straddle",
+        "image": "/images/exercises/image_00066-fa28909c06ea7d622f1b078c799b536f.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Open your legs wide apart and place your hands on the floor in front of you.",
+            "Sit up tall to lengthen your spine, then hinge at your hips to reach forward with your hands and lower your upper body towards the floor."
+        ],
+        "tips": [
+            "Keep your back straight and avoid rounding your spine.",
+            "Flex your feet and keep your toes pointing upward."
+        ],
+        "modifications": [
+            "If reaching forward is difficult, rest your hands on blocks or a chair in front of you.",
+            "Sit on a folded blanket to raise your hips and improve comfort."
+        ],
+        "benefits": [
+            "Groin, Calves, Spine, Upper Back, Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "6d75e50c4cd7",
+        "name": "Hurdler",
+        "image": "/images/exercises/image_00064-d903c783d8f0860ba4b26a1a6afc78eb.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Bend one leg and place the sole of your foot against your opposite inner thigh.",
+            "Sit tall and lengthen your spine, then lean forward from your hips to reach out and grab your extended foot."
+        ],
+        "tips": [
+            "Focus on hinging at the hips rather than rounding your back.",
+            "Keep your extended leg straight and your foot flexed, but be careful not to lock your knees."
+        ],
+        "modifications": [
+            "If you can't reach your foot, use a yoga strap or towel looped around your foot.",
+            "For less intensity, bend your extended leg slightly."
+        ],
+        "benefits": [
+            "Groin, Calves, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "fead539549b1",
+        "name": "Shoulder Stand",
+        "image": "/images/exercises/image_00030-e32f7ec24e9afd52eea65edbdcd388b0.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms at your sides.",
+            "Press your arms into the floor to lift your legs and hips up towards the ceiling",
+            "Support your lower back with your hands and extend your legs straight up, keeping your body in a straight line from your shoulders to your feet."
+        ],
+        "tips": [
+            "Keep your neck relaxed and avoid turning your head to the sides.",
+            "Engage your core and glutes to maintain your balance."
+        ],
+        "modifications": [
+            "Keep your legs bent if straightening them is too difficult."
+        ],
+        "benefits": [
+            "Neck, Shoulders"
+        ]
+    },
+    {
+        "id": "2e2f5b37ef2f",
+        "name": "Plow",
+        "image": "/images/exercises/image_00031-3255e405d87bc2a742fd2174cc015090.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms at your sides.",
+            "Engage your core and lift your legs towards the ceiling, bringing them over your head.",
+            "Slowly lower your legs towards the floor behind your head, keeping your hands on your lower back for support.",
+            "If your feet reach the floor, extend your arms along the floor with your palms facing down."
+        ],
+        "tips": [
+            "Keep your legs straight and your toes pointing towards the floor.",
+            "Keep your neck relaxed and avoid turning your head."
+        ],
+        "modifications": [
+            "If your feet do not reach the floor, keep your hands on your lower back for support and hold your legs in a comfortable position.",
+            "Bend your knees slightly if straightening your legs is uncomfortable."
+        ],
+        "benefits": [
+            "Calves, Spine, Neck, Upper Back, Shoulders, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "4e483c6cc4a7",
+        "name": "Standing Quad",
+        "image": "/images/exercises/image_00021-6e755ab11944383a4a8918d2e8a24822.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart.",
+            "Bend one knee and bring your heel towards your glutes.",
+            "Reach behind you with both hands to hold your ankle and gently pull your heel closer to your glutes.",
+            "Keep your knees together and your hips aligned."
+        ],
+        "tips": [
+            "Engage your core to maintain balance.",
+            "Keep your standing leg slightly bent to avoid locking the knee.",
+            "Avoid arching your back or leaning forward."
+        ],
+        "modifications": [
+            "Use a wall or chair for balance support if needed.",
+            "If reaching your ankle is difficult, use a strap or towel looped around your foot for assistance.",
+            "Keep your other hand on your hip or extend it out to the side for added balance."
+        ],
+        "benefits": [
+            "Knees, Feet, Psoas, Shins, Hips, Quadriceps, Lower Back, Ankles, Abdomen"
+        ]
+    },
+    {
+        "id": "83456b4a4bdf",
+        "name": "Leaning Calf",
+        "image": "/images/exercises/image_00022-118f29a3f6045d74d74d7407a85cf8e8.png",
+        "instructions": [
+            "Start from a standing position facing a wall, about an arm's length away.",
+            "Place your hands on the wall at shoulder height and shoulder-width apart.",
+            "Step one foot back, keeping your toes pointing forward and your heel on the ground.",
+            "Bend your front knee while keeping your back leg straight and push into the wall to deepen the stretch."
+        ],
+        "tips": [],
+        "modifications": [
+            "If the stretch is too intense, move your back foot slightly closer to the wall."
+        ],
+        "benefits": [
+            "Calves, Feet, Hamstrings, Ankles"
+        ]
+    },
+    {
+        "id": "98e8d35695d2",
+        "name": "Cat Cow",
+        "image": "/images/exercises/image_00027a-2cb95174f6457d62914d64e60a0f99d4.png",
+        "instructions": [
+            "Start on your hands and knees in the tabletop position.",
+            "Align your wrists under your shoulders and your knees under your hips.",
+            "Inhale, dropping your belly towards the floor and arching your back, and lifting your chin and chest to look up toward the ceiling.",
+            "Exhale, drawing your belly up toward your spine and rounding your back, and tucking your chin to your chest."
+        ],
+        "tips": [
+            "Move slowly between the poses, coordinating each movement with your breath."
+        ],
+        "modifications": [
+            "If you have neck issues, keep your head in a neutral position rather than lifting and tucking your chin."
+        ],
+        "benefits": [
+            "Spine, Neck, Upper Back, Lower Back, Abdomen"
+        ]
+    },
+    {
+        "id": "7a12ab3522ba",
+        "name": "Locust Pose",
+        "image": "/images/exercises/image_00029-d5332e24d2c841901efbed4200ab17ec.png",
+        "instructions": [
+            "Start lying on your stomach with your legs extended and your arms at your sides.",
+            "Engage your back, glutes, and core to lift your chest, arms, and legs off the ground.",
+            "Keep your legs straight and together and point your toes.",
+            "Gaze slightly forward and keep your neck in line with your spine."
+        ],
+        "tips": [],
+        "modifications": [
+            "For less intensity, lift only your upper body or only your legs."
+        ],
+        "benefits": [
+            "Neck, Upper Back, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "5a03300cfb5e",
+        "name": "Seated Figure Four",
+        "image": "/images/exercises/image_00032-0c66a9eee7a38f619f50067290b4eb82.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your arms resting at your sides.",
+            "Cross one ankle over the opposite thigh, just above the knee.",
+            "Sit tall and lengthen your spine, then gently lean forward from your hips."
+        ],
+        "tips": [
+            "Place your hands on your crossed leg and press down towards the floor to further open your hip."
+        ],
+        "modifications": [
+            "If the stretch is too intense, keep your torso upright instead of leaning forward."
+        ],
+        "benefits": [
+            "IT Band, Hips, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "a7c9fcb88022",
+        "name": "Seated Hamstring",
+        "image": "/images/exercises/image_00033-837aaf23d6f0382d2dd6ec6277e2c063.png",
+        "instructions": [
+            "Start from a seated position on the edge of a chair with your back straight and your arms resting at your sides.",
+            "Extend one leg out in front of you, keeping your heel on the floor and your toes pointing up.",
+            "Sit tall and lengthen your spine, then gently lean forward from your hips."
+        ],
+        "tips": [
+            "Keep your back straight and avoid rounding your spine as you fold forward.",
+            "Reach your hands towards your extended foot to deepen the stretch."
+        ],
+        "modifications": [
+            "If reaching your toes is difficult, place your hands on your shins or use a strap around your feet."
+        ],
+        "benefits": [
+            "Calves, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "60156b63fe30",
+        "name": "Trunk Rotation",
+        "image": "/images/exercises/image_00034-fbb468e32c51d0c9bb02e2e311aecad0.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your arms resting at your sides.",
+            "Cross one leg over your other leg and rotate your torso to place your opposite hand on the outside of your top knee.",
+            "Place your other hand on the back of your chair and continue to rotate your torso and turn your head to look behind you."
+        ],
+        "tips": [],
+        "modifications": [
+            "If the stretch is too difficult, keep both of your feet flat on the floor and avoid crossing your legs."
+        ],
+        "benefits": [
+            "Spine, IT Band, Upper Back, Obliques, Hips, Chest, Lower Back, Glutes, Lats"
+        ]
+    },
+    {
+        "id": "6fd223d15765",
+        "name": "Forearm Stretch",
+        "image": "/images/exercises/image_00041-07d93aa295f83df533ebcfb7fe486e52.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your arms resting at your sides.",
+            "Extend one arm in front of you with your palm facing up.",
+            "Use your opposite hand to gently pull your fingers back towards your body."
+        ],
+        "tips": [],
+        "modifications": [
+            "Keep a slight bend in your elbow if straightening your arm fully is uncomfortable."
+        ],
+        "benefits": [
+            "Forearms, Fingers, Hands"
+        ]
+    },
+    {
+        "id": "c43c3c782815",
+        "name": "Hamstring Pulls",
+        "image": "/images/exercises/image_00065-7be6c47bf374018908a578df567e3432.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms at your sides.",
+            "Bend one knee and place a strap or towel around the ball of your foot.",
+            "Extend your leg towards the ceiling, holding the ends of the strap with both hands.",
+            "Gently pull on the strap, bringing your leg closer to your body."
+        ],
+        "tips": [
+            "Keep your bottom leg extended and pressed into the floor.",
+            "Keep your extended leg straight and your foot flexed.",
+            "Keep your back flat on the floor and your hips grounded."
+        ],
+        "modifications": [
+            "Keep a slight bend in your knee if straightening your leg is uncomfortable."
+        ],
+        "benefits": [
+            "Calves, Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "57e3ad8fe61b",
+        "name": "Wall Dog",
+        "image": "/images/exercises/image_00052-4c2269eb1440e640936e511776312fb5.png",
+        "instructions": [
+            "Start from a standing position facing a wall, about an arm's length away.",
+            "Place your hands on the wall at shoulder height and take a step back with both feet.",
+            "Keep your arms and legs straight and lower your upper body towards the floor."
+        ],
+        "tips": [
+            "Relax your neck and let your head hang between your arms."
+        ],
+        "modifications": [
+            "If the stretch is too intense, bend your knees slightly and walk your feet closer to the wall."
+        ],
+        "benefits": [
+            "Upper Back, Shoulders, Hamstrings, Chest, Lower Back"
+        ]
+    },
+    {
+        "id": "64700e63a029",
+        "name": "Shoulder Cross",
+        "image": "/images/exercises/image_00054-526851d0878f402644e7aa2c04897699.png",
+        "instructions": [
+            "Start lying on your side with your legs straight and your bottom arm extended in front of you.",
+            "Slowly roll onto your stomach, keeping your bottom arm on the floor.",
+            "Reach your other arm up over your head and place your hand on the floor."
+        ],
+        "tips": [
+            "Keep your bottom arm relaxed on the floor."
+        ],
+        "modifications": [
+            "If the stretch is too intense, reduce the amount of rotation onto your stomach."
+        ],
+        "benefits": [
+            "Triceps, Upper Back, Shoulders"
+        ]
+    },
+    {
+        "id": "436a021806ef",
+        "name": "Shoulder Opener",
+        "image": "/images/exercises/image_00055-ad00d872116929a13689794d4e5c1fd1.png",
+        "instructions": [
+            "Start lying on your stomach with your arms extended out to the sides.",
+            "Slowly roll onto one side, bringing your opposite leg over and placing your foot flat on the floor behind your bottom leg.",
+            "Keep your bottom arm extended and allow the weight of your top leg to open your chest and shoulder.",
+            "Use your opposite hand to gently press into the floor for support and to deepen the stretch."
+        ],
+        "tips": [
+            "Move slowly and with control to avoid straining your shoulder."
+        ],
+        "modifications": [
+            "If the stretch is too intense, reduce the amount of rotation in your body."
+        ],
+        "benefits": [
+            "Shoulders, Chest, Biceps"
+        ]
+    },
+    {
+        "id": "a586bff517fc",
+        "name": "Shoulder Rolls",
+        "image": "/images/exercises/image_00008a-772432c62e4c6a3cb48acb7e7956eb4c.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your shoulders relaxed.",
+            "Lift your shoulders up towards your ears.",
+            "Roll your shoulders back and down, making a circular motion.",
+            "Repeat the movement and reverse direction at the halfway point."
+        ],
+        "tips": [
+            "Focus on creating a smooth, fluid motion to avoid straining your neck.",
+            "Keep your neck relaxed and your gaze forward."
+        ],
+        "modifications": [
+            "If you experience discomfort, perform smaller circles or just lift and lower your shoulders."
+        ],
+        "benefits": [
+            "Neck, Upper Back, Shoulders"
+        ]
+    },
+    {
+        "id": "e01f80613b7c",
+        "name": "Overhead Reach",
+        "image": "/images/exercises/image_00005-3fa57823222213be590cd6f92342f8b9.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your arms resting at your sides.",
+            "Slowly sweep your arms out and up over your head, interlacing your fingers with your palms facing up.",
+            "Reach up towards the ceiling, straightening your elbows and relaxing your shoulders downward."
+        ],
+        "tips": [
+            "Focus on lengthening your spine and creating space between your vertebrae."
+        ],
+        "modifications": [
+            "If interlacing your fingers is uncomfortable, keep your hands shoulder-width apart.",
+            "For a deeper stretch, gently lean to one side and then the other while reaching overhead."
+        ],
+        "benefits": [
+            "Spine, Neck, Shoulders"
+        ]
+    },
+    {
+        "id": "f1255f567f4a",
+        "name": "Side Bend",
+        "image": "/images/exercises/image_00006-f3b02ce7c0ad85f7818ea346e8d29c67.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your arms resting at your sides.",
+            "Raise one of your arms overhead and place your other hand on your hip.",
+            "Gently bend to the side, reaching over with the raised arm."
+        ],
+        "tips": [
+            "Keep your shoulders relaxed and avoid hunching them.",
+            "Avoid lifting off the chair or twisting your torso."
+        ],
+        "modifications": [
+            "If reaching overhead is uncomfortable, place your hand on the side of your head."
+        ],
+        "benefits": [
+            "Spine, Obliques, Lower Back, Lats, Abdomen"
+        ]
+    },
+    {
+        "id": "ea2238142fa7",
+        "name": "Cactus Arms",
+        "image": "/images/exercises/image_00007-656ddc506f3c44b547a65f782e838e86.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your arms resting at your sides.",
+            "Raise your arms to shoulder height, bending your elbows at a 90-degree angle with your palms facing forward.",
+            "Keep your elbows in line with your shoulders and your forearms perpendicular to the floor.",
+            "Squeeze your shoulder blades together, opening your chest."
+        ],
+        "tips": [
+            "Keep your shoulders relaxed and away from your ears.",
+            "Keep your neck long and gaze straight ahead."
+        ],
+        "modifications": [
+            "If you experience shoulder discomfort, lower your elbows slightly.",
+            "For added support, practice the pose with your back against a wall."
+        ],
+        "benefits": [
+            "Spine, Neck, Upper Back, Shoulders, Chest"
+        ]
+    },
+    {
+        "id": "30e412dcd293",
+        "name": "Neck Flex",
+        "image": "/images/exercises/image_00009a-5d69db68997b725c97cb56595e96c1b0.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Slowly tilt your head backward, bringing your gaze towards the ceiling.",
+            "At the halfway point, switch directions and slowly lower your chin towards your chest."
+        ],
+        "tips": [
+            "Keep your shoulders down and relaxed as you hold each position.",
+            "Move slowly and gently to avoid straining your neck."
+        ],
+        "modifications": [
+            "If you have neck pain, limit the range of motion to a comfortable level.",
+            "If you experience any discomfort or dizziness, stop the exercise immediately."
+        ],
+        "benefits": [
+            "Spine, Neck, Upper Back, Shoulders"
+        ]
+    },
+    {
+        "id": "645bd9988c9a",
+        "name": "Neck Roll",
+        "image": "/images/exercises/image_00010-7aa678591e0751eea948eca8c6085f75.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your shoulder relaxed.",
+            "Tuck your chin down towards your chest and gently roll your neck to the right, bringing your right ear towards your right shoulder.",
+            "Roll your chin back down towards your chest and then roll your neck to the left, bringing your left ear towards your left shoulder.",
+            "Repeat this back and forth in a slow, continuous motion."
+        ],
+        "tips": [
+            "Move slowly and gently to avoid strain or dizziness.",
+            "Minimize your risk of injury by avoiding full neck circles."
+        ],
+        "modifications": [
+            "If you have neck pain, limit your range of motion to a comfortable level."
+        ],
+        "benefits": [
+            "Spine, Neck, Upper Back, Shoulders"
+        ]
+    },
+    {
+        "id": "b27eb0cbd0ae",
+        "name": "Neck Laterals",
+        "image": "/images/exercises/image_00011-4065b72be07921523193799bcc2941bb.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your shoulders relaxed.",
+            "Place one hand on the side of the chair for support and tilt your head to the side to lower your ear towards your shoulder.",
+            "Use your other hand to apply gentle pressure to the side of your head.",
+            "Switch sides at the halfway point."
+        ],
+        "tips": [
+            "Keep your shoulders relaxed and avoid hunching them."
+        ],
+        "modifications": [
+            "For less intensity, tilt your head without using your hand."
+        ],
+        "benefits": [
+            "Neck, Upper Back"
+        ]
+    },
+    {
+        "id": "15daece22d0f",
+        "name": "Diver",
+        "image": "/images/exercises/image_00012-91ab7ebe50ff0cdb0ffc83969496af50.png",
+        "instructions": [
+            "Start from a seated position with your back straight and your arms resting at your sides.",
+            "Extend your arms out in front of you, bringing your hands together so one hand is on top of the other.",
+            "Tuck your head down between your arms and round your back while reaching forward with your hands."
+        ],
+        "tips": [
+            "Keep your core engaged and your feet flat on the floor."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Spine, Neck, Upper Back, Shoulders, Lower Back"
+        ]
+    },
+    {
+        "id": "a107fd2983e7",
+        "name": "Jumping Jacks",
+        "image": "/images/exercises/image_00043b-270fb09bf94c39e9c226a32862000068.png",
+        "instructions": [
+            "Start from a standing position with your feet together and your arms at your sides.",
+            "Jump your feet out to the sides while simultaneously raising your arms above your head.",
+            "After completing the movement, quickly jump back to the starting position, bringing your back together and lowering your arms.",
+            "Repeat the movement in a smooth, continuous motion."
+        ],
+        "tips": [
+            "Keep a slight bend in your knees and land softly on the balls of your feet to absorb the impact of each jump."
+        ],
+        "modifications": [
+            "If raising your arms is difficult, keep your hands on your hips."
+        ],
+        "benefits": [
+            "Calves, Upper Back, Shoulders, Hips, Hamstrings, Quadriceps, Lower Back, Abdomen"
+        ]
+    },
+    {
+        "id": "79a2fba0acab",
+        "name": "Air Squats",
+        "image": "/images/exercises/image_00044b-c52d5cf97244aeab1a709dd039314efe.png",
+        "instructions": [
+            "Start from a standing position with your feet shoulder-width apart and your toes pointed slightly outward.",
+            "Place your hands behind your head or folded in front of your chest.",
+            "Lower your hips back and down as if sitting into a chair, keeping your chest up and your weight on your heels.",
+            "Push through your heels to stand back up to the starting position and repeat."
+        ],
+        "tips": [
+            "Aim to lower your hips until your thighs are parallel to the floor.",
+            "Keep your knees in line with your toes."
+        ],
+        "modifications": [
+            "If squatting deeply is difficult, perform the exercise with a smaller range of motion."
+        ],
+        "benefits": [
+            "Groin, Calves, Hips, Hamstrings, Quadriceps, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "7a770b5b696f",
+        "name": "Lateral Lunge",
+        "image": "/images/exercises/image_00047a-0cd84a967ef5cd1b4111bca12e79f87a.png",
+        "instructions": [
+            "Start from a standing position with your feet wide apart and your hands together in front of you.",
+            "Bend one knee and lower your hips to that side, while keeping your other leg straight and your toes pointed forward.",
+            "Push back to the starting position and repeat on the other side."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight.",
+            "Move smoothly and with control to maintain balance."
+        ],
+        "modifications": [
+            "If the lunge is too intense, don't lower your hips as much.",
+            "Use a chair or wall for balance support if needed."
+        ],
+        "benefits": [
+            "Groin, Hips, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "e55cd60a38a0",
+        "name": "Arm Circles",
+        "image": "/images/exercises/image_00045a-2f75c4d8cdd6ee8a95712682b95086a7.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms extended out to the sides.",
+            "Make small circles with your arms, gradually increasing the size of the circles.",
+            "Reverse the movement at the halfway point."
+        ],
+        "tips": [],
+        "modifications": [
+            "For less intensity, bend your arms at your elbows and perform smaller circles closer to your body."
+        ],
+        "benefits": [
+            "Neck, Upper Back, Shoulders, Chest"
+        ]
+    },
+    {
+        "id": "ead847d40e86",
+        "name": "Arm Swings",
+        "image": "/images/exercises/image_00061a-0a813b49aa2e4b59f058c36162cd7873.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms extended out to the sides.",
+            "Swing your arms forward across your chest, crossing one arm over the other.",
+            "Then swing your arms back out to the sides, opening them wide.",
+            "Repeat the motion, alternating which arm crosses over the other each time."
+        ],
+        "tips": [
+            "Start with slower swings and gradually increase speed as you warm up."
+        ],
+        "modifications": [
+            "Keep your arm swings smaller if you experience any discomfort."
+        ],
+        "benefits": [
+            "Triceps, Upper Back, Shoulders, Chest, Biceps"
+        ]
+    },
+    {
+        "id": "8d62d6028097",
+        "name": "Trunk Twist",
+        "image": "/images/exercises/image_00058a-42be06860bd92b1cdbb6f395505aaf4a.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms extended out to the sides at shoulder height.",
+            "Engage your core and gently twist your upper body to one side.",
+            "Turn your head to look over your shoulder in the direction of the twist.",
+            "Return to the starting position and repeat on the other side."
+        ],
+        "tips": [
+            "Keep your knees slightly bent and your hips facing forward throughout the movement."
+        ],
+        "modifications": [
+            "For less intensity, keep your arms bent with hands on your hips."
+        ],
+        "benefits": [
+            "Knees, Spine, IT Band, Obliques, Shoulders, Hips, Lower Back, Lats, Abdomen"
+        ]
+    },
+    {
+        "id": "7d4bf76d5684",
+        "name": "Toe Touch Twist",
+        "image": "/images/exercises/image_00046a-80efdaf530016dcb1b8035e27d7c212d.png",
+        "instructions": [
+            "Start from a standing position with your feet wide apart and your arms extended out to the sides.",
+            "Bend forward, rotating your torso to touch your toe with your opposite hand and raising your other hand up to the ceiling.",
+            "Return to the starting position and repeat the movement on your other side."
+        ],
+        "tips": [
+            "Keep your spine long and avoid rounding your back.",
+            "Engage your core and keep a slight bend in your knees."
+        ],
+        "modifications": [
+            "If reaching your foot is difficult, touch your shin or knee instead."
+        ],
+        "benefits": [
+            "Spine, Upper Back, Obliques, Shoulders, Hips, Hamstrings, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "712a8ce37b94",
+        "name": "Knees Hugs",
+        "image": "/images/exercises/image_00048a-2bf340250348d2b02366f2041d727e50.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms resting at your sides.",
+            "Shift your weight onto one foot and lift the opposite knee towards your chest.",
+            "Grasp your knee with both hands and pull it closer to your chest.",
+            "Hold the position briefly, then lower your leg and repeat on the other side."
+        ],
+        "tips": [
+            "Keep your standing leg slightly bent to maintain balance.",
+            "Hold your back straight and your chest up."
+        ],
+        "modifications": [
+            "If balancing is difficult, perform the stretch near a wall or chair for support.",
+            "If lifting your knee to your chest is too intense, lift it to a comfortable height."
+        ],
+        "benefits": [
+            "Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "1c69fec06e92",
+        "name": "Leg Swings",
+        "image": "/images/exercises/image_00059a-80783938e2ae8b9eb36ec0d8a7d6f97c.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands on your hips.",
+            "Shift your weight onto one leg and lift your opposite leg slightly off the floor.",
+            "Swing your lifted leg forward and backward in a controlled, continuous motion."
+        ],
+        "tips": [
+            "Keep your standing leg active with a slight bend in your knee.",
+            "Keep your upper body stable; the movement should come from your hip.",
+            "Start with smaller swings and gradually increase the range of motion."
+        ],
+        "modifications": [
+            "Place your hand on a wall or chair for additional support."
+        ],
+        "benefits": [
+            "Groin, Calves, Hips, Hamstrings, Quadriceps, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "0572fe284348",
+        "name": "Knee Circles",
+        "image": "/images/exercises/image_00060a-4df6cdac2b4a6f66ab1183d284ea20fb.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands on your knees.",
+            "Bend your knees slightly and make small circles with your knees, moving them together in a circular motion.",
+            "Reverse the movement at the halfway point."
+        ],
+        "tips": [
+            "Keep your movements smooth and controlled to avoid straining your knees."
+        ],
+        "modifications": [
+            "Perform the exercise at a slower pace if needed to maintain control."
+        ],
+        "benefits": [
+            "Knees, Calves, Feet, Shins, Ankles"
+        ]
+    },
+    {
+        "id": "a8d43c3080c3",
+        "name": "Hand Plank",
+        "image": "/images/exercises/image_00081-a64b2b6583eee8c8d90d22f4f99d322b.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Step one foot back and then the other, so your legs are fully extended.",
+            "Engage your core to keep your body in a straight line from your head to your heels.",
+            "Distribute your weight evenly between your hands and feet and hold the position."
+        ],
+        "tips": [
+            "Look at a spot on the floor just ahead of your hands to keep your neck neutral."
+        ],
+        "modifications": [
+            "For less intensity, drop to your knees while maintaining a straight line from knees to head."
+        ],
+        "benefits": [
+            "Triceps, Upper Back, Obliques, Shoulders, Chest, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "31e780bd0aed",
+        "name": "Elbow Plank",
+        "image": "/images/exercises/image_00085-87236853c6bb950c859fb5f1c392e965.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Lower your forearms to the floor, then step back with both feet so your legs are fully extended.",
+            "Engage your core to keep your body in a straight line from your head to your heels.",
+            "Distribute your weight evenly between your forearms and feet and hold the position."
+        ],
+        "tips": [
+            "Align your elbows directly under your shoulders.",
+            "Avoid arching your lower back or lifting your hips too high."
+        ],
+        "modifications": [
+            "For less intensity, drop to your knees while maintaining a straight line from knees to head."
+        ],
+        "benefits": [
+            "Triceps, Upper Back, Obliques, Shoulders, Chest, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "5f5242b0a365",
+        "name": "Elbow Side Plank",
+        "image": "/images/exercises/image_00087-e702ee81d8cd3e52b5c10d88fc4ccd74.png",
+        "instructions": [
+            "Start lying on your side with your legs extended and your feet stacked on top of each other.",
+            "Place your bottom elbow under your shoulder and your forearm flat on the floor.",
+            "Engage your core and lift your hips off the floor, creating a straight line from your head to your heels.",
+            "Rest your top hand on your hip and hold the position."
+        ],
+        "tips": [
+            "Keep your hips lifted and in line with your body."
+        ],
+        "modifications": [
+            "For less intensity, lower your bottom knee to the floor for support."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Shoulders, Abdomen"
+        ]
+    },
+    {
+        "id": "edad14d86e07",
+        "name": "Hand Plank Leg Lift",
+        "image": "/images/exercises/image_00082-68bcb4cb8c51aa01743ee0f77c3a4626.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Step one foot back and then the other, so your legs are fully extended.",
+            "Engage your core to lift one of your legs off the floor, while keeping your body in a straight line.",
+            "Distribute your weight evenly between your hands and foot and hold the position."
+        ],
+        "tips": [
+            "Keep your raised leg at hip height or as high as you can while maintaining form.",
+            "Focus on keeping your hips level and avoiding rotation."
+        ],
+        "modifications": [
+            "For less intensity, lower your bottom knee to the floor."
+        ],
+        "benefits": [
+            "Triceps, Upper Back, Obliques, Shoulders, Chest, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "80263dfe4f36",
+        "name": "Hand Side Plank",
+        "image": "/images/exercises/image_00083-801c607218d9623bed8fa5eba906967d.png",
+        "instructions": [
+            "Start lying on your side with your legs extended and your feet stacked on top of each other.",
+            "Place your bottom hand under your shoulder with your palm flat on the floor.",
+            "Straighten your bottom arm and lift your hips off the floor, creating a straight line from your head to your heels.",
+            "Lift your top arm toward the ceiling and hold the position."
+        ],
+        "tips": [
+            "Keep your supporting arm directly under your shoulder.",
+            "Keep your hips lifted and in line with your body."
+        ],
+        "modifications": [
+            "For less intensity, lower your bottom knee to the floor for support.",
+            "If wrist discomfort occurs, perform the plank on your forearm instead."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Shoulders, Abdomen"
+        ]
+    },
+    {
+        "id": "1254aeb5f483",
+        "name": "Hand Side Plank Leg Lift",
+        "image": "/images/exercises/image_00084-8e805d7a0ec3fa7a2df7de6e3c120e31.png",
+        "instructions": [
+            "Start lying on your side with your legs extended and your feet stacked on top of each other.",
+            "Place your bottom hand under your shoulder with your palm flat on the floor.",
+            "Straighten your bottom arm and lift your hips off the floor, creating a straight line from your head to your heels.",
+            "Lift your top arm and your top leg toward the ceiling and hold the position."
+        ],
+        "tips": [
+            "Keep your supporting arm directly under your shoulder.",
+            "Keep your hips lifted and in line with your body."
+        ],
+        "modifications": [
+            "For less intensity, lower your bottom knee to the floor for support.",
+            "If wrist discomfort occurs, perform the plank on your forearm instead."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Shoulders, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "d44a998e7e3b",
+        "name": "Elbow Plank Leg Lift",
+        "image": "/images/exercises/image_00086-6dcb45f99464d995d5b4af0c1b718347.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Lower your forearms to the floor, then step back with both feet so your legs are fully extended.",
+            "Engage your core to keep your body in a straight line, and lift one of your legs off the floor toward the ceiling.",
+            "Distribute your weight evenly between your forearms and foot and hold the position."
+        ],
+        "tips": [
+            "Align your elbows directly under your shoulders.",
+            "Focus on keeping your hips level and avoid rotating them.",
+            "Keep your raised leg at hip height or as high as you can while maintaining good form."
+        ],
+        "modifications": [
+            "For less intensity, lower your bottom knee to the floor."
+        ],
+        "benefits": [
+            "Triceps, Upper Back, Obliques, Shoulders, Chest, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "5d25a66e210f",
+        "name": "Elbow Side Plank Leg Lift",
+        "image": "/images/exercises/image_00088-d7f0944630a6a585a67172d2d0835040.png",
+        "instructions": [
+            "Start lying on your side with your legs extended and your feet stacked on top of each other.",
+            "Place your bottom elbow under your shoulder and your forearm flat on the floor.",
+            "Engage your core and lift your hips off the floor, creating a straight line from your head to your heels.",
+            "Rest your top hand on your hip and lift your top leg toward the ceiling and hold the position."
+        ],
+        "tips": [
+            "Keep your hips lifted and in line with your body."
+        ],
+        "modifications": [
+            "For less intensity, lower your bottom knee to the floor for support."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Shoulders, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "ca330448cf8a",
+        "name": "Single Arm Plank",
+        "image": "/images/exercises/image_00089-fb8a484bae5996b6ba50d4820ad7219b.png",
+        "instructions": [
+            "Start on the floor in a push-up position.",
+            "Engage your core to lift one hand off the floor and out to the side, while keeping your body in a straight line.",
+            "Distribute your weight evenly between your hands and feet and hold the position."
+        ],
+        "tips": [
+            "Keep your hips level and avoiding rotation."
+        ],
+        "modifications": [
+            "For less intensity, drop to your knees while maintaining a straight line from knees to head."
+        ],
+        "benefits": [
+            "Triceps, Upper Back, Obliques, Shoulders, Chest, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "972cf4cfde2c",
+        "name": "Bird Dog Plank",
+        "image": "/images/exercises/image_00092-825310dce59695ac31c30992de1800d9.png",
+        "instructions": [
+            "Start on the floor in a push-up position.",
+            "wide",
+            "Distribute your weight evenly between your hand and foot and hold the position."
+        ],
+        "tips": [
+            "Avoid arching your back or rotating your hips."
+        ],
+        "modifications": [
+            "For less intensity, lift only your arm or leg individually."
+        ],
+        "benefits": [
+            "Shoulders, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "99da695ce568",
+        "name": "Crunch Hold",
+        "image": "/images/exercises/image_00077-9104c68e13fb5bc8f66bd5ad55a6be1d.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Engage your core to lift your head, neck, and shoulders off the floor.",
+            "Reach forward with your arms and hold the position."
+        ],
+        "tips": [
+            "Keep your arms straight and parallel to the floor.",
+            "Keep your lower back pressed into the floor."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Abdomen"
+        ]
+    },
+    {
+        "id": "c48d7cbb4d92",
+        "name": "Bicycle Crunch Hold",
+        "image": "/images/exercises/image_00078-5c189a8d04c3aa1a4eff279242d864e0.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Place your hands behind your head and engage your core to lift your head and shoulders off the floor.",
+            "Extend one leg straight out and bring your opposite knee towards your chest, while rotating your upper body to bring your opposite elbow toward your raised knee.",
+            "Hold the position and switch sides at the halfway point."
+        ],
+        "tips": [
+            "Keep your lower back pressed into the floor.",
+            "Focus on the rotation of your torso, not just the elbow-to-knee movement.",
+            "Avoid pulling on your neck with your hands."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Obliques, Abdomen"
+        ]
+    },
+    {
+        "id": "17953c683134",
+        "name": "Toe Touch Hold",
+        "image": "/images/exercises/image_00079-399e01035c48e7efaf54260157d5304f.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Engage your core to extended your legs and lift them straight up into the air.",
+            "Lift your head, neck, and shoulders off the floor and reach up with your arms to touch your toes.",
+            "Hold the position."
+        ],
+        "tips": [],
+        "modifications": [],
+        "benefits": [
+            "Abdomen"
+        ]
+    },
+    {
+        "id": "05c3ac621b17",
+        "name": "Leg Lift",
+        "image": "/images/exercises/image_00104-9356ebe4913168e6b2b60e74d6abd5d4.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms behind your head.",
+            "Engage your core to lift both legs off the floor, creating a 45 degree angle between your legs and the floor.",
+            "Keep your legs straight and your feet together and hold the position."
+        ],
+        "tips": [
+            "Keep your lower back pressed into the floor.",
+            "Keep your head and shoulders flat on the floor throughout the exercise."
+        ],
+        "modifications": [
+            "If lifting both legs is too intense, perform the exercise with one leg at a time.",
+            "If you feel strain in your lower back, place your hands under your hips for support or bend your knees slightly."
+        ],
+        "benefits": [
+            "Hips, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "95e63f79fb35",
+        "name": "Lying Side Leg Raise",
+        "image": "/images/exercises/image_00115-8149b215386ef7613914f020abd4b402.png",
+        "instructions": [
+            "Start lying on your side with your legs extended and your feet stacked on top of each other.",
+            "Rest your head on your lower arm and place your top hand on your hip.",
+            "Engage your core to lift your top leg towards the ceiling, creating a 45 degree angle between your leg and the floor.",
+            "Hold the position."
+        ],
+        "tips": [
+            "Keep your hips stable and your body in a straight line from head to toe."
+        ],
+        "modifications": [
+            "If lifting your leg high is too challenging, perform the exercise with a smaller range of motion."
+        ],
+        "benefits": [
+            "Obliques, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "1145ae4230b1",
+        "name": "V-Sit",
+        "image": "/images/exercises/image_00080-874b05741e71c12f57ea24e13d3d8408.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms at your sides.",
+            "Engage your core to simultaneously lift your arms, chest, and legs, forming a V-shape with your body.",
+            "Keep your back straight, reach your arms up towards the ceiling, and hold the position."
+        ],
+        "tips": [
+            "Try to balance on your the bones at the bottom of your pelvis.",
+            "Keep your legs as straight as possible."
+        ],
+        "modifications": [
+            "For less intensity, keep your knees bent or hands on the floor for support."
+        ],
+        "benefits": [
+            "Abdomen"
+        ]
+    },
+    {
+        "id": "2e5886625b8a",
+        "name": "Dead Bug",
+        "image": "/images/exercises/image_00116-3b47036604f67ffd1ca7e520cccb20f2.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms straight above your head.",
+            "Engage your core to raise one arm toward the ceiling and bend your opposite knee to bring it up over your hip.",
+            "Raise your other arm and leg slightly off the floor and hold the position."
+        ],
+        "tips": [
+            "Keep your hips square and your lower back pressed into the floor."
+        ],
+        "modifications": [
+            "For less intensity, perform the exercise with a smaller range of motion."
+        ],
+        "benefits": [
+            "Shoulders, Hips, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "ea3ab2222ad5",
+        "name": "Hollow Body",
+        "image": "/images/exercises/image_00114-e9b27e59293adc143650562208f83cc8.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms straight above your head.",
+            "Engage your core to lift your head, arms, shoulders, and legs off the floor.",
+            "Create a \"C\" shape with your body, balancing on your lower back, and hold the position."
+        ],
+        "tips": [
+            "Keep your lower back pressed into the floor.",
+            "Keep your legs straight and your feet together."
+        ],
+        "modifications": [
+            "For less intensity, keep your knees bent and your arms in front of you."
+        ],
+        "benefits": [
+            "Shoulders, Hips, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "767c2b49b30e",
+        "name": "Squat Hold",
+        "image": "/images/exercises/image_00100-e61fa61869cff3cb20adbab7bd3403c5.png",
+        "instructions": [
+            "Start from a standing position with your feet shoulder-width apart and your toes pointed slightly outward.",
+            "Lower your hips back and down as if sitting into a chair, keeping your weight on your heels.",
+            "Keep your chest lifted and your back straight and hold the position."
+        ],
+        "tips": [
+            "Aim to lower your hips until your thighs are parallel to the floor.",
+            "Keep your knees in line with your toes."
+        ],
+        "modifications": [
+            "For less intensity, perform the exercise with a smaller range of motion."
+        ],
+        "benefits": [
+            "Calves, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "27bfe6847c9d",
+        "name": "Split Lunge Hold",
+        "image": "/images/exercises/image_00108-b4dbba48cb69ad122b5c503d72a9c65b.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands on your hips.",
+            "Step one foot back, lowering your back knee towards the floor while keeping it off the ground.",
+            "Keep both knees at 90 degree angles and hold the position."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight.",
+            "Align your front knee above your ankle."
+        ],
+        "modifications": [
+            "For less intensity, keep your back knee further from the floor.",
+            "Use a chair or wall for balance support if needed."
+        ],
+        "benefits": [
+            "Calves, Hips, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "309f38945f12",
+        "name": "Narrow Squat Hold",
+        "image": "/images/exercises/image_00101-35677ae98990e5d27f1f77663334f9e3.png",
+        "instructions": [
+            "Start from a standing position with your feet together.",
+            "Lower your hips back and down as if sitting into a chair, keeping your weight on your heels.",
+            "Keep your chest lifted and your back straight and hold the position."
+        ],
+        "tips": [
+            "Aim to lower your hips until your thighs are parallel to the floor.",
+            "Keep your knees in line with your toes."
+        ],
+        "modifications": [
+            "For less intensity, perform the exercise with a smaller range of motion."
+        ],
+        "benefits": [
+            "Calves, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "58a61199f85d",
+        "name": "Side Lunge Hold",
+        "image": "/images/exercises/image_00109-fd069dc81cac9a897a78fbc3d3591c24.png",
+        "instructions": [
+            "Start from a standing position with your feet wide and your toes pointed forward.",
+            "Shift your weight to one side, bending your knee to lower your hips toward your foot until your thigh is parallel to the floor.",
+            "Keep your opposite leg straight and hold the position."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight.",
+            "Keep your bent knee in line with your toes."
+        ],
+        "modifications": [
+            "For less intensity, perform the exercise with a smaller range of motion."
+        ],
+        "benefits": [
+            "Calves, Hips, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "6241d94948a4",
+        "name": "Sumo Squat Hold",
+        "image": "/images/exercises/image_00102-e948f6b9327cd9f6774ac4541d5e029e.png",
+        "instructions": [
+            "Start from a standing position with your feet wide apart and your toes pointing outward.",
+            "Lower your hips back and down as if sitting into a chair, keeping your weight on your heels.",
+            "Keep your chest lifted and your back straight and hold the position."
+        ],
+        "tips": [
+            "Aim to lower your hips until your thighs are parallel to the floor.",
+            "Keep your knees in line with your toes."
+        ],
+        "modifications": [
+            "For less intensity, perform the exercise with a smaller range of motion."
+        ],
+        "benefits": [
+            "Calves, Hips, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "2cbc43485061",
+        "name": "Curtsy Lunge Hold",
+        "image": "/images/exercises/image_00110-db60182511f1e2d5a819b0bbedaec868.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Step one foot diagonally behind you, crossing it behind your front leg.",
+            "Bend both knees to lower your hips until your front thigh is parallel to the floor and your back knee is just above the floor.",
+            "Bring your arms in front of your chest and hold the position."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight.",
+            "Engage your glutes and inner thighs to maintain stability."
+        ],
+        "modifications": [
+            "For less intensity, don't lower your hips as much.",
+            "Use a chair or wall for balance and support if needed."
+        ],
+        "benefits": [
+            "Calves, Hips, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "248256d62b38",
+        "name": "Wall Sit",
+        "image": "/images/exercises/image_00121-681aa79ae7f772b15062af4598d1da1f.png",
+        "instructions": [
+            "Start from a standing position with your back against a wall and your feet shoulder width apart.",
+            "Walk your feet forward to an arm's length away from the wall, then slide your body down until your thighs are parallel to the floor.",
+            "Extend your arms straight out in front of you and hold the position."
+        ],
+        "tips": [
+            "Keep your head and back flat against the wall and your knees in line with your toes.",
+            "Keep your weight in your heels, not your toes."
+        ],
+        "modifications": [
+            "For less intensity, don't lower your body down as far."
+        ],
+        "benefits": [
+            "Calves, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "4b92b4f2d237",
+        "name": "Pistol Squat Hold",
+        "image": "/images/exercises/image_00103-3aa55f8472a0d29e41f6b9bf725e482c.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart.",
+            "Engage your core to lift one leg off the ground and extend it forward.",
+            "Lower your hips back and down into a squat position on your standing leg, keeping your weight on your heel.",
+            "Keep your chest lifted and your back straight and hold the position."
+        ],
+        "tips": [
+            "Aim to lower your hips until your thigh is parallel to the floor, while keeping your extended leg straight.",
+            "Keep your knees in line with your toes."
+        ],
+        "modifications": [
+            "For less intensity, perform the exercise with a smaller range of motion."
+        ],
+        "benefits": [
+            "Calves, Hips, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "7a52822de5c6",
+        "name": "Bulldog",
+        "image": "/images/exercises/image_00090-903b3c76c32a400696aba1e5c8578a7f.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Tuck your toes under and engage your core to lift your knees a few inches off the floor.",
+            "Distribute your weight evenly between your hands and the balls of your feet and hold the position."
+        ],
+        "tips": [
+            "Keep your back flat and parallel to the floor.",
+            "Maintain a neutral neck position, looking at the floor between your hands."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Triceps, Upper Back, Shoulders, Chest, Glutes"
+        ]
+    },
+    {
+        "id": "d320a3e423a0",
+        "name": "Bird Dog",
+        "image": "/images/exercises/image_00091-73f6770d1739c4b43cd920c3d0378a33.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Engage your core to simultaneously extend one arm forward and your opposite leg back.",
+            "Keep your body in a straight line parallel to the floor and hold the position."
+        ],
+        "tips": [
+            "Avoid arching your back or rotating your hips."
+        ],
+        "modifications": [
+            "For less intensity, lift only your arm or leg individually."
+        ],
+        "benefits": [
+            "Shoulders, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "c4ad45a8ff9a",
+        "name": "Push Up Hold",
+        "image": "/images/exercises/image_00093-f2009e592599c98c07c3be60702f6408.png",
+        "instructions": [
+            "Start on the floor in a push-up position, with your hands slightly wider than your shoulders.",
+            "Lower your body halfway down, keeping your elbows out in a natural position.",
+            "Distribute your weight evenly between your hands and feet and hold the position."
+        ],
+        "tips": [
+            "Avoid letting your hips drop or rise too high.",
+            "Keep your elbows at about a 45-degree angle to your torso."
+        ],
+        "modifications": [
+            "If holding the position is too intense, lower your knees to the floor."
+        ],
+        "benefits": [
+            "Triceps, Shoulders, Chest"
+        ]
+    },
+    {
+        "id": "f4750f82072d",
+        "name": "Narrow Push Up Hold",
+        "image": "/images/exercises/image_00094-506a407b2c077035aaa3e1ad0ff18df1.png",
+        "instructions": [
+            "Start on the floor in a push-up position with your hands shoulder-width apart.",
+            "Lower your body halfway down, keeping your elbows close to your sides.",
+            "Distribute your weight evenly between your hands and feet and hold the position."
+        ],
+        "tips": [
+            "Avoid letting your hips drop or rise too high."
+        ],
+        "modifications": [
+            "If holding the position is too intense, lower your knees to the floor."
+        ],
+        "benefits": [
+            "Triceps, Shoulders, Chest"
+        ]
+    },
+    {
+        "id": "984ca25752c6",
+        "name": "Spiderman Push Up Hold",
+        "image": "/images/exercises/image_00095-9caf55ea82241c9e37fd46e6e393242c.png",
+        "instructions": [
+            "Start on the floor in a push-up position, with your hands slightly wider than your shoulders.",
+            "Lower your body halfway down and engage your core to lift one foot off the floor and bring your knee to your elbow.",
+            "Distribute your weight evenly between your hands and foot and hold the position."
+        ],
+        "tips": [
+            "Focus on keeping your hips level and avoiding rotation.",
+            "Keep your elbows at about a 45-degree angle to your torso."
+        ],
+        "modifications": [
+            "If holding the position is too intense, lower your knee to the floor."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Shoulders, Chest"
+        ]
+    },
+    {
+        "id": "98ac6b4b086b",
+        "name": "Bridge",
+        "image": "/images/exercises/image_00096-444db3ca39e401a3857f0344d6e4f46c.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Engage your core and glutes to lift your hips off the floor, forming a straight line from your knees to your shoulders.",
+            "Keep your palms and shoulders pressed into the floor and hold the position."
+        ],
+        "tips": [
+            "Squeeze your glutes at the top of the movement.",
+            "Avoid arching your lower back; the movement should come from your hips and glutes."
+        ],
+        "modifications": [
+            "For less intensity, lift your hips only partially off the ground.",
+            "If you feel any neck strain, try placing a small, folded towel under your head for support."
+        ],
+        "benefits": [
+            "Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "16c12810f655",
+        "name": "Bridge Leg Lift",
+        "image": "/images/exercises/image_00097-f7584b2cc9ac1bd9d36ddc8fba5a7eab.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Engage your core and glutes to lift your hips off the floor, forming a straight line from your knees to your shoulders.",
+            "Slowly lift one foot off the ground, extending that leg straight.",
+            "Keep your palms and shoulders pressed into the floor and hold the position."
+        ],
+        "tips": [
+            "Keep your hips level and avoid letting them drop on the side of the lifted leg.",
+            "Keep the foot of your grounded leg firmly pressed into the floor."
+        ],
+        "modifications": [
+            "For less intensity, only lift your foot slightly off the ground without fully extending your leg."
+        ],
+        "benefits": [
+            "Hips, Hamstrings, Quadriceps, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "80b29dfa9dcf",
+        "name": "Reverse Plank",
+        "image": "/images/exercises/image_00098-98a65055086f8cae9d2bf40ccfd07b53.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Place your hands on the floor behind your hips with your fingers pointing toward your feet.",
+            "Press your palms and heels into the floor and engage your core to lift your hips up toward the ceiling.",
+            "Straighten your arms and legs to create a straight line from your head to your heels and hold the position."
+        ],
+        "tips": [
+            "Keep your chest lifted and your head in a neutral position.",
+            "Keep your arms straight but avoid locking your elbows."
+        ],
+        "modifications": [
+            "For less intensity, bend your knees and keep your feet flat on the floor.",
+            "If wrist discomfort occurs, try turning your fingers out to the sides slightly."
+        ],
+        "benefits": [
+            "Shoulders, Hamstrings, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "24bdb0749539",
+        "name": "Reverse Plank Leg Lift",
+        "image": "/images/exercises/image_00099-8c7ec048b84c19d1f0fb845234b82b9a.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Place your hands on the floor behind your hips with your fingers pointing toward your feet.",
+            "Press your palms and heels into the floor and engage your core to lift your hips up toward the ceiling.",
+            "Keeping your legs straight, lift one leg up off the floor and hold the position."
+        ],
+        "tips": [
+            "Straighten your arms and legs to create a straight line from your head to your heels",
+            "Keep your chest lifted and your head in a neutral position."
+        ],
+        "modifications": [
+            "For less intensity, keep both feet on the floor.",
+            "If wrist discomfort occurs, try turning your fingers out to the sides slightly."
+        ],
+        "benefits": [
+            "Shoulders, Hips, Hamstrings, Quadriceps, Lower Back, Glutes, Abdomen"
+        ]
+    },
+    {
+        "id": "84d961568a65",
+        "name": "Superman",
+        "image": "/images/exercises/image_00105-3a07122c9ef7834a6bbf3ead7498b436.png",
+        "instructions": [
+            "Start lying on your stomach with your arms extended in front of you.",
+            "Engage your core to lift your arms, chest, and legs off the floor.",
+            "Keep your head in line with your spine and hold the position."
+        ],
+        "tips": [
+            "Focus on engaging your back and glute muscles.",
+            "Lengthen your body, reaching with your fingertips and toes.",
+            "Keep your head in a neutral position to avoid straining your neck."
+        ],
+        "modifications": [
+            "For less intensity, lift only your arms or only your legs at a time."
+        ],
+        "benefits": [
+            "Upper Back, Shoulders, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "1271e91004bd",
+        "name": "Aquaman",
+        "image": "/images/exercises/image_00106-80e592e3703313388c1dcc1f31d201ac.png",
+        "instructions": [
+            "Start lying on your stomach with your arms extended in front of you.",
+            "Engage your core to simultaneously lift one arm and your opposite leg off the floor, while keeping your head in line with your spine.",
+            "Hold the position and switch sides at the halfway point."
+        ],
+        "tips": [
+            "Focus on engaging your back and glute muscles.",
+            "Lengthen your body, reaching with your fingertips and toes.",
+            "Keep your head in a neutral position to avoid straining your neck."
+        ],
+        "modifications": [
+            "For less intensity, lift your limbs only slightly off the floor."
+        ],
+        "benefits": [
+            "Upper Back, Shoulders, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "45ea37a8b034",
+        "name": "Airplane",
+        "image": "/images/exercises/image_00107-8f6377f0d1abb6a2def3dada0fcf5071.png",
+        "instructions": [
+            "Start lying on your stomach with your arms extended out to the sides at shoulder height.",
+            "Engage your lower back and glute muscles to lift your chest and arms off the floor.",
+            "Keep your head in line with your spine and hold the position."
+        ],
+        "tips": [
+            "Hold your arms straight out to the sides, like airplane wings.",
+            "Squeeze your shoulder blades together as you lift to engage your upper back."
+        ],
+        "modifications": [
+            "For less intensity, lift your chest and arms only slightly off the floor."
+        ],
+        "benefits": [
+            "Upper Back, Shoulders, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "fa7735b7211d",
+        "name": "Pike",
+        "image": "/images/exercises/image_00118-2144ed633e9702f3d0a19c49c4bc503c.png",
+        "instructions": [
+            "Start on the floor in a push-up position.",
+            "Engage your core to lift your hips towards the ceiling, forming an inverted \"V\" shape with your body.",
+            "Distribute your weight evenly between your hands and feet and hold the position."
+        ],
+        "tips": [
+            "Keep your legs straight and your heels off the ground.",
+            "Keep your head between your arms and relax your neck."
+        ],
+        "modifications": [
+            "For less intensity, keep your knees slightly bent and lower your hips."
+        ],
+        "benefits": [
+            "Triceps, Shoulders, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "26ac1c73348e",
+        "name": "Bent Arm Pike",
+        "image": "/images/exercises/image_00119-06ca970f3d555636872aeaacc909b859.png",
+        "instructions": [
+            "Start on the floor in a push-up position.",
+            "Engage your core to lift your hips towards the ceiling, forming an inverted \"V\" shape with your body.",
+            "Bend your arms to lower your upper body toward the floor.",
+            "Distribute your weight evenly between your hands and feet and hold the position."
+        ],
+        "tips": [
+            "Keep your legs straight and your heels off the ground.",
+            "Keep your head between your arms and relax your neck."
+        ],
+        "modifications": [
+            "For less intensity, keep your knees slightly bent and lower your hips."
+        ],
+        "benefits": [
+            "Triceps, Shoulders, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "0f7e5520d2f1",
+        "name": "Wall Plank",
+        "image": "/images/exercises/image_00123-df940bc306d437855e91a9658bf8c715.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position with your feet near a wall.",
+            "Walk your feet up the wall until your body is in a straight line, parallel to the floor.",
+            "Keep your arms straight and your palms pressed into the floor and hold the position."
+        ],
+        "tips": [
+            "Keep your core engaged to support your lower back.",
+            "Distribute your weight evenly between your hands."
+        ],
+        "modifications": [
+            "For less intensity, don't walk your feet as high up the wall."
+        ],
+        "benefits": [
+            "Upper Back, Shoulders, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "7480b4694f97",
+        "name": "Wall Pike",
+        "image": "/images/exercises/image_00122-bcf7b38f5cd46a2364ec27b216636eaa.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position with your feet near a wall.",
+            "Walk your feet up the wall until your body forms an L-shape.",
+            "Keep your arms straight and your palms pressed into the floor and hold the position."
+        ],
+        "tips": [
+            "Distribute your weight evenly between your hands.",
+            "Keep your neck relaxed, with your head between your arms."
+        ],
+        "modifications": [
+            "For less intensity, don't walk your feet as high up the wall."
+        ],
+        "benefits": [
+            "Upper Back, Shoulders, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "4f9995b8ed38",
+        "name": "Wall Handstand",
+        "image": "/images/exercises/image_00124-ce183ae483b1312a67afad4193a60f9c.png",
+        "instructions": [
+            "Start from a standing position facing a wall.",
+            "Step forward with one foot and bend over to place your hands on the floor a half-arm's length from the wall.",
+            "Keeping your arms straight and your head down, kick your back leg up followed quickly by your other leg, swinging your body upward so that your feet rest against the wall above you.",
+            "Keep your arms extended and your body in a straight line and hold the position."
+        ],
+        "tips": [
+            "The movement should be performed in a fluid, continuous motion.",
+            "Practice the kick-up motion without going all the way up until you're comfortable."
+        ],
+        "modifications": [
+            "Have a spotter stand to the side to assist you if needed."
+        ],
+        "benefits": [
+            "Upper Back, Shoulders, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "824530a64713",
+        "name": "Chin Retractions",
+        "image": "/images/exercises/image_00125-e5d9b3b56009608a3f5a8532d7f425aa.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Engage your neck muscles to tuck your chin down and draw it backwards.",
+            "Use your hand to assist the movement and hold the position."
+        ],
+        "tips": [
+            "Keep your shoulders relaxed and avoid tilting your head up or down."
+        ],
+        "modifications": [
+            "To ensure proper form, perform the exercise while lying on your back."
+        ],
+        "benefits": [
+            "Neck"
+        ]
+    },
+    {
+        "id": "2f0ea49919ed",
+        "name": "Wall Pecs",
+        "image": "/images/exercises/image_00126-031ae748245d9436f7f6ee651bf03230.png",
+        "instructions": [
+            "Start from a standing position in a open doorway or facing the outside corner of a wall.",
+            "Place your palm and forearm against the wall at shoulder height, forming a 90-degree angle at your elbow.",
+            "Step forward with one leg and and lean forward until you feel a stretch in your chest."
+        ],
+        "tips": [
+            "Keep your shoulder blade pulled down and back.",
+            "Keep your body upright and don't twist or lean to either side."
+        ],
+        "modifications": [
+            "For less intensity, don't lean as far forward."
+        ],
+        "benefits": [
+            "Shoulders, Chest"
+        ]
+    },
+    {
+        "id": "5bf0dab46d24",
+        "name": "Doorway Pecs",
+        "image": "/images/exercises/image_00127-8a1bf35be484e3a8e62f04eb78a3e859.png",
+        "instructions": [
+            "Start from a standing position in an open doorway.",
+            "Place both of your palms and forearms against the sides of the doorframe at shoulder height, forming 90-degrees at your elbows.",
+            "Step one foot forward and lean forward through the doorway until your feel a stretch in your chest."
+        ],
+        "tips": [
+            "Keep your shoulder blades pulled down and back.",
+            "Maintain a neutral spine and avoid arching your lower back."
+        ],
+        "modifications": [
+            "For less intensity, don't lean as far forward."
+        ],
+        "benefits": [
+            "Shoulders, Chest"
+        ]
+    },
+    {
+        "id": "42f5052619c0",
+        "name": "Reverse Shoulder",
+        "image": "/images/exercises/image_00128-8b9c169565109549f9c52951046fa2c9.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Clasp your hands behind your back with your thumbs pointing towards the floor.",
+            "Straighten your arms and gently lift your hands away from your back.",
+            "Pull your shoulders back and down, lift your chest, and slightly tuck your chin."
+        ],
+        "tips": [
+            "Keep your core engaged to support your lower back.",
+            "Avoid arching your back excessively."
+        ],
+        "modifications": [
+            "For less intensity, don't lift your hands as high behind your back."
+        ],
+        "benefits": [
+            "Shoulders, Chest, Biceps"
+        ]
+    },
+    {
+        "id": "460de917510f",
+        "name": "Pelvic Tilt Press",
+        "image": "/images/exercises/image_00130-128d1f9daaa6f4f56916414cb8e50941.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Engage your core to tilt your pelvis up and press your lower back into the floor.",
+            "Keep your arms at your sides with your palms on the floor and hold the position."
+        ],
+        "tips": [
+            "Imagine drawing your navel down towards your spine.",
+            "Keep your glutes relaxed; the movement should come from your core."
+        ],
+        "modifications": [
+            "If it's uncomfortable to lie on the floor, perform the exercise against a wall."
+        ],
+        "benefits": [
+            "Lower Back"
+        ]
+    },
+    {
+        "id": "792c21bfd4f0",
+        "name": "Single Knee-to-Chest",
+        "image": "/images/exercises/image_00131-768b4cd5cbdf2cd2824ac99ed0d515a0.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms at your sides.",
+            "Bend one knee and draw it towards your chest, holding your shin with both hands.",
+            "Gently pull your knee closer to your chest while keeping your other leg straight."
+        ],
+        "tips": [
+            "Relax your head and neck on the floor.",
+            "Keep your hips square and your lower back pressed into the floor."
+        ],
+        "modifications": [
+            "If you can't reach your shin, pull on your thigh or use a towel around your knee."
+        ],
+        "benefits": [
+            "Hips, Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "2082265fe5f8",
+        "name": "Lying Quad Stretch",
+        "image": "/images/exercises/image_00132-b76725df4d5b527c21080fe7e882505e.png",
+        "instructions": [
+            "Start lying on your side with your legs extended and your feet stacked on top of each other.",
+            "Bend your top knee to bring your heel towards your glutes, holding your ankle with your hand.",
+            "Pull your heel closer to your glutes while keeping your thighs aligned."
+        ],
+        "tips": [
+            "Push your hips forward slightly to deepen the stretch.",
+            "Keep a slight bend in your bottom leg for added stability."
+        ],
+        "modifications": [
+            "If reaching your ankle is difficult, use a strap or towel looped around your foot for assistance."
+        ],
+        "benefits": [
+            "Knees, Shins, Hips, Quadriceps, Ankles"
+        ]
+    },
+    {
+        "id": "712f12d31f7b",
+        "name": "Cross Leg Fold",
+        "image": "/images/exercises/image_00148-47aead12d25992d72536450f7edd1643.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Cross one foot over the other, then slowly bend forward from your hips, lowering your upper body towards your legs.",
+            "Let your arms hang down and try to touch the floor with your hands."
+        ],
+        "tips": [
+            "Keep your weight evenly distributed between both feet.",
+            "Keep your spine long and avoid rounding your back.",
+            "Relax your neck and let your head hang."
+        ],
+        "modifications": [
+            "If you can't reach the floor, place your hands on your ankles or shins."
+        ],
+        "benefits": [
+            "Hips, Hamstrings, Lower Back"
+        ]
+    },
+    {
+        "id": "8ddf93dab49b",
+        "name": "Wall Arms",
+        "image": "/images/exercises/image_00157-e76701cf977c7fef7cf4ac6af24754b9.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and the side of your shoulder against a wall.",
+            "Keeping your feet in place, rotate your torso and reach back with your arm to place your palm against the wall at shoulder height.",
+            "Keep your hand against the wall and rotate your torso back to face forward."
+        ],
+        "tips": [
+            "Your knees, hips, and shoulders should be square and in line at the end of the movement."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Shoulders, Chest, Biceps"
+        ]
+    },
+    {
+        "id": "422023136d71",
+        "name": "Eagle Arm",
+        "image": "/images/exercises/image_00152-e12eae0f8b163f4afb1ff25c565e6c00.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms straight out in front of you at shoulder height.",
+            "Cross one arm over the other at the elbows, then bend your arms to bring your forearms perpendicular to the floor.",
+            "Wrap your forearms around each other to bring your palms together."
+        ],
+        "tips": [
+            "Keep your shoulders relaxed and try to create space between your shoulder blades."
+        ],
+        "modifications": [
+            "If your palms don't touch, press the backs of your hands together instead."
+        ],
+        "benefits": [
+            "Triceps, Upper Back, Shoulders, Lats"
+        ]
+    },
+    {
+        "id": "64c897a254bf",
+        "name": "Ear-to-Shoulder",
+        "image": "/images/exercises/image_00153-2642a1a3f3072ea2ecc4d1cec81b9af4.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Slowly tilt your head to one side, bringing your ear towards your shoulder.",
+            "Place your opposite hand behind your back and your other hand on the top of your head and gently pull down."
+        ],
+        "tips": [
+            "Keep your back straight and your shoulders relaxed.",
+            "Don't lift or tuck your chin; keep it in a neutral position."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Neck, Shoulders"
+        ]
+    },
+    {
+        "id": "7966db640529",
+        "name": "Bear Hug",
+        "image": "/images/exercises/image_00150-c6265918ff8ede8b0d8a546206580ead.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms out to the sides.",
+            "Wrap your arms around yourself, placing your hands on your shoulder blades.",
+            "Squeeze your arms around your upper body, round your upper back, and tuck your chin to your chest."
+        ],
+        "tips": [
+            "Exhale at the beginning of the movement to make it easier to wrap your arms around your body."
+        ],
+        "modifications": [
+            "For less intensity, perform the exercise with your arms crossed in front of your chest."
+        ],
+        "benefits": [
+            "Spine, Neck, Upper Back, Shoulders"
+        ]
+    },
+    {
+        "id": "3bda0249e5c3",
+        "name": "Cow Face",
+        "image": "/images/exercises/image_00151-50d5ed1df8adc9cb6e22b5b470767a06.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Lift one arm overhead, then bend your elbow to place your hand between your shoulder blades.",
+            "Lift your other arm out to the side, then bend your elbow to bring it behind your back.",
+            "Clasp your hands together behind your back."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight."
+        ],
+        "modifications": [
+            "For less intensity, place one hand on your upper back and the other on your lower back."
+        ],
+        "benefits": [
+            "Triceps, Shoulders"
+        ]
+    },
+    {
+        "id": "ebc945bbbd5f",
+        "name": "Seated Chest",
+        "image": "/images/exercises/image_00129-09cec47bf2a53734c5ff5a6c88258938.png",
+        "instructions": [
+            "Start on the floor in a seated position with your knees bent and your feet flat on the floor.",
+            "Place your palms on the floor behind you with your fingers pointing away from your body.",
+            "Keep your feet in place while slowly sliding your hands away from your body until your feel a stretch in your chest."
+        ],
+        "tips": [
+            "Keep your arms straight and pull your shoulders back and down.",
+            "Lift your chest and slightly tuck your chin.",
+            "Avoid arching your back excessively."
+        ],
+        "modifications": [
+            "For less intensity, keep your hands closer to your body."
+        ],
+        "benefits": [
+            "Shoulders, Chest, Biceps"
+        ]
+    },
+    {
+        "id": "e13c627bca71",
+        "name": "Thread the Needle",
+        "image": "/images/exercises/image_00160a-af4499d4f5493961f775c4551ad076ca.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Rotate your body and lift one arm straight up towards the ceiling, opening your chest.",
+            "Next, lower your extended arm and slide it under your other arm and across your body with your palm facing up.",
+            "Lower your shoulder and the side of your head toward the floor, then unwind and repeat the movement."
+        ],
+        "tips": [
+            "Keep your other hand firmly planted on the floor for support.",
+            "Keep your hips aligned with your knees."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Spine, Upper Back, Shoulders, Chest, Lats"
+        ]
+    },
+    {
+        "id": "3bac00c5b8ea",
+        "name": "Camel Pose",
+        "image": "/images/exercises/image_00166-9e4e43fd88a4e4c1664965e7da941793.png",
+        "instructions": [
+            "Start from a kneeling position with your hands on your lower back, fingers pointing down.",
+            "Engage your core and thigh muscles to lean back, lifting your chest and creating an arch in your upper back.",
+            "If comfortable, reach back one hand at a time to grab your heels.",
+            "Open your shoulders and let your head fall back."
+        ],
+        "tips": [
+            "Keep your hips over your knees so your thighs are perpendicular to the floor."
+        ],
+        "modifications": [
+            "If reaching your heels is difficult, keep your hands on your lower back for support.",
+            "Perform the stretch with a cushion under your knees for added comfort."
+        ],
+        "benefits": [
+            "Psoas, Spine, Upper Back, Shoulders, Quadriceps, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "0c2f9e3bb529",
+        "name": "Half Bow",
+        "image": "/images/exercises/image_00163-cdcdfec97cc329b5401edd879b25a72e.png",
+        "instructions": [
+            "Start lying on your stomach with your legs extended and your forearms on the floor.",
+            "Bend one leg at the knee to bring your heel towards your glute, then reach back with your hand to grab your ankle.",
+            "Press your foot into your hand and lift your chest and thigh off the floor."
+        ],
+        "tips": [
+            "Keep your left leg active by pressing it into the floor.",
+            "Keep both legs parallel and in a straight line."
+        ],
+        "modifications": [
+            "For less intensity, keep your chest on the floor and only lift your leg."
+        ],
+        "benefits": [
+            "Psoas, Spine, Upper Back, Shoulders, Hips, Quadriceps, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "3a6db1120f93",
+        "name": "Bow Pose",
+        "image": "/images/exercises/image_00164-de0f83243efcbe4bcde744975c78eb55.png",
+        "instructions": [
+            "Start from a lying position on your stomach with your legs extended and arms at your sides.",
+            "Bend both knees to bring your heels toward your glutes, then reach back with your hands to grab your ankles.",
+            "Press your feet into your hands and lift your chest, head, and thighs off the floor."
+        ],
+        "tips": [
+            "Gaze forward or slightly upward, keeping your neck in a comfortable position."
+        ],
+        "modifications": [
+            "For less intensity, don't lift your chest and thighs off the floor or only grab one leg at a time."
+        ],
+        "benefits": [
+            "Psoas, Spine, Upper Back, Shoulders, Hips, Quadriceps, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "b942f75ed662",
+        "name": "Neck Rotation",
+        "image": "/images/exercises/image_00156-d632cf7385942b466fba8267c163cfd1.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Slowly turn your head to one side, looking over your shoulder.",
+            "Place your fingertips on the side of your chin and gently push your head further."
+        ],
+        "tips": [
+            "Keep your head level throughout the rotation; don't tilt it up or down.",
+            "Keep your back straight and your shoulders relaxed."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Neck"
+        ]
+    },
+    {
+        "id": "93a8730fceef",
+        "name": "Scapula Stretch",
+        "image": "/images/exercises/image_00139-a167beaeffddb0dcf40b32d4117677cc.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Slowly turn your head to one side, then tilt your head downward to look at your armpit.",
+            "Place your hand on the top of your head and gently pull down."
+        ],
+        "tips": [
+            "Keep your back straight and your shoulders relaxed."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Spine, Neck, Upper Back, Shoulders"
+        ]
+    },
+    {
+        "id": "dddb9558312f",
+        "name": "Scalene Stretch",
+        "image": "/images/exercises/image_00140-b3b7968582d5037f9d96f8ba55366061.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Cross your hands and place them firmly on your chest, just below your neck.",
+            "Slowly lower your ear to your shoulder, then rotate your neck and point your chin up toward the ceiling."
+        ],
+        "tips": [
+            "Keep your back straight and your shoulders relaxed."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Spine, Neck, Shoulders, Chest"
+        ]
+    },
+    {
+        "id": "e5b7348b0c6f",
+        "name": "Modified Seated Twist",
+        "image": "/images/exercises/image_00141-ccd843a1e7cbdf064e8e0887501bcaa1.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you.",
+            "Cross one leg over the other, placing your foot on the floor outside of your opposite thigh, then bend your bottom knee to bring your foot toward your opposite hip.",
+            "Rotate your torso and place your elbow on the outside of your top knee and your other hand behind you for support.",
+            "Continue to rotate your torso and turn your head to look behind you."
+        ],
+        "tips": [
+            "Lengthen your spine and keep your back straight."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Spine, IT Band, Hips, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "7fe07c67edfd",
+        "name": "Leaning 90/90",
+        "image": "/images/exercises/image_00134-a72f2f9c3645edf51c6f067c14014211.png",
+        "instructions": [
+            "Start on the floor in a seated position with your knees bent and your feet flat on the floor.",
+            "Let your knees fall to one side so that both knees form 90-degree angles against the floor.",
+            "Place your hands on the floor behind you for support and lean back, keeping your hips and shoulders square."
+        ],
+        "tips": [
+            "Keep your back straight and avoid rounding your spine."
+        ],
+        "modifications": [
+            "For less intensity, sit on a cushion or folded blanket to raise your hips."
+        ],
+        "benefits": [
+            "Knees, Groin, Hips, Glutes"
+        ]
+    },
+    {
+        "id": "a668023bd61a",
+        "name": "Kneeling Psoas",
+        "image": "/images/exercises/image_00149-273a58dd3bdd5cc87ace6e9adf77ae82.png",
+        "instructions": [
+            "Start from a kneeling position with your knees hip-width apart and your arms at your sides.",
+            "Step forward with one leg to place your foot on the floor in front of you, forming a 90-degree angle with both knees.",
+            "Raise your opposite arm above your head and place your other hand on your hip.",
+            "Press your hips forward while reaching up and over with your raised arm."
+        ],
+        "tips": [
+            "Align your front knee directly above your ankle."
+        ],
+        "modifications": [
+            "If you have knee pain, place a cushion under your back knee for support."
+        ],
+        "benefits": [
+            "Psoas, IT Band, Obliques, Hips, Quadriceps, Lower Back, Lats"
+        ]
+    },
+    {
+        "id": "c4cd8f238a9f",
+        "name": "Leaning Figure Four",
+        "image": "/images/exercises/image_00136-35d48fee27be19e5746c71fb6f00d2d7.png",
+        "instructions": [
+            "Start on the floor in a seated position with your legs extended in front of you and your hands behind you for support.",
+            "Lift one leg and cross your ankle over your opposite thigh, just above the knee.",
+            "Slide your bottom foot toward your body so your knee is bent and your foot is flat on the floor."
+        ],
+        "tips": [
+            "Keep your arms straight and lift your chest to open your shoulders."
+        ],
+        "modifications": [],
+        "benefits": [
+            "IT Band, Hips, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "cf1857ade38c",
+        "name": "Figure Four Twist",
+        "image": "/images/exercises/image_00135-700a6e79da77681d242cf82a915ad33c.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Lift one leg and cross your ankle over your opposite thigh, just above the knee.",
+            "Let both legs fall to the side, so your top foot and bottom leg are flat on the floor."
+        ],
+        "tips": [
+            "Keep your shoulders flat on the floor."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Spine, IT Band, Hips, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "84cc27796b48",
+        "name": "Standing Frog",
+        "image": "/images/exercises/image_00138-75295414029e4b3dc0a1919db326709a.png",
+        "instructions": [
+            "Start from a standing position with your feet wide apart and your toes pointing outward.",
+            "Lower your hips down into a squat position until your thighs are parallel to the floor.",
+            "Please your hands on the inside of your knees and gently press outward."
+        ],
+        "tips": [
+            "Keep your chest lifted and your back straight.",
+            "Keep your knees in line with your toes."
+        ],
+        "modifications": [
+            "Hold onto a chair or wall for balance if needed."
+        ],
+        "benefits": [
+            "Knees, Groin, Hips, Glutes"
+        ]
+    },
+    {
+        "id": "37c2f256bfed",
+        "name": "Reverse Butterfly",
+        "image": "/images/exercises/image_00137-02fda21d7728b3892e7e2d65b4a334c3.png",
+        "instructions": [
+            "Start lying on your back with your knees bent and your feet flat on the floor.",
+            "Widen your feet more than shoulder-width apart, then let your knees fall inwards toward each other.",
+            "Continue to widen your feet and draw your knees together to increase the range of motion."
+        ],
+        "tips": [
+            "Relax your inner thighs, allowing your knees to fall naturally inward."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Knees, Hips"
+        ]
+    },
+    {
+        "id": "4557b5b65cd2",
+        "name": "Dynamic Side Bends",
+        "image": "/images/exercises/image_00226a-89a5310701e494db2e493967186f28d5.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Reach one arm overhead while bending your torso to the opposite side.",
+            "Return to the starting position and repeat on the other side, alternating sides dynamically."
+        ],
+        "tips": [
+            "Engage your core to avoid overextending your lower back.",
+            "Keep your movements smooth and steady.",
+            "Focus on lengthening through the side of your body as you bend."
+        ],
+        "modifications": [
+            "Reduce the depth of the side bend if flexibility is limited.",
+            "Perform the movement more slowly to maintain better control."
+        ],
+        "benefits": [
+            "IT Band, Obliques, Shoulders, Core, Abdomen"
+        ]
+    },
+    {
+        "id": "dc8ab33332e7",
+        "name": "Good Mornings",
+        "image": "/images/exercises/image_00227b-7e815ddb054420195ca2f3be276451d1.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands behind your head.",
+            "Hinge forward at your hips, lowering your torso while keeping your back straight.",
+            "Return to standing in a controlled motion and repeat."
+        ],
+        "tips": [
+            "Focus on maintaining a neutral spine and avoid rounding your back.",
+            "Engage your core to support your lower back.",
+            "Keep a slight bend in your knees to avoid locking them."
+        ],
+        "modifications": [
+            "Reduce the depth of the hinge if flexibility is limited.",
+            "Place your hands on your thighs for added support."
+        ],
+        "benefits": [
+            "Hamstrings, Core, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "f049a1a49e0f",
+        "name": "Hip Circles",
+        "image": "/images/exercises/image_00225-e389e294bca776b0406414689dbf5360.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands on your hips.",
+            "Gently rotate your hips in a circular motion.",
+            "Repeat the movement and switch sides at the halfway point."
+        ],
+        "tips": [
+            "Engage your core to support your lower back.",
+            "Keep your knees soft and avoid locking them."
+        ],
+        "modifications": [
+            "Perform smaller circles if the full range of motion is uncomfortable."
+        ],
+        "benefits": [
+            "Hips, Core, Lower Back"
+        ]
+    },
+    {
+        "id": "81c0ca13c14a",
+        "name": "Hamstring Scoops",
+        "image": "/images/exercises/image_00221b-5f17468cf3abcc33359813eab3b2f53c.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands resting on your hips.",
+            "Step one foot forward, keeping your heel on the floor and your toes pointing up.",
+            "Hinge at your hips, lowering your torso towards your front leg.",
+            "Return to standing and repeat the movement. Switch sides at the halfway point."
+        ],
+        "tips": [
+            "Keep your back straight and avoid rounding your spine.",
+            "Engage your core to maintain balance and stability."
+        ],
+        "modifications": [
+            "Reduce the depth of the hinge if flexibility is limited.",
+            "Hold onto a chair or wall for balance if needed.",
+            "Perform the exercise more slowly to maintain better control."
+        ],
+        "benefits": [
+            "Calves, Hamstrings, Core, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "a648053cf21b",
+        "name": "Gate Opener",
+        "image": "/images/exercises/image_00190c-be4c5b79eb9cdbc29ed70e3c946a26eb.png",
+        "instructions": [
+            "Start from a standing position with your hand placed on  a wall or chair for support.",
+            "Shift your weight onto your leg closest to the wall.",
+            "Then, as if stepping over a gate, swing your opposite leg up, rotate your leg outward to open your hip, then bring your leg back down to the floor.",
+            "Reverse the movement to return to starting position, then repeat the motion back and forth."
+        ],
+        "tips": [
+            "Keep the movement smooth and controlled.",
+            "Keep your standing leg active with a slight bend in your knee.",
+            "Keep your upper body stable; the movement should come from your hip."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Groin, Hips, Glutes"
+        ]
+    },
+    {
+        "id": "83494436dc16",
+        "name": "Lateral Leg Swing",
+        "image": "/images/exercises/image_00189a-334666822f855130150de95d51d067b5.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands on your hips.",
+            "Shift your weight onto one leg and lift your opposite leg slightly off the floor.",
+            "Swing your lifted leg out to the side, then across your body in front of your standing leg.",
+            "Repeat the movement in a controlled, continuous motion."
+        ],
+        "tips": [
+            "Keep your standing leg active with a slight bend in your knee.",
+            "Keep your upper body stable; the movement should come from your hip.",
+            "Start with smaller swings and gradually increase the range of motion."
+        ],
+        "modifications": [
+            "Place your hand on a wall or chair for additional support."
+        ],
+        "benefits": [
+            "Groin, IT Band, Hips"
+        ]
+    },
+    {
+        "id": "235f70820956",
+        "name": "Dynamic Wide Leg Forward Fold",
+        "image": "/images/exercises/image_00228b-60bc1b537089c91dd5395f7b1663ec6c.png",
+        "instructions": [
+            "Start from a standing position with a wide stance and your hands resting on your hips.",
+            "Hinge forward at your hips, lowering your torso towards the floor while keeping your back straight.",
+            "Return to standing and repeat the movement in a controlled rhythm."
+        ],
+        "tips": [
+            "Focus on keeping your legs straight but soft at the knees.",
+            "Engage your core to protect your lower back.",
+            "Keep your neck relaxed and in line with your spine."
+        ],
+        "modifications": [
+            "Reduce the depth of the forward fold if flexibility is limited.",
+            "Place your hands on a block or chair for support.",
+            "Bend your knees slightly if hamstring tightness prevents a full fold."
+        ],
+        "benefits": [
+            "Calves, Hamstrings, Core, Lower Back"
+        ]
+    },
+    {
+        "id": "29e3ae7befd0",
+        "name": "Wide Leg Torso Circles",
+        "image": "/images/exercises/image_00222b-57f9c95a9e12adac4c93e565bb1ac998.png",
+        "instructions": [
+            "Start from a standing position with a wide stance and your hands on your hips.",
+            "Hinge at your hips and begin rotating your torso in a wide circular motion.",
+            "Focus on keeping your movements controlled and fluid and switch sides at the halfway point."
+        ],
+        "tips": [
+            "Engage your core to support your lower back.",
+            "Keep your knees slightly bent to reduce pressure on your joints."
+        ],
+        "modifications": [
+            "Perform smaller circles if the full range of motion feels uncomfortable.",
+            "If balance is an issue, reduce the depth of your forward hinge."
+        ],
+        "benefits": [
+            "Hips, Hamstrings, Core, Lower Back"
+        ]
+    },
+    {
+        "id": "5a9c734cc37a",
+        "name": "Standing Hip Openers",
+        "image": "/images/exercises/image_00235a-6d68db81c1868447d1bd2eab639f89c6.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Lift one foot off the floor, grabbing it with the opposite-side hand, and pull it up, allowing your knee to point outward.",
+            "Release and return to standing before repeating on the other leg.",
+            "Alternate sides dynamically in a controlled motion."
+        ],
+        "tips": [
+            "Focus on keeping your torso upright to maintain balance.",
+            "Move slowly and with control to avoid over-rotating your hip.",
+            "Keep your standing knee slightly bent for stability."
+        ],
+        "modifications": [
+            "Hold onto a wall or chair for added support.",
+            "Keep your range of motion smaller if flexibility is limited."
+        ],
+        "benefits": [
+            "Hips, Glutes"
+        ]
+    },
+    {
+        "id": "23594574bc5e",
+        "name": "High Knee Twists",
+        "image": "/images/exercises/image_00236a-f899933bfcde9262815bf1c9547add6a.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands behind your head.",
+            "Lift one knee towards your chest while twisting your torso towards the lifted knee.",
+            "Lower your leg and return to the starting position before switching sides.",
+            "Continue alternating legs in a controlled, dynamic motion."
+        ],
+        "tips": [
+            "Focus on controlled movements rather than speed for better form.",
+            "Focus on keeping your torso upright to maintain balance.",
+            "Coordinate your twist and knee lift for fluid motion."
+        ],
+        "modifications": [
+            "Reduce the height of the knee lift if flexibility is limited."
+        ],
+        "benefits": [
+            "Obliques, Hips, Core"
+        ]
+    },
+    {
+        "id": "0fc452bf611d",
+        "name": "Ankle Circles",
+        "image": "/images/exercises/image_00218-1b4752a4051c837515c1c8d48c0e53fb.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands at your sides or on your hips.",
+            "Lift one foot slightly off the floor and point your toes downward.",
+            "Rotate your foot in a circular motion, moving through your ankle.",
+            "Complete several circles in one direction, then reverse the direction."
+        ],
+        "tips": [
+            "Engage your core to maintain balance and stability.",
+            "Move slowly and with control to avoid losing balance.",
+            "Keep your standing leg slightly bent to avoid locking your knee."
+        ],
+        "modifications": [
+            "Use a wall or chair for support if balancing is difficult.",
+            "If rotating your foot fully is uncomfortable, make smaller circles.",
+            "Perform the movement seated if standing feels unstable."
+        ],
+        "benefits": [
+            "Calves, Feet, Shins, Ankles"
+        ]
+    },
+    {
+        "id": "4643a201bb99",
+        "name": "Wrist Circles",
+        "image": "/images/exercises/image_00207-f5afda03eb033d4ff0cf080ca01012f9.png",
+        "instructions": [
+            "Start from a standing or seated position with your hands in front of your chest.",
+            "Make circular motions with your wrists, rotating them slowly in one direction.",
+            "Keep your elbows stationary as you move your wrists, focusing on a full range of motion.",
+            "After completing several circles, reverse the direction and repeat the movement."
+        ],
+        "tips": [
+            "Keep your movements controlled and smooth to avoid straining your wrists."
+        ],
+        "modifications": [
+            "Rest your forearms on a table for added support.",
+            "If you have wrist discomfort, perform the circles more slowly or reduce the range of motion."
+        ],
+        "benefits": [
+            "Forearms, Wrists, Hands"
+        ]
+    },
+    {
+        "id": "02f0bda145fd",
+        "name": "Elbow Pike",
+        "image": "/images/exercises/image_00117-a36c380f4acb3d4187fc941a04f0d24c.png",
+        "instructions": [
+            "Start on the floor in a push-up position with your forearms on the floor.",
+            "Engage your core to lift your hips towards the ceiling, forming an inverted \"V\" shape with your body.",
+            "Distribute your weight evenly between your forearms and feet and hold the position."
+        ],
+        "tips": [
+            "Keep your legs straight and your heels off the ground.",
+            "Keep your head between your arms and relax your neck."
+        ],
+        "modifications": [
+            "For less intensity, keep your knees slightly bent and lower your hips.",
+            "Use a cushion under your forearms for extra support."
+        ],
+        "benefits": [
+            "Triceps, Shoulders, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "1ab1140bf30b",
+        "name": "Dip Hold",
+        "image": "/images/exercises/image_00120-ecc50c076dea3c04e47d68066fd0063c.png",
+        "instructions": [
+            "Start on the floor in a seated position with your knees bent and your feet flat on the floor.",
+            "Place your palms on the floor behind you with your fingers pointing toward your feet.",
+            "Keeping your elbow bent, lift your hips off the floor and hold the position."
+        ],
+        "tips": [
+            "Keep your elbows close to your body and your wrists under your shoulders."
+        ],
+        "modifications": [
+            "For less intensity, don't lower yourself down as much.",
+            "If you feel wrist strain, try turning your hands out slightly to the sides."
+        ],
+        "benefits": [
+            "Triceps, Shoulders, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "3b85e5d2a85f",
+        "name": "Standing Lunge Twist",
+        "image": "/images/exercises/image_00142-324c322424110da6b6a162e7e209a3d5.png",
+        "instructions": [
+            "Start from a kneeling position with your knees hip-width apart and your arms at your sides.",
+            "Step forward with one leg to place your foot on the floor in front of you, forming a 90-degree angle with both knees.",
+            "Place your opposite hand on the floor inside your front foot and twist your torso, reaching your other arm towards the ceiling.",
+            "Straighten your back leg to lift your knee of the floor."
+        ],
+        "tips": [
+            "Keep your back straight and your front knee aligned over your ankle."
+        ],
+        "modifications": [
+            "If the twist is too intense, keep your back knee on the ground.",
+            "Use a block under your hand for extra support."
+        ],
+        "benefits": [
+            "Psoas, Spine, Upper Back, Shoulders, Hips, Chest, Lower Back"
+        ]
+    },
+    {
+        "id": "6c32f1c59275",
+        "name": "Neck Extension",
+        "image": "/images/exercises/image_00154-f5e02f3638ede3410b143d22b440ecbf.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Slowly tilt your head back, lifting your chin towards the ceiling.",
+            "Place your fingertips under your chin and gently push your head further back."
+        ],
+        "tips": [
+            "Keep your mouth closed and your jaw relaxed.",
+            "Keep your back straight and your shoulders down."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Neck"
+        ]
+    },
+    {
+        "id": "c08139433959",
+        "name": "Neck Flexion",
+        "image": "/images/exercises/image_00155-588b56678ca486f54226601cfc5f6d20.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Slowly tilt your head forward, bringing your chin towards your chest.",
+            "Interlace your fingers behind your head and gently pull your head further down."
+        ],
+        "tips": [
+            "Keep your back straight and your shoulders relaxed.",
+            "Avoid rounding your upper back."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Neck, Upper Back"
+        ]
+    },
+    {
+        "id": "ebcee3a909bf",
+        "name": "Zombie Walks",
+        "image": "/images/exercises/image_00237a-033fa40c48352947cede12a4cd749d75.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms extended straight in front of you.",
+            "Lift one leg straight in front of you while keeping your torso upright and your knee straight.",
+            "Lower your leg back to the floor and repeat with the opposite leg in a controlled, dynamic motion."
+        ],
+        "tips": [
+            "Focus on engaging your leg muscles to keep the movement smooth.",
+            "Keep your back straight and avoid leaning backward as you lift your leg.",
+            "Move slowly and avoid snapping your knee as you lift."
+        ],
+        "modifications": [
+            "Perform the movement with a smaller leg lift if flexibility is limited.",
+            "Place your hands on your hips instead of extending them if shoulder discomfort occurs.",
+            "Hold onto a wall for added balance if needed."
+        ],
+        "benefits": [
+            "Hips, Hamstrings, Core"
+        ]
+    },
+    {
+        "id": "6efac1500afc",
+        "name": "Dynamic Quad Stretch",
+        "image": "/images/exercises/image_00224b-29835a5abd324dedfba7c8b573afdde2.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Lift one foot behind you and grab your ankle with the same-side hand, pulling it gently towards your glutes.",
+            "Release your foot and return to standing before repeating the stretch.",
+            "Repeat the movement and switch sides at the halfway point."
+        ],
+        "tips": [
+            "Keep your knees close together as you stretch to avoid unnecessary strain.",
+            "Engage your core to maintain balance and stability.",
+            "Focus on steady, controlled movements for effectiveness."
+        ],
+        "modifications": [
+            "Use a wall or chair for balance if needed.",
+            "Perform a smaller range of motion if flexibility is limited."
+        ],
+        "benefits": [
+            "Hips, Quadriceps"
+        ]
+    },
+    {
+        "id": "c2dc52a2d4cb",
+        "name": "Wide Leg Toe Touches",
+        "image": "/images/exercises/image_00229c-5b58b26daf025487fc9ab4f95dcf4980.png",
+        "instructions": [
+            "Start from a standing position with a wide stance and your hands in front of you.",
+            "Bend at your waist and reach both hands toward one of your feet to touch your toes.",
+            "Return to standing and repeat the movement on the other side, alternating dynamically.",
+            "Move smoothly, focusing on a controlled movement."
+        ],
+        "tips": [
+            "Engage your core to support your back and maintain balance.",
+            "Keep your knees slightly bent to avoid overextending your hamstrings."
+        ],
+        "modifications": [
+            "Touch your shins or knees if reaching your toes is difficult."
+        ],
+        "benefits": [
+            "Calves, Obliques, Hips, Hamstrings, Core, Lower Back"
+        ]
+    },
+    {
+        "id": "5b06e93d196d",
+        "name": "Kneeling Hip Circles",
+        "image": "/images/exercises/image_00255c-0f40302919af63bec5f6a80e17828284.png",
+        "instructions": [
+            "Start in a tabletop position, with your hands under your shoulders and your knees under your hips.",
+            "Lift one knee off the floor, keeping it bent at 90 degrees, and slowly move it in a circular motion.",
+            "Switch sides at the halfway point."
+        ],
+        "tips": [
+            "Try to rotate your hip through its full range of motion.",
+            "Move slowly and with control, focusing on isolating the movement in your hip joint.",
+            "Engage your core to stabilize your torso and prevent lower back arching."
+        ],
+        "modifications": [
+            "Reduce the range of motion if flexibility or strength is limited."
+        ],
+        "benefits": [
+            "Hips, Core, Glutes"
+        ]
+    },
+    {
+        "id": "52f849ce1e5f",
+        "name": "90/90 Hip Switch",
+        "image": "/images/exercises/image_00242c-615a5c1e790effff179183c728c6be4d.png",
+        "instructions": [
+            "Start seated on the floor with your knees bent and feet flat on the floor in front of you.",
+            "Drop both knees to one side, creating a 90-degree angle with each leg.",
+            "Lift your knees and rotate them to the opposite side, switching dynamically."
+        ],
+        "tips": [
+            "Focus on controlled, smooth transitions as you alternate sides.",
+            "Move slowly to maintain control, especially if your hips feel tight."
+        ],
+        "modifications": [
+            "Keep your hands on the floor behind you for support if needed."
+        ],
+        "benefits": [
+            "Hips, Core, Glutes"
+        ]
+    },
+    {
+        "id": "d44b35d6e48c",
+        "name": "90/90 Hip Switch (No Hands)",
+        "image": "/images/exercises/image_00253a-152f2a1dded6ca93a8cd62f13dfd51ad.png",
+        "instructions": [
+            "Start in a seated position on the floor with your knees bent and feet flat on the floor, positioned slightly wider than hip-width apart.",
+            "Keeping your hands in front of your chest, drop both knees to one side, creating a 90-degree angle with each leg.",
+            "Lift your knees and rotate them to the opposite side, maintaining a controlled motion.",
+            "Continue alternating sides dynamically."
+        ],
+        "tips": [
+            "Engage your core to maintain balance and control without using your hands.",
+            "Keep your chest lifted and your torso upright throughout the movement.",
+            "Move slowly and focus on proper form to avoid straining your hips or lower back."
+        ],
+        "modifications": [
+            "Reduce the range of motion if flexibility or balance is limited.",
+            "Place your hands behind you for additional support.",
+            "Sit on a cushion to elevate your hips for added comfort."
+        ],
+        "benefits": [
+            "Hips, Core, Glutes"
+        ]
+    },
+    {
+        "id": "ac9751fac7a4",
+        "name": "Single Leg Stand",
+        "image": "/images/exercises/image_00174-df7788ec445bb972924320b979f279d5.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands on your hips.",
+            "Engage your core to lift one foot off the floor and extend it out in front of you.",
+            "Balance on your standing leg and hold the position."
+        ],
+        "tips": [
+            "Keep your standing leg slightly bent, not locked."
+        ],
+        "modifications": [
+            "Place your hands on a wall or chair for support."
+        ],
+        "benefits": [
+            "Feet, Ankles"
+        ]
+    },
+    {
+        "id": "7cd899801199",
+        "name": "Heel-to-Toe Rocks",
+        "image": "/images/exercises/image_00219c-de97158da6ebc779289ade4dcfac15cb.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands at your sides.",
+            "Shift your weight forward onto your toes, lifting your heels off the floor.",
+            "Slowly shift your weight back onto your heels, lifting your toes off the floor.",
+            "Continue rocking back and forth in a controlled, smooth motion."
+        ],
+        "tips": [
+            "Engage your core to maintain balance.",
+            "Keep your movements steady and avoid abrupt shifts.",
+            "Focus on keeping your posture upright throughout the exercise."
+        ],
+        "modifications": [
+            "Hold onto a wall or chair for added balance support.",
+            "Reduce the range of motion if the stretch feels too intense.",
+            "Perform the movement more slowly for better control."
+        ],
+        "benefits": [
+            "Calves, Feet, Shins, Ankles"
+        ]
+    },
+    {
+        "id": "009c99e1de55",
+        "name": "Lateral Foot Rocks",
+        "image": "/images/exercises/image_00220a-034ab3be53ed964a4ad840de46b27f4d.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your hands at your sides.",
+            "Shift your weight onto the outer edges of your feet, lifting the inner edges.",
+            "Slowly shift your weight onto the inner edges of your feet, lifting the outer edges.",
+            "Continue rocking side to side in a controlled and steady motion."
+        ],
+        "tips": [
+            "Engage your core to help with balance.",
+            "Move smoothly to avoid jerking motions.",
+            "Keep your knees slightly bent and relaxed."
+        ],
+        "modifications": [
+            "Use a wall or chair for extra balance support.",
+            "Perform smaller lateral movements if a full range feels uncomfortable.",
+            "Do the exercise seated if standing is challenging."
+        ],
+        "benefits": [
+            "Calves, Feet, Ankles"
+        ]
+    },
+    {
+        "id": "b217b32fb939",
+        "name": "Soleus Stretch",
+        "image": "/images/exercises/image_00172-e65f8b291d9bcb14b84a3c2b482c53e2.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Step forward with one foot, then bend both knees to slowly lower your hips downward.",
+            "Keep both of your feet flat on the floor and lean forward slightly to feel a stretch in your lower calf."
+        ],
+        "tips": [
+            "Keep your back heel pressed firmly into the floor.",
+            "Keep your back straight and your feet pointing forward."
+        ],
+        "modifications": [
+            "Place your hands on a wall or chair for additional support."
+        ],
+        "benefits": [
+            "Calves, Feet, Ankles"
+        ]
+    },
+    {
+        "id": "2e98ef006f3e",
+        "name": "Toe-to-Wall",
+        "image": "/images/exercises/image_00168-05cede7eaa194529ad4e5efa782cacbd.png",
+        "instructions": [
+            "Start from a standing position facing a wall, about an arm's length away.",
+            "Place your hands on the wall at shoulder height for support.",
+            "Place one foot against the wall, with your toes pointing upward and your heel on the floor.",
+            "Keeping both legs straight, lean forward and lift your back heel off the floor."
+        ],
+        "tips": [
+            "Keep both feet pointing straight ahead."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Calves, Feet, Ankles, Toes"
+        ]
+    },
+    {
+        "id": "5def953ec1f9",
+        "name": "Single Leg Calf Stretch",
+        "image": "/images/exercises/image_00176-256a2c50d08903f1b539863747dd8fd9.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Tuck your toes under and lift your hips up and back, straightening your arms and legs.",
+            "Lift one foot off the floor, crossing it over to rest on your opposite heel, then straighten your standing leg."
+        ],
+        "tips": [
+            "Distribute your weight evenly between your hands and foot.",
+            "Keeping your standing heel pressed into the floor."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Calves, Feet, Hamstrings, Ankles"
+        ]
+    },
+    {
+        "id": "6deadfc9e489",
+        "name": "Single Leg Shin Stretch",
+        "image": "/images/exercises/image_00175-ef2214a78d37d24f0ee285e9a37285ff.png",
+        "instructions": [
+            "Start from a kneeling position with your knees hip-width apart and your arms at your sides.",
+            "Step forward with one foot, placing it flat on the floor next to your opposite knee.",
+            "Slowly lower your hips back and down to sit on your back heel.",
+            "Place your hands on the floor behind you, fingers pointing toward your feet, and lean back."
+        ],
+        "tips": [
+            "Keep your back straight and your chest lifted."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Feet, Shins, Ankles"
+        ]
+    },
+    {
+        "id": "c961242b12b5",
+        "name": "Toe Stretch",
+        "image": "/images/exercises/image_00170-1fb65f8871119c0ff3934ef47d9a8bd9.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position, with the tops of your feet flat on the floor.",
+            "Tuck your toes under on one foot, then slowly lean back and lower your hips towards your heels, while keeping your hands pressed into the floor."
+        ],
+        "tips": [
+            "Distribute your weight evenly across both hands."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Feet, Toes"
+        ]
+    },
+    {
+        "id": "4b5a36c791cc",
+        "name": "Bent Over Calf",
+        "image": "/images/exercises/image_00169-82a2e50a68ddb31323bd528b29f2de3b.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Step forward with one foot, then bend your opposite leg to lower your hips down and back.",
+            "Keep your back foot flat on the floor and keep your front leg straight, lifting your toes to balance on your front heel.",
+            "Hinge at your hips, reaching forward with your opposite hand to grab your foot and placing your other hand behind your back."
+        ],
+        "tips": [
+            "Keep your back straight and avoid rounding your spine.",
+            "Keep both of your feet pointing forward."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Calves, Feet, Ankles"
+        ]
+    },
+    {
+        "id": "f5848c0b3a5c",
+        "name": "Calf Raises",
+        "image": "/images/exercises/image_00173-a56db56c74a9c0162de1fa44cd14dd7b.png",
+        "instructions": [
+            "Start from a standing position facing a wall with your feet hip-width apart.",
+            "Place your hands on the wall at shoulder height for support.",
+            "Keeping your toes pressed into the floor, lift your heels off the ground and hold the position."
+        ],
+        "tips": [
+            "Maintain an upright posture, avoiding leaning into the wall.",
+            "Keep both feet pointing straight ahead and avoid letting your ankles roll out to the sides."
+        ],
+        "modifications": [
+            "Use a table or chair for support if you don't have access to a wall."
+        ],
+        "benefits": [
+            "Calves, Feet, Ankles, Toes"
+        ]
+    },
+    {
+        "id": "aac59fcfc45f",
+        "name": "Toe Raises",
+        "image": "/images/exercises/image_00171-080b3021ab72183a07cf83639bbc327b.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your back against a wall.",
+            "Step forward with both feet so your heels are an arms-lengths from the wall.",
+            "Lift your hips and head off the wall so your body is supported only by your shoulders.",
+            "Keeping your heels pressed into the floor, lift your toes off the ground and hold the position."
+        ],
+        "tips": [
+            "Keep your arms relaxed at your sides."
+        ],
+        "modifications": [
+            "For less intensity, keep your hips against the wall for additional support."
+        ],
+        "benefits": [
+            "Feet, Shins, Ankles"
+        ]
+    },
+    {
+        "id": "1a8d5ee02cb9",
+        "name": "Knee-to-Wall",
+        "image": "/images/exercises/image_00178-252dc0edbf06330e68cd84570793b722.png",
+        "instructions": [
+            "Start on one knee with your front foot a hand's-length from a wall.",
+            "Keeping your front heel flat on the floor, bring your knee forward to touch the wall."
+        ],
+        "tips": [
+            "Continue to move your foot further away from the wall to deepen the stretch."
+        ],
+        "modifications": [
+            "Place your hands on your knee or on the wall in front of you for support.",
+            "If you can't touch your knee to the wall, move your foot closer."
+        ],
+        "benefits": [
+            "Calves, Feet, Ankles"
+        ]
+    },
+    {
+        "id": "b623642dbcdb",
+        "name": "Lying Ankle Circles",
+        "image": "/images/exercises/image_00177-5150a84d59397a26ecfa6f78b5ff8c49.png",
+        "instructions": [
+            "Start lying on your back with your legs extended and your arms at your sides.",
+            "Bend one knee and draw it towards your chest, then hold your thigh with both hands.",
+            "Rotate your foot in a circular motion, changing directions every few rotations."
+        ],
+        "tips": [
+            "Focus on moving only your ankle joint.",
+            "Keep the rest of your body relaxed, particularly your hip and knee.",
+            "Try to make smooth, controlled circles."
+        ],
+        "modifications": [
+            "For less intensity, perform the exercise with your leg resting on the floor."
+        ],
+        "benefits": [
+            "Feet, Ankles"
+        ]
+    },
+    {
+        "id": "06223b64e7ec",
+        "name": "Wide Leg Side Bend",
+        "image": "/images/exercises/image_00201-70102acce87770075a4facd9ef5eb8bb.png",
+        "instructions": [
+            "Start from a standing position with your feet wider than shoulder-width apart and your arms at your sides.",
+            "Reach one arm overhead and place your opposite hand on your thigh.",
+            "Gently bend your torso to the side, extending your arm overhead."
+        ],
+        "tips": [
+            "Maintain length in your spine throughout the movement.",
+            "Engage your core to support your lower back.",
+            "Breathe deeply and steadily to enhance the stretch."
+        ],
+        "modifications": [
+            "For less intensity, keep your bend shallower or place your hand on your thigh for support.",
+            "Perform the stretch near a wall for added balance if needed."
+        ],
+        "benefits": [
+            "Spine, Obliques, Lower Back, Lats, Abdomen"
+        ]
+    },
+    {
+        "id": "6b3e66d8c655",
+        "name": "Upward Frog",
+        "image": "/images/exercises/image_00184-401117abcede0f4595a59199bdb8f986.png",
+        "instructions": [
+            "Start lying on your stomach with your legs extended and your hands under your shoulders.",
+            "Slide one knee out to the side and bring your knee up to your hip.",
+            "Press your palms into the floor, straightening your arms to lift your upper body off the ground.",
+            "Lift your chest towards the ceiling, relax your shoulders, and look slightly upward."
+        ],
+        "tips": [
+            "Keep your arms straight or keep a slight bend in your elbows."
+        ],
+        "modifications": [
+            "For less intensity, keep your forearms on the floor."
+        ],
+        "benefits": [
+            "Psoas, Spine, Chest, Abdomen"
+        ]
+    },
+    {
+        "id": "af531c83e99d",
+        "name": "90/90",
+        "image": "/images/exercises/image_00133-f7e34b03fcaf47b3cd86f4195a94ad85.png",
+        "instructions": [
+            "Start on the floor in a seated position with your knees bent and your feet flat on the floor.",
+            "Let your knees fall to one side so that both knees form 90-degree angles against the floor.",
+            "Square your hips to face your front leg, and place your hands on the floor in front of you for support.",
+            "Hinge at your hips to gently lean forward over your front leg."
+        ],
+        "tips": [
+            "Keep your back straight and avoid rounding your spine."
+        ],
+        "modifications": [
+            "For less intensity, sit on a cushion or folded blanket to raise your hips."
+        ],
+        "benefits": [
+            "Knees, Groin, Hips, Glutes"
+        ]
+    },
+    {
+        "id": "45c3cbf1c03c",
+        "name": "Front Split",
+        "image": "/images/exercises/image_00067-82ab96caa45feaa6991b0a8bd2aac71b.png",
+        "instructions": [
+            "Start from a kneeling position with your hands at your sides.",
+            "Extend one leg in front of you and lean forward to place your hands on the floor in front of you.",
+            "Lift your back knee off the floor to straighten your leg, then slowly slide your foot back and lower your hips toward the floor."
+        ],
+        "tips": [
+            "Keep your hips square and your torso upright."
+        ],
+        "modifications": [
+            "If the stretch is too intense, use blocks under your hands for support.",
+            "Keep a slight bend in your front knee if straightening your leg fully is uncomfortable."
+        ],
+        "benefits": [
+            "Groin, Calves, Hips, Hamstrings, Quadriceps, Glutes"
+        ]
+    },
+    {
+        "id": "80011840adc8",
+        "name": "Single Leg Deadlift",
+        "image": "/images/exercises/image_00186-7187fd0ddfd9c3b08e4c781a15a3f461.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Shift your weight to one foot and raise your other foot slightly off the floor behind you.",
+            "Hinge at your hips, lowering your torso forward while simultaneously lifting your leg behind you.",
+            "Keep a slight bend in your standing leg and let your arms hang naturally."
+        ],
+        "tips": [
+            "Aim to lower your torso and lift your back leg until they are both parallel to the floor.",
+            "Keep your back straight so your body is in a straight line from head to toe."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Feet, Hamstrings, Lower Back, Ankles, Glutes"
+        ]
+    },
+    {
+        "id": "0f767ad0897a",
+        "name": "Split Squats",
+        "image": "/images/exercises/image_00223b-7152e76d9e2e7dd480fedb4924d622e3.png",
+        "instructions": [
+            "Start from a standing position with one foot forward and the other foot stepped back into a split stance.",
+            "Bend both knees to lower your hips straight down, keeping your front knee aligned over your ankle and your back knee hovering just above the floor.",
+            "Push through your front heel to return to standing.",
+            "Repeat the movement and switch sides at the halfway point."
+        ],
+        "tips": [
+            "Engage your core to maintain balance and stability.",
+            "Keep your torso upright and avoid leaning forward.",
+            "Focus on controlled, steady movements to maximize effectiveness."
+        ],
+        "modifications": [
+            "Reduce the depth of the lunge if flexibility or strength is limited.",
+            "Hold onto a chair or wall for balance if needed.",
+            "Perform the exercise more slowly to ensure proper form."
+        ],
+        "benefits": [
+            "Calves, Hamstrings, Quadriceps, Core, Glutes"
+        ]
+    },
+    {
+        "id": "d64810052d65",
+        "name": "Runner's Lunge Twist",
+        "image": "/images/exercises/image_00233c-6d91e92702ce68b804ce22fe03f4ef68.png",
+        "instructions": [
+            "Start in a plank position with your hands under your shoulders and your body in a straight line.",
+            "Step one foot forward to the outside of your hand, entering a runner's lunge position.",
+            "Twist your torso, reaching your opposite arm towards the ceiling.",
+            "Return your hand to the floor and step back into the plank, and switch sides at the halfway point."
+        ],
+        "tips": [
+            "Keep your hips low and your movements smooth for proper alignment.",
+            "Focus on opening through your chest as you twist.",
+            "Keep your back leg strong to maintain stability."
+        ],
+        "modifications": [
+            "Reduce the depth of the lunge if flexibility is limited.",
+            "Perform the movement more slowly to maintain balance.",
+            "Use yoga blocks under your hands for additional support."
+        ],
+        "benefits": [
+            "Shoulders, Hips, Chest, Core"
+        ]
+    },
+    {
+        "id": "f7bc64b2fe47",
+        "name": "90/90 Hip Switch Extension",
+        "image": "/images/exercises/image_00254a-df70af0a135ebafef711de979d635b4d.png",
+        "instructions": [
+            "Start in a seated position on the floor with your knees bent and feet flat on the floor, positioned slightly wider than hip-width apart.",
+            "Keeping your hands in front of your chest, drop both knees to one side, creating a 90-degree angle with each leg.",
+            "Engage the muscles in your front leg to lift your hips off the floor.",
+            "Return to the seated position, lift your knees, and rotate them to the opposite side, repeating the extension on the other side dynamically."
+        ],
+        "tips": [
+            "Engage your core to maintain balance and control without using your hands.",
+            "Keep your chest lifted and your torso upright throughout the movement.",
+            "Move slowly and focus on proper form to avoid straining your hips or lower back."
+        ],
+        "modifications": [
+            "Reduce the range of motion if flexibility or balance is limited.",
+            "Place your hands behind you for additional support.",
+            "Sit on a cushion to elevate your hips for added comfort."
+        ],
+        "benefits": [
+            "Hips, Core, Glutes"
+        ]
+    },
+    {
+        "id": "972d7a974f44",
+        "name": "Single Leg Glute Bridges",
+        "image": "/images/exercises/image_00238b-e919c80b31abb744fc9ba1b239e1fae7.png",
+        "instructions": [
+            "Start lying on your back with one knee bent, foot flat on the floor, and the other leg extended straight up into the air.",
+            "Engage your glutes and lift your hips towards the ceiling, keeping your extended leg straight up.",
+            "Lower your hips back to the floor with control and repeat the movement.",
+            "Switch sides at the halfway point."
+        ],
+        "tips": [
+            "Focus on squeezing your glutes at the top of the movement.",
+            "Move smoothly and avoid arching your back."
+        ],
+        "modifications": [
+            "Keep both feet on the floor if balance is a challenge.",
+            "Reduce the range of motion if the exercise feels too intense."
+        ],
+        "benefits": [
+            "Hamstrings, Lower Back, Glutes"
+        ]
+    },
+    {
+        "id": "c42f8e51ee7e",
+        "name": "Wrist Flexion",
+        "image": "/images/exercises/image_00073-77a21d3acaf1cc5d719ebe4a35e7cae7.png",
+        "instructions": [
+            "Start on your hands and knees in a tabletop position.",
+            "Flip your hands so the tops of your hands are flat on the floor and your fingers are pointed towards your body.",
+            "Walk your knees closer to your hands, then slowly lean back and lower your hips towards your heels, while keeping your hands pressed into the floor."
+        ],
+        "tips": [
+            "Distribute your weight evenly across both hands."
+        ],
+        "modifications": [
+            "If kneeling is uncomfortable, perform this stretch standing up with your hands on a table."
+        ],
+        "benefits": [
+            "Forearms, Wrists, Fingers, Hands"
+        ]
+    },
+    {
+        "id": "ad4e1d344fa4",
+        "name": "Deep Split Squat",
+        "image": "/images/exercises/image_00183-fcd569c29ca8160c4d16f22868418b1f.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Step one foot back into a lunge position, then slowly lower your body while keeping your back leg straight.",
+            "Allow your front knee to move forward over your toes and keep your back knee above the floor.",
+            "Keep your back straight and your torso upright."
+        ],
+        "tips": [
+            "Keep your front foot planted firmly into the floor.",
+            "Ensure your front knee is stable and doesn't cave inward."
+        ],
+        "modifications": [
+            "For less intensity, don't lower as deeply or keep your back knee on the ground.",
+            "Use a chair or wall for additional support if needed."
+        ],
+        "benefits": [
+            "Hips, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "aac499e2e7d2",
+        "name": "Reverse Prayer Pose",
+        "image": "/images/exercises/image_00161-034d1c687cc8876cecbbb383a8c8bb69.png",
+        "instructions": [
+            "Start from a standing or seated position with your back straight and your arms at your sides.",
+            "Bend both arms to bring your hands behind your back, then press your palms together with your fingers pointing upwards.",
+            "Lift your chest and slide your hands up along your spine."
+        ],
+        "tips": [
+            "Keep your shoulders relaxed and away from your ears.",
+            "Avoid arching your back excessively."
+        ],
+        "modifications": [
+            "If bringing your palms together is too difficult, hold onto opposite elbows behind your back instead."
+        ],
+        "benefits": [
+            "Forearms, Shoulders, Chest, Wrists"
+        ]
+    },
+    {
+        "id": "3355224e2829",
+        "name": "High Knees",
+        "image": "/images/exercises/image_00245a-71c96c55727c6e4a983b586506d595f4.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your elbows bent at 90 degrees, holding your hands out in front of you.",
+            "Lift one knee towards your hand, aiming to tap it without moving your arms.",
+            "Quickly alternate legs in a running motion, keeping a steady rhythm and your torso upright.",
+            "Focus on bringing your knees high enough to reach your hands with each lift."
+        ],
+        "tips": [
+            "Land softly on the balls of your feet to minimize impact on your joints.",
+            "Maintain a steady rhythm and controlled movement to keep proper form.",
+            "Keep your upper body relaxed and upright."
+        ],
+        "modifications": [
+            "Perform the movement at a slower pace for lower intensity.",
+            "Keep your hands lower if flexibility or strength limits the height of your knees."
+        ],
+        "benefits": [
+            "Knees, Calves, Feet, Hips, Hamstrings, Quadriceps, Core, Ankles, Toes, Glutes"
+        ]
+    },
+    {
+        "id": "143253861312",
+        "name": "Butt Kicks",
+        "image": "/images/exercises/image_00246a-f22559fccbc617d7f8da2fad966b8e58.png",
+        "instructions": [
+            "Start from a standing position with your feet hip-width apart and your arms at your sides.",
+            "Bend one knee to kick your heel up towards your glute, then alternate legs dynamically.",
+            "Continue alternating legs in a controlled, steady rhythm."
+        ],
+        "tips": [
+            "Land softly on the balls of your feet to minimize impact.",
+            "Focus on a smooth, rhythmic motion rather than speed.",
+            "Keep your upper body relaxed and upright."
+        ],
+        "modifications": [
+            "Perform the movement more slowly for better control.",
+            "Reduce the height of the kick if flexibility is limited."
+        ],
+        "benefits": [
+            "Knees, Calves, Feet, Hips, Hamstrings, Quadriceps, Core, Ankles, Toes, Glutes"
+        ]
+    }
+]

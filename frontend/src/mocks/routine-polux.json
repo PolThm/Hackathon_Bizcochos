@@ -1,0 +1,73 @@
+{
+  "id": "polux",
+  "name": "Étirements & Musculation",
+  "breakDuration": 5,
+  "preparationDuration": 5,
+  "exercises": [
+    {
+      "id": 5345435435324,
+      "name": "Mains en l’air",
+      "duration": 10
+    },
+    {
+      "id": 11543534544363,
+      "name": "Mouvements de bassin",
+      "duration": 60
+    },
+    {
+      "id": 6436432454,
+      "name": "Fentes actives",
+      "duration": 30
+    },
+    {
+      "id": 55435435,
+      "name": "Touché d’orteils",
+      "duration": 60
+    },
+    {
+      "id": 633457746,
+      "name": "Chien tête en haut",
+      "duration": 20
+    },
+    {
+      "id": 76343245,
+      "name": "Posture de l’enfant",
+      "duration": 10
+    },
+    {
+      "id": 763435356245,
+      "name": "Posture du chat",
+      "duration": 20
+    },
+    {
+      "id": 745436634,
+      "name": "Planche (Mountain climber)",
+      "duration": 45
+    },
+    {
+      "id": 85435435,
+      "name": "Fente statique G",
+      "duration": 15
+    },
+    {
+      "id": 9655345,
+      "name": "Fente statique D",
+      "duration": 15
+    },
+    {
+      "id": 10345435435,
+      "name": "Chien tête en bas",
+      "duration": 30
+    },
+    {
+      "id": 11543534543,
+      "name": "Mains en l’air",
+      "duration": 10
+    },
+    {
+      "id": 1730379439233,
+      "name": "Lever de poids",
+      "duration": 70
+    }
+  ]
+}

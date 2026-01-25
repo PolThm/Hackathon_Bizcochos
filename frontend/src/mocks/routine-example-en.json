@@ -1,0 +1,38 @@
+{
+  "id": "example",
+  "name": "Example",
+  "breakDuration": 5,
+  "preparationDuration": 5,
+  "exercises": [
+    {
+      "id": 15356,
+      "name": "Rag Doll",
+      "duration": 20,
+      "exerciseId": "d70415d950a2"
+    },
+    {
+      "id": 27543,
+      "name": "Deep Split Squat",
+      "duration": 45,
+      "exerciseId": "ad4e1d344fa4"
+    },
+    {
+      "id": 376453,
+      "name": "Hand Plank",
+      "duration": 30,
+      "exerciseId": "a8d43c3080c3"
+    },
+    {
+      "id": 446654,
+      "name": "Crunch Hold",
+      "duration": 40,
+      "exerciseId": "99da695ce568"
+    },
+    {
+      "id": 54356345,
+      "name": "Child's Pose",
+      "duration": 20,
+      "exerciseId": "f0e3ea656db8"
+    }
+  ]
+}

@@ -9,15 +9,18 @@ import {
   FC,
   PropsWithChildren,
 } from 'react';
+import { differenceInCalendarDays } from 'date-fns';
+import { setItem, getItem } from '@/utils/indexedDB';
 
 interface ConsecutiveDaysContextProps {
   consecutiveDays: number;
   isDayValidated: boolean;
   incrementConsecutiveDays: () => void;
+  isLoading: boolean;
 }
 
 const ONE_HOUR = 1000 * 3600;
-const ONE_DAY = ONE_HOUR * 24;
+const DAY_RESET_HOUR = 6; // The day resets at 6am
 
 const ConsecutiveDaysContext = createContext<
   ConsecutiveDaysContextProps | undefined
@@ -38,46 +41,81 @@ export const ConsecutiveDaysProvider: FC<PropsWithChildren> = ({
 }) => {
   const [consecutiveDays, setConsecutiveDays] = useState<number>(0);
   const [isDayValidated, setIsDayValidated] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const updateConsecutiveDays = useCallback(() => {
-    const storedConsecutiveDays = localStorage.getItem('consecutiveDays');
-    const storedIsDayValidated = localStorage.getItem('isDayValidated');
-    const storedLastRoutineDate = localStorage.getItem('lastRoutineDate');
-    const lastRoutineDate = storedLastRoutineDate
-      ? new Date(storedLastRoutineDate)
-      : null;
+  const updateConsecutiveDays = useCallback(async () => {
+    setIsLoading(true);
 
-    if (storedConsecutiveDays !== null)
-      setConsecutiveDays(parseInt(storedConsecutiveDays, 10));
-    if (storedIsDayValidated !== null)
-      setIsDayValidated(storedIsDayValidated === 'true');
+    try {
+      const storedConsecutiveDays = await getItem('consecutiveDays');
+      const storedIsDayValidated = await getItem('isDayValidated');
+      const storedLastRoutineDate = await getItem('lastRoutineDate');
 
-    if (lastRoutineDate) {
-      const todayDate = new Date();
-      const daysSinceLastRoutine =
-        (todayDate.getTime() - lastRoutineDate.getTime()) / ONE_DAY;
+      const lastRoutineDate = storedLastRoutineDate
+        ? new Date(storedLastRoutineDate)
+        : null;
 
-      if (daysSinceLastRoutine >= 1) {
+      if (storedConsecutiveDays !== null)
+        setConsecutiveDays(parseInt(storedConsecutiveDays, 10));
+      if (storedIsDayValidated !== null)
+        setIsDayValidated(storedIsDayValidated === 'true');
+
+      if (lastRoutineDate) {
+        const now = new Date();
+
+        // Function to normalize a date according to our app day logic (6am = start)
+        const normalizeToAppDay = (date: Date): Date => {
+          const normalized = new Date(date);
+          if (normalized.getHours() < DAY_RESET_HOUR) {
+            // If before 6am, consider it as part of the previous day
+            normalized.setDate(normalized.getDate() - 1);
+          }
+          // Normalize to 6am of the appropriate day
+          normalized.setHours(DAY_RESET_HOUR, 0, 0, 0);
+          return normalized;
+        };
+
+        const normalizedNow = normalizeToAppDay(now);
+        const normalizedLastRoutine = normalizeToAppDay(lastRoutineDate);
+
+        const daysSinceLastRoutine = differenceInCalendarDays(
+          normalizedNow,
+          normalizedLastRoutine,
+        );
+
+        // Always reset validation if we're in a new app day
+        if (daysSinceLastRoutine >= 1) {
+          setIsDayValidated(false);
+          await setItem('isDayValidated', 'false');
+
+          // Reset counter ONLY if more than one day has passed (streak broken)
+          if (daysSinceLastRoutine >= 2) {
+            setConsecutiveDays(0);
+            await setItem('consecutiveDays', '0');
+            await setItem('lastRoutineDate', null);
+          }
+        }
+      } else {
+        // No previous routine, ensure validation is false
         setIsDayValidated(false);
-        localStorage.setItem('isDayValidated', 'false');
+        await setItem('isDayValidated', 'false');
       }
-
-      if (daysSinceLastRoutine >= 2) {
-        setConsecutiveDays(0);
-        localStorage.setItem('consecutiveDays', '0');
-        localStorage.removeItem('lastRoutineDate');
-      }
+    } catch (error) {
+      console.error('Error updating consecutive days:', error);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
-  const incrementConsecutiveDays = useCallback(() => {
+  const incrementConsecutiveDays = useCallback(async () => {
     if (isDayValidated) return;
     const today = new Date();
     setConsecutiveDays((prevDays) => {
       const newDays = prevDays + 1;
-      localStorage.setItem('consecutiveDays', newDays.toString());
-      localStorage.setItem('lastRoutineDate', today.toISOString());
-      localStorage.setItem('isDayValidated', 'true');
+      // Use async operations but don't await to avoid blocking UI
+      setItem('consecutiveDays', newDays.toString()).catch(console.error);
+      setItem('lastRoutineDate', today.toISOString()).catch(console.error);
+      setItem('isDayValidated', 'true').catch(console.error);
       setIsDayValidated(true);
       return newDays;
     });
@@ -93,7 +131,12 @@ export const ConsecutiveDaysProvider: FC<PropsWithChildren> = ({
 
   return (
     <ConsecutiveDaysContext.Provider
-      value={{ consecutiveDays, isDayValidated, incrementConsecutiveDays }}
+      value={{
+        consecutiveDays,
+        isDayValidated,
+        incrementConsecutiveDays,
+        isLoading,
+      }}
     >
       {children}
     </ConsecutiveDaysContext.Provider>

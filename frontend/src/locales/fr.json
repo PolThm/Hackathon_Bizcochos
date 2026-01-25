@@ -1,0 +1,117 @@
+{
+  "parameters": {
+    "parameters": "Paramètres",
+    "languages": "Langues",
+    "sound": "Son",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
+    "developedBy": "Développé par Pol Thomas & Alessio Pelliccione",
+    "english": "English",
+    "french": "Français",
+    "spanish": "Español",
+    "reference": "Référence",
+    "referenceValid": "Une nouvelle routine vient d'être ajoutée!",
+    "referenceInvalid": "Référence invalide",
+    "referenceAlreadyUsed": "Cette routine est déjà dans ta liste",
+    "reset": "Réinitialisation",
+    "resetRoutinesConfirm": "Réinitialiser toutes les routines ? Cette action est irréversible.",
+    "letsGo": "C'EST PARTI !"
+  },
+  "home": {
+    "start": "COMMENCER",
+    "preparation": "Préparation",
+    "rest": "Repos",
+    "lastExercise": "Dernier exercice",
+    "exercise": "exercice",
+    "stop": "STOP",
+    "noActiveExercises": "Aucun exercice actif dans cette routine",
+    "next": "suivant :",
+    "welcome": "Bienvenue"
+  },
+  "setup": {
+    "chooseRoutine": "Choix de ma routine",
+    "preparationDuration": "Durée de la préparation",
+    "restDuration": "Durée des repos",
+    "exercise": "Exercice",
+    "exercises": "Exercices",
+    "newExercise": "Nouvel exercice",
+    "reset": "Réinitialiser",
+    "resetRoutine": "Réinitialiser la routine ?",
+    "delete": "Supprimer",
+    "deleteRoutine": "Supprimer la routine ?",
+    "letsGo": "C'EST PARTI !",
+    "newRoutine": "Routine",
+    "createNewRoutine": "Créer une nouvelle routine ?",
+    "deleteExercise": "Supprimer cet exercice ?",
+    "pausedExercise": "Exercice en pause"
+  },
+  "common": {
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "error": "Oups, une erreur est survenue...",
+    "refresh": "RAFRAÎCHIR",
+    "home": "ACCUEIL",
+    "pageNotFound": "Page non trouvée",
+    "practice": "PRATIQUE",
+    "edit": "ÉDITION",
+    "parameters": "PARAMÈTRES",
+    "library": "BIBLIOTHÈQUE",
+    "newRoutine": "NOUVELLE ROUTINE",
+    "routinePolux": "Étirements & Musculation",
+    "routineExample": "Exemple",
+    "createNewRoutineWithAI": "Créer nouvelle Routine avec IA",
+    "goToPractice": "Lancer la pratique",
+    "noRoutinesMessage": "Vous n'avez pas encore de routines."
+  },
+  "library": {
+    "library": "Bibliothèque",
+    "searchPlaceholder": "Rechercher un exercice...",
+    "noExercisesFound": "Aucun exercice trouvé correspondant à votre recherche",
+    "addCustomExercise": "Ajouter un exercice personnalisé"
+  },
+  "exerciseDetails": {
+    "notFound": "Exercice non trouvé",
+    "backToLibrary": "Retour à la bibliothèque",
+    "benefits": "Bénéfices",
+    "instructions": "Instructions",
+    "tips": "Conseils",
+    "modifications": "Modifications"
+  },
+  "metadata": {
+    "description": "Application d'étirements impulsée par IA. Par Pol Thomas & Alessio Pelliccione.",
+    "title": "Routines"
+  },
+  "newRoutine": {
+    "title": "Créer une Nouvelle Routine",
+    "description": "Aidez-nous à construire une routine adaptée à votre corps",
+    "invitationText": "Parlez-nous de vos sensations, mobilité, confort physique, et des zones que vous aimeriez améliorer dans votre vie quotidienne.",
+    "placeholder": "ex. : hanches serrées, mobilité limitée des épaules, sensation de raideur après le travail, récupération après les entraînements...",
+    "generateButton": "Générer ma Routine",
+    "generating": "Génération en cours...",
+    "newRoutine": "Nouvelle Routine"
+  },
+  "pwa": {
+    "installPrompt": {
+      "title": "Installe l'application Routines pour une meilleure expérience",
+      "instructions": {
+        "title": "Instructions d'installation",
+        "intro": "Cherchez les boutons dans votre navigateur, pas dans l'application.",
+        "android1": "Trouvez le bouton menu : (<b>⋮</b>)",
+        "android2": "Puis « <b>Installer l'application</b> »,",
+        "android3": "ou « <b>Ajouter à l'écran d'accueil</b> ».",
+        "ios1": "Trouvez le bouton de partage :",
+        "ios2": "Puis « <b>Ajouter à l'écran d'accueil</b> ».",
+        "otherLabel": "Autres navigateurs",
+        "other": "Cherchez l'option « <b>Installer</b> » ou « <b>Ajouter à l'écran d'accueil</b> » dans le menu du navigateur.",
+        "close": "Fermer"
+      }
+    },
+    "offline": {
+      "message": "Vous êtes hors ligne. Certaines fonctionnalités peuvent être limitées.",
+      "pageTitle": "Hors ligne - Routines",
+      "pageMessage": "Cette page n'est pas disponible hors ligne.",
+      "pageInstruction": "Vérifiez votre connexion internet et réessayez.",
+      "contentUnavailable": "Contenu non disponible hors ligne"
+    }
+  }
+}

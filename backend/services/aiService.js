@@ -13,7 +13,7 @@ export const generateCompletion = async (systemPrompt, userPrompt, options = {})
 
   try {
     const response = await client.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-5-nano",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt }

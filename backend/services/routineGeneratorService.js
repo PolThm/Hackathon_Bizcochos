@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export const generateRoutineFromPrompt = async (prompt) => {
   // Load exercises from common folder
-  const exercisesPath = path.join(__dirname, '..', '..', 'common', 'all-exercises-en.json');
+  const exercisesPath = path.join(__dirname, '..', 'common', 'all-exercises-en.json');
   const fileContent = await fs.readFile(exercisesPath, 'utf-8');
   const allExercises = JSON.parse(fileContent);
 

@@ -7,7 +7,7 @@ const fastify = Fastify({
 });
 
 await fastify.register(cors, {
-  origin: '*',
+  origin: ['https://routines-ai.vercel.app', 'http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 });
 

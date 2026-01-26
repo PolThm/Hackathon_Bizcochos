@@ -34,7 +34,12 @@ export default function ExerciseDetailsPage() {
   const t = useTranslations('exerciseDetails');
   const exerciseId = params.id as string;
   const from = searchParams.get('from');
-  const backHref = from === 'setup' ? '/setup' : '/library';
+  const backHref =
+    from === 'setup'
+      ? '/setup'
+      : from === 'new-routine'
+        ? '/new-routine'
+        : '/library';
 
   const exercise = useMemo(() => {
     return (allExercises as Exercise[]).find((ex) => ex.id === exerciseId);

@@ -14,9 +14,11 @@ import {
   useTheme,
   CircularProgress,
   Fade,
+  IconButton,
 } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/i18n/routing';
+import { useRouter, Link } from '@/i18n/routing';
 import { getItem, setItem } from '@/utils/indexedDB';
 import { Routine, Exercise } from '@/types';
 
@@ -36,7 +38,7 @@ function LoadingState({ messages }: LoadingStateProps) {
         setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
         setFadeIn(true);
       }, 500);
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [messages.length]);
@@ -177,6 +179,35 @@ export default function NewRoutinePage() {
     t('loadingMessages.7'),
   ];
 
+  // Restore proposed routine from sessionStorage on mount
+  useEffect(() => {
+    const savedProposedRoutine = sessionStorage.getItem('tempProposedRoutine');
+    const savedUserInput = sessionStorage.getItem('tempUserInput');
+
+    if (savedProposedRoutine) {
+      try {
+        setProposedRoutine(JSON.parse(savedProposedRoutine));
+      } catch (error) {
+        console.error('Failed to restore proposed routine:', error);
+      }
+    }
+
+    if (savedUserInput) {
+      setUserInput(savedUserInput);
+    }
+  }, []);
+
+  // Save proposed routine to sessionStorage when it changes
+  useEffect(() => {
+    if (proposedRoutine) {
+      sessionStorage.setItem(
+        'tempProposedRoutine',
+        JSON.stringify(proposedRoutine),
+      );
+      sessionStorage.setItem('tempUserInput', userInput);
+    }
+  }, [proposedRoutine, userInput]);
+
   const handleGenerateRoutine = async (isRefinement = false) => {
     const prompt = isRefinement
       ? `Original request: ${userInput}. Refinement request: ${refinementInput}`
@@ -233,9 +264,12 @@ export default function NewRoutinePage() {
     setUserInput('');
     setRefinementInput('');
     setIsRefineModalOpen(false);
+    // Clear temporary data from sessionStorage
+    sessionStorage.removeItem('tempProposedRoutine');
+    sessionStorage.removeItem('tempUserInput');
   };
 
-  const handleSaveAndAction = async (path: '/' | '/setup') => {
+  const handleSaveAndAction = async (path: '/setup' | '/practice') => {
     if (!proposedRoutine) return;
 
     try {
@@ -260,6 +294,10 @@ export default function NewRoutinePage() {
       await setItem('allRoutines', JSON.stringify(updatedRoutines));
       await setItem('routine', JSON.stringify(proposedRoutine));
 
+      // Clear temporary data from sessionStorage after saving
+      sessionStorage.removeItem('tempProposedRoutine');
+      sessionStorage.removeItem('tempUserInput');
+
       router.push(path);
     } catch (error) {
       console.error('Error saving routine:', error);
@@ -277,7 +315,7 @@ export default function NewRoutinePage() {
           display: 'flex',
           flexDirection: 'column',
           flex: 1,
-          maxWidth: '600px',
+          width: '100%',
           mx: 'auto',
           gap: 3,
           py: 4,
@@ -289,6 +327,13 @@ export default function NewRoutinePage() {
           sx={{ textTransform: 'uppercase', mb: 1 }}
         >
           {t('propositionTitle')}
+        </Typography>
+
+        <Typography
+          variant='body1'
+          sx={{ color: 'text.secondary', lineHeight: 1.6 }}
+        >
+          {t('introText')}
         </Typography>
 
         <Box
@@ -315,7 +360,7 @@ export default function NewRoutinePage() {
             min
           </Typography>
 
-          <Box sx={{ mt: 2, maxHeight: '300px', overflowY: 'auto' }}>
+          <Box sx={{ mt: 2, overflowY: 'auto' }}>
             {proposedRoutine.exercises.map((ex, index) => (
               <Box
                 key={ex.id}
@@ -330,13 +375,42 @@ export default function NewRoutinePage() {
                   borderColor: 'divider',
                 }}
               >
-                <Typography variant='body1'>{ex.name}</Typography>
+                <Typography
+                  component={Link}
+                  href={`/exercise/${ex.exerciseId}?from=new-routine`}
+                  variant='body1'
+                  sx={{
+                    textDecoration: 'underline',
+                    cursor: 'pointer',
+                    color: 'primary.main',
+                    '&:hover': {
+                      color: 'secondary.main',
+                    },
+                  }}
+                >
+                  {ex.name}
+                </Typography>
                 <Typography variant='body2' sx={{ opacity: 0.7 }}>
                   {ex.duration}s
                 </Typography>
               </Box>
             ))}
           </Box>
+
+          <Typography
+            variant='body2'
+            sx={{
+              mt: 2,
+              pt: 2,
+              borderTop: '1px solid',
+              borderColor: 'divider',
+              color: 'text.secondary',
+              textAlign: 'center',
+              fontStyle: 'italic',
+            }}
+          >
+            {t('exploreExercisesText')}
+          </Typography>
         </Box>
 
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
@@ -344,7 +418,7 @@ export default function NewRoutinePage() {
             fullWidth
             variant='contained'
             size='large'
-            onClick={() => handleSaveAndAction('/')}
+            onClick={() => handleSaveAndAction('/practice')}
             sx={{ py: 1.5, borderRadius: 2, fontWeight: 700 }}
           >
             {t('startPractice')}
@@ -386,8 +460,24 @@ export default function NewRoutinePage() {
             },
           }}
         >
-          <DialogTitle sx={{ fontWeight: 700, pb: 1 }}>
-            {t('refineModalTitle')}
+          <DialogTitle
+            sx={{
+              fontWeight: 700,
+              pb: 1,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
+            }}
+          >
+            <IconButton
+              onClick={() => setIsRefineModalOpen(false)}
+              sx={{ color: 'text.primary' }}
+            >
+              <ArrowBackIcon />
+            </IconButton>
+            <Typography variant='h6' sx={{ fontWeight: 700, flex: 1 }}>
+              {t('refineModalTitle')}
+            </Typography>
           </DialogTitle>
           <DialogContent>
             <Typography variant='body2' sx={{ mb: 2, color: 'text.secondary' }}>

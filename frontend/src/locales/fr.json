@@ -91,6 +91,8 @@
     "generating": "Génération...",
     "newRoutine": "Nouvelle routine",
     "propositionTitle": "Routine proposée",
+    "introText": "Voici ta routine d'étirements personnalisée selon tes besoins et objectifs.",
+    "exploreExercisesText": "Touche n'importe quel exercice pour découvrir ses détails",
     "retryButton": "Donne-moi un autre choix",
     "startPractice": "Commencer la séance",
     "editRoutine": "Modifier la routine",

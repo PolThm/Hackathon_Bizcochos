@@ -269,7 +269,7 @@ export default function ParametersPage() {
 
       <Box sx={{ textAlign: 'center' }}>
         <Typography variant='body2' color='text.secondary'>
-          {VERSION} � {t('developedBy')}
+          {VERSION} • {t('developedBy')}
         </Typography>
       </Box>
 

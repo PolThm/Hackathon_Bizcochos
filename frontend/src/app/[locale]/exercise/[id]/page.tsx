@@ -91,7 +91,7 @@ export default function ExerciseDetailsPage() {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
+          flexDirection: 'column',
           gap: 3,
         }}
       >

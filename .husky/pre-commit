@@ -1,4 +1,4 @@
 export PATH="/opt/homebrew/bin:$PATH"
 npm run update-version
-git add src/version.json
+git add frontend/src/version.json
 npx lint-staged

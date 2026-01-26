@@ -2,6 +2,7 @@
   "name": "hackathon-bizcochos",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
     "start:backend": "node backend/index.js",
@@ -9,7 +10,8 @@
     "build": "next build frontend",
     "lint": "next lint frontend",
     "format": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "update-version": "node frontend/update-version.js"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.7",

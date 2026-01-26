@@ -239,8 +239,8 @@ export default function NewRoutinePage() {
         const newRoutine: Routine = {
           id: apiRoutine.id,
           name: apiRoutine.name,
-          breakDuration: apiRoutine.breakDuration,
-          preparationDuration: apiRoutine.preparationDuration,
+          breakDuration: 5, // Always set to 5 seconds
+          preparationDuration: 5, // Always set to 5 seconds
           exercises: apiRoutine.exercises.map((ex: any, index: number) => ({
             id: Date.now() + index,
             name: ex.name,

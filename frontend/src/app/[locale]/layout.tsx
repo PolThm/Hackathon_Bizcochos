@@ -40,12 +40,12 @@ export async function generateMetadata({
     manifest: `/${locale}/manifest.json`,
     appleWebApp: {
       capable: true,
-      statusBarStyle: 'black-translucent',
+      statusBarStyle: 'black',
       title: 'Routines',
     },
     other: {
       'apple-mobile-web-app-orientation': 'portrait',
-      'apple-mobile-web-app-status-bar-style': 'black-translucent',
+      'apple-mobile-web-app-status-bar-style': 'black',
       'mobile-web-app-capable': 'yes',
       'theme-color': '#0D0509',
       'og:image:width': '1200',

@@ -11,7 +11,6 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
   Slide,
   IconButton,
 } from '@mui/material';
@@ -30,50 +29,41 @@ import { usePWAInstall } from '@/hooks/usePWA';
 export default function PWAInstallPrompt() {
   const t = useTranslations('pwa.installPrompt');
   const tInstructions = useTranslations('pwa.installPrompt.instructions');
+
   const {
-    showInstallPrompt,
+    isVisible,
     isInstalled,
+    isMounted,
     showManualInstructions,
-    setShowManualInstructions,
-    handleCloseManualInstructions,
     handleInstallClick,
     handleDismiss,
+    handleCloseManualInstructions,
   } = usePWAInstall();
 
-  const [isExiting, setIsExiting] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false);
-
-  // Detect platform
-  const isIOS =
-    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-    (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
-  const isAndroid = /Android/.test(navigator.userAgent);
-
-  // Detect if device is mobile (iOS, Android, or other mobile devices)
-  const isMobile =
-    isIOS ||
-    isAndroid ||
-    /webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-    (typeof window !== 'undefined' &&
-      window.innerWidth <= 768 &&
-      navigator.maxTouchPoints > 0);
+  // SSR-safe device detection
+  const [deviceInfo, setDeviceInfo] = useState({
+    isIOS: false,
+    isAndroid: false,
+    isMobile: false,
+  });
 
   useEffect(() => {
-    if (showInstallPrompt && !isInstalled) {
-      setShouldRender(true);
-      setIsExiting(false);
-    } else if (!showInstallPrompt && shouldRender) {
-      setIsExiting(true);
-      const timer = setTimeout(() => {
-        setShouldRender(false);
-        setIsExiting(false);
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [showInstallPrompt, isInstalled, shouldRender]);
+    const userAgent = navigator.userAgent;
+    const isIOS =
+      /iPad|iPhone|iPod/.test(userAgent) ||
+      (navigator.maxTouchPoints > 1 && /Macintosh/.test(userAgent));
+    const isAndroid = /Android/.test(userAgent);
+    const isMobile =
+      isIOS ||
+      isAndroid ||
+      /webOS|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) ||
+      (window.innerWidth <= 768 && navigator.maxTouchPoints > 0);
 
-  // Don't show on desktop or if we shouldn't render
-  if (!isMobile || ((isInstalled || !shouldRender) && !isExiting)) {
+    setDeviceInfo({ isIOS, isAndroid, isMobile });
+  }, []);
+
+  // Don't render on server, on desktop, or if already installed
+  if (!isMounted || !deviceInfo.isMobile || isInstalled) {
     return null;
   }
 
@@ -81,15 +71,11 @@ export default function PWAInstallPrompt() {
     <>
       {/* Install Prompt Snackbar */}
       <Snackbar
-        open={shouldRender && !showManualInstructions}
+        open={isVisible && !showManualInstructions}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         sx={{ mb: 2, px: 2 }}
-        autoHideDuration={null}
         TransitionComponent={(props) => <Slide {...props} direction='up' />}
-        TransitionProps={{
-          timeout: 500,
-        }}
-        onClose={handleDismiss}
+        // No onClose handler - prevents clickaway dismissal
       >
         <Card
           sx={{
@@ -99,9 +85,7 @@ export default function PWAInstallPrompt() {
             borderRadius: 2,
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
             border: '1px solid #e0e0e0',
-            cursor: 'pointer',
           }}
-          onClick={handleInstallClick}
         >
           <CardContent sx={{ p: 2.5, '&:last-child': { pb: 2.5 } }}>
             <Box
@@ -114,10 +98,7 @@ export default function PWAInstallPrompt() {
             >
               {/* Download Button */}
               <Button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleInstallClick();
-                }}
+                onClick={handleInstallClick}
                 sx={{
                   minWidth: 'auto',
                   p: 1,
@@ -141,20 +122,18 @@ export default function PWAInstallPrompt() {
                   lineHeight: 1.3,
                   fontSize: '0.875rem',
                   flex: 1,
+                  cursor: 'pointer',
                 }}
+                onClick={handleInstallClick}
               >
                 {t('title')}
               </Typography>
 
               {/* Close Button */}
-              <Button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDismiss();
-                }}
+              <IconButton
+                onClick={handleDismiss}
+                size='small'
                 sx={{
-                  minWidth: 'auto',
-                  p: 0.5,
                   color: '#666666',
                   '&:hover': {
                     backgroundColor: '#f5f5f5',
@@ -163,7 +142,7 @@ export default function PWAInstallPrompt() {
                 }}
               >
                 <Close fontSize='small' />
-              </Button>
+              </IconButton>
             </Box>
           </CardContent>
         </Card>
@@ -172,13 +151,7 @@ export default function PWAInstallPrompt() {
       {/* Manual Installation Instructions Dialog */}
       <Dialog
         open={showManualInstructions}
-        onClose={(event, reason) => {
-          console.log('[PWA] Dialog onClose called', { reason });
-          // Only close if clicking outside or pressing escape
-          if (reason === 'backdropClick' || reason === 'escapeKeyDown') {
-            handleCloseManualInstructions();
-          }
-        }}
+        onClose={handleCloseManualInstructions}
         maxWidth='sm'
         fullWidth
       >
@@ -200,7 +173,7 @@ export default function PWAInstallPrompt() {
         </DialogTitle>
         <DialogContent>
           <Box sx={{ pt: 1 }}>
-            {isIOS ? (
+            {deviceInfo.isIOS ? (
               <Box sx={{ mb: 3 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <Apple sx={{ mr: 1, color: 'primary.main' }} />
@@ -260,7 +233,7 @@ export default function PWAInstallPrompt() {
                   </Typography>
                 </Box>
               </Box>
-            ) : isAndroid ? (
+            ) : deviceInfo.isAndroid ? (
               <Box sx={{ mb: 3 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <PhoneAndroid sx={{ mr: 1, color: 'primary.main' }} />

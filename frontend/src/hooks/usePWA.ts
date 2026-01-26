@@ -1,21 +1,17 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export function useOnlineStatus() {
   const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
-    // Function to update the status
     const updateOnlineStatus = () => {
       setIsOnline(navigator.onLine);
     };
 
-    // Listen to network status changes
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
-
-    // Initialize with current status
     updateOnlineStatus();
 
     return () => {
@@ -37,7 +33,6 @@ export function useServiceWorker() {
       navigator.serviceWorker.ready.then((registration) => {
         setSwRegistration(registration);
 
-        // Listen to service worker updates
         registration.addEventListener('updatefound', () => {
           const newWorker = registration.installing;
           if (newWorker) {
@@ -53,7 +48,6 @@ export function useServiceWorker() {
         });
       });
 
-      // Listen to controller changes
       navigator.serviceWorker.addEventListener('controllerchange', () => {
         window.location.reload();
       });
@@ -82,195 +76,131 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
 }
 
-interface PWAInstallState {
-  deferredPrompt: BeforeInstallPromptEvent | null;
-  showInstallPrompt: boolean;
-  isInstalled: boolean;
-  showManualInstructions: boolean;
-  setShowManualInstructions: (show: boolean) => void;
-  handleCloseManualInstructions: () => void;
-  handleInstallClick: () => Promise<void>;
-  handleDismiss: () => void;
-}
+const SESSION_STORAGE_KEY = 'pwa-install-dismissed';
 
-export function usePWAInstall(): PWAInstallState {
+export function usePWAInstall() {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
-  const [showInstallPrompt, setShowInstallPrompt] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
   const [showManualInstructions, setShowManualInstructions] = useState(false);
-  const [hasBeenDismissed, setHasBeenDismissed] = useState(() => {
-    // Check sessionStorage on initialization
-    if (typeof window !== 'undefined') {
-      return sessionStorage.getItem('pwa-install-dismissed') === 'true';
-    }
-    return false;
-  });
-  const autoCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const showManualInstructionsRef = useRef(false);
+  const [isMounted, setIsMounted] = useState(false);
 
+  // Check if already dismissed this session
+  const isDismissed = useCallback(() => {
+    if (typeof window === 'undefined') return false;
+    return sessionStorage.getItem(SESSION_STORAGE_KEY) === 'true';
+  }, []);
+
+  // Mark as dismissed
+  const markDismissed = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem(SESSION_STORAGE_KEY, 'true');
+    }
+  }, []);
+
+  // Check if app is installed
   useEffect(() => {
-    // Check if the app is already installed
+    setIsMounted(true);
+
     const checkIfInstalled = () => {
       if (window.matchMedia('(display-mode: standalone)').matches) {
-        setIsInstalled(true);
-        return;
+        return true;
       }
-
-      // Check on iOS
       if ((window.navigator as any).standalone === true) {
-        setIsInstalled(true);
-        return;
+        return true;
       }
+      return false;
     };
 
-    checkIfInstalled();
+    if (checkIfInstalled()) {
+      setIsInstalled(true);
+      return;
+    }
 
-    // Listen to the beforeinstallprompt event
+    // Listen to beforeinstallprompt
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      // Don't show immediately, wait for the timeout
     };
 
-    // Listen to the appinstalled event
+    // Listen to appinstalled
     const handleAppInstalled = () => {
       setIsInstalled(true);
-      setShowInstallPrompt(false);
+      setIsVisible(false);
       setDeferredPrompt(null);
     };
-
-    // Show install prompt after 1 second for both Android and iOS (only if not dismissed)
-    const timeoutId = setTimeout(() => {
-      // Double-check hasBeenDismissed before showing (it might have changed)
-      const currentlyDismissed =
-        typeof window !== 'undefined' &&
-        sessionStorage.getItem('pwa-install-dismissed') === 'true';
-      if (!isInstalled && !hasBeenDismissed && !currentlyDismissed) {
-        setShowInstallPrompt(true);
-      }
-    }, 1000);
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     window.addEventListener('appinstalled', handleAppInstalled);
 
+    // Show prompt after delay if not dismissed
+    const showTimeout = setTimeout(() => {
+      if (!isDismissed()) {
+        setIsVisible(true);
+      }
+    }, 1500);
+
     return () => {
-      clearTimeout(timeoutId);
+      clearTimeout(showTimeout);
       window.removeEventListener(
         'beforeinstallprompt',
         handleBeforeInstallPrompt,
       );
       window.removeEventListener('appinstalled', handleAppInstalled);
     };
-  }, [isInstalled, deferredPrompt, hasBeenDismissed]);
+  }, [isDismissed]);
 
-  const handleDismiss = useCallback(() => {
-    console.log('[PWA] handleDismiss called');
-    // Clear auto-close timer
-    if (autoCloseTimerRef.current) {
-      clearTimeout(autoCloseTimerRef.current);
-      autoCloseTimerRef.current = null;
-    }
-
-    setShowInstallPrompt(false);
-    setDeferredPrompt(null);
-    setHasBeenDismissed(true);
-    // Persist dismissal in sessionStorage
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('pwa-install-dismissed', 'true');
-    }
-  }, []);
-
-  // Handle closing the manual instructions modal - also dismisses the prompt
-  const handleCloseManualInstructions = useCallback(() => {
-    console.log('[PWA] handleCloseManualInstructions called');
-    setShowManualInstructions(false);
-    // When modal is closed, also dismiss the prompt permanently
-    setShowInstallPrompt(false);
-    setDeferredPrompt(null);
-    setHasBeenDismissed(true);
-    // Persist dismissal in sessionStorage
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('pwa-install-dismissed', 'true');
-    }
-  }, []);
-
-  // Update ref when showManualInstructions changes
+  // Auto-hide after 15 seconds (only if manual instructions not open)
   useEffect(() => {
-    showManualInstructionsRef.current = showManualInstructions;
-  }, [showManualInstructions]);
+    if (!isVisible || showManualInstructions) return;
 
-  // Auto-close timer effect
-  useEffect(() => {
-    if (showInstallPrompt && !showManualInstructions) {
-      // Clear any existing timer
-      if (autoCloseTimerRef.current) {
-        clearTimeout(autoCloseTimerRef.current);
-      }
+    const autoHideTimeout = setTimeout(() => {
+      setIsVisible(false);
+      markDismissed();
+    }, 15000);
 
-      // Set new timer for 10 seconds
-      const timer = setTimeout(() => {
-        // Only dismiss if the modal is not open (check ref for current state)
-        if (!showManualInstructionsRef.current) {
-          handleDismiss();
-        }
-      }, 10000);
+    return () => clearTimeout(autoHideTimeout);
+  }, [isVisible, showManualInstructions, markDismissed]);
 
-      autoCloseTimerRef.current = timer;
-    } else {
-      // Clear timer if prompt is not showing or modal is open
-      if (autoCloseTimerRef.current) {
-        clearTimeout(autoCloseTimerRef.current);
-        autoCloseTimerRef.current = null;
-      }
-    }
-
-    // Cleanup on unmount
-    return () => {
-      if (autoCloseTimerRef.current) {
-        clearTimeout(autoCloseTimerRef.current);
-      }
-    };
-  }, [showInstallPrompt, showManualInstructions, handleDismiss]);
-
-  const handleInstallClick = async (): Promise<void> => {
-    console.log('[PWA] handleInstallClick called', {
-      hasDeferredPrompt: !!deferredPrompt,
-      showManualInstructions,
-      showInstallPrompt,
-    });
-
+  const handleInstallClick = useCallback(async () => {
     if (deferredPrompt) {
       try {
         await deferredPrompt.prompt();
-        await deferredPrompt.userChoice;
-
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          setIsInstalled(true);
+        }
         setDeferredPrompt(null);
-        setShowInstallPrompt(false);
+        setIsVisible(false);
+        markDismissed();
       } catch (error) {
         console.error('Error installing PWA:', error);
       }
     } else {
-      // For iOS, show manual instructions
-      // Clear auto-close timer when opening modal
-      console.log('[PWA] Opening manual instructions modal');
-      if (autoCloseTimerRef.current) {
-        clearTimeout(autoCloseTimerRef.current);
-        autoCloseTimerRef.current = null;
-      }
+      // iOS or browser without native prompt - show manual instructions
       setShowManualInstructions(true);
-      // Keep the prompt visible while modal is open
     }
-  };
+  }, [deferredPrompt, markDismissed]);
+
+  const handleDismiss = useCallback(() => {
+    setIsVisible(false);
+    markDismissed();
+  }, [markDismissed]);
+
+  const handleCloseManualInstructions = useCallback(() => {
+    setShowManualInstructions(false);
+    setIsVisible(false);
+    markDismissed();
+  }, [markDismissed]);
 
   return {
-    deferredPrompt,
-    showInstallPrompt,
+    isVisible,
     isInstalled,
+    isMounted,
     showManualInstructions,
-    setShowManualInstructions,
-    handleCloseManualInstructions,
     handleInstallClick,
     handleDismiss,
+    handleCloseManualInstructions,
   };
 }

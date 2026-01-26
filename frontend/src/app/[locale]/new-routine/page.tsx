@@ -440,7 +440,7 @@ export default function NewRoutinePage() {
             size='medium'
             onClick={() => setIsRefineModalOpen(true)}
             disabled={isGenerating}
-            sx={{ py: 1, fontWeight: 500 }}
+            sx={{ py: 1, fontWeight: 500, textDecoration: 'underline' }}
           >
             {isGenerating ? t('generating') : t('retryButton')}
           </Button>

@@ -61,7 +61,8 @@
     "routineExample": "Ejemplo",
     "createNewRoutineWithAI": "Crear nueva Rutina con IA",
     "goToPractice": "Iniciar la práctica",
-    "noRoutinesMessage": "No tienes rutinas todavía."
+    "noRoutinesMessage": "No tienes rutinas todavía.",
+    "or": "O"
   },
   "library": {
     "library": "Biblioteca",
@@ -96,7 +97,17 @@
     "refineModalTitle": "Ajustar tu rutina",
     "refinePlaceholder": "p. ej. menos intensidad en los hombros, añadir más abdominales...",
     "refineButton": "Actualizar rutina",
-    "startOverButton": "Empezar de cero"
+    "startOverButton": "Empezar de cero",
+    "loadingMessages": [
+      "Diseñando tu rutina perfecta...",
+      "Escuchando las necesidades de tu cuerpo...",
+      "Seleccionando ejercicios para tu confort...",
+      "Construyendo tu flujo personalizado...",
+      "Creando movimientos solo para ti...",
+      "Casi listo, finalizando tu rutina...",
+      "Creando tu camino hacia la flexibilidad...",
+      "Adaptando estiramientos a tus objetivos..."
+    ]
   },
   "pwa": {
     "installPrompt": {

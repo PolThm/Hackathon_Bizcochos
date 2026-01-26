@@ -61,7 +61,8 @@
     "routineExample": "Example",
     "createNewRoutineWithAI": "Create new Routine with AI",
     "goToPractice": "Start the practice",
-    "noRoutinesMessage": "You have no routines yet."
+    "noRoutinesMessage": "You have no routines yet.",
+    "or": "OR"
   },
   "library": {
     "library": "Library",
@@ -96,7 +97,17 @@
     "refineModalTitle": "Refine your Routine",
     "refinePlaceholder": "e.g. less intensity on shoulders, add more core exercises...",
     "refineButton": "Update Routine",
-    "startOverButton": "Start from scratch"
+    "startOverButton": "Start from scratch",
+    "loadingMessages": [
+      "Designing your perfect stretch...",
+      "Listening to your body's needs...",
+      "Selecting exercises for your comfort...",
+      "Building your personalized flow...",
+      "Crafting movements just for you...",
+      "Almost there, finalizing your routine...",
+      "Creating your path to flexibility...",
+      "Tailoring stretches to your goals..."
+    ]
   },
   "pwa": {
     "installPrompt": {

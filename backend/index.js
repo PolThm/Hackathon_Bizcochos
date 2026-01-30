@@ -17,9 +17,28 @@ fastify.post("/api/generateRoutine", async (request) => {
   return result;
 });
 
+fastify.get("/api/health", async () => {
+  // Basic connectivity check: try to fetch 1 row from 'exercises' (assuming it exists)
+  // or just perform a simple select.
+  // const { data, error } = await supabase.from('exercises').select('id').limit(1);
+
+  // if (error) {
+  //   return reply.status(503).send({
+  //     status: 'error',
+  //     database: 'disconnected',
+  //     message: error.message
+  //   });
+  // }
+
+  return {
+    status: "ok",
+    database: "connected (mocked)", // supabase logic commented out due to missing dependency
+  };
+});
+
 const start = async () => {
   try {
-    await fastify.listen({ port: 4200, host: "0.0.0.0" });
+    await fastify.listen({ port: process.env.PORT || 4200, host: "0.0.0.0" });
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);

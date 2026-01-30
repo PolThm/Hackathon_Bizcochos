@@ -8,27 +8,27 @@ const client = new OpenAI();
 /**
  * Generic AI service to handle completions.
  */
-export const generateCompletion = async (systemPrompt, userPrompt, options = {}) => {
-  console.log('AI Service: Generating completion...');
+export const generateCompletion = async (systemPrompt, userPrompt) => {
+  console.log("AI Service: Generating completion...");
 
   try {
     const response = await client.chat.completions.create({
       model: "gpt-5-nano",
       messages: [
         { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt }
+        { role: "user", content: userPrompt },
       ],
-      response_format: { type: "json_object" }
+      response_format: { type: "json_object" },
     });
 
     const content = response.choices[0].message.content;
 
     return {
       content: content,
-      raw: response
+      raw: response,
     };
   } catch (error) {
-    console.error('OpenAI API Error:', error);
+    console.error("OpenAI API Error:", error);
     throw error;
   }
 };

@@ -8,12 +8,14 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ReactNode } from 'react';
-import { Container, Box } from '@mui/material';
+import { Container } from '@mui/material';
 import { ConsecutiveDaysProvider } from '@/contexts/ConsecutiveDaysContext';
+import { PullToRefreshProvider } from '@/contexts/PullToRefreshContext';
 import { AbstractIntlMessages } from 'next-intl';
 import PWAInstallPrompt from '@/components/PWAInstallPrompt';
 import OfflineIndicator from '@/components/OfflineIndicator';
 import AppInitializer from '@/components/AppInitializer';
+import PullToRefreshWrapper from '@/components/PullToRefreshWrapper';
 
 export async function generateMetadata({
   params: { locale },
@@ -120,29 +122,22 @@ export default async function RootLayout({
             <ConsecutiveDaysProvider>
               <AppInitializer />
               <NextIntlClientProvider messages={messages}>
-                <Container
-                  maxWidth='xs'
-                  disableGutters
-                  sx={{
-                    minHeight: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    border: { sm: '1px solid' },
-                    borderColor: 'secondary.main',
-                  }}
-                >
-                  <Navbar />
-                  <Box
+                <PullToRefreshProvider>
+                  <Container
+                    maxWidth='xs'
+                    disableGutters
                     sx={{
-                      flex: 1,
+                      minHeight: '100%',
                       display: 'flex',
                       flexDirection: 'column',
-                      '& > *': { p: 2, py: 3 },
+                      border: { sm: '1px solid' },
+                      borderColor: 'secondary.main',
                     }}
                   >
-                    {children}
-                  </Box>
-                </Container>
+                    <Navbar />
+                    <PullToRefreshWrapper>{children}</PullToRefreshWrapper>
+                  </Container>
+                </PullToRefreshProvider>
                 <PWAInstallPrompt />
                 <OfflineIndicator />
               </NextIntlClientProvider>

@@ -95,7 +95,7 @@ export default function AppInitializer() {
 
     checkAllSoundsLoaded();
 
-    // TODO: To remove or disable when AI routine generation is implemented
+    // TODO: See if it's better to remove it or no
     // Initialize default routines if none exist
     const initializeDefaultRoutines = async () => {
       try {

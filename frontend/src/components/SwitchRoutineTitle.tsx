@@ -10,6 +10,7 @@ import routineExampleEs from '@/mocks/routine-example-es.json';
 import { FC, useEffect, useState, useCallback } from 'react';
 import ConfirmModal from '@/components/ConfirmModal';
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/routing';
 import { setItem, getItem } from '@/utils/indexedDB';
 import { useParams } from 'next/navigation';
 
@@ -27,6 +28,7 @@ const SwitchRoutineTitle: FC<Props> = ({
   isEdition,
 }) => {
   const params = useParams();
+  const router = useRouter();
   const currentLocale = params.locale as string;
   const t = useTranslations('setup');
   const tc = useTranslations('common');
@@ -185,33 +187,9 @@ const SwitchRoutineTitle: FC<Props> = ({
     }
   };
 
-  const addNewRoutine = async () => {
-    if (!allRoutines) return;
-
-    const newRoutine = {
-      id: Date.now(),
-      name: t('newRoutine'),
-      breakDuration: 5,
-      preparationDuration: 5,
-      exercises: [
-        {
-          id: 1,
-          name: '',
-          duration: 30,
-        },
-      ],
-    };
-
-    const newAllRoutines = [...allRoutines, newRoutine];
-
-    try {
-      await setItem('allRoutines', JSON.stringify(newAllRoutines));
-      await setItem('routine', JSON.stringify(newRoutine));
-      setRoutine(newRoutine);
-      setIsConfirmModalOpen(false);
-    } catch (error) {
-      console.error('Failed to add new routine:', error);
-    }
+  const handleGoToNewRoutine = () => {
+    setIsConfirmModalOpen(false);
+    router.push('/new-routine');
   };
 
   return (
@@ -250,7 +228,6 @@ const SwitchRoutineTitle: FC<Props> = ({
           {getRoutineDisplayName(routine)}
         </Typography>
       )}
-      {/* // TODO: Redirect to new-routine page when AI routine generation is implemented */}
       {isLastRoutine && isEdition ? (
         <IconButton onClick={() => setIsConfirmModalOpen(true)}>
           <AddCircleIcon />
@@ -266,7 +243,7 @@ const SwitchRoutineTitle: FC<Props> = ({
       <ConfirmModal
         isOpen={isConfirmModalOpen}
         handleClose={() => setIsConfirmModalOpen(false)}
-        confirmAction={addNewRoutine}
+        confirmAction={handleGoToNewRoutine}
         color='primary'
         invertButtons
       >

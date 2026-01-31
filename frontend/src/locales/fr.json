@@ -61,13 +61,13 @@
     "routineExample": "Exemple",
     "createNewRoutineWithAI": "Créer nouvelle Routine avec IA",
     "goToPractice": "Lancer la pratique",
-    "noRoutinesMessage": "Vous n'avez pas encore de routines.",
+    "noRoutinesMessage": "Tu n'as pas encore de routines.",
     "or": "OU"
   },
   "library": {
     "library": "Bibliothèque",
     "searchPlaceholder": "Rechercher un exercice...",
-    "noExercisesFound": "Aucun exercice trouvé correspondant à votre recherche",
+    "noExercisesFound": "Aucun exercice trouvé correspondant à ta recherche",
     "addCustomExercise": "Ajouter un exercice personnalisé"
   },
   "exerciseDetails": {
@@ -83,9 +83,9 @@
     "title": "Routines"
   },
   "newRoutine": {
-    "title": "Créer une Nouvelle Routine",
-    "description": "Aidez-nous à construire une routine adaptée à votre corps",
-    "invitationText": "Parlez-nous de vos sensations, mobilité, confort physique, et des zones que vous aimeriez améliorer dans votre vie quotidienne.",
+    "title": "Nouvelle Routine",
+    "description": "Aide-nous à te construire une routine adaptée",
+    "invitationText": "Parle-nous de tes sensations, mobilité, confort physique, et des zones que tu aimerais améliorer dans ta vie quotidienne.",
     "placeholder": "ex. : hanches serrées, mobilité limitée des épaules, sensation de raideur après le travail, récupération après les entraînements...",
     "generateButton": "Générer ma routine",
     "generating": "Génération...",
@@ -96,19 +96,19 @@
     "retryButton": "Donne-moi une autre proposition",
     "startPractice": "Commencer la pratique",
     "editRoutine": "Éditer la routine",
-    "refineModalTitle": "Affiner votre routine",
+    "refineModalTitle": "Affiner ta routine",
     "refinePlaceholder": "ex: moins d'intensité sur le dos, plus d'étirements...",
     "refineButton": "Mettre à jour",
     "startOverButton": "Recommencer de zéro",
     "loadingMessages": [
-      "Conception de votre routine idéale...",
-      "À l'écoute des besoins de votre corps...",
-      "Sélection des exercices pour votre confort...",
-      "Construction de votre flux personnalisé...",
-      "Création de mouvements rien que pour vous...",
-      "Presque terminé, finalisation de votre routine...",
-      "Création de votre chemin vers la souplesse...",
-      "Adaptation des étirements à vos objectifs..."
+      "Conception de ta routine idéale...",
+      "À l'écoute des besoins de ton corps...",
+      "Sélection des exercices pour ton confort...",
+      "Construction de ton flux personnalisé...",
+      "Création de mouvements rien que pour toi...",
+      "Presque terminé, finalisation de ta routine...",
+      "Création de ton chemin vers la souplesse...",
+      "Adaptation des étirements à tes objectifs..."
     ]
   },
   "pwa": {
@@ -116,22 +116,22 @@
       "title": "Installe l'application Routines pour une meilleure expérience",
       "instructions": {
         "title": "Instructions d'installation",
-        "intro": "Cherchez les boutons dans votre navigateur, pas dans l'application.",
-        "android1": "Trouvez le bouton menu : (<b>⋮</b>)",
+        "intro": "Cherche les boutons dans ton navigateur, pas dans l'application.",
+        "android1": "Trouve le bouton menu : (<b>⋮</b>)",
         "android2": "Puis « <b>Installer l'application</b> »,",
         "android3": "ou « <b>Ajouter à l'écran d'accueil</b> ».",
-        "ios1": "Trouvez le bouton de partage :",
+        "ios1": "Trouve le bouton de partage :",
         "ios2": "Puis « <b>Ajouter à l'écran d'accueil</b> ».",
         "otherLabel": "Autres navigateurs",
-        "other": "Cherchez l'option « <b>Installer</b> » ou « <b>Ajouter à l'écran d'accueil</b> » dans le menu du navigateur.",
+        "other": "Cherche l'option « <b>Installer</b> » ou « <b>Ajouter à l'écran d'accueil</b> » dans le menu du navigateur.",
         "close": "Fermer"
       }
     },
     "offline": {
-      "message": "Vous êtes hors ligne. Certaines fonctionnalités peuvent être limitées.",
+      "message": "Tu es hors ligne. Certaines fonctionnalités peuvent être limitées.",
       "pageTitle": "Hors ligne - Routines",
       "pageMessage": "Cette page n'est pas disponible hors ligne.",
-      "pageInstruction": "Vérifiez votre connexion internet et réessayez.",
+      "pageInstruction": "Vérifie ta connexion internet et réessaie.",
       "contentUnavailable": "Contenu non disponible hors ligne"
     }
   }

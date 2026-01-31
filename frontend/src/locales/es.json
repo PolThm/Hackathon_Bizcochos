@@ -83,8 +83,8 @@
     "title": "Routines"
   },
   "newRoutine": {
-    "title": "Crear Nueva Rutina",
-    "description": "Ayúdanos a construir una rutina adaptada a tu cuerpo",
+    "title": "Nueva Rutina",
+    "description": "Ayúdanos a crearte una rutina adaptada",
     "invitationText": "Cuéntanos sobre tus sensaciones, movilidad, comodidad física, y las áreas que te gustaría mejorar en tu vida diaria.",
     "placeholder": "ej. caderas apretadas, movilidad limitada de hombros, sensación de rigidez después del trabajo, recuperación después de entrenamientos...",
     "generateButton": "Generar mi rutina",

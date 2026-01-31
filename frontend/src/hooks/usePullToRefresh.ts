@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback, RefObject } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
-/** Height in px from the top of the viewport: pull-to-refresh only starts if touch begins in this zone. */
+/** Height in px from the top of the viewport: pull-to-refresh only starts if touch begins in this zone (includes navbar). */
 const TOP_ZONE_HEIGHT_PX = 120;
 
 interface UsePullToRefreshOptions {
@@ -10,7 +10,6 @@ interface UsePullToRefreshOptions {
   enabled?: boolean;
   threshold?: number;
   resistance?: number;
-  elementRef: RefObject<HTMLElement | null>;
 }
 
 interface PullToRefreshState {
@@ -24,7 +23,6 @@ export function usePullToRefresh({
   enabled = true,
   threshold = 80,
   resistance = 2.5,
-  elementRef,
 }: UsePullToRefreshOptions) {
   const [state, setState] = useState<PullToRefreshState>({
     isPulling: false,
@@ -63,12 +61,11 @@ export function usePullToRefresh({
 
   useEffect(() => {
     if (!enabled) return;
+    if (typeof document === 'undefined') return;
 
-    const element = elementRef?.current;
-    if (!element) return;
+    const target = document.body;
 
     const handleTouchStart = (e: TouchEvent) => {
-      if (element.scrollTop > 0) return;
       if (e.touches.length !== 1) return;
 
       const touchY = e.touches[0].clientY;
@@ -80,11 +77,6 @@ export function usePullToRefresh({
 
     const handleTouchMove = (e: TouchEvent) => {
       if (!isDragging.current) return;
-      if (element.scrollTop > 0) {
-        isDragging.current = false;
-        setState((prev) => ({ ...prev, isPulling: false, pullDistance: 0 }));
-        return;
-      }
 
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - startY.current;
@@ -118,16 +110,16 @@ export function usePullToRefresh({
       }
     };
 
-    element.addEventListener('touchstart', handleTouchStart, { passive: true });
-    element.addEventListener('touchmove', handleTouchMove, { passive: false });
-    element.addEventListener('touchend', handleTouchEnd);
+    target.addEventListener('touchstart', handleTouchStart, { passive: true });
+    target.addEventListener('touchmove', handleTouchMove, { passive: false });
+    target.addEventListener('touchend', handleTouchEnd);
 
     return () => {
-      element.removeEventListener('touchstart', handleTouchStart);
-      element.removeEventListener('touchmove', handleTouchMove);
-      element.removeEventListener('touchend', handleTouchEnd);
+      target.removeEventListener('touchstart', handleTouchStart);
+      target.removeEventListener('touchmove', handleTouchMove);
+      target.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [enabled, threshold, resistance, handleRefresh, elementRef]);
+  }, [enabled, threshold, resistance, handleRefresh]);
 
   return state;
 }

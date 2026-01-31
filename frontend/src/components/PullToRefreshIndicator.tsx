@@ -1,5 +1,6 @@
 'use client';
 
+import { createPortal } from 'react-dom';
 import { Box, CircularProgress } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
@@ -22,14 +23,14 @@ export function PullToRefreshIndicator({
 
   if (!isVisible && pullDistance === 0) return null;
 
-  return (
+  const indicator = (
     <Box
       sx={{
-        position: 'absolute',
+        position: 'fixed',
         left: 0,
         right: 0,
         top: 16,
-        zIndex: 50,
+        zIndex: 9999,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -113,4 +114,9 @@ export function PullToRefreshIndicator({
       </Box>
     </Box>
   );
+
+  if (typeof document !== 'undefined') {
+    return createPortal(indicator, document.body);
+  }
+  return indicator;
 }

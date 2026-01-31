@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
 import { Box } from '@mui/material';
 import { PullToRefreshIndicator } from '@/components/PullToRefreshIndicator';
 import { usePullToRefreshContext } from '@/contexts/PullToRefreshContext';
@@ -15,7 +14,6 @@ interface PullToRefreshWrapperProps {
 export default function PullToRefreshWrapper({
   children,
 }: PullToRefreshWrapperProps) {
-  const mainRef = useRef<HTMLDivElement | null>(null);
   const { refreshHandler } = usePullToRefreshContext();
 
   const { isPulling, isRefreshing, pullDistance } = usePullToRefresh({
@@ -28,12 +26,10 @@ export default function PullToRefreshWrapper({
     },
     enabled: true,
     threshold: THRESHOLD,
-    elementRef: mainRef,
   });
 
   return (
     <Box
-      ref={mainRef}
       sx={{
         flex: 1,
         display: 'flex',

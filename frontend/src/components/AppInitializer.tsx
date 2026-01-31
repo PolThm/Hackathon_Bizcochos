@@ -2,21 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Howl } from 'howler';
-import { useParams } from 'next/navigation';
 import { getItem, setItem } from '@/utils/indexedDB';
-import { usePathname, useRouter } from '@/i18n/routing';
 import { routing } from '@/i18n/routing';
 import routineExampleEn from '@/mocks/routine-example-en.json';
 import routineExampleFr from '@/mocks/routine-example-fr.json';
 import routineExampleEs from '@/mocks/routine-example-es.json';
 
+const PREFERRED_LOCALE_COOKIE = 'preferred-locale';
+
 export default function AppInitializer() {
   const [isInitialized, setIsInitialized] = useState(false);
-  const localeRedirectDone = useRef(false);
-  const params = useParams();
-  const currentLocale = params.locale as string | undefined;
-  const pathname = usePathname();
-  const router = useRouter();
   const soundRefs = useRef({
     beepLong: null as Howl | null,
     beepShort: null as Howl | null,
@@ -25,22 +20,14 @@ export default function AppInitializer() {
     timerLoop: null as Howl | null,
   });
 
-  // Redirect to saved locale on app load (PWA reopen) so language preference persists
+  // Sync saved locale from IndexedDB to cookie so middleware can use it on next open (no flicker)
   useEffect(() => {
-    if (localeRedirectDone.current || !currentLocale) return;
-    const applySavedLocale = async () => {
-      try {
-        const savedLanguage = await getItem('language');
-        if (!savedLanguage || !routing.locales.includes(savedLanguage)) return;
-        if (currentLocale === savedLanguage) return;
-        localeRedirectDone.current = true;
-        router.replace(pathname, { locale: savedLanguage });
-      } catch {
-        // Ignore storage errors (e.g. private mode)
+    getItem('language').then((saved) => {
+      if (saved && routing.locales.includes(saved)) {
+        document.cookie = `${PREFERRED_LOCALE_COOKIE}=${saved}; path=/; max-age=31536000`;
       }
-    };
-    applySavedLocale();
-  }, [currentLocale, pathname, router]);
+    });
+  }, []);
 
   useEffect(() => {
     // Register service worker

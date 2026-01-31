@@ -88,6 +88,8 @@ export default function ParametersPage() {
     setLanguage(newLanguage);
     try {
       await setItem('language', newLanguage);
+      // Cookie used by middleware so next app open uses this locale (no flicker)
+      document.cookie = `preferred-locale=${newLanguage}; path=/; max-age=31536000`;
     } catch (error) {
       console.error('Failed to save language:', error);
     }

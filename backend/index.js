@@ -12,8 +12,8 @@ await fastify.register(cors, {
 });
 
 fastify.post("/api/generateRoutine", async (request) => {
-  const { prompt } = request.body;
-  const result = await generateRoutineFromPrompt(prompt);
+  const { prompt, locale } = request.body;
+  const result = await generateRoutineFromPrompt(prompt, locale);
   return result;
 });
 

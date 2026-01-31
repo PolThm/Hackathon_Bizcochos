@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useParams } from 'next/navigation';
 import {
   Box,
   Typography,
@@ -10,31 +11,24 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useTranslations } from 'next-intl';
-import allExercises from '@/mocks/all-exercises-en.json';
+import { getExercisesByLocale, LibraryExercise } from '@/utils/exercises';
 import LibraryExercisePreview from '@/components/LibraryExercisePreview';
-
-interface Exercise {
-  id: string;
-  name: string;
-  image: string;
-  instructions: string[];
-  tips: string[];
-  modifications: string[];
-  benefits: string[];
-}
 
 export default function LibraryPage() {
   const t = useTranslations('library');
+  const params = useParams();
+  const locale = (params?.locale as string) ?? 'en';
+  const allExercises = getExercisesByLocale(locale);
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredExercises = useMemo(() => {
     if (!searchQuery.trim()) {
-      return allExercises as Exercise[];
+      return allExercises;
     }
 
     const query = searchQuery.toLowerCase().trim();
-    return (allExercises as Exercise[]).filter(
-      (exercise) =>
+    return allExercises.filter(
+      (exercise: LibraryExercise) =>
         exercise.name.toLowerCase().includes(query) ||
         exercise.benefits.some((benefit) =>
           benefit.toLowerCase().includes(query),
@@ -43,7 +37,7 @@ export default function LibraryPage() {
           instruction.toLowerCase().includes(query),
         ),
     );
-  }, [searchQuery]);
+  }, [searchQuery, allExercises]);
 
   return (
     <Box

@@ -30,7 +30,7 @@ import { useWakeLock } from 'react-screen-wake-lock';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import allExercises from '@/mocks/all-exercises-en.json';
+import { getExercisesByLocale } from '@/utils/exercises';
 
 import { useConsecutiveDays } from '@/contexts/ConsecutiveDaysContext';
 import SwitchRoutineTitle from '@/components/SwitchRoutineTitle';
@@ -45,6 +45,7 @@ export default function Practice() {
   const { incrementConsecutiveDays } = useConsecutiveDays();
   const params = useParams();
   const currentLocale = params.locale as string;
+  const allExercises = getExercisesByLocale(currentLocale);
   const theme = useTheme();
   const [allRoutines] = useObjectStorage<Routine[]>('allRoutines', []);
   const hasNoRoutines = allRoutines.length === 0;
@@ -114,27 +115,19 @@ export default function Practice() {
   } | null>(null);
 
   // Helper function to check if an exercise is from the library
-  const isExerciseFromLibrary = useCallback((exercise: Exercise): boolean => {
-    if (!exercise.exerciseId) return false;
-    return (allExercises as Array<{ id: string }>).some(
-      (ex) => ex.id === exercise.exerciseId,
-    );
-  }, []);
+  const isExerciseFromLibrary = useCallback(
+    (exercise: Exercise): boolean => {
+      if (!exercise.exerciseId) return false;
+      return allExercises.some((ex) => ex.id === exercise.exerciseId);
+    },
+    [allExercises],
+  );
 
   // Helper function to get library exercise details
-  const getLibraryExerciseDetails = useCallback((exerciseId: string) => {
-    return (
-      allExercises as Array<{
-        id: string;
-        name: string;
-        image: string;
-        instructions: string[];
-        tips: string[];
-        modifications: string[];
-        benefits: string[];
-      }>
-    ).find((ex) => ex.id === exerciseId);
-  }, []);
+  const getLibraryExerciseDetails = useCallback(
+    (exerciseId: string) => allExercises.find((ex) => ex.id === exerciseId),
+    [allExercises],
+  );
 
   // Function to open exercise details modal
   const handleOpenExerciseDetails = useCallback(
@@ -627,12 +620,9 @@ export default function Practice() {
     const currentExercise = activeExercises[exerciseIndex];
     if (!currentExercise.exerciseId) return null;
 
-    const libraryExercise = (
-      allExercises as Array<{
-        id: string;
-        image: string;
-      }>
-    ).find((ex) => ex.id === currentExercise.exerciseId);
+    const libraryExercise = allExercises.find(
+      (ex) => ex.id === currentExercise.exerciseId,
+    );
 
     return libraryExercise?.image || null;
   };

@@ -14,24 +14,15 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslations } from 'next-intl';
-import allExercises from '@/mocks/all-exercises-en.json';
+import { getExercisesByLocale, LibraryExercise } from '@/utils/exercises';
 import LibraryExercisePreview from '@/components/LibraryExercisePreview';
-
-interface LibraryExercise {
-  id: string;
-  name: string;
-  image: string;
-  instructions: string[];
-  tips: string[];
-  modifications: string[];
-  benefits: string[];
-}
 
 interface ExerciseSelectionModalProps {
   open: boolean;
   onClose: () => void;
   onSelectExercise: (exercise: LibraryExercise) => void;
   onAddCustomExercise?: (name: string) => void;
+  locale?: string;
 }
 
 export default function ExerciseSelectionModal({
@@ -39,17 +30,19 @@ export default function ExerciseSelectionModal({
   onClose,
   onSelectExercise,
   onAddCustomExercise,
+  locale = 'en',
 }: ExerciseSelectionModalProps) {
   const t = useTranslations('library');
   const [searchQuery, setSearchQuery] = useState('');
+  const allExercises = getExercisesByLocale(locale);
 
   const filteredExercises = useMemo(() => {
     if (!searchQuery.trim()) {
-      return allExercises as LibraryExercise[];
+      return allExercises;
     }
 
     const query = searchQuery.toLowerCase().trim();
-    return (allExercises as LibraryExercise[]).filter(
+    return allExercises.filter(
       (exercise) =>
         exercise.name.toLowerCase().includes(query) ||
         exercise.benefits.some((benefit) =>
@@ -59,7 +52,7 @@ export default function ExerciseSelectionModal({
           instruction.toLowerCase().includes(query),
         ),
     );
-  }, [searchQuery]);
+  }, [searchQuery, allExercises]);
 
   const handleExerciseClick = (exercise: LibraryExercise) => {
     onSelectExercise(exercise);

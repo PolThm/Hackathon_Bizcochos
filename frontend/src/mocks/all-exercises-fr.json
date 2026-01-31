@@ -1,0 +1,3904 @@
+[
+    {
+        "id": "d70415d950a2",
+        "name": "Poupée de chiffon",
+        "image": "/images/exercises/image_00056-ef377ae2cf4fd2b2bd5d4d55fa6e28fa.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, genoux légèrement fléchis.",
+            "Inspirez et étendez les bras au-dessus de la tête, en allongeant la colonne vertébrale.",
+            "Expirez et penchez-vous lentement vers l'avant à partir des hanches, laissant le haut du corps pendre.",
+            "Attrapez vos coudes opposés et laissez votre tête et vos bras pendre lourdement."
+        ],
+        "tips": [
+            "Répartissez votre poids uniformément entre les talons et la plante des pieds.",
+            "Concentrez-vous sur l'allongement de la colonne plutôt que d'essayer de toucher le sol."
+        ],
+        "modifications": [
+            "Pliez davantage les genoux pour éviter de solliciter le dos.",
+            "Utilisez un bloc ou une chaise pour reposer vos coudes si atteindre le sol est difficile."
+        ],
+        "benefits": [
+            "Mollets, Épaules, Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "7e6077a58ec2",
+        "name": "Chien tête en haut",
+        "image": "/images/exercises/image_00003-301c70a503de8d49452a3acbfce79c01.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, jambes tendues, mains sous les épaules.",
+            "Pressez les paumes dans le sol, tendez les bras pour soulever le haut du corps et les jambes du sol.",
+            "Soulevez la poitrine, relâchez les épaules et regardez légèrement vers le haut."
+        ],
+        "tips": [
+            "Seuls le dessus des pieds et vos paumes doivent toucher le sol.",
+            "Gardez les bras tendus mais évitez de verrouiller les coudes."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les cuisses au sol."
+        ],
+        "benefits": [
+            "Psoas, Colonne vertébrale, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "f0e3ea656db8",
+        "name": "Posture de l'enfant",
+        "image": "/images/exercises/image_00014-a1c5d8f2b298b4517ff22511b2826269.png",
+        "instructions": [
+            "Commencez à quatre pattes, en position de table.",
+            "Écartez les genoux et rapprochez les gros orteils pour qu'ils se touchent.",
+            "Asseyez-vous sur vos talons, puis étendez les mains vers l'avant et abaissez la poitrine vers le sol.",
+            "Relâchez les hanches et reposez le front sur le sol."
+        ],
+        "tips": [
+            "Avancez le bout des doigts pour augmenter l'étirement.",
+            "Laissez votre poitrine s'affaisser vers le sol."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, n'écartez pas autant les genoux.",
+            "Si votre front n'atteint pas le sol, reposez-le sur un bloc ou une couverture pliée."
+        ],
+        "benefits": [
+            "Pieds, Tibias, Épaules, Hanches, Lombaires, Chevilles"
+        ]
+    },
+    {
+        "id": "0334bf01a6dd",
+        "name": "Genoux à la poitrine",
+        "image": "/images/exercises/image_00019-dd281b9bd56c8766e29fd9a8035bc02a.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras le long du corps.",
+            "Pliez les genoux et ramenez-les vers la poitrine.",
+            "Entourez vos tibias avec vos bras et tirez-les doucement plus près de votre poitrine."
+        ],
+        "tips": [
+            "Relâchez la tête et le cou sur le sol.",
+            "Gardez le bas du dos pressé contre le sol."
+        ],
+        "modifications": [
+            "Si vous ne pouvez pas atteindre vos tibias, enroulez vos bras derrière vos cuisses."
+        ],
+        "benefits": [
+            "Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "db402a0655db",
+        "name": "Bébé heureux",
+        "image": "/images/exercises/image_00050-356fb944e7492a8828f93ffd32d7adc1.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Soulevez les pieds du sol pour amener les genoux vers les aisselles.",
+            "Saisissez les bords extérieurs de vos pieds avec vos mains et tirez doucement les genoux vers le sol."
+        ],
+        "tips": [
+            "Gardez le bas du dos pressé contre le sol.",
+            "Relâchez les épaules et le cou."
+        ],
+        "modifications": [
+            "Si vous ne pouvez pas atteindre vos pieds, tenez-vous aux chevilles ou aux mollets à la place."
+        ],
+        "benefits": [
+            "Aine, Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "8f2083bb6cf0",
+        "name": "Papillon allongé",
+        "image": "/images/exercises/image_00042-5bb7eb8c7f348234048bbdbd5e29297c.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Rapprochez les plantes de pieds et laissez les genoux tomber sur les côtés.",
+            "Placez les bras le long du corps, paumes tournées vers le haut."
+        ],
+        "tips": [
+            "Laissez la gravité ouvrir doucement les hanches sans forcer."
+        ],
+        "modifications": [
+            "Placez des coussins ou des blocs sous les cuisses externes pour un soutien."
+        ],
+        "benefits": [
+            "Aine, Colonne vertébrale, Hanches"
+        ]
+    },
+    {
+        "id": "4ddbeefbc1a9",
+        "name": "Torsion vertébrale",
+        "image": "/images/exercises/image_00015-27422cdda838adeb1392e2d56079de3a.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras le long du corps.",
+            "Pliez un genou et placez le pied à plat sur le sol.",
+            "Abaissez doucement le genou plié de l'autre côté du corps, permettant au torse et aux hanches de pivoter.",
+            "Placez la main opposée à l'extérieur du genou plié et étendez l'autre bras sur le côté."
+        ],
+        "tips": [
+            "Gardez les épaules à plat sur le sol."
+        ],
+        "modifications": [
+            "Si la torsion est trop intense, placez un coussin ou un bloc sous le genou plié pour un soutien."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Bandes ilio-tibiales, Haut du dos, Obliques, Poitrine, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "e9bf3f02c64c",
+        "name": "Étirement des quadriceps",
+        "image": "/images/exercises/image_00016-6524520bf715f734f439d732496b097c.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Pliez un genou et ramenez votre talon vers vos fesses.",
+            "Attrapez votre cheville avec votre main et tirez doucement le pied vers l'arrière pour qu'il soit directement sous la fesse.",
+            "Penchez-vous lentement en arrière pour reposer sur les coudes."
+        ],
+        "tips": [
+            "Gardez les hanches, les genoux et les chevilles alignés.",
+            "Assurez-vous que votre pied reste sous la fesse et ne parte pas sur le côté."
+        ],
+        "modifications": [
+            "Si atteindre la cheville est difficile, utilisez une sangle ou une serviette enroulée autour du pied.",
+            "Si vous ressentez une gêne au genou, essayez de faire l'exercice allongé sur le côté."
+        ],
+        "benefits": [
+            "Genoux, Tibias, Hanches, Quadriceps, Lombaires, Chevilles"
+        ]
+    },
+    {
+        "id": "32168ae5b509",
+        "name": "Jambes contre le mur",
+        "image": "/images/exercises/image_00020-1ffae8024ac92bd46baec1c03157caf4.png",
+        "instructions": [
+            "Commencez assis sur le sol, le côté de la hanche touchant le mur.",
+            "Allongez-vous sur le dos et balancez les jambes vers le haut contre le mur d'un seul mouvement.",
+            "Glissez les hanches aussi près du mur que confortable et étendez les jambes droit vers le haut le long du mur.",
+            "Reposez les bras le long du corps, paumes vers le haut."
+        ],
+        "tips": [
+            "Gardez les jambes relativement détendues et évitez de verrouiller les genoux."
+        ],
+        "modifications": [
+            "Si vos ischio-jambiers sont tendus, éloignez légèrement les hanches du mur.",
+            "Placez un coussin ou une couverture pliée sous les hanches pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "369d1020c63e",
+        "name": "Salut vers le haut",
+        "image": "/images/exercises/image_00000-89de3e43a7252c332f0d0df0efe89bd3.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Balayez lentement les bras sur les côtés et vers le haut au-dessus de la tête.",
+            "Gardez les mains écartées de la largeur des épaules et tendez-les vers le plafond.",
+            "Relâchez les épaules et regardez légèrement vers le haut."
+        ],
+        "tips": [
+            "Ancrez fermement les pieds au sol et répartissez le poids uniformément.",
+            "Engagez les muscles du tronc pour éviter de cambrer le bas du dos."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, placez les mains derrière la tête ou sur les hanches."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Haut du dos, Obliques, Épaules, Poitrine, Dorsaux, Abdomen"
+        ]
+    },
+    {
+        "id": "f37b50d96b70",
+        "name": "Ouverture de la poitrine",
+        "image": "/images/exercises/image_00036-24322f5ef4c83686782745b959a6d5df.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin.",
+            "Entrelacez les mains derrière la tête et élargissez les bras pour amener les coudes vers l'arrière.",
+            "Serrez doucement les omoplates et ouvrez la poitrine."
+        ],
+        "tips": [
+            "Abaissez les épaules et relâchez le cou.",
+            "Gardez le dos et la colonne vertébrale droits."
+        ],
+        "modifications": [
+            "Si entrelacer les mains derrière la tête est difficile, utilisez une sangle ou une serviette."
+        ],
+        "benefits": [
+            "Épaules, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "0fed7a6992c5",
+        "name": "Toucher des orteils",
+        "image": "/images/exercises/image_00001-c64f64fccf5a063895af2e58fb82ae3e.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "En gardant le dos droit, pivotez au niveau des hanches pour vous pencher vers l'avant, en abaissant le haut du corps vers les jambes.",
+            "Relâchez la tête, le cou et les bras et essayez de placer les paumes sur le sol."
+        ],
+        "tips": [
+            "Concentrez-vous sur l'allongement de la colonne en vous pliant vers l'avant.",
+            "Gardez les jambes tendues mais pas verrouillées."
+        ],
+        "modifications": [
+            "Si vous ne pouvez pas atteindre le sol, placez les mains sur vos tibias ou vos cuisses."
+        ],
+        "benefits": [
+            "Mollets, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "754ef7ccdf4d",
+        "name": "Étirement des triceps au-dessus de la tête",
+        "image": "/images/exercises/image_00040-c19c58a7a338542649f881d9c8ef7849.png",
+        "instructions": [
+            "Commencez debout, dos droit, bras reposant le long du corps.",
+            "Levez un bras au-dessus de la tête et pliez le coude, amenant la main vers l'omoplate opposée.",
+            "Utilisez l'autre main pour presser doucement le coude vers le bas vers le milieu du dos."
+        ],
+        "tips": [],
+        "modifications": [],
+        "benefits": [
+            "Triceps, Haut du dos, Obliques, Épaules, Poitrine, Lombaires, Dorsaux"
+        ]
+    },
+    {
+        "id": "2925907fccba",
+        "name": "Pliage avant",
+        "image": "/images/exercises/image_00053-02591bd1edcc65d6988c8e8f63ac5cc0.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains entrelacées derrière le dos.",
+            "Penchez-vous lentement vers l'avant à partir des hanches, laissant le haut du corps pendre vers le sol.",
+            "Étendez les bras et laissez les mains tomber vers l'avant au-dessus de la tête."
+        ],
+        "tips": [
+            "Laissez la tête et le cou se détendre complètement.",
+            "Gardez les jambes tendues mais pas verrouillées."
+        ],
+        "modifications": [
+            "Si entrelacer les doigts est difficile, tenez une sangle ou une serviette entre vos mains."
+        ],
+        "benefits": [
+            "Mollets, Haut du dos, Épaules, Hanches, Ischio-jambiers, Poitrine, Fessiers"
+        ]
+    },
+    {
+        "id": "0e0cb7a25efc",
+        "name": "Câlin à un bras",
+        "image": "/images/exercises/image_00038-990851a373536c46f0a5810798a94223.png",
+        "instructions": [
+            "Commencez debout, dos droit, bras le long du corps.",
+            "Étendez un bras devant le corps, en l'amenant vers l'épaule opposée.",
+            "Accrochez l'autre bras autour du bras étendu pour le tirer plus près de la poitrine."
+        ],
+        "tips": [
+            "Maintenez une posture droite et évitez de vous pencher d'un côté.",
+            "Gardez le bras étendu détendu."
+        ],
+        "modifications": [
+            "Pour un étirement plus doux, abaissez le bras étendu vers l'abdomen et tirez-le avec l'autre main."
+        ],
+        "benefits": [
+            "Triceps, Épaules, Dorsaux"
+        ]
+    },
+    {
+        "id": "abbc0b8df731",
+        "name": "Pliage jambes écartées",
+        "image": "/images/exercises/image_00026-e28397c45d2e360a9678a7fb34e6b179.png",
+        "instructions": [
+            "Commencez debout, pieds larges, orteils pointés vers l'avant.",
+            "En gardant le dos droit, pivotez au niveau des hanches pour vous pencher vers l'avant, en abaissant le haut du corps vers les jambes.",
+            "Relâchez la tête, le cou et les bras et essayez de placer les paumes sur le sol."
+        ],
+        "tips": [
+            "Concentrez-vous sur l'allongement de la colonne en vous pliant vers l'avant.",
+            "Gardez les jambes tendues mais pas verrouillées.",
+            "Pour approfondir l'étirement, attrapez vos chevilles et tirez la tête plus près du sol."
+        ],
+        "modifications": [
+            "Si vous ne pouvez pas atteindre le sol, placez les mains sur vos tibias ou sur des blocs."
+        ],
+        "benefits": [
+            "Aine, Mollets, Hanches, Ischio-jambiers, Lombaires"
+        ]
+    },
+    {
+        "id": "2e0d37224061",
+        "name": "Fente latérale",
+        "image": "/images/exercises/image_00023-8ac751e135290072d672e9774d48d722.png",
+        "instructions": [
+            "Commencez debout, pieds largement écartés.",
+            "Déplacez votre poids sur un côté, en pliant le genou et en gardant l'autre jambe tendue.",
+            "Placez les mains sur le sol et abaissez les hanches jusqu'à sentir un étirement à l'intérieur de la cuisse.",
+            "Tournez le pied de la jambe tendue de sorte que le talon soit au sol et les orteils pointés vers l'extérieur."
+        ],
+        "tips": [
+            "Soulevez la poitrine et gardez le dos droit."
+        ],
+        "modifications": [
+            "Si l'étirement est trop intense, n'abaissez pas autant les hanches.",
+            "Utilisez une chaise ou un mur pour l'équilibre si nécessaire."
+        ],
+        "benefits": [
+            "Aine, Mollets, Hanches, Ischio-jambiers"
+        ]
+    },
+    {
+        "id": "06936e42e685",
+        "name": "Étirement en squat",
+        "image": "/images/exercises/image_00068-42a4e459d0d8ba5903b9d5cade6b15e4.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur des épaules, orteils légèrement tournés vers l'extérieur.",
+            "Abaissez les hanches en position de squat, en gardant les talons au sol.",
+            "Placez les coudes à l'intérieur des genoux et pressez les paumes l'une contre l'autre."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit.",
+            "Poussez doucement les genoux vers l'extérieur avec les coudes."
+        ],
+        "modifications": [
+            "Si les talons se soulèvent, placez une serviette pliée dessous pour un soutien.",
+            "Tenez-vous à une chaise ou à un mur pour l'équilibre si nécessaire."
+        ],
+        "benefits": [
+            "Genoux, Aine, Mollets, Hanches, Ischio-jambiers, Quadriceps, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "a06ad46d3995",
+        "name": "Fente",
+        "image": "/images/exercises/image_00002-60c3a51dfc4ad9568c68ce0e904d59f3.png",
+        "instructions": [
+            "Commencez à genoux, bras le long du corps.",
+            "Avancez une jambe, en plaçant le pied à plat sur le sol devant vous.",
+            "Poussez les hanches vers l'avant et levez les bras au-dessus de la tête.",
+            "Soulevez la poitrine et tendez vers le plafond."
+        ],
+        "tips": [
+            "Gardez le genou avant stable et aligné directement au-dessus de la cheville.",
+            "Engagez la jambe arrière, en appuyant le dessus du pied dans le sol.",
+            "Gardez le torse droit et évitez de cambrer le bas du dos."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les mains sur la cuisse avant.",
+            "Placez une serviette ou un coussin sous le genou arrière pour un soutien.",
+            "Tenez-vous à un mur ou à une chaise pour l'équilibre si nécessaire."
+        ],
+        "benefits": [
+            "Psoas, Hanches, Quadriceps, Lombaires, Abdomen"
+        ]
+    },
+    {
+        "id": "926501bf8420",
+        "name": "Fente inversée",
+        "image": "/images/exercises/image_00063-6deb3f75808a481a16888b0d9db4bfed.png",
+        "instructions": [
+            "Commencez à genoux, genoux écartés de la largeur du bassin, dessus des pieds au sol.",
+            "Étendez une jambe droit devant vous, en appuyant le talon dans le sol.",
+            "Pivotez au niveau des hanches pour abaisser le haut du corps vers le sol.",
+            "Placez les mains sur le sol devant vous pour l'équilibre."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit."
+        ],
+        "modifications": [
+            "Placez une couverture pliée sous le genou pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Mollets, Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "132a8793a0fc",
+        "name": "Étirement du quadriceps à genoux",
+        "image": "/images/exercises/image_00062-3f8e2bbdc586cd1eb4740c8fcdaa848e.png",
+        "instructions": [
+            "Commencez à genoux, genoux écartés de la largeur du bassin, dessus des pieds au sol.",
+            "Avancez un pied et ramenez le pied opposé vers les fesses.",
+            "Placez une main sur le genou avant et atteignez l'arrière avec l'autre main pour attraper la cheville.",
+            "Poussez doucement les hanches vers l'avant et tirez le talon plus près des fesses."
+        ],
+        "tips": [
+            "Maintenez une posture droite, en évitant de vous pencher vers l'avant ou l'arrière."
+        ],
+        "modifications": [
+            "Si atteindre le pied arrière est difficile, gardez le pied au sol."
+        ],
+        "benefits": [
+            "Psoas, Hanches, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "eb66365e9571",
+        "name": "Chien tête en bas",
+        "image": "/images/exercises/image_00004-737b5dd92a3b5b0375d466abd191db35.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Repliez les orteils, pressez les paumes dans le sol et tendez les bras et les jambes pour soulever les hanches vers le haut et l'arrière.",
+            "Poussez la poitrine vers les cuisses et les talons vers le sol."
+        ],
+        "tips": [
+            "Relâchez les épaules et laissez la tête pendre entre les bras.",
+            "Répartissez votre poids uniformément entre les mains et les pieds.",
+            "Gardez une légère flexion dans les genoux pour éviter l'hyperextension."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, pliez davantage les genoux ou placez les mains sur le bord d'une chaise.",
+            "Pour réduire la pression sur les poignets, placez les avant-bras au sol ou utilisez un bloc sous les mains."
+        ],
+        "benefits": [
+            "Mollets, Épaules, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "084fbcb06205",
+        "name": "Posture du diamant",
+        "image": "/images/exercises/image_00057-141722fa8344a8c99f6721016153b3ec.png",
+        "instructions": [
+            "Commencez à genoux, genoux serrés, dessus des pieds au sol.",
+            "Asseyez-vous sur les talons avec les gros orteils se touchant et les talons écartés.",
+            "Placez les mains sur les cuisses, paumes vers le bas.",
+            "Asseyez-vous droit, dos droit, épaules relâchées."
+        ],
+        "tips": [
+            "Engagez le tronc pour soutenir le bas du dos."
+        ],
+        "modifications": [
+            "Si s'asseoir sur les talons est inconfortable, placez un coussin ou une couverture pliée entre les talons et les hanches.",
+            "Placez une couverture pliée sous les genoux si vous ressentez une gêne."
+        ],
+        "benefits": [
+            "Genoux, Pieds, Tibias, Quadriceps, Chevilles"
+        ]
+    },
+    {
+        "id": "26f95e129524",
+        "name": "Posture de la selle",
+        "image": "/images/exercises/image_00076-9972f56044cd60fbe7fc1ab3077752cf.png",
+        "instructions": [
+            "Commencez à genoux, genoux écartés de la largeur du bassin.",
+            "Écartez les genoux et les pieds et asseyez-vous sur le sol entre eux.",
+            "Penchez-vous lentement en arrière sur les avant-bras, puis continuez à abaisser le haut du corps jusqu'à ce que le dos soit au sol.",
+            "Croisez les bras sur la tête ou reposez-les le long du corps."
+        ],
+        "tips": [],
+        "modifications": [
+            "Si l'étirement est trop intense, utilisez un coussin ou un bloc sous le dos pour un soutien.",
+            "Pour une intensité moindre, gardez le haut du corps soutenu sur les coudes."
+        ],
+        "benefits": [
+            "Genoux, Pieds, Psoas, Colonne vertébrale, Tibias, Hanches, Quadriceps, Lombaires, Chevilles, Abdomen"
+        ]
+    },
+    {
+        "id": "19df9477d833",
+        "name": "Squat sur les orteils",
+        "image": "/images/exercises/image_00071-c9f7d083634be1ccd88d779f78d69673.png",
+        "instructions": [
+            "Commencez à genoux, dessus des pieds au sol.",
+            "Repliez les orteils et asseyez-vous lentement sur les talons, en mettant du poids sur les orteils.",
+            "Asseyez-vous droit, dos droit, relâchez les épaules et placez les mains sur les cuisses."
+        ],
+        "tips": [
+            "Concentrez-vous sur la répartition uniforme du poids sur tous les orteils."
+        ],
+        "modifications": [
+            "Si l'étirement est trop intense, gardez les mains sur le sol devant vous."
+        ],
+        "benefits": [
+            "Mollets, Pieds, Chevilles, Orteils"
+        ]
+    },
+    {
+        "id": "122d7543e2cd",
+        "name": "Extension des poignets",
+        "image": "/images/exercises/image_00072-22e41429622501e69ff280d86f4a1f57.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table, paumes à plat sur le sol.",
+            "Tournez les mains de sorte que les doigts pointent vers votre corps.",
+            "Avancez les genoux vers les mains, puis penchez-vous lentement en arrière et abaissez les hanches vers les talons, tout en gardant les paumes pressées dans le sol."
+        ],
+        "tips": [
+            "Répartissez votre poids uniformément sur les deux paumes."
+        ],
+        "modifications": [
+            "Si être à genoux est inconfortable, faites cet étirement debout avec les mains sur une table."
+        ],
+        "benefits": [
+            "Avant-bras, Poignets, Doigts, Mains"
+        ]
+    },
+    {
+        "id": "2f04e58fce28",
+        "name": "Posture du lézard",
+        "image": "/images/exercises/image_00049-bdf345dd1bac163672e6993615cc7d80.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Avancez un pied, en le plaçant à l'extérieur de la main, et abaissez les hanches vers le sol.",
+            "Étendez la jambe arrière droit derrière vous, en gardant le genou et le dessus du pied au sol."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit.",
+            "Relâchez les hanches et laissez-les s'affaisser vers le sol.",
+            "Pour un étirement plus profond, soulevez le genou arrière et abaissez les avant-bras au sol."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Aine, Hanches, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "b9e6ed3f0472",
+        "name": "Posture du pigeon",
+        "image": "/images/exercises/image_00013-2162dd2031c60b45123392bd307189b5.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Amenez un genou vers l'avant et placez-le derrière le poignet du même côté, puis glissez la cheville vers la hanche opposée.",
+            "Étendez l'autre jambe droit vers l'arrière tout en gardant les hanches carrées par rapport au sol.",
+            "Abaissez doucement le torse sur la jambe avant et reposez les avant-bras sur le sol devant vous."
+        ],
+        "tips": [
+            "Gardez les hanches à niveau et évitez de vous pencher d'un côté."
+        ],
+        "modifications": [
+            "Placez une couverture pliée ou un bloc sous la hanche de la jambe pliée pour un soutien.",
+            "Si se pencher en avant est inconfortable, restez droit et soutenez-vous avec les mains au sol."
+        ],
+        "benefits": [
+            "Aine, Psoas, Bandes ilio-tibiales, Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "7dab9161999c",
+        "name": "Posture de la grenouille",
+        "image": "/images/exercises/image_00069-33af808b4c3605e28b98c60a7e5ad769.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Abaissez les avant-bras au sol et écartez les genoux sur les côtés, en gardant les hanches alignées avec les genoux et les orteils pointés vers l'extérieur.",
+            "Pressez doucement les hanches vers l'arrière en direction des talons."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le regard vers l'avant."
+        ],
+        "modifications": [
+            "Rapprochez les genoux pour réduire l'intensité."
+        ],
+        "benefits": [
+            "Aine, Hanches, Lombaires"
+        ]
+    },
+    {
+        "id": "df977a2256a1",
+        "name": "Posture du chiot",
+        "image": "/images/exercises/image_00075-063432153d85e81fab990403d0a0449d.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Avancez les mains et abaissez la poitrine vers le sol.",
+            "Gardez les hanches soulevées et empilées directement au-dessus des genoux et abaissez le front au sol."
+        ],
+        "tips": [
+            "Concentrez-vous sur la création d'une longue ligne des hanches jusqu'au bout des doigts."
+        ],
+        "modifications": [
+            "Si votre front n'atteint pas le sol, reposez-le sur un bloc de yoga ou une couverture pliée.",
+            "Pour une intensité moindre, n'avancez pas autant les mains."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Haut du dos, Épaules, Poitrine, Lombaires, Abdomen"
+        ]
+    },
+    {
+        "id": "26ab7c2ef543",
+        "name": "Sphinx tordu",
+        "image": "/images/exercises/image_00074-083408f8fd9da06a7a0ca117566922b2.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Étendez une jambe vers l'arrière et amenez l'autre jambe sous votre corps, en étendant le pied droit vers le côté opposé.",
+            "Abaissez les hanches au sol et reposez le haut du corps sur les avant-bras."
+        ],
+        "tips": [
+            "Relâchez le cou et les épaules et gardez le regard vers le bas."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Colonne vertébrale, Bandes ilio-tibiales, Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "cc83ff2baa66",
+        "name": "Torsion assise",
+        "image": "/images/exercises/image_00028-c3bd8036c30d4f67a5a5ce12f2b2e308.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Croisez une jambe sur l'autre, en plaçant le pied au sol à l'extérieur de la cuisse opposée.",
+            "Tournez le torse et placez le coude à l'extérieur du genou supérieur et l'autre main derrière vous pour un soutien.",
+            "Continuez à tourner le torse et tournez la tête pour regarder derrière vous."
+        ],
+        "tips": [
+            "Allongez la colonne vertébrale et gardez le dos droit."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Colonne vertébrale, Bandes ilio-tibiales, Haut du dos, Obliques, Hanches, Poitrine, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "ab5093db7e92",
+        "name": "Figure quatre allongée",
+        "image": "/images/exercises/image_00025-e025b695536978822c6644cfa0c439dd.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Croisez une cheville sur la cuisse opposée, juste au-dessus du genou.",
+            "Soulevez la jambe du dessous du sol, en amenant le genou vers la poitrine.",
+            "Atteignez l'avant et entourez vos mains derrière la cuisse de la jambe du dessous.",
+            "Tirez doucement la jambe vers la poitrine."
+        ],
+        "tips": [
+            "Gardez la tête et les épaules détendues sur le sol.",
+            "Gardez le bas du dos pressé contre le sol."
+        ],
+        "modifications": [
+            "Si atteindre derrière la cuisse est difficile, utilisez une sangle ou une serviette pour aider.",
+            "Pour un étirement plus doux, gardez le pied du dessous au sol."
+        ],
+        "benefits": [
+            "Bandes ilio-tibiales, Hanches, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "a6819f0bca93",
+        "name": "Étirement des ischio-jambiers allongé",
+        "image": "/images/exercises/image_00024-75bc0a33a0b7716bec561503be0cf473.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Levez une jambe droit vers le plafond en gardant l'autre pied à plat sur le sol.",
+            "Placez vos mains derrière la cuisse ou le mollet de la jambe levée et tirez doucement vers la poitrine."
+        ],
+        "tips": [
+            "Gardez les hanches et le bas du dos pressés contre le sol.",
+            "Maintenez une légère flexion dans le genou de la jambe levée pour éviter l'hyperextension."
+        ],
+        "modifications": [
+            "Utilisez une sangle de yoga ou une serviette enroulée autour du pied si vous ne pouvez pas atteindre votre jambe."
+        ],
+        "benefits": [
+            "Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "9fd8301ac24f",
+        "name": "Papillon",
+        "image": "/images/exercises/image_00018-b517896280fb76029c44067a880ef2ad.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Pliez les genoux et rapprochez les plantes de pieds, laissant les genoux tomber sur les côtés.",
+            "Tenez vos pieds avec vos mains et pressez doucement les genoux vers le sol."
+        ],
+        "tips": [
+            "Tirez les pieds vers le haut et poussez les genoux vers le bas avec les coudes pour approfondir l'étirement.",
+            "Gardez le dos droit et évitez d'arrondir la colonne vertébrale."
+        ],
+        "modifications": [
+            "Si vos genoux sont loin du sol, placez des coussins sous les cuisses pour un soutien.",
+            "Asseyez-vous sur une couverture pliée pour surélever les hanches et améliorer le confort."
+        ],
+        "benefits": [
+            "Aine, Hanches"
+        ]
+    },
+    {
+        "id": "1945a988a853",
+        "name": "Papillon penché",
+        "image": "/images/exercises/image_00051-d792f8a0aac5a903215e93a01755f5df.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Pliez les genoux et rapprochez les plantes de pieds, laissant les genoux tomber sur les côtés.",
+            "Placez les mains sur le sol devant vous et pivotez au niveau des hanches, en vous penchant en avant sur vos pieds."
+        ],
+        "tips": [
+            "Laissez votre tête se détendre vers les pieds."
+        ],
+        "modifications": [
+            "Si vos hanches sont tendues, asseyez-vous sur une couverture pliée pour surélever les hanches.",
+            "Pour un étirement plus doux, gardez le torse plus droit."
+        ],
+        "benefits": [
+            "Genoux, Aine, Hanches, Lombaires"
+        ]
+    },
+    {
+        "id": "78ca6cd5beca",
+        "name": "Pigeon double",
+        "image": "/images/exercises/image_00070-c967c5dc622a222067ee9b0091ba1b57.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Pliez un genou et amenez votre tibia parallèle à vos épaules.",
+            "Pliez l'autre genou, empilez votre tibia sur l'autre, et alignez votre cheville au-dessus du genou du dessous.",
+            "Asseyez-vous droit et reposez les mains sur le sol sur les côtés."
+        ],
+        "tips": [
+            "Gardez le dos droit et évitez d'arrondir la colonne vertébrale.",
+            "Fléchissez les deux pieds pour protéger vos genoux."
+        ],
+        "modifications": [
+            "Effectuez le mouvement avec une jambe tendue si nécessaire."
+        ],
+        "benefits": [
+            "Aine, Bandes ilio-tibiales, Hanches, Ischio-jambiers, Fessiers"
+        ]
+    },
+    {
+        "id": "dca0dc236a34",
+        "name": "Pliage assis",
+        "image": "/images/exercises/image_00017-f905ab643987fc61003edf4df2e11d3d.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Étendez les bras au-dessus de la tête pour allonger la colonne vertébrale.",
+            "Pivotez au niveau des hanches et atteignez l'avant pour attraper vos orteils."
+        ],
+        "tips": [
+            "Gardez le dos plat et évitez d'arrondir la colonne vertébrale."
+        ],
+        "modifications": [
+            "Si atteindre les orteils est difficile, placez les mains sur vos tibias ou utilisez une sangle autour des pieds.",
+            "Gardez une légère flexion dans les genoux si vos ischio-jambiers sont tendus."
+        ],
+        "benefits": [
+            "Mollets, Colonne vertébrale, Haut du dos, Épaules, Ischio-jambiers, Lombaires"
+        ]
+    },
+    {
+        "id": "4c760d6becd5",
+        "name": "Écart latéral assis",
+        "image": "/images/exercises/image_00066-fa28909c06ea7d622f1b078c799b536f.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Ouvrez les jambes largement et placez les mains sur le sol devant vous.",
+            "Asseyez-vous droit pour allonger la colonne, puis pivotez au niveau des hanches pour atteindre l'avant avec les mains et abaisser le haut du corps vers le sol."
+        ],
+        "tips": [
+            "Gardez le dos droit et évitez d'arrondir la colonne vertébrale.",
+            "Fléchissez les pieds et gardez les orteils pointés vers le haut."
+        ],
+        "modifications": [
+            "Si atteindre l'avant est difficile, reposez les mains sur des blocs ou une chaise devant vous.",
+            "Asseyez-vous sur une couverture pliée pour surélever les hanches et améliorer le confort."
+        ],
+        "benefits": [
+            "Aine, Mollets, Colonne vertébrale, Haut du dos, Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "6d75e50c4cd7",
+        "name": "Étirement du haie",
+        "image": "/images/exercises/image_00064-d903c783d8f0860ba4b26a1a6afc78eb.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Pliez une jambe et placez la plante du pied contre la cuisse intérieure opposée.",
+            "Asseyez-vous droit et allongez la colonne, puis penchez-vous en avant à partir des hanches pour atteindre et attraper votre pied tendu."
+        ],
+        "tips": [
+            "Concentrez-vous sur le pivotement au niveau des hanches plutôt que sur l'arrondissement du dos.",
+            "Gardez la jambe tendue droite et le pied fléchi, mais faites attention à ne pas verrouiller les genoux."
+        ],
+        "modifications": [
+            "Si vous ne pouvez pas atteindre votre pied, utilisez une sangle de yoga ou une serviette enroulée autour du pied.",
+            "Pour une intensité moindre, pliez légèrement la jambe tendue."
+        ],
+        "benefits": [
+            "Aine, Mollets, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "fead539549b1",
+        "name": "Posture des épaules",
+        "image": "/images/exercises/image_00030-e32f7ec24e9afd52eea65edbdcd388b0.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras le long du corps.",
+            "Pressez les bras dans le sol pour soulever les jambes et les hanches vers le plafond.",
+            "Soutenez le bas du dos avec les mains et étendez les jambes droit vers le haut, en gardant le corps en ligne droite des épaules aux pieds."
+        ],
+        "tips": [
+            "Gardez le cou détendu et évitez de tourner la tête sur les côtés.",
+            "Engagez le tronc et les fessiers pour maintenir l'équilibre."
+        ],
+        "modifications": [
+            "Gardez les jambes pliées si les tendre est trop difficile."
+        ],
+        "benefits": [
+            "Cou, Épaules"
+        ]
+    },
+    {
+        "id": "2e2f5b37ef2f",
+        "name": "Charrue",
+        "image": "/images/exercises/image_00031-3255e405d87bc2a742fd2174cc015090.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras le long du corps.",
+            "Engagez le tronc et soulevez les jambes vers le plafond, en les amenant au-dessus de la tête.",
+            "Abaissez lentement les jambes vers le sol derrière la tête, en gardant les mains sur le bas du dos pour soutien.",
+            "Si vos pieds atteignent le sol, étendez les bras le long du sol, paumes vers le bas."
+        ],
+        "tips": [
+            "Gardez les jambes droites et les orteils pointés vers le sol.",
+            "Gardez le cou détendu et évitez de tourner la tête."
+        ],
+        "modifications": [
+            "Si vos pieds n'atteignent pas le sol, gardez les mains sur le bas du dos pour soutien et maintenez les jambes dans une position confortable.",
+            "Pliez légèrement les genoux si tendre les jambes est inconfortable."
+        ],
+        "benefits": [
+            "Mollets, Colonne vertébrale, Cou, Haut du dos, Épaules, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "4e483c6cc4a7",
+        "name": "Étirement du quadriceps debout",
+        "image": "/images/exercises/image_00021-6e755ab11944383a4a8918d2e8a24822.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin.",
+            "Pliez un genou et amenez le talon vers les fesses.",
+            "Atteignez l'arrière avec les deux mains pour tenir la cheville et tirez doucement le talon plus près des fesses.",
+            "Gardez les genoux ensemble et les hanches alignées."
+        ],
+        "tips": [
+            "Engagez le tronc pour maintenir l'équilibre.",
+            "Gardez la jambe d'appui légèrement pliée pour éviter de verrouiller le genou.",
+            "Évitez de cambrer le dos ou de vous pencher en avant."
+        ],
+        "modifications": [
+            "Utilisez un mur ou une chaise pour l'équilibre si nécessaire.",
+            "Si atteindre la cheville est difficile, utilisez une sangle ou une serviette enroulée autour du pied pour aider.",
+            "Gardez l'autre main sur la hanche ou étendez-la sur le côté pour un meilleur équilibre."
+        ],
+        "benefits": [
+            "Genoux, Pieds, Psoas, Tibias, Hanches, Quadriceps, Lombaires, Chevilles, Abdomen"
+        ]
+    },
+    {
+        "id": "83456b4a4bdf",
+        "name": "Étirement du mollet penché",
+        "image": "/images/exercises/image_00022-118f29a3f6045d74d74d7407a85cf8e8.png",
+        "instructions": [
+            "Commencez debout face à un mur, à environ une longueur de bras.",
+            "Placez les mains sur le mur à hauteur d'épaules et écartées de la largeur des épaules.",
+            "Reculez un pied, en gardant les orteils pointés vers l'avant et le talon au sol.",
+            "Pliez le genou avant tout en gardant la jambe arrière tendue et poussez contre le mur pour approfondir l'étirement."
+        ],
+        "tips": [],
+        "modifications": [
+            "Si l'étirement est trop intense, rapprochez légèrement le pied arrière du mur."
+        ],
+        "benefits": [
+            "Mollets, Pieds, Ischio-jambiers, Chevilles"
+        ]
+    },
+    {
+        "id": "98e8d35695d2",
+        "name": "Chat-Vache",
+        "image": "/images/exercises/image_00027a-2cb95174f6457d62914d64e60a0f99d4.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Alignez les poignets sous les épaules et les genoux sous les hanches.",
+            "Inspirez, laissez le ventre descendre vers le sol et cambrez le dos, et levez le menton et la poitrine pour regarder vers le plafond.",
+            "Expirez, rentrez le ventre vers la colonne et arrondissez le dos, et rentrez le menton vers la poitrine."
+        ],
+        "tips": [
+            "Déplacez-vous lentement entre les postures, en coordonnant chaque mouvement avec votre respiration."
+        ],
+        "modifications": [
+            "Si vous avez des problèmes de cou, gardez la tête dans une position neutre plutôt que de lever et rentrer le menton."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Cou, Haut du dos, Lombaires, Abdomen"
+        ]
+    },
+    {
+        "id": "7a12ab3522ba",
+        "name": "Posture de la sauterelle",
+        "image": "/images/exercises/image_00029-d5332e24d2c841901efbed4200ab17ec.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, jambes tendues, bras le long du corps.",
+            "Engagez le dos, les fessiers et le tronc pour soulever la poitrine, les bras et les jambes du sol.",
+            "Gardez les jambes droites et ensemble et pointez les orteils.",
+            "Regardez légèrement vers l'avant et gardez le cou aligné avec la colonne vertébrale."
+        ],
+        "tips": [],
+        "modifications": [
+            "Pour une intensité moindre, soulevez seulement le haut du corps ou seulement les jambes."
+        ],
+        "benefits": [
+            "Cou, Haut du dos, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "5a03300cfb5e",
+        "name": "Figure quatre assise",
+        "image": "/images/exercises/image_00032-0c66a9eee7a38f619f50067290b4eb82.png",
+        "instructions": [
+            "Commencez assis, dos droit, bras reposant sur les côtés.",
+            "Croisez une cheville sur la cuisse opposée, juste au-dessus du genou.",
+            "Asseyez-vous droit et allongez la colonne, puis penchez-vous doucement en avant à partir des hanches."
+        ],
+        "tips": [
+            "Placez vos mains sur votre jambe croisée et pressez vers le bas pour ouvrir davantage la hanche."
+        ],
+        "modifications": [
+            "Si l'étirement est trop intense, gardez le torse droit au lieu de vous pencher en avant."
+        ],
+        "benefits": [
+            "Bandes ilio-tibiales, Hanches, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "a7c9fcb88022",
+        "name": "Étirement des ischio-jambiers assis",
+        "image": "/images/exercises/image_00033-837aaf23d6f0382d2dd6ec6277e2c063.png",
+        "instructions": [
+            "Commencez assis au bord d'une chaise, dos droit, bras reposant sur les côtés.",
+            "Étendez une jambe devant vous, en gardant le talon au sol et les orteils pointés vers le haut.",
+            "Asseyez-vous droit et allongez la colonne, puis penchez-vous doucement en avant à partir des hanches."
+        ],
+        "tips": [
+            "Gardez le dos droit et évitez d'arrondir la colonne en vous penchant en avant.",
+            "Atteignez vos mains vers votre pied tendu pour approfondir l'étirement."
+        ],
+        "modifications": [
+            "Si atteindre les orteils est difficile, placez les mains sur vos tibias ou utilisez une sangle autour des pieds."
+        ],
+        "benefits": [
+            "Mollets, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "60156b63fe30",
+        "name": "Rotation du tronc",
+        "image": "/images/exercises/image_00034-fbb468e32c51d0c9bb02e2e311aecad0.png",
+        "instructions": [
+            "Commencez assis, dos droit, bras reposant sur les côtés.",
+            "Croisez une jambe sur l'autre jambe et tournez le torse pour placer la main opposée à l'extérieur du genou supérieur.",
+            "Placez l'autre main sur le dossier de la chaise et continuez à tourner le torse et tournez la tête pour regarder derrière vous."
+        ],
+        "tips": [],
+        "modifications": [
+            "Si l'étirement est trop difficile, gardez les deux pieds à plat sur le sol et évitez de croiser les jambes."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Bandes ilio-tibiales, Haut du dos, Obliques, Hanches, Poitrine, Lombaires, Fessiers, Dorsaux"
+        ]
+    },
+    {
+        "id": "6fd223d15765",
+        "name": "Étirement des avant-bras",
+        "image": "/images/exercises/image_00041-07d93aa295f83df533ebcfb7fe486e52.png",
+        "instructions": [
+            "Commencez assis, dos droit, bras reposant sur les côtés.",
+            "Étendez un bras devant vous, paume tournée vers le haut.",
+            "Utilisez l'autre main pour tirer doucement les doigts vers votre corps."
+        ],
+        "tips": [],
+        "modifications": [
+            "Gardez une légère flexion au coude si tendre complètement le bras est inconfortable."
+        ],
+        "benefits": [
+            "Avant-bras, Doigts, Mains"
+        ]
+    },
+    {
+        "id": "c43c3c782815",
+        "name": "Tractions des ischio-jambiers",
+        "image": "/images/exercises/image_00065-7be6c47bf374018908a578df567e3432.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras le long du corps.",
+            "Pliez un genou et placez une sangle ou une serviette autour de la plante du pied.",
+            "Étendez la jambe vers le plafond, en tenant les extrémités de la sangle avec les deux mains.",
+            "Tirez doucement sur la sangle, en rapprochant la jambe de votre corps."
+        ],
+        "tips": [
+            "Gardez la jambe du dessous tendue et pressée contre le sol.",
+            "Gardez la jambe étendue droite et le pied fléchi.",
+            "Gardez le dos plat sur le sol et les hanches ancrées."
+        ],
+        "modifications": [
+            "Gardez une légère flexion dans le genou si tendre la jambe est inconfortable."
+        ],
+        "benefits": [
+            "Mollets, Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "57e3ad8fe61b",
+        "name": "Chien contre le mur",
+        "image": "/images/exercises/image_00052-4c2269eb1440e640936e511776312fb5.png",
+        "instructions": [
+            "Commencez debout face à un mur, à environ une longueur de bras.",
+            "Placez les mains sur le mur à hauteur d'épaules et reculez les deux pieds.",
+            "Gardez les bras et les jambes tendus et abaissez le haut du corps vers le sol."
+        ],
+        "tips": [
+            "Relâchez le cou et laissez la tête pendre entre les bras."
+        ],
+        "modifications": [
+            "Si l'étirement est trop intense, pliez légèrement les genoux et rapprochez les pieds du mur."
+        ],
+        "benefits": [
+            "Haut du dos, Épaules, Ischio-jambiers, Poitrine, Lombaires"
+        ]
+    },
+    {
+        "id": "64700e63a029",
+        "name": "Croisement d'épaules",
+        "image": "/images/exercises/image_00054-526851d0878f402644e7aa2c04897699.png",
+        "instructions": [
+            "Commencez allongé sur le côté, jambes droites, bras inférieur étendu devant vous.",
+            "Roulez lentement sur le ventre, en gardant le bras inférieur au sol.",
+            "Atteignez l'autre bras au-dessus de la tête et placez la main sur le sol."
+        ],
+        "tips": [
+            "Gardez le bras inférieur détendu sur le sol."
+        ],
+        "modifications": [
+            "Si l'étirement est trop intense, réduisez la rotation sur le ventre."
+        ],
+        "benefits": [
+            "Triceps, Haut du dos, Épaules"
+        ]
+    },
+    {
+        "id": "436a021806ef",
+        "name": "Ouverture d'épaules",
+        "image": "/images/exercises/image_00055-ad00d872116929a13689794d4e5c1fd1.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, bras étendus sur les côtés.",
+            "Roulez lentement sur un côté, en amenant la jambe opposée par-dessus et en plaçant le pied à plat sur le sol derrière la jambe du dessous.",
+            "Gardez le bras inférieur étendu et laissez le poids de la jambe supérieure ouvrir la poitrine et l'épaule.",
+            "Utilisez l'autre main pour appuyer doucement sur le sol pour un soutien et pour approfondir l'étirement."
+        ],
+        "tips": [
+            "Déplacez-vous lentement et avec contrôle pour éviter de solliciter l'épaule."
+        ],
+        "modifications": [
+            "Si l'étirement est trop intense, réduisez la rotation de votre corps."
+        ],
+        "benefits": [
+            "Épaules, Poitrine, Biceps"
+        ]
+    },
+    {
+        "id": "a586bff517fc",
+        "name": "Roulades d'épaules",
+        "image": "/images/exercises/image_00008a-772432c62e4c6a3cb48acb7e7956eb4c.png",
+        "instructions": [
+            "Commencez assis, dos droit, épaules relâchées.",
+            "Levez les épaules vers les oreilles.",
+            "Roulez les épaules vers l'arrière et le bas, effectuant un mouvement circulaire.",
+            "Répétez le mouvement et inversez la direction à mi-parcours."
+        ],
+        "tips": [
+            "Concentrez-vous sur la création d'un mouvement fluide pour éviter de solliciter le cou.",
+            "Gardez le cou détendu et le regard vers l'avant."
+        ],
+        "modifications": [
+            "Si vous ressentez une gêne, effectuez des cercles plus petits ou levez et abaissez simplement les épaules."
+        ],
+        "benefits": [
+            "Cou, Haut du dos, Épaules"
+        ]
+    },
+    {
+        "id": "e01f80613b7c",
+        "name": "Extension au-dessus de la tête",
+        "image": "/images/exercises/image_00005-3fa57823222213be590cd6f92342f8b9.png",
+        "instructions": [
+            "Commencez assis, dos droit, bras reposant sur les côtés.",
+            "Balayez lentement les bras sur les côtés et vers le haut au-dessus de la tête, en entrelaçant les doigts avec les paumes vers le haut.",
+            "Tendez vers le plafond, en redressant les coudes et en relâchant les épaules vers le bas."
+        ],
+        "tips": [
+            "Concentrez-vous sur l'allongement de la colonne vertébrale et la création d'espace entre les vertèbres."
+        ],
+        "modifications": [
+            "Si entrelacer les doigts est inconfortable, gardez les mains écartées de la largeur des épaules.",
+            "Pour un étirement plus profond, penchez-vous doucement d'un côté puis de l'autre en tendant au-dessus de la tête."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Cou, Épaules"
+        ]
+    },
+    {
+        "id": "f1255f567f4a",
+        "name": "Pliage latéral",
+        "image": "/images/exercises/image_00006-f3b02ce7c0ad85f7818ea346e8d29c67.png",
+        "instructions": [
+            "Commencez assis, dos droit, bras reposant sur les côtés.",
+            "Levez un bras au-dessus de la tête et placez l'autre main sur la hanche.",
+            "Penchez-vous doucement sur le côté, en étendant le bras levé."
+        ],
+        "tips": [
+            "Gardez les épaules relâchées et évitez de les hausser.",
+            "Évitez de soulever le siège ou de tordre le torse."
+        ],
+        "modifications": [
+            "Si tendre au-dessus de la tête est inconfortable, placez la main sur le côté de la tête."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Obliques, Lombaires, Dorsaux, Abdomen"
+        ]
+    },
+    {
+        "id": "ea2238142fa7",
+        "name": "Bras en cactus",
+        "image": "/images/exercises/image_00007-656ddc506f3c44b547a65f782e838e86.png",
+        "instructions": [
+            "Commencez assis, dos droit, bras reposant sur les côtés.",
+            "Levez les bras à hauteur d'épaules, pliez les coudes à 90 degrés avec les paumes tournées vers l'avant.",
+            "Gardez les coudes alignés avec les épaules et les avant-bras perpendiculaires au sol.",
+            "Serrez les omoplates, ouvrant la poitrine."
+        ],
+        "tips": [
+            "Gardez les épaules relâchées et éloignées des oreilles.",
+            "Gardez le cou long et regardez droit devant."
+        ],
+        "modifications": [
+            "Si vous ressentez une gêne à l'épaule, abaissez légèrement les coudes.",
+            "Pour un soutien supplémentaire, pratiquez la posture avec le dos contre un mur."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Cou, Haut du dos, Épaules, Poitrine"
+        ]
+    },
+    {
+        "id": "30e412dcd293",
+        "name": "Flexion du cou",
+        "image": "/images/exercises/image_00009a-5d69db68997b725c97cb56595e96c1b0.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Inclinez lentement la tête en arrière, en amenant le regard vers le plafond.",
+            "À mi-parcours, changez de direction et abaissez lentement le menton vers la poitrine."
+        ],
+        "tips": [
+            "Gardez les épaules basses et détendues pendant que vous maintenez chaque position.",
+            "Déplacez-vous lentement et doucement pour éviter de solliciter le cou."
+        ],
+        "modifications": [
+            "Si vous avez des douleurs au cou, limitez l'amplitude du mouvement à un niveau confortable.",
+            "Si vous ressentez une gêne ou des vertiges, arrêtez immédiatement l'exercice."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Cou, Haut du dos, Épaules"
+        ]
+    },
+    {
+        "id": "645bd9988c9a",
+        "name": "Roulades du cou",
+        "image": "/images/exercises/image_00010-7aa678591e0751eea948eca8c6085f75.png",
+        "instructions": [
+            "Commencez assis, dos droit, épaules détendues.",
+            "Rentrez le menton vers la poitrine et roulez doucement le cou vers la droite, en amenant l'oreille droite vers l'épaule droite.",
+            "Roulez le menton vers le bas vers la poitrine puis roulez le cou vers la gauche, en amenant l'oreille gauche vers l'épaule gauche.",
+            "Répétez ce mouvement d'avant en arrière dans un mouvement continu et lent."
+        ],
+        "tips": [
+            "Déplacez-vous lentement et doucement pour éviter les tensions ou les vertiges.",
+            "Minimisez le risque de blessure en évitant les cercles complets du cou."
+        ],
+        "modifications": [
+            "Si vous avez des douleurs au cou, limitez l'amplitude du mouvement à un niveau confortable."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Cou, Haut du dos, Épaules"
+        ]
+    },
+    {
+        "id": "b27eb0cbd0ae",
+        "name": "Latéral du cou",
+        "image": "/images/exercises/image_00011-4065b72be07921523193799bcc2941bb.png",
+        "instructions": [
+            "Commencez assis, dos droit, épaules détendues.",
+            "Placez une main sur le côté de la chaise pour un soutien et inclinez la tête sur le côté pour abaisser l'oreille vers l'épaule.",
+            "Utilisez l'autre main pour appliquer une légère pression sur le côté de la tête.",
+            "Changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Gardez les épaules détendues et évitez de les hausser."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, inclinez la tête sans utiliser la main."
+        ],
+        "benefits": [
+            "Cou, Haut du dos"
+        ]
+    },
+    {
+        "id": "15daece22d0f",
+        "name": "Plongeur",
+        "image": "/images/exercises/image_00012-91ab7ebe50ff0cdb0ffc83969496af50.png",
+        "instructions": [
+            "Commencez assis, dos droit, bras reposant sur les côtés.",
+            "Étendez les bras devant vous, en rapprochant les mains pour qu'une main soit sur l'autre.",
+            "Rentrez la tête entre les bras et arrondissez le dos tout en tendant les mains vers l'avant."
+        ],
+        "tips": [
+            "Gardez le tronc engagé et les pieds à plat sur le sol."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Colonne vertébrale, Cou, Haut du dos, Épaules, Lombaires"
+        ]
+    },
+    {
+        "id": "a107fd2983e7",
+        "name": "Jumping Jacks",
+        "image": "/images/exercises/image_00043b-270fb09bf94c39e9c226a32862000068.png",
+        "instructions": [
+            "Commencez debout, pieds joints, bras le long du corps.",
+            "Sautez en écartant les pieds sur les côtés tout en levant les bras au-dessus de la tête.",
+            "Après avoir complété le mouvement, sautez rapidement pour revenir à la position de départ, en rapprochant les pieds et en abaissant les bras.",
+            "Répétez le mouvement dans un mouvement continu et fluide."
+        ],
+        "tips": [
+            "Gardez une légère flexion dans les genoux et atterrissez doucement sur la plante des pieds pour absorber l'impact de chaque saut."
+        ],
+        "modifications": [
+            "Si lever les bras est difficile, gardez les mains sur les hanches."
+        ],
+        "benefits": [
+            "Mollets, Haut du dos, Épaules, Hanches, Ischio-jambiers, Quadriceps, Lombaires, Abdomen"
+        ]
+    },
+    {
+        "id": "79a2fba0acab",
+        "name": "Squats au poids du corps",
+        "image": "/images/exercises/image_00044b-c52d5cf97244aeab1a709dd039314efe.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur des épaules, orteils légèrement tournés vers l'extérieur.",
+            "Placez les mains derrière la tête ou pliées devant la poitrine.",
+            "Abaissez les hanches vers l'arrière et vers le bas comme pour vous asseoir sur une chaise, en gardant la poitrine haute et le poids sur les talons.",
+            "Poussez à travers les talons pour vous relever jusqu'à la position de départ et répétez."
+        ],
+        "tips": [
+            "Visez à abaisser les hanches jusqu'à ce que les cuisses soient parallèles au sol.",
+            "Gardez les genoux alignés avec les orteils."
+        ],
+        "modifications": [
+            "Si s'accroupir profondément est difficile, effectuez l'exercice avec une amplitude de mouvement plus petite."
+        ],
+        "benefits": [
+            "Aine, Mollets, Hanches, Ischio-jambiers, Quadriceps, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "7a770b5b696f",
+        "name": "Fente latérale",
+        "image": "/images/exercises/image_00047a-0cd84a967ef5cd1b4111bca12e79f87a.png",
+        "instructions": [
+            "Commencez debout, pieds largement écartés, mains jointes devant vous.",
+            "Pliez un genou et abaissez les hanches de ce côté, tout en gardant l'autre jambe droite et les orteils pointés vers l'avant.",
+            "Repoussez pour revenir à la position de départ et répétez de l'autre côté."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit.",
+            "Déplacez-vous de manière fluide et avec contrôle pour maintenir l'équilibre."
+        ],
+        "modifications": [
+            "Si la fente est trop intense, n'abaissez pas autant les hanches.",
+            "Utilisez une chaise ou un mur pour l'équilibre si nécessaire."
+        ],
+        "benefits": [
+            "Aine, Hanches, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "e55cd60a38a0",
+        "name": "Cercles avec les bras",
+        "image": "/images/exercises/image_00045a-2f75c4d8cdd6ee8a95712682b95086a7.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras étendus sur les côtés.",
+            "Faites de petits cercles avec les bras, en augmentant progressivement la taille des cercles.",
+            "Inversez le mouvement à mi-parcours."
+        ],
+        "tips": [],
+        "modifications": [
+            "Pour une intensité moindre, pliez les bras au niveau des coudes et effectuez des cercles plus petits près du corps."
+        ],
+        "benefits": [
+            "Cou, Haut du dos, Épaules, Poitrine"
+        ]
+    },
+    {
+        "id": "ead847d40e86",
+        "name": "Balancés de bras",
+        "image": "/images/exercises/image_00061a-0a813b49aa2e4b59f058c36162cd7873.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras étendus sur les côtés.",
+            "Balancez les bras vers l'avant en travers de la poitrine, en croisant un bras sur l'autre.",
+            "Puis balancez les bras vers l'arrière sur les côtés, en les ouvrant largement.",
+            "Répétez le mouvement, en alternant le bras qui croise l'autre à chaque fois."
+        ],
+        "tips": [
+            "Commencez par des balancements plus lents et augmentez progressivement la vitesse au fur et à mesure que vous vous échauffez."
+        ],
+        "modifications": [
+            "Gardez les balancements de bras plus petits si vous ressentez une gêne."
+        ],
+        "benefits": [
+            "Triceps, Haut du dos, Épaules, Poitrine, Biceps"
+        ]
+    },
+    {
+        "id": "8d62d6028097",
+        "name": "Torsion du tronc",
+        "image": "/images/exercises/image_00058a-42be06860bd92b1cdbb6f395505aaf4a.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras étendus sur les côtés à hauteur d'épaules.",
+            "Engagez le tronc et tournez doucement le haut du corps d'un côté.",
+            "Tournez la tête pour regarder par-dessus l'épaule dans la direction de la torsion.",
+            "Revenez à la position de départ et répétez de l'autre côté."
+        ],
+        "tips": [
+            "Gardez les genoux légèrement pliés et les hanches face à l'avant tout au long du mouvement."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les bras pliés avec les mains sur les hanches."
+        ],
+        "benefits": [
+            "Genoux, Colonne vertébrale, Bandes ilio-tibiales, Obliques, Épaules, Hanches, Lombaires, Dorsaux, Abdomen"
+        ]
+    },
+    {
+        "id": "7d4bf76d5684",
+        "name": "Torsion toucher des orteils",
+        "image": "/images/exercises/image_00046a-80efdaf530016dcb1b8035e27d7c212d.png",
+        "instructions": [
+            "Commencez debout, pieds largement écartés, bras étendus sur les côtés.",
+            "Penchez-vous en avant, en tournant le torse pour toucher votre orteil avec la main opposée et en levant l'autre main vers le plafond.",
+            "Revenez à la position de départ et répétez le mouvement de l'autre côté."
+        ],
+        "tips": [
+            "Gardez la colonne longue et évitez d'arrondir le dos.",
+            "Engagez le tronc et gardez une légère flexion dans les genoux."
+        ],
+        "modifications": [
+            "Si atteindre le pied est difficile, touchez votre tibia ou votre genou à la place."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Haut du dos, Obliques, Épaules, Hanches, Ischio-jambiers, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "712a8ce37b94",
+        "name": "Câlins des genoux",
+        "image": "/images/exercises/image_00048a-2bf340250348d2b02366f2041d727e50.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Déplacez votre poids sur un pied et soulevez le genou opposé vers la poitrine.",
+            "Saisissez votre genou avec les deux mains et tirez-le plus près de votre poitrine.",
+            "Maintenez la position brièvement, puis abaissez la jambe et répétez de l'autre côté."
+        ],
+        "tips": [
+            "Gardez la jambe d'appui légèrement pliée pour maintenir l'équilibre.",
+            "Gardez le dos droit et la poitrine haute."
+        ],
+        "modifications": [
+            "Si l'équilibre est difficile, effectuez l'étirement près d'un mur ou d'une chaise pour un soutien.",
+            "Si lever le genou à la poitrine est trop intense, levez-le à une hauteur confortable."
+        ],
+        "benefits": [
+            "Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "1c69fec06e92",
+        "name": "Balancés de jambe",
+        "image": "/images/exercises/image_00059a-80783938e2ae8b9eb36ec0d8a7d6f97c.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les hanches.",
+            "Déplacez votre poids sur une jambe et soulevez légèrement l'autre jambe du sol.",
+            "Balancez la jambe levée d'avant en arrière dans un mouvement contrôlé et continu."
+        ],
+        "tips": [
+            "Gardez la jambe d'appui active avec une légère flexion du genou.",
+            "Gardez le haut du corps stable ; le mouvement doit venir de la hanche.",
+            "Commencez par de petits balancements et augmentez progressivement l'amplitude du mouvement."
+        ],
+        "modifications": [
+            "Placez la main sur un mur ou une chaise pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Aine, Mollets, Hanches, Ischio-jambiers, Quadriceps, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "0572fe284348",
+        "name": "Cercles avec les genoux",
+        "image": "/images/exercises/image_00060a-4df6cdac2b4a6f66ab1183d284ea20fb.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les genoux.",
+            "Pliez légèrement les genoux et faites de petits cercles avec les genoux, en les déplaçant ensemble dans un mouvement circulaire.",
+            "Inversez le mouvement à mi-parcours."
+        ],
+        "tips": [
+            "Gardez les mouvements fluides et contrôlés pour éviter de solliciter les genoux."
+        ],
+        "modifications": [
+            "Effectuez l'exercice à un rythme plus lent si nécessaire pour maintenir le contrôle."
+        ],
+        "benefits": [
+            "Genoux, Mollets, Pieds, Tibias, Chevilles"
+        ]
+    },
+    {
+        "id": "a8d43c3080c3",
+        "name": "Planche sur les mains",
+        "image": "/images/exercises/image_00081-a64b2b6583eee8c8d90d22f4f99d322b.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Reculez un pied puis l'autre, de sorte que vos jambes soient complètement tendues.",
+            "Engagez le tronc pour garder votre corps en ligne droite de la tête aux talons.",
+            "Répartissez votre poids uniformément entre les mains et les pieds et maintenez la position."
+        ],
+        "tips": [
+            "Regardez un point sur le sol juste devant vos mains pour garder le cou neutre."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, descendez sur les genoux tout en maintenant une ligne droite des genoux à la tête."
+        ],
+        "benefits": [
+            "Triceps, Haut du dos, Obliques, Épaules, Poitrine, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "31e780bd0aed",
+        "name": "Planche sur les avant-bras",
+        "image": "/images/exercises/image_00085-87236853c6bb950c859fb5f1c392e965.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Abaissez les avant-bras au sol, puis reculez avec les deux pieds de sorte que vos jambes soient complètement tendues.",
+            "Engagez le tronc pour garder votre corps en ligne droite de la tête aux talons.",
+            "Répartissez votre poids uniformément entre les avant-bras et les pieds et maintenez la position."
+        ],
+        "tips": [
+            "Alignez les coudes directement sous les épaules.",
+            "Évitez de cambrer le bas du dos ou de lever trop les hanches."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, descendez sur les genoux tout en maintenant une ligne droite des genoux à la tête."
+        ],
+        "benefits": [
+            "Triceps, Haut du dos, Obliques, Épaules, Poitrine, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "5f5242b0a365",
+        "name": "Planche latérale sur les avant-bras",
+        "image": "/images/exercises/image_00087-e702ee81d8cd3e52b5c10d88fc4ccd74.png",
+        "instructions": [
+            "Commencez allongé sur le côté, jambes tendues, pieds empilés l'un sur l'autre.",
+            "Placez le coude du dessous sous l'épaule et l'avant-bras à plat sur le sol.",
+            "Engagez le tronc et soulevez les hanches du sol, créant une ligne droite de la tête aux talons.",
+            "Reposez la main du dessus sur la hanche et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les hanches soulevées et alignées avec votre corps."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, abaissez le genou du dessous au sol pour un soutien."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Épaules, Abdomen"
+        ]
+    },
+    {
+        "id": "edad14d86e07",
+        "name": "Planche sur les mains avec levé de jambe",
+        "image": "/images/exercises/image_00082-68bcb4cb8c51aa01743ee0f77c3a4626.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Reculez un pied puis l'autre, de sorte que vos jambes soient complètement tendues.",
+            "Engagez le tronc pour soulever une de vos jambes du sol, tout en gardant votre corps en ligne droite.",
+            "Répartissez votre poids uniformément entre les mains et le pied et maintenez la position."
+        ],
+        "tips": [
+            "Gardez la jambe levée à hauteur de hanche ou aussi haut que possible tout en maintenant la forme.",
+            "Concentrez-vous sur le maintien des hanches à niveau et évitez la rotation."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, abaissez le genou du dessous au sol."
+        ],
+        "benefits": [
+            "Triceps, Haut du dos, Obliques, Épaules, Poitrine, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "80263dfe4f36",
+        "name": "Planche latérale sur les mains",
+        "image": "/images/exercises/image_00083-801c607218d9623bed8fa5eba906967d.png",
+        "instructions": [
+            "Commencez allongé sur le côté, jambes tendues, pieds empilés l'un sur l'autre.",
+            "Placez la main du dessous sous l'épaule avec la paume à plat sur le sol.",
+            "Tendez le bras du dessous et soulevez les hanches du sol, créant une ligne droite de la tête aux talons.",
+            "Levez le bras du dessus vers le plafond et maintenez la position."
+        ],
+        "tips": [
+            "Gardez le bras de soutien directement sous l'épaule.",
+            "Gardez les hanches soulevées et alignées avec votre corps."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, abaissez le genou du dessous au sol pour un soutien.",
+            "Si une gêne au poignet survient, effectuez la planche sur l'avant-bras à la place."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Épaules, Abdomen"
+        ]
+    },
+    {
+        "id": "1254aeb5f483",
+        "name": "Planche latérale sur les mains avec levé de jambe",
+        "image": "/images/exercises/image_00084-8e805d7a0ec3fa7a2df7de6e3c120e31.png",
+        "instructions": [
+            "Commencez allongé sur le côté, jambes tendues, pieds empilés l'un sur l'autre.",
+            "Placez la main du dessous sous l'épaule avec la paume à plat sur le sol.",
+            "Tendez le bras du dessous et soulevez les hanches du sol, créant une ligne droite de la tête aux talons.",
+            "Levez le bras du dessus et la jambe du dessus vers le plafond et maintenez la position."
+        ],
+        "tips": [
+            "Gardez le bras de soutien directement sous l'épaule.",
+            "Gardez les hanches soulevées et alignées avec votre corps."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, abaissez le genou du dessous au sol pour un soutien.",
+            "Si une gêne au poignet survient, effectuez la planche sur l'avant-bras à la place."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Épaules, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "d44a998e7e3b",
+        "name": "Planche sur les avant-bras avec levé de jambe",
+        "image": "/images/exercises/image_00086-6dcb45f99464d995d5b4af0c1b718347.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Abaissez les avant-bras au sol, puis reculez avec les deux pieds de sorte que vos jambes soient complètement tendues.",
+            "Engagez le tronc pour garder votre corps en ligne droite, et soulevez une de vos jambes du sol vers le plafond.",
+            "Répartissez votre poids uniformément entre les avant-bras et le pied et maintenez la position."
+        ],
+        "tips": [
+            "Alignez les coudes directement sous les épaules.",
+            "Concentrez-vous sur le maintien des hanches à niveau et évitez de les faire tourner.",
+            "Gardez la jambe levée à hauteur de hanche ou aussi haut que possible tout en maintenant une bonne forme."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, abaissez le genou du dessous au sol."
+        ],
+        "benefits": [
+            "Triceps, Haut du dos, Obliques, Épaules, Poitrine, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "5d25a66e210f",
+        "name": "Planche latérale sur les avant-bras avec levé de jambe",
+        "image": "/images/exercises/image_00088-d7f0944630a6a585a67172d2d0835040.png",
+        "instructions": [
+            "Commencez allongé sur le côté, jambes tendues, pieds empilés l'un sur l'autre.",
+            "Placez le coude du dessous sous l'épaule et l'avant-bras à plat sur le sol.",
+            "Engagez le tronc et soulevez les hanches du sol, créant une ligne droite de la tête aux talons.",
+            "Reposez la main du dessus sur la hanche et soulevez la jambe du dessus vers le plafond et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les hanches soulevées et alignées avec votre corps."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, abaissez le genou du dessous au sol pour un soutien."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Épaules, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "ca330448cf8a",
+        "name": "Planche à un bras",
+        "image": "/images/exercises/image_00089-fb8a484bae5996b6ba50d4820ad7219b.png",
+        "instructions": [
+            "Commencez au sol en position de pompe.",
+            "Engagez le tronc pour soulever une main du sol et sur le côté, tout en gardant votre corps en ligne droite.",
+            "Répartissez votre poids uniformément entre les mains et les pieds et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les hanches à niveau et évitez la rotation."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, descendez sur les genoux tout en maintenant une ligne droite des genoux à la tête."
+        ],
+        "benefits": [
+            "Triceps, Haut du dos, Obliques, Épaules, Poitrine, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "972cf4cfde2c",
+        "name": "Planche chien-oiseau",
+        "image": "/images/exercises/image_00092-825310dce59695ac31c30992de1800d9.png",
+        "instructions": [
+            "Commencez au sol en position de pompe.",
+            "large",
+            "Répartissez votre poids uniformément entre la main et le pied et maintenez la position."
+        ],
+        "tips": [
+            "Évitez de cambrer le dos ou de faire tourner les hanches."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, soulevez seulement votre bras ou votre jambe individuellement."
+        ],
+        "benefits": [
+            "Épaules, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "99da695ce568",
+        "name": "Maintenir le crunch",
+        "image": "/images/exercises/image_00077-9104c68e13fb5bc8f66bd5ad55a6be1d.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Engagez le tronc pour soulever la tête, le cou et les épaules du sol.",
+            "Tendez les bras vers l'avant et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les bras droits et parallèles au sol.",
+            "Gardez le bas du dos pressé contre le sol."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Abdomen"
+        ]
+    },
+    {
+        "id": "c48d7cbb4d92",
+        "name": "Maintenir le crunch vélo",
+        "image": "/images/exercises/image_00078-5c189a8d04c3aa1a4eff279242d864e0.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Placez les mains derrière la tête et engagez le tronc pour soulever la tête et les épaules du sol.",
+            "Étendez une jambe droit vers l'extérieur et amenez le genou opposé vers la poitrine, tout en tournant le haut du corps pour amener le coude opposé vers le genou levé.",
+            "Maintenez la position et changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Gardez le bas du dos pressé contre le sol.",
+            "Concentrez-vous sur la rotation du torse, pas seulement sur le mouvement coude-genou.",
+            "Évitez de tirer sur votre cou avec vos mains."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Obliques, Abdomen"
+        ]
+    },
+    {
+        "id": "17953c683134",
+        "name": "Maintenir le toucher des orteils",
+        "image": "/images/exercises/image_00079-399e01035c48e7efaf54260157d5304f.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Engagez le tronc pour étendre les jambes et les lever droit vers le haut dans les airs.",
+            "Soulevez la tête, le cou et les épaules du sol et tendez les bras vers le haut pour toucher vos orteils.",
+            "Maintenez la position."
+        ],
+        "tips": [],
+        "modifications": [],
+        "benefits": [
+            "Abdomen"
+        ]
+    },
+    {
+        "id": "05c3ac621b17",
+        "name": "Levé de jambe",
+        "image": "/images/exercises/image_00104-9356ebe4913168e6b2b60e74d6abd5d4.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras derrière la tête.",
+            "Engagez le tronc pour soulever les deux jambes du sol, créant un angle de 45 degrés entre vos jambes et le sol.",
+            "Gardez les jambes droites et les pieds ensemble et maintenez la position."
+        ],
+        "tips": [
+            "Gardez le bas du dos pressé contre le sol.",
+            "Gardez la tête et les épaules à plat sur le sol tout au long de l'exercice."
+        ],
+        "modifications": [
+            "Si soulever les deux jambes est trop intense, effectuez l'exercice avec une jambe à la fois.",
+            "Si vous ressentez une tension dans le bas du dos, placez vos mains sous vos hanches pour un soutien ou pliez légèrement les genoux."
+        ],
+        "benefits": [
+            "Hanches, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "95e63f79fb35",
+        "name": "Levé de jambe latéral allongé",
+        "image": "/images/exercises/image_00115-8149b215386ef7613914f020abd4b402.png",
+        "instructions": [
+            "Commencez allongé sur le côté, jambes tendues, pieds empilés l'un sur l'autre.",
+            "Reposez votre tête sur le bras inférieur et placez la main du dessus sur la hanche.",
+            "Engagez le tronc pour soulever la jambe du dessus vers le plafond, créant un angle de 45 degrés entre votre jambe et le sol.",
+            "Maintenez la position."
+        ],
+        "tips": [
+            "Gardez les hanches stables et votre corps en ligne droite de la tête aux pieds."
+        ],
+        "modifications": [
+            "Si lever la jambe haut est trop difficile, effectuez l'exercice avec une amplitude de mouvement plus petite."
+        ],
+        "benefits": [
+            "Obliques, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "1145ae4230b1",
+        "name": "Assis en V",
+        "image": "/images/exercises/image_00080-874b05741e71c12f57ea24e13d3d8408.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras le long du corps.",
+            "Engagez le tronc pour soulever simultanément les bras, la poitrine et les jambes, formant une forme en V avec votre corps.",
+            "Gardez le dos droit, tendez les bras vers le plafond et maintenez la position."
+        ],
+        "tips": [
+            "Essayez de vous équilibrer sur les os au bas de votre bassin.",
+            "Gardez les jambes aussi droites que possible."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les genoux pliés ou les mains au sol pour un soutien."
+        ],
+        "benefits": [
+            "Abdomen"
+        ]
+    },
+    {
+        "id": "2e5886625b8a",
+        "name": "Insecte mort",
+        "image": "/images/exercises/image_00116-3b47036604f67ffd1ca7e520cccb20f2.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras tendus au-dessus de la tête.",
+            "Engagez le tronc pour lever un bras vers le plafond et pliez le genou opposé pour l'amener au-dessus de la hanche.",
+            "Levez l'autre bras et la jambe légèrement du sol et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les hanches carrées et le bas du dos pressé contre le sol."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, effectuez l'exercice avec une amplitude de mouvement plus petite."
+        ],
+        "benefits": [
+            "Épaules, Hanches, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "ea3ab2222ad5",
+        "name": "Corps creux",
+        "image": "/images/exercises/image_00114-e9b27e59293adc143650562208f83cc8.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras tendus au-dessus de la tête.",
+            "Engagez le tronc pour soulever la tête, les bras, les épaules et les jambes du sol.",
+            "Créez une forme en \"C\" avec votre corps, en vous équilibrant sur le bas du dos, et maintenez la position."
+        ],
+        "tips": [
+            "Gardez le bas du dos pressé contre le sol.",
+            "Gardez les jambes droites et les pieds ensemble."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les genoux pliés et les bras devant vous."
+        ],
+        "benefits": [
+            "Épaules, Hanches, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "767c2b49b30e",
+        "name": "Maintenir le squat",
+        "image": "/images/exercises/image_00100-e61fa61869cff3cb20adbab7bd3403c5.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur des épaules, orteils légèrement tournés vers l'extérieur.",
+            "Abaissez les hanches vers l'arrière et vers le bas comme pour vous asseoir sur une chaise, en gardant le poids sur les talons.",
+            "Gardez la poitrine soulevée et le dos droit et maintenez la position."
+        ],
+        "tips": [
+            "Visez à abaisser les hanches jusqu'à ce que les cuisses soient parallèles au sol.",
+            "Gardez les genoux alignés avec les orteils."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, effectuez l'exercice avec une amplitude de mouvement plus petite."
+        ],
+        "benefits": [
+            "Mollets, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "27bfe6847c9d",
+        "name": "Maintenir la fente divisée",
+        "image": "/images/exercises/image_00108-b4dbba48cb69ad122b5c503d72a9c65b.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les hanches.",
+            "Reculez un pied, en abaissant le genou arrière vers le sol tout en le gardant au-dessus du sol.",
+            "Gardez les deux genoux à 90 degrés et maintenez la position."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit.",
+            "Alignez le genou avant au-dessus de la cheville."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez le genou arrière plus éloigné du sol.",
+            "Utilisez une chaise ou un mur pour l'équilibre si nécessaire."
+        ],
+        "benefits": [
+            "Mollets, Hanches, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "309f38945f12",
+        "name": "Maintenir le squat étroit",
+        "image": "/images/exercises/image_00101-35677ae98990e5d27f1f77663334f9e3.png",
+        "instructions": [
+            "Commencez debout, pieds joints.",
+            "Abaissez les hanches vers l'arrière et vers le bas comme pour vous asseoir sur une chaise, en gardant le poids sur les talons.",
+            "Gardez la poitrine soulevée et le dos droit et maintenez la position."
+        ],
+        "tips": [
+            "Visez à abaisser les hanches jusqu'à ce que les cuisses soient parallèles au sol.",
+            "Gardez les genoux alignés avec les orteils."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, effectuez l'exercice avec une amplitude de mouvement plus petite."
+        ],
+        "benefits": [
+            "Mollets, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "58a61199f85d",
+        "name": "Maintenir la fente latérale",
+        "image": "/images/exercises/image_00109-fd069dc81cac9a897a78fbc3d3591c24.png",
+        "instructions": [
+            "Commencez debout, pieds larges, orteils pointés vers l'avant.",
+            "Déplacez votre poids sur un côté, en pliant le genou pour abaisser les hanches vers votre pied jusqu'à ce que la cuisse soit parallèle au sol.",
+            "Gardez la jambe opposée droite et maintenez la position."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit.",
+            "Gardez le genou plié aligné avec les orteils."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, effectuez l'exercice avec une amplitude de mouvement plus petite."
+        ],
+        "benefits": [
+            "Mollets, Hanches, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "6241d94948a4",
+        "name": "Maintenir le squat sumo",
+        "image": "/images/exercises/image_00102-e948f6b9327cd9f6774ac4541d5e029e.png",
+        "instructions": [
+            "Commencez debout, pieds largement écartés, orteils pointés vers l'extérieur.",
+            "Abaissez les hanches vers l'arrière et vers le bas comme pour vous asseoir sur une chaise, en gardant le poids sur les talons.",
+            "Gardez la poitrine soulevée et le dos droit et maintenez la position."
+        ],
+        "tips": [
+            "Visez à abaisser les hanches jusqu'à ce que les cuisses soient parallèles au sol.",
+            "Gardez les genoux alignés avec les orteils."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, effectuez l'exercice avec une amplitude de mouvement plus petite."
+        ],
+        "benefits": [
+            "Mollets, Hanches, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "2cbc43485061",
+        "name": "Maintenir la fente en révérence",
+        "image": "/images/exercises/image_00110-db60182511f1e2d5a819b0bbedaec868.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Reculez un pied en diagonale derrière vous, en le croisant derrière votre jambe avant.",
+            "Pliez les deux genoux pour abaisser les hanches jusqu'à ce que la cuisse avant soit parallèle au sol et que le genou arrière soit juste au-dessus du sol.",
+            "Amenez les bras devant la poitrine et maintenez la position."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit.",
+            "Engagez les fessiers et les adducteurs pour maintenir la stabilité."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, n'abaissez pas autant les hanches.",
+            "Utilisez une chaise ou un mur pour l'équilibre et le soutien si nécessaire."
+        ],
+        "benefits": [
+            "Mollets, Hanches, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "248256d62b38",
+        "name": "Chaise contre le mur",
+        "image": "/images/exercises/image_00121-681aa79ae7f772b15062af4598d1da1f.png",
+        "instructions": [
+            "Commencez debout, dos contre un mur, pieds écartés de la largeur des épaules.",
+            "Avancez les pieds à une longueur de bras du mur, puis glissez votre corps vers le bas jusqu'à ce que vos cuisses soient parallèles au sol.",
+            "Étendez les bras droit devant vous et maintenez la position."
+        ],
+        "tips": [
+            "Gardez la tête et le dos à plat contre le mur et les genoux alignés avec les orteils.",
+            "Gardez votre poids sur les talons, pas sur les orteils."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, n'abaissez pas autant votre corps."
+        ],
+        "benefits": [
+            "Mollets, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "4b92b4f2d237",
+        "name": "Maintenir le squat pistolet",
+        "image": "/images/exercises/image_00103-3aa55f8472a0d29e41f6b9bf725e482c.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin.",
+            "Engagez le tronc pour soulever une jambe du sol et l'étendre vers l'avant.",
+            "Abaissez les hanches vers l'arrière et vers le bas en position de squat sur votre jambe d'appui, en gardant votre poids sur votre talon.",
+            "Gardez la poitrine soulevée et le dos droit et maintenez la position."
+        ],
+        "tips": [
+            "Visez à abaisser les hanches jusqu'à ce que la cuisse soit parallèle au sol, tout en gardant la jambe étendue droite.",
+            "Gardez les genoux alignés avec les orteils."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, effectuez l'exercice avec une amplitude de mouvement plus petite."
+        ],
+        "benefits": [
+            "Mollets, Hanches, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "7a52822de5c6",
+        "name": "Chien de chasse",
+        "image": "/images/exercises/image_00090-903b3c76c32a400696aba1e5c8578a7f.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Repliez les orteils et engagez le tronc pour soulever les genoux de quelques centimètres du sol.",
+            "Répartissez votre poids uniformément entre les mains et la plante des pieds et maintenez la position."
+        ],
+        "tips": [
+            "Gardez le dos plat et parallèle au sol.",
+            "Maintenez une position neutre du cou, en regardant le sol entre vos mains."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Triceps, Haut du dos, Épaules, Poitrine, Fessiers"
+        ]
+    },
+    {
+        "id": "d320a3e423a0",
+        "name": "Chien-oiseau",
+        "image": "/images/exercises/image_00091-73f6770d1739c4b43cd920c3d0378a33.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Engagez le tronc pour étendre simultanément un bras vers l'avant et la jambe opposée vers l'arrière.",
+            "Gardez votre corps en ligne droite parallèle au sol et maintenez la position."
+        ],
+        "tips": [
+            "Évitez de cambrer le dos ou de faire tourner les hanches."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, soulevez seulement votre bras ou votre jambe individuellement."
+        ],
+        "benefits": [
+            "Épaules, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "c4ad45a8ff9a",
+        "name": "Maintenir la pompe",
+        "image": "/images/exercises/image_00093-f2009e592599c98c07c3be60702f6408.png",
+        "instructions": [
+            "Commencez au sol en position de pompe, avec les mains légèrement plus larges que les épaules.",
+            "Abaissez votre corps à mi-chemin, en gardant les coudes sortis dans une position naturelle.",
+            "Répartissez votre poids uniformément entre les mains et les pieds et maintenez la position."
+        ],
+        "tips": [
+            "Évitez de laisser les hanches tomber ou de les lever trop haut.",
+            "Gardez les coudes à environ un angle de 45 degrés par rapport au torse."
+        ],
+        "modifications": [
+            "Si maintenir la position est trop intense, abaissez les genoux au sol."
+        ],
+        "benefits": [
+            "Triceps, Épaules, Poitrine"
+        ]
+    },
+    {
+        "id": "f4750f82072d",
+        "name": "Maintenir la pompe étroite",
+        "image": "/images/exercises/image_00094-506a407b2c077035aaa3e1ad0ff18df1.png",
+        "instructions": [
+            "Commencez au sol en position de pompe avec les mains écartées de la largeur des épaules.",
+            "Abaissez votre corps à mi-chemin, en gardant les coudes près du corps.",
+            "Répartissez votre poids uniformément entre les mains et les pieds et maintenez la position."
+        ],
+        "tips": [
+            "Évitez de laisser les hanches tomber ou de les lever trop haut."
+        ],
+        "modifications": [
+            "Si maintenir la position est trop intense, abaissez les genoux au sol."
+        ],
+        "benefits": [
+            "Triceps, Épaules, Poitrine"
+        ]
+    },
+    {
+        "id": "984ca25752c6",
+        "name": "Maintenir la pompe Spider-Man",
+        "image": "/images/exercises/image_00095-9caf55ea82241c9e37fd46e6e393242c.png",
+        "instructions": [
+            "Commencez au sol en position de pompe, avec les mains légèrement plus larges que les épaules.",
+            "Abaissez votre corps à mi-chemin et engagez le tronc pour soulever un pied du sol et amener le genou au coude.",
+            "Répartissez votre poids uniformément entre les mains et le pied et maintenez la position."
+        ],
+        "tips": [
+            "Concentrez-vous sur le maintien des hanches à niveau et évitez la rotation.",
+            "Gardez les coudes à environ un angle de 45 degrés par rapport au torse."
+        ],
+        "modifications": [
+            "Si maintenir la position est trop intense, abaissez le genou au sol."
+        ],
+        "benefits": [
+            "Triceps, Obliques, Épaules, Poitrine"
+        ]
+    },
+    {
+        "id": "98ac6b4b086b",
+        "name": "Pont",
+        "image": "/images/exercises/image_00096-444db3ca39e401a3857f0344d6e4f46c.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Engagez le tronc et les fessiers pour soulever les hanches du sol, formant une ligne droite des genoux aux épaules.",
+            "Gardez les paumes et les épaules pressées contre le sol et maintenez la position."
+        ],
+        "tips": [
+            "Serrez les fessiers au sommet du mouvement.",
+            "Évitez de cambrer le bas du dos ; le mouvement doit venir des hanches et des fessiers."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, soulevez les hanches seulement partiellement du sol.",
+            "Si vous ressentez une tension dans le cou, essayez de placer une petite serviette pliée sous la tête pour un soutien."
+        ],
+        "benefits": [
+            "Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "16c12810f655",
+        "name": "Pont avec levé de jambe",
+        "image": "/images/exercises/image_00097-f7584b2cc9ac1bd9d36ddc8fba5a7eab.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Engagez le tronc et les fessiers pour soulever les hanches du sol, formant une ligne droite des genoux aux épaules.",
+            "Soulevez lentement un pied du sol, en étendant cette jambe.",
+            "Gardez les paumes et les épaules pressées contre le sol et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les hanches à niveau et évitez de les laisser tomber du côté de la jambe levée.",
+            "Gardez le pied de la jambe au sol fermement pressé dans le sol."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, soulevez seulement légèrement le pied du sol sans étendre complètement la jambe."
+        ],
+        "benefits": [
+            "Hanches, Ischio-jambiers, Quadriceps, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "80b29dfa9dcf",
+        "name": "Planche inversée",
+        "image": "/images/exercises/image_00098-98a65055086f8cae9d2bf40ccfd07b53.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Placez les mains sur le sol derrière les hanches avec les doigts pointés vers les pieds.",
+            "Pressez les paumes et les talons dans le sol et engagez le tronc pour soulever les hanches vers le plafond.",
+            "Tendez les bras et les jambes pour créer une ligne droite de la tête aux talons et maintenez la position."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et la tête dans une position neutre.",
+            "Gardez les bras droits mais évitez de verrouiller les coudes."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, pliez les genoux et gardez les pieds à plat sur le sol.",
+            "Si une gêne au poignet survient, essayez de tourner légèrement les doigts vers l'extérieur."
+        ],
+        "benefits": [
+            "Épaules, Ischio-jambiers, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "24bdb0749539",
+        "name": "Planche inversée avec levé de jambe",
+        "image": "/images/exercises/image_00099-8c7ec048b84c19d1f0fb845234b82b9a.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Placez les mains sur le sol derrière les hanches avec les doigts pointés vers les pieds.",
+            "Pressez les paumes et les talons dans le sol et engagez le tronc pour soulever les hanches vers le plafond.",
+            "En gardant les jambes droites, soulevez une jambe du sol et maintenez la position."
+        ],
+        "tips": [
+            "Tendez les bras et les jambes pour créer une ligne droite de la tête aux talons",
+            "Gardez la poitrine soulevée et la tête dans une position neutre."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les deux pieds au sol.",
+            "Si une gêne au poignet survient, essayez de tourner légèrement les doigts vers l'extérieur."
+        ],
+        "benefits": [
+            "Épaules, Hanches, Ischio-jambiers, Quadriceps, Lombaires, Fessiers, Abdomen"
+        ]
+    },
+    {
+        "id": "84d961568a65",
+        "name": "Superman",
+        "image": "/images/exercises/image_00105-3a07122c9ef7834a6bbf3ead7498b436.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, bras tendus devant vous.",
+            "Engagez le tronc pour soulever les bras, la poitrine et les jambes du sol.",
+            "Gardez la tête alignée avec la colonne vertébrale et maintenez la position."
+        ],
+        "tips": [
+            "Concentrez-vous sur l'engagement des muscles du dos et des fessiers.",
+            "Allongez votre corps, en tendant avec le bout des doigts et des orteils.",
+            "Gardez la tête dans une position neutre pour éviter de solliciter le cou."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, soulevez seulement vos bras ou seulement vos jambes à la fois."
+        ],
+        "benefits": [
+            "Haut du dos, Épaules, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "1271e91004bd",
+        "name": "Aquaman",
+        "image": "/images/exercises/image_00106-80e592e3703313388c1dcc1f31d201ac.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, bras tendus devant vous.",
+            "Engagez le tronc pour soulever simultanément un bras et la jambe opposée du sol, tout en gardant la tête alignée avec la colonne vertébrale.",
+            "Maintenez la position et changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Concentrez-vous sur l'engagement des muscles du dos et des fessiers.",
+            "Allongez votre corps, en tendant avec le bout des doigts et des orteils.",
+            "Gardez la tête dans une position neutre pour éviter de solliciter le cou."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, soulevez les membres seulement légèrement du sol."
+        ],
+        "benefits": [
+            "Haut du dos, Épaules, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "45ea37a8b034",
+        "name": "Avion",
+        "image": "/images/exercises/image_00107-8f6377f0d1abb6a2def3dada0fcf5071.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, bras étendus sur les côtés à hauteur d'épaules.",
+            "Engagez les muscles du bas du dos et des fessiers pour soulever la poitrine et les bras du sol.",
+            "Gardez la tête alignée avec la colonne vertébrale et maintenez la position."
+        ],
+        "tips": [
+            "Tenez vos bras droit sur les côtés, comme des ailes d'avion.",
+            "Serrez les omoplates en soulevant pour engager le haut du dos."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, soulevez la poitrine et les bras seulement légèrement du sol."
+        ],
+        "benefits": [
+            "Haut du dos, Épaules, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "fa7735b7211d",
+        "name": "Pike",
+        "image": "/images/exercises/image_00118-2144ed633e9702f3d0a19c49c4bc503c.png",
+        "instructions": [
+            "Commencez au sol en position de pompe.",
+            "Engagez le tronc pour soulever les hanches vers le plafond, formant une forme de \"V\" inversé avec votre corps.",
+            "Répartissez votre poids uniformément entre les mains et les pieds et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les jambes droites et les talons décollés du sol.",
+            "Gardez la tête entre les bras et détendez le cou."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les genoux légèrement pliés et abaissez les hanches."
+        ],
+        "benefits": [
+            "Triceps, Épaules, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "26ac1c73348e",
+        "name": "Pike avec bras pliés",
+        "image": "/images/exercises/image_00119-06ca970f3d555636872aeaacc909b859.png",
+        "instructions": [
+            "Commencez au sol en position de pompe.",
+            "Engagez le tronc pour soulever les hanches vers le plafond, formant une forme de \"V\" inversé avec votre corps.",
+            "Pliez les bras pour abaisser le haut du corps vers le sol.",
+            "Répartissez votre poids uniformément entre les mains et les pieds et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les jambes droites et les talons décollés du sol.",
+            "Gardez la tête entre les bras et détendez le cou."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les genoux légèrement pliés et abaissez les hanches."
+        ],
+        "benefits": [
+            "Triceps, Épaules, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "0f7e5520d2f1",
+        "name": "Planche contre le mur",
+        "image": "/images/exercises/image_00123-df940bc306d437855e91a9658bf8c715.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table avec les pieds près d'un mur.",
+            "Marchez avec les pieds contre le mur jusqu'à ce que votre corps soit en ligne droite, parallèle au sol.",
+            "Gardez les bras droits et les paumes pressées contre le sol et maintenez la position."
+        ],
+        "tips": [
+            "Gardez le tronc engagé pour soutenir le bas du dos.",
+            "Répartissez votre poids uniformément entre les mains."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, ne marchez pas aussi haut avec les pieds contre le mur."
+        ],
+        "benefits": [
+            "Haut du dos, Épaules, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "7480b4694f97",
+        "name": "Pike contre le mur",
+        "image": "/images/exercises/image_00122-bcf7b38f5cd46a2364ec27b216636eaa.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table avec les pieds près d'un mur.",
+            "Marchez avec les pieds contre le mur jusqu'à ce que votre corps forme un L.",
+            "Gardez les bras droits et les paumes pressées contre le sol et maintenez la position."
+        ],
+        "tips": [
+            "Répartissez votre poids uniformément entre les mains.",
+            "Gardez le cou détendu, avec la tête entre les bras."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, ne marchez pas aussi haut avec les pieds contre le mur."
+        ],
+        "benefits": [
+            "Haut du dos, Épaules, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "4f9995b8ed38",
+        "name": "Appui tendu contre le mur",
+        "image": "/images/exercises/image_00124-ce183ae483b1312a67afad4193a60f9c.png",
+        "instructions": [
+            "Commencez debout face à un mur.",
+            "Avancez d'un pied et penchez-vous pour placer les mains sur le sol à une demi-longueur de bras du mur.",
+            "En gardant les bras tendus et la tête baissée, donnez un coup de pied avec la jambe arrière suivi rapidement de l'autre jambe, en balançant votre corps vers le haut de sorte que vos pieds reposent contre le mur au-dessus de vous.",
+            "Gardez les bras tendus et votre corps en ligne droite et maintenez la position."
+        ],
+        "tips": [
+            "Le mouvement doit être effectué dans un mouvement fluide et continu.",
+            "Pratiquez le mouvement de coup de pied sans aller complètement jusqu'en haut jusqu'à ce que vous soyez à l'aise."
+        ],
+        "modifications": [
+            "Demandez à un assistant de se tenir sur le côté pour vous aider si nécessaire."
+        ],
+        "benefits": [
+            "Haut du dos, Épaules, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "824530a64713",
+        "name": "Rétractions du menton",
+        "image": "/images/exercises/image_00125-e5d9b3b56009608a3f5a8532d7f425aa.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Engagez les muscles du cou pour rentrer le menton et le tirer vers l'arrière.",
+            "Utilisez votre main pour aider le mouvement et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les épaules détendues et évitez d'incliner la tête vers le haut ou le bas."
+        ],
+        "modifications": [
+            "Pour assurer une bonne forme, effectuez l'exercice allongé sur le dos."
+        ],
+        "benefits": [
+            "Cou"
+        ]
+    },
+    {
+        "id": "2f0ea49919ed",
+        "name": "Étirement des pectoraux contre le mur",
+        "image": "/images/exercises/image_00126-031ae748245d9436f7f6ee651bf03230.png",
+        "instructions": [
+            "Commencez debout dans une porte ouverte ou face à l'angle extérieur d'un mur.",
+            "Placez votre paume et avant-bras contre le mur à hauteur d'épaules, formant un angle de 90 degrés au coude.",
+            "Avancez d'une jambe et penchez-vous vers l'avant jusqu'à sentir un étirement dans la poitrine."
+        ],
+        "tips": [
+            "Gardez l'omoplate tirée vers le bas et l'arrière.",
+            "Gardez le corps droit et ne vous tordez pas ou ne vous penchez pas d'un côté."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, ne vous penchez pas autant vers l'avant."
+        ],
+        "benefits": [
+            "Épaules, Poitrine"
+        ]
+    },
+    {
+        "id": "5bf0dab46d24",
+        "name": "Étirement des pectoraux dans l'encadrement de porte",
+        "image": "/images/exercises/image_00127-8a1bf35be484e3a8e62f04eb78a3e859.png",
+        "instructions": [
+            "Commencez debout dans une porte ouverte.",
+            "Placez les deux paumes et avant-bras contre les côtés de l'encadrement de la porte à hauteur d'épaules, formant un angle de 90 degrés au niveau des coudes.",
+            "Avancez un pied et penchez-vous vers l'avant à travers l'encadrement de la porte jusqu'à sentir un étirement dans la poitrine."
+        ],
+        "tips": [
+            "Gardez les omoplates tirées vers le bas et l'arrière.",
+            "Maintenez une colonne vertébrale neutre et évitez de cambrer le bas du dos."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, ne vous penchez pas autant vers l'avant."
+        ],
+        "benefits": [
+            "Épaules, Poitrine"
+        ]
+    },
+    {
+        "id": "42f5052619c0",
+        "name": "Étirement des épaules en arrière",
+        "image": "/images/exercises/image_00128-8b9c169565109549f9c52951046fa2c9.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Entrelacez les mains derrière le dos avec les pouces pointés vers le sol.",
+            "Tendez les bras et soulevez doucement les mains loin de votre dos.",
+            "Tirez les épaules vers l'arrière et le bas, soulevez la poitrine et rentrez légèrement le menton."
+        ],
+        "tips": [
+            "Gardez le tronc engagé pour soutenir le bas du dos.",
+            "Évitez de cambrer excessivement le dos."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, ne soulevez pas autant les mains derrière votre dos."
+        ],
+        "benefits": [
+            "Épaules, Poitrine, Biceps"
+        ]
+    },
+    {
+        "id": "460de917510f",
+        "name": "Pression de bascule du bassin",
+        "image": "/images/exercises/image_00130-128d1f9daaa6f4f56916414cb8e50941.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Engagez le tronc pour basculer le bassin vers le haut et presser le bas du dos contre le sol.",
+            "Gardez les bras le long du corps avec les paumes sur le sol et maintenez la position."
+        ],
+        "tips": [
+            "Imaginez tirer le nombril vers la colonne vertébrale.",
+            "Gardez les fessiers détendus ; le mouvement doit venir du tronc."
+        ],
+        "modifications": [
+            "S'il est inconfortable de s'allonger sur le sol, effectuez l'exercice contre un mur."
+        ],
+        "benefits": [
+            "Lombaires"
+        ]
+    },
+    {
+        "id": "792c21bfd4f0",
+        "name": "Genou unique à la poitrine",
+        "image": "/images/exercises/image_00131-768b4cd5cbdf2cd2824ac99ed0d515a0.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras le long du corps.",
+            "Pliez un genou et ramenez-le vers la poitrine, en tenant le tibia avec les deux mains.",
+            "Tirez doucement le genou plus près de la poitrine tout en gardant l'autre jambe droite."
+        ],
+        "tips": [
+            "Relâchez la tête et le cou sur le sol.",
+            "Gardez les hanches carrées et le bas du dos pressé contre le sol."
+        ],
+        "modifications": [
+            "Si vous ne pouvez pas atteindre votre tibia, tirez sur votre cuisse ou utilisez une serviette autour du genou."
+        ],
+        "benefits": [
+            "Hanches, Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "2082265fe5f8",
+        "name": "Étirement du quadriceps allongé",
+        "image": "/images/exercises/image_00132-b76725df4d5b527c21080fe7e882505e.png",
+        "instructions": [
+            "Commencez allongé sur le côté, jambes tendues, pieds empilés l'un sur l'autre.",
+            "Pliez le genou du dessus pour amener le talon vers les fesses, en tenant la cheville avec votre main.",
+            "Tirez le talon plus près des fesses tout en gardant les cuisses alignées."
+        ],
+        "tips": [
+            "Poussez légèrement les hanches vers l'avant pour approfondir l'étirement.",
+            "Gardez une légère flexion dans la jambe du dessous pour une stabilité supplémentaire."
+        ],
+        "modifications": [
+            "Si atteindre la cheville est difficile, utilisez une sangle ou une serviette enroulée autour du pied pour aider."
+        ],
+        "benefits": [
+            "Genoux, Tibias, Hanches, Quadriceps, Chevilles"
+        ]
+    },
+    {
+        "id": "712f12d31f7b",
+        "name": "Pliage jambes croisées",
+        "image": "/images/exercises/image_00148-47aead12d25992d72536450f7edd1643.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Croisez un pied sur l'autre, puis penchez-vous lentement vers l'avant à partir des hanches, en abaissant le haut du corps vers vos jambes.",
+            "Laissez les bras pendre et essayez de toucher le sol avec les mains."
+        ],
+        "tips": [
+            "Gardez votre poids uniformément réparti entre les deux pieds.",
+            "Gardez la colonne longue et évitez d'arrondir le dos.",
+            "Détendez le cou et laissez la tête pendre."
+        ],
+        "modifications": [
+            "Si vous ne pouvez pas atteindre le sol, placez les mains sur vos chevilles ou vos tibias."
+        ],
+        "benefits": [
+            "Hanches, Ischio-jambiers, Lombaires"
+        ]
+    },
+    {
+        "id": "8ddf93dab49b",
+        "name": "Étirement des bras contre le mur",
+        "image": "/images/exercises/image_00157-e76701cf977c7fef7cf4ac6af24754b9.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, le côté de l'épaule contre un mur.",
+            "En gardant les pieds en place, tournez le torse et atteignez l'arrière avec le bras pour placer la paume contre le mur à hauteur d'épaules.",
+            "Gardez la main contre le mur et tournez le torse pour faire face à l'avant."
+        ],
+        "tips": [
+            "Vos genoux, hanches et épaules doivent être carrés et alignés à la fin du mouvement."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Épaules, Poitrine, Biceps"
+        ]
+    },
+    {
+        "id": "422023136d71",
+        "name": "Bras en aigle",
+        "image": "/images/exercises/image_00152-e12eae0f8b163f4afb1ff25c565e6c00.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras tendus devant vous à hauteur d'épaules.",
+            "Croisez un bras sur l'autre au niveau des coudes, puis pliez les bras pour amener les avant-bras perpendiculaires au sol.",
+            "Enroulez les avant-bras l'un autour de l'autre pour rapprocher les paumes."
+        ],
+        "tips": [
+            "Gardez les épaules détendues et essayez de créer de l'espace entre les omoplates."
+        ],
+        "modifications": [
+            "Si vos paumes ne se touchent pas, pressez le dos des mains l'un contre l'autre."
+        ],
+        "benefits": [
+            "Triceps, Haut du dos, Épaules, Dorsaux"
+        ]
+    },
+    {
+        "id": "64c897a254bf",
+        "name": "Oreille à l'épaule",
+        "image": "/images/exercises/image_00153-2642a1a3f3072ea2ecc4d1cec81b9af4.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Inclinez lentement la tête d'un côté, en amenant l'oreille vers l'épaule.",
+            "Placez la main opposée derrière le dos et l'autre main sur le dessus de la tête et tirez doucement vers le bas."
+        ],
+        "tips": [
+            "Gardez le dos droit et les épaules détendues.",
+            "Ne levez pas et ne rentrez pas le menton ; gardez-le dans une position neutre."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Cou, Épaules"
+        ]
+    },
+    {
+        "id": "7966db640529",
+        "name": "Câlin d'ours",
+        "image": "/images/exercises/image_00150-c6265918ff8ede8b0d8a546206580ead.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras sur les côtés.",
+            "Enroulez les bras autour de vous-même, en plaçant les mains sur les omoplates.",
+            "Serrez les bras autour du haut du corps, arrondissez le haut du dos et rentrez le menton contre la poitrine."
+        ],
+        "tips": [
+            "Expirez au début du mouvement pour faciliter l'enroulement des bras autour du corps."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, effectuez l'exercice avec les bras croisés devant la poitrine."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Cou, Haut du dos, Épaules"
+        ]
+    },
+    {
+        "id": "3bda0249e5c3",
+        "name": "Visage de vache",
+        "image": "/images/exercises/image_00151-50d5ed1df8adc9cb6e22b5b470767a06.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Levez un bras au-dessus de la tête, puis pliez le coude pour placer la main entre les omoplates.",
+            "Levez l'autre bras sur le côté, puis pliez le coude pour l'amener derrière le dos.",
+            "Entrelacez les mains derrière le dos."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, placez une main sur le haut du dos et l'autre sur le bas du dos."
+        ],
+        "benefits": [
+            "Triceps, Épaules"
+        ]
+    },
+    {
+        "id": "ebc945bbbd5f",
+        "name": "Étirement de la poitrine assis",
+        "image": "/images/exercises/image_00129-09cec47bf2a53734c5ff5a6c88258938.png",
+        "instructions": [
+            "Commencez assis sur le sol, genoux pliés, pieds à plat sur le sol.",
+            "Placez les paumes sur le sol derrière vous avec les doigts pointés loin de votre corps.",
+            "Gardez les pieds en place tout en glissant lentement les mains loin de votre corps jusqu'à sentir un étirement dans la poitrine."
+        ],
+        "tips": [
+            "Gardez les bras droits et tirez les épaules vers l'arrière et le bas.",
+            "Soulevez la poitrine et rentrez légèrement le menton.",
+            "Évitez de cambrer excessivement le dos."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les mains plus près de votre corps."
+        ],
+        "benefits": [
+            "Épaules, Poitrine, Biceps"
+        ]
+    },
+    {
+        "id": "e13c627bca71",
+        "name": "Enfiler l'aiguille",
+        "image": "/images/exercises/image_00160a-af4499d4f5493961f775c4551ad076ca.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Tournez votre corps et levez un bras droit vers le plafond, en ouvrant la poitrine.",
+            "Ensuite, abaissez le bras étendu et glissez-le sous l'autre bras et à travers votre corps avec la paume tournée vers le haut.",
+            "Abaissez l'épaule et le côté de la tête vers le sol, puis détordez et répétez le mouvement."
+        ],
+        "tips": [
+            "Gardez l'autre main fermement plantée sur le sol pour un soutien.",
+            "Gardez les hanches alignées avec les genoux."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Colonne vertébrale, Haut du dos, Épaules, Poitrine, Dorsaux"
+        ]
+    },
+    {
+        "id": "3bac00c5b8ea",
+        "name": "Posture du chameau",
+        "image": "/images/exercises/image_00166-9e4e43fd88a4e4c1664965e7da941793.png",
+        "instructions": [
+            "Commencez à genoux, mains sur le bas du dos, doigts pointés vers le bas.",
+            "Engagez le tronc et les muscles des cuisses pour vous pencher en arrière, en soulevant la poitrine et en créant une cambrure dans le haut du dos.",
+            "Si confortable, atteignez l'arrière une main à la fois pour attraper vos talons.",
+            "Ouvrez les épaules et laissez la tête tomber en arrière."
+        ],
+        "tips": [
+            "Gardez les hanches au-dessus des genoux pour que les cuisses soient perpendiculaires au sol."
+        ],
+        "modifications": [
+            "Si atteindre les talons est difficile, gardez les mains sur le bas du dos pour un soutien.",
+            "Effectuez l'étirement avec un coussin sous les genoux pour plus de confort."
+        ],
+        "benefits": [
+            "Psoas, Colonne vertébrale, Haut du dos, Épaules, Quadriceps, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "0c2f9e3bb529",
+        "name": "Demi-arc",
+        "image": "/images/exercises/image_00163-cdcdfec97cc329b5401edd879b25a72e.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, jambes tendues, avant-bras au sol.",
+            "Pliez une jambe au genou pour amener le talon vers la fesse, puis atteignez l'arrière avec la main pour attraper la cheville.",
+            "Pressez le pied dans votre main et soulevez la poitrine et la cuisse du sol."
+        ],
+        "tips": [
+            "Gardez la jambe gauche active en la pressant dans le sol.",
+            "Gardez les deux jambes parallèles et en ligne droite."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez la poitrine au sol et soulevez seulement la jambe."
+        ],
+        "benefits": [
+            "Psoas, Colonne vertébrale, Haut du dos, Épaules, Hanches, Quadriceps, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "3a6db1120f93",
+        "name": "Posture de l'arc",
+        "image": "/images/exercises/image_00164-de0f83243efcbe4bcde744975c78eb55.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, jambes tendues, bras le long du corps.",
+            "Pliez les deux genoux pour amener les talons vers les fesses, puis atteignez l'arrière avec les mains pour attraper les chevilles.",
+            "Pressez les pieds dans vos mains et soulevez la poitrine, la tête et les cuisses du sol."
+        ],
+        "tips": [
+            "Regardez vers l'avant ou légèrement vers le haut, en gardant le cou dans une position confortable."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, ne soulevez pas la poitrine et les cuisses du sol ou n'attrapez qu'une jambe à la fois."
+        ],
+        "benefits": [
+            "Psoas, Colonne vertébrale, Haut du dos, Épaules, Hanches, Quadriceps, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "b942f75ed662",
+        "name": "Rotation du cou",
+        "image": "/images/exercises/image_00156-d632cf7385942b466fba8267c163cfd1.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Tournez lentement la tête d'un côté, en regardant par-dessus l'épaule.",
+            "Placez le bout des doigts sur le côté du menton et poussez doucement la tête plus loin."
+        ],
+        "tips": [
+            "Gardez la tête à niveau tout au long de la rotation ; ne l'inclinez pas vers le haut ou le bas.",
+            "Gardez le dos droit et les épaules détendues."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Cou"
+        ]
+    },
+    {
+        "id": "93a8730fceef",
+        "name": "Étirement des scapulas",
+        "image": "/images/exercises/image_00139-a167beaeffddb0dcf40b32d4117677cc.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Tournez lentement la tête d'un côté, puis inclinez la tête vers le bas pour regarder votre aisselle.",
+            "Placez la main sur le dessus de la tête et tirez doucement vers le bas."
+        ],
+        "tips": [
+            "Gardez le dos droit et les épaules détendues."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Colonne vertébrale, Cou, Haut du dos, Épaules"
+        ]
+    },
+    {
+        "id": "dddb9558312f",
+        "name": "Étirement des scalènes",
+        "image": "/images/exercises/image_00140-b3b7968582d5037f9d96f8ba55366061.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Croisez les mains et placez-les fermement sur votre poitrine, juste sous le cou.",
+            "Abaissez lentement l'oreille vers l'épaule, puis tournez le cou et pointez le menton vers le plafond."
+        ],
+        "tips": [
+            "Gardez le dos droit et les épaules détendues."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Colonne vertébrale, Cou, Épaules, Poitrine"
+        ]
+    },
+    {
+        "id": "e5b7348b0c6f",
+        "name": "Torsion assise modifiée",
+        "image": "/images/exercises/image_00141-ccd843a1e7cbdf064e8e0887501bcaa1.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous.",
+            "Croisez une jambe sur l'autre, en plaçant le pied au sol à l'extérieur de la cuisse opposée, puis pliez le genou du dessous pour amener le pied vers la hanche opposée.",
+            "Tournez le torse et placez le coude à l'extérieur du genou supérieur et l'autre main derrière vous pour un soutien.",
+            "Continuez à tourner le torse et tournez la tête pour regarder derrière vous."
+        ],
+        "tips": [
+            "Allongez la colonne vertébrale et gardez le dos droit."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Colonne vertébrale, Bandes ilio-tibiales, Hanches, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "7fe07c67edfd",
+        "name": "90/90 penché",
+        "image": "/images/exercises/image_00134-a72f2f9c3645edf51c6f067c14014211.png",
+        "instructions": [
+            "Commencez assis sur le sol, genoux pliés, pieds à plat sur le sol.",
+            "Laissez les genoux tomber d'un côté de sorte que les deux genoux forment des angles de 90 degrés contre le sol.",
+            "Placez les mains sur le sol derrière vous pour un soutien et penchez-vous en arrière, en gardant les hanches et les épaules carrées."
+        ],
+        "tips": [
+            "Gardez le dos droit et évitez d'arrondir la colonne vertébrale."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, asseyez-vous sur un coussin ou une couverture pliée pour surélever les hanches."
+        ],
+        "benefits": [
+            "Genoux, Aine, Hanches, Fessiers"
+        ]
+    },
+    {
+        "id": "a668023bd61a",
+        "name": "Étirement du psoas à genoux",
+        "image": "/images/exercises/image_00149-273a58dd3bdd5cc87ace6e9adf77ae82.png",
+        "instructions": [
+            "Commencez à genoux, genoux écartés de la largeur du bassin, bras le long du corps.",
+            "Avancez d'une jambe pour placer le pied sur le sol devant vous, formant un angle de 90 degrés avec les deux genoux.",
+            "Levez le bras opposé au-dessus de la tête et placez l'autre main sur la hanche.",
+            "Pressez les hanches vers l'avant tout en tendant vers le haut et au-dessus avec le bras levé."
+        ],
+        "tips": [
+            "Alignez le genou avant directement au-dessus de la cheville."
+        ],
+        "modifications": [
+            "Si vous avez des douleurs aux genoux, placez un coussin sous le genou arrière pour un soutien."
+        ],
+        "benefits": [
+            "Psoas, Bandes ilio-tibiales, Obliques, Hanches, Quadriceps, Lombaires, Dorsaux"
+        ]
+    },
+    {
+        "id": "c4cd8f238a9f",
+        "name": "Figure quatre penchée",
+        "image": "/images/exercises/image_00136-35d48fee27be19e5746c71fb6f00d2d7.png",
+        "instructions": [
+            "Commencez assis sur le sol, jambes tendues devant vous et les mains derrière vous pour un soutien.",
+            "Levez une jambe et croisez votre cheville sur la cuisse opposée, juste au-dessus du genou.",
+            "Glissez le pied du dessous vers votre corps pour que le genou soit plié et le pied à plat sur le sol."
+        ],
+        "tips": [
+            "Gardez les bras droits et soulevez la poitrine pour ouvrir les épaules."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Bandes ilio-tibiales, Hanches, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "cf1857ade38c",
+        "name": "Torsion figure quatre",
+        "image": "/images/exercises/image_00135-700a6e79da77681d242cf82a915ad33c.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Levez une jambe et croisez votre cheville sur la cuisse opposée, juste au-dessus du genou.",
+            "Laissez les deux jambes tomber sur le côté, de sorte que le pied du dessus et la jambe du dessous soient à plat sur le sol."
+        ],
+        "tips": [
+            "Gardez les épaules à plat sur le sol."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Colonne vertébrale, Bandes ilio-tibiales, Hanches, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "84cc27796b48",
+        "name": "Grenouille debout",
+        "image": "/images/exercises/image_00138-75295414029e4b3dc0a1919db326709a.png",
+        "instructions": [
+            "Commencez debout, pieds largement écartés, orteils pointés vers l'extérieur.",
+            "Abaissez les hanches en position de squat jusqu'à ce que les cuisses soient parallèles au sol.",
+            "Placez vos mains à l'intérieur de vos genoux et pressez doucement vers l'extérieur."
+        ],
+        "tips": [
+            "Gardez la poitrine soulevée et le dos droit.",
+            "Gardez les genoux alignés avec les orteils."
+        ],
+        "modifications": [
+            "Tenez-vous à une chaise ou à un mur pour l'équilibre si nécessaire."
+        ],
+        "benefits": [
+            "Genoux, Aine, Hanches, Fessiers"
+        ]
+    },
+    {
+        "id": "37c2f256bfed",
+        "name": "Papillon inversé",
+        "image": "/images/exercises/image_00137-02fda21d7728b3892e7e2d65b4a334c3.png",
+        "instructions": [
+            "Commencez allongé sur le dos, genoux pliés, pieds à plat sur le sol.",
+            "Écartez les pieds plus que la largeur des épaules, puis laissez les genoux tomber vers l'intérieur l'un vers l'autre.",
+            "Continuez à écarter les pieds et rapprochez les genoux pour augmenter l'amplitude du mouvement."
+        ],
+        "tips": [
+            "Relâchez l'intérieur des cuisses, permettant aux genoux de tomber naturellement vers l'intérieur."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Genoux, Hanches"
+        ]
+    },
+    {
+        "id": "4557b5b65cd2",
+        "name": "Pliages latéraux dynamiques",
+        "image": "/images/exercises/image_00226a-89a5310701e494db2e493967186f28d5.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Tendez un bras au-dessus de la tête tout en pliant le torse du côté opposé.",
+            "Revenez à la position de départ et répétez de l'autre côté, en alternant les côtés dynamiquement."
+        ],
+        "tips": [
+            "Engagez le tronc pour éviter de trop solliciter le bas du dos.",
+            "Gardez les mouvements fluides et réguliers.",
+            "Concentrez-vous sur l'allongement du côté du corps en vous pliant."
+        ],
+        "modifications": [
+            "Réduisez la profondeur du pliage latéral si la flexibilité est limitée.",
+            "Effectuez le mouvement plus lentement pour maintenir un meilleur contrôle."
+        ],
+        "benefits": [
+            "Bandes ilio-tibiales, Obliques, Épaules, Tronc, Abdomen"
+        ]
+    },
+    {
+        "id": "dc8ab33332e7",
+        "name": "Good Mornings",
+        "image": "/images/exercises/image_00227b-7e815ddb054420195ca2f3be276451d1.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains derrière la tête.",
+            "Pivotez vers l'avant au niveau des hanches, en abaissant le torse tout en gardant le dos droit.",
+            "Revenez en position debout de manière contrôlée et répétez."
+        ],
+        "tips": [
+            "Concentrez-vous sur le maintien d'une colonne vertébrale neutre et évitez d'arrondir le dos.",
+            "Engagez le tronc pour soutenir le bas du dos.",
+            "Gardez une légère flexion dans les genoux pour éviter de les verrouiller."
+        ],
+        "modifications": [
+            "Réduisez la profondeur du pivot si la flexibilité est limitée.",
+            "Placez vos mains sur vos cuisses pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Ischio-jambiers, Tronc, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "f049a1a49e0f",
+        "name": "Cercles de hanches",
+        "image": "/images/exercises/image_00225-e389e294bca776b0406414689dbf5360.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les hanches.",
+            "Tournez doucement les hanches dans un mouvement circulaire.",
+            "Répétez le mouvement et changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Engagez le tronc pour soutenir le bas du dos.",
+            "Gardez les genoux souples et évitez de les verrouiller."
+        ],
+        "modifications": [
+            "Effectuez des cercles plus petits si l'amplitude complète du mouvement est inconfortable."
+        ],
+        "benefits": [
+            "Hanches, Tronc, Lombaires"
+        ]
+    },
+    {
+        "id": "81c0ca13c14a",
+        "name": "Creusements des ischio-jambiers",
+        "image": "/images/exercises/image_00221b-5f17468cf3abcc33359813eab3b2f53c.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les hanches.",
+            "Avancez un pied, en gardant le talon au sol et les orteils pointés vers le haut.",
+            "Pivotez au niveau des hanches, en abaissant le torse vers votre jambe avant.",
+            "Revenez en position debout et répétez le mouvement. Changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Gardez le dos droit et évitez d'arrondir la colonne vertébrale.",
+            "Engagez le tronc pour maintenir l'équilibre et la stabilité."
+        ],
+        "modifications": [
+            "Réduisez la profondeur du pivot si la flexibilité est limitée.",
+            "Tenez-vous à une chaise ou à un mur pour l'équilibre si nécessaire.",
+            "Effectuez l'exercice plus lentement pour maintenir un meilleur contrôle."
+        ],
+        "benefits": [
+            "Mollets, Ischio-jambiers, Tronc, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "a648053cf21b",
+        "name": "Ouvre-porte",
+        "image": "/images/exercises/image_00190c-be4c5b79eb9cdbc29ed70e3c946a26eb.png",
+        "instructions": [
+            "Commencez debout, la main placée sur un mur ou une chaise pour un soutien.",
+            "Déplacez votre poids sur la jambe la plus proche du mur.",
+            "Puis, comme pour enjamber une barrière, balancez la jambe opposée vers le haut, tournez la jambe vers l'extérieur pour ouvrir la hanche, puis ramenez la jambe au sol.",
+            "Inversez le mouvement pour revenir à la position de départ, puis répétez le mouvement d'avant en arrière."
+        ],
+        "tips": [
+            "Gardez le mouvement fluide et contrôlé.",
+            "Gardez la jambe d'appui active avec une légère flexion du genou.",
+            "Gardez le haut du corps stable ; le mouvement doit venir de la hanche."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Aine, Hanches, Fessiers"
+        ]
+    },
+    {
+        "id": "83494436dc16",
+        "name": "Balancement latéral de jambe",
+        "image": "/images/exercises/image_00189a-334666822f855130150de95d51d067b5.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les hanches.",
+            "Déplacez votre poids sur une jambe et soulevez légèrement l'autre jambe du sol.",
+            "Balancez la jambe levée sur le côté, puis à travers votre corps devant la jambe d'appui.",
+            "Répétez le mouvement de manière contrôlée et continue."
+        ],
+        "tips": [
+            "Gardez la jambe d'appui active avec une légère flexion du genou.",
+            "Gardez le haut du corps stable ; le mouvement doit venir de la hanche.",
+            "Commencez par de petits balancements et augmentez progressivement l'amplitude du mouvement."
+        ],
+        "modifications": [
+            "Placez la main sur un mur ou une chaise pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Aine, Bandes ilio-tibiales, Hanches"
+        ]
+    },
+    {
+        "id": "235f70820956",
+        "name": "Pliage avant jambes écartées dynamique",
+        "image": "/images/exercises/image_00228b-60bc1b537089c91dd5395f7b1663ec6c.png",
+        "instructions": [
+            "Commencez debout avec une position large, mains sur les hanches.",
+            "Pivotez vers l'avant au niveau des hanches, en abaissant le torse vers le sol tout en gardant le dos droit.",
+            "Revenez en position debout et répétez le mouvement de manière contrôlée."
+        ],
+        "tips": [
+            "Concentrez-vous sur le maintien des jambes droites mais souples au niveau des genoux.",
+            "Engagez le tronc pour protéger le bas du dos.",
+            "Gardez le cou détendu et aligné avec la colonne vertébrale."
+        ],
+        "modifications": [
+            "Réduisez la profondeur du pliage avant si la flexibilité est limitée.",
+            "Placez les mains sur un bloc ou une chaise pour un soutien.",
+            "Pliez légèrement les genoux si la tension des ischio-jambiers empêche un pliage complet."
+        ],
+        "benefits": [
+            "Mollets, Ischio-jambiers, Tronc, Lombaires"
+        ]
+    },
+    {
+        "id": "29e3ae7befd0",
+        "name": "Cercles du torse jambes écartées",
+        "image": "/images/exercises/image_00222b-57f9c95a9e12adac4c93e565bb1ac998.png",
+        "instructions": [
+            "Commencez debout avec une position large, mains sur les hanches.",
+            "Pivotez au niveau des hanches et commencez à tourner votre torse dans un large mouvement circulaire.",
+            "Concentrez-vous sur le maintien de mouvements contrôlés et fluides et changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Engagez le tronc pour soutenir le bas du dos.",
+            "Gardez les genoux légèrement pliés pour réduire la pression sur les articulations."
+        ],
+        "modifications": [
+            "Effectuez des cercles plus petits si l'amplitude complète du mouvement est inconfortable.",
+            "Si l'équilibre est un problème, réduisez la profondeur de votre pivot vers l'avant."
+        ],
+        "benefits": [
+            "Hanches, Ischio-jambiers, Tronc, Lombaires"
+        ]
+    },
+    {
+        "id": "5a9c734cc37a",
+        "name": "Ouvres-hanches debout",
+        "image": "/images/exercises/image_00235a-6d68db81c1868447d1bd2eab639f89c6.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Soulevez un pied du sol, en l'attrapant avec la main du côté opposé, et tirez-le vers le haut, en laissant le genou pointer vers l'extérieur.",
+            "Relâchez et revenez en position debout avant de répéter sur l'autre jambe.",
+            "Alternez les côtés dynamiquement de manière contrôlée."
+        ],
+        "tips": [
+            "Concentrez-vous sur le maintien du torse droit pour maintenir l'équilibre.",
+            "Déplacez-vous lentement et avec contrôle pour éviter de trop tourner la hanche.",
+            "Gardez le genou d'appui légèrement plié pour la stabilité."
+        ],
+        "modifications": [
+            "Tenez-vous à un mur ou à une chaise pour un soutien supplémentaire.",
+            "Gardez une amplitude de mouvement plus petite si la flexibilité est limitée."
+        ],
+        "benefits": [
+            "Hanches, Fessiers"
+        ]
+    },
+    {
+        "id": "23594574bc5e",
+        "name": "Twists genoux hauts",
+        "image": "/images/exercises/image_00236a-f899933bfcde9262815bf1c9547add6a.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains derrière la tête.",
+            "Levez un genou vers la poitrine tout en tournant le torse vers le genou levé.",
+            "Abaissez votre jambe et revenez à la position de départ avant de changer de côté.",
+            "Continuez à alterner les jambes de manière contrôlée et dynamique."
+        ],
+        "tips": [
+            "Concentrez-vous sur des mouvements contrôlés plutôt que sur la vitesse pour une meilleure forme.",
+            "Concentrez-vous sur le maintien du torse droit pour maintenir l'équilibre.",
+            "Coordonnez votre torsion et le lever de genou pour un mouvement fluide."
+        ],
+        "modifications": [
+            "Réduisez la hauteur du lever de genou si la flexibilité est limitée."
+        ],
+        "benefits": [
+            "Obliques, Hanches, Tronc"
+        ]
+    },
+    {
+        "id": "0fc452bf611d",
+        "name": "Cercles de chevilles",
+        "image": "/images/exercises/image_00218-1b4752a4051c837515c1c8d48c0e53fb.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les côtés ou sur les hanches.",
+            "Soulevez légèrement un pied du sol et pointez les orteils vers le bas.",
+            "Tournez votre pied dans un mouvement circulaire, en bougeant au niveau de la cheville.",
+            "Effectuez plusieurs cercles dans une direction, puis inversez la direction."
+        ],
+        "tips": [
+            "Engagez le tronc pour maintenir l'équilibre et la stabilité.",
+            "Déplacez-vous lentement et avec contrôle pour éviter de perdre l'équilibre.",
+            "Gardez la jambe d'appui légèrement pliée pour éviter de verrouiller le genou."
+        ],
+        "modifications": [
+            "Utilisez un mur ou une chaise pour un soutien si l'équilibre est difficile.",
+            "Si tourner complètement le pied est inconfortable, faites des cercles plus petits.",
+            "Effectuez le mouvement assis si la position debout est instable."
+        ],
+        "benefits": [
+            "Mollets, Pieds, Tibias, Chevilles"
+        ]
+    },
+    {
+        "id": "4643a201bb99",
+        "name": "Cercles de poignets",
+        "image": "/images/exercises/image_00207-f5afda03eb033d4ff0cf080ca01012f9.png",
+        "instructions": [
+            "Commencez debout ou assis, les mains devant la poitrine.",
+            "Faites des mouvements circulaires avec vos poignets, en les tournant lentement dans une direction.",
+            "Gardez les coudes stationnaires pendant que vous bougez les poignets, en vous concentrant sur une amplitude de mouvement complète.",
+            "Après avoir effectué plusieurs cercles, inversez la direction et répétez le mouvement."
+        ],
+        "tips": [
+            "Gardez vos mouvements contrôlés et fluides pour éviter de solliciter les poignets."
+        ],
+        "modifications": [
+            "Reposez vos avant-bras sur une table pour un soutien supplémentaire.",
+            "Si vous avez une gêne au poignet, effectuez les cercles plus lentement ou réduisez l'amplitude du mouvement."
+        ],
+        "benefits": [
+            "Avant-bras, Poignets, Mains"
+        ]
+    },
+    {
+        "id": "02f0bda145fd",
+        "name": "Pike sur les coudes",
+        "image": "/images/exercises/image_00117-a36c380f4acb3d4187fc941a04f0d24c.png",
+        "instructions": [
+            "Commencez au sol en position de pompe avec les avant-bras au sol.",
+            "Engagez le tronc pour soulever les hanches vers le plafond, formant une forme de \"V\" inversé avec votre corps.",
+            "Répartissez votre poids uniformément entre les avant-bras et les pieds et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les jambes droites et les talons décollés du sol.",
+            "Gardez la tête entre les bras et détendez le cou."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les genoux légèrement pliés et abaissez les hanches.",
+            "Utilisez un coussin sous les avant-bras pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Triceps, Épaules, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "1ab1140bf30b",
+        "name": "Maintenir le dips",
+        "image": "/images/exercises/image_00120-ecc50c076dea3c04e47d68066fd0063c.png",
+        "instructions": [
+            "Commencez assis sur le sol, genoux pliés, pieds à plat sur le sol.",
+            "Placez les paumes sur le sol derrière vous avec les doigts pointés vers les pieds.",
+            "En gardant le coude plié, soulevez les hanches du sol et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les coudes près du corps et les poignets sous les épaules."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, ne vous abaissez pas autant.",
+            "Si vous ressentez une tension au poignet, essayez de tourner légèrement les mains vers l'extérieur."
+        ],
+        "benefits": [
+            "Triceps, Épaules, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "3b85e5d2a85f",
+        "name": "Fente avec torsion debout",
+        "image": "/images/exercises/image_00142-324c322424110da6b6a162e7e209a3d5.png",
+        "instructions": [
+            "Commencez à genoux, genoux écartés de la largeur du bassin, bras le long du corps.",
+            "Avancez une jambe pour placer le pied sur le sol devant vous, formant un angle de 90 degrés avec les deux genoux.",
+            "Placez la main opposée sur le sol à l'intérieur de votre pied avant et tournez le torse, en tendant l'autre bras vers le plafond.",
+            "Tendez la jambe arrière pour soulever le genou du sol."
+        ],
+        "tips": [
+            "Gardez le dos droit et le genou avant aligné au-dessus de la cheville."
+        ],
+        "modifications": [
+            "Si la torsion est trop intense, gardez le genou arrière au sol.",
+            "Utilisez un bloc sous la main pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Psoas, Colonne vertébrale, Haut du dos, Épaules, Hanches, Poitrine, Lombaires"
+        ]
+    },
+    {
+        "id": "6c32f1c59275",
+        "name": "Extension du cou",
+        "image": "/images/exercises/image_00154-f5e02f3638ede3410b143d22b440ecbf.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Inclinez lentement la tête en arrière, en levant le menton vers le plafond.",
+            "Placez le bout des doigts sous le menton et poussez doucement la tête plus loin en arrière."
+        ],
+        "tips": [
+            "Gardez la bouche fermée et la mâchoire détendue.",
+            "Gardez le dos droit et les épaules basses."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Cou"
+        ]
+    },
+    {
+        "id": "c08139433959",
+        "name": "Flexion du cou",
+        "image": "/images/exercises/image_00155-588b56678ca486f54226601cfc5f6d20.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Inclinez lentement la tête vers l'avant, en amenant le menton vers la poitrine.",
+            "Entrelacez les doigts derrière la tête et tirez doucement la tête plus bas."
+        ],
+        "tips": [
+            "Gardez le dos droit et les épaules détendues.",
+            "Évitez d'arrondir le haut du dos."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Cou, Haut du dos"
+        ]
+    },
+    {
+        "id": "ebcee3a909bf",
+        "name": "Marches de zombie",
+        "image": "/images/exercises/image_00237a-033fa40c48352947cede12a4cd749d75.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras tendus droit devant vous.",
+            "Levez une jambe droit devant vous tout en gardant le torse droit et le genou droit.",
+            "Abaissez la jambe au sol et répétez avec la jambe opposée de manière contrôlée et dynamique."
+        ],
+        "tips": [
+            "Concentrez-vous sur l'engagement des muscles des jambes pour garder le mouvement fluide.",
+            "Gardez le dos droit et évitez de vous pencher en arrière en levant la jambe.",
+            "Déplacez-vous lentement et évitez de claquer le genou en le levant."
+        ],
+        "modifications": [
+            "Effectuez le mouvement avec un lever de jambe plus petit si la flexibilité est limitée.",
+            "Placez les mains sur les hanches au lieu de les étendre si une gêne à l'épaule survient.",
+            "Tenez-vous à un mur pour un meilleur équilibre si nécessaire."
+        ],
+        "benefits": [
+            "Hanches, Ischio-jambiers, Tronc"
+        ]
+    },
+    {
+        "id": "6efac1500afc",
+        "name": "Étirement dynamique des quadriceps",
+        "image": "/images/exercises/image_00224b-29835a5abd324dedfba7c8b573afdde2.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Levez un pied derrière vous et attrapez la cheville avec la main du même côté, en la tirant doucement vers les fesses.",
+            "Relâchez le pied et revenez en position debout avant de répéter l'étirement.",
+            "Répétez le mouvement et changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Gardez les genoux proches l'un de l'autre pendant l'étirement pour éviter une tension inutile.",
+            "Engagez le tronc pour maintenir l'équilibre et la stabilité.",
+            "Concentrez-vous sur des mouvements réguliers et contrôlés pour l'efficacité."
+        ],
+        "modifications": [
+            "Utilisez un mur ou une chaise pour l'équilibre si nécessaire.",
+            "Effectuez une amplitude de mouvement plus petite si la flexibilité est limitée."
+        ],
+        "benefits": [
+            "Hanches, Quadriceps"
+        ]
+    },
+    {
+        "id": "c2dc52a2d4cb",
+        "name": "Touchers d'orteils jambes écartées",
+        "image": "/images/exercises/image_00229c-5b58b26daf025487fc9ab4f95dcf4980.png",
+        "instructions": [
+            "Commencez debout avec une position large, les mains devant vous.",
+            "Pliez-vous au niveau de la taille et tendez les deux mains vers un de vos pieds pour toucher les orteils.",
+            "Revenez en position debout et répétez le mouvement de l'autre côté, en alternant dynamiquement.",
+            "Déplacez-vous de manière fluide, en vous concentrant sur un mouvement contrôlé."
+        ],
+        "tips": [
+            "Engagez le tronc pour soutenir le dos et maintenir l'équilibre.",
+            "Gardez les genoux légèrement pliés pour éviter de trop solliciter les ischio-jambiers."
+        ],
+        "modifications": [
+            "Touchez vos tibias ou vos genoux si atteindre les orteils est difficile."
+        ],
+        "benefits": [
+            "Mollets, Obliques, Hanches, Ischio-jambiers, Tronc, Lombaires"
+        ]
+    },
+    {
+        "id": "5b06e93d196d",
+        "name": "Cercles de hanches à genoux",
+        "image": "/images/exercises/image_00255c-0f40302919af63bec5f6a80e17828284.png",
+        "instructions": [
+            "Commencez en position de table, avec les mains sous les épaules et les genoux sous les hanches.",
+            "Soulevez un genou du sol, en le gardant plié à 90 degrés, et déplacez-le lentement dans un mouvement circulaire.",
+            "Changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Essayez de faire pivoter la hanche dans toute son amplitude de mouvement.",
+            "Déplacez-vous lentement et avec contrôle, en vous concentrant sur l'isolement du mouvement dans l'articulation de la hanche.",
+            "Engagez le tronc pour stabiliser le torse et empêcher le bas du dos de se cambrer."
+        ],
+        "modifications": [
+            "Réduisez l'amplitude du mouvement si la flexibilité ou la force est limitée."
+        ],
+        "benefits": [
+            "Hanches, Tronc, Fessiers"
+        ]
+    },
+    {
+        "id": "52f849ce1e5f",
+        "name": "Changement de hanches 90/90",
+        "image": "/images/exercises/image_00242c-615a5c1e790effff179183c728c6be4d.png",
+        "instructions": [
+            "Commencez assis sur le sol, genoux pliés, pieds à plat sur le sol devant vous.",
+            "Laissez tomber les deux genoux d'un côté, créant un angle de 90 degrés avec chaque jambe.",
+            "Soulevez les genoux et tournez-les du côté opposé, en changeant dynamiquement."
+        ],
+        "tips": [
+            "Concentrez-vous sur des transitions contrôlées et fluides en alternant les côtés.",
+            "Déplacez-vous lentement pour maintenir le contrôle, surtout si vos hanches sont tendues."
+        ],
+        "modifications": [
+            "Gardez les mains sur le sol derrière vous pour un soutien si nécessaire."
+        ],
+        "benefits": [
+            "Hanches, Tronc, Fessiers"
+        ]
+    },
+    {
+        "id": "d44b35d6e48c",
+        "name": "Changement de hanches 90/90 (sans mains)",
+        "image": "/images/exercises/image_00253a-152f2a1dded6ca93a8cd62f13dfd51ad.png",
+        "instructions": [
+            "Commencez assis sur le sol, genoux pliés, pieds à plat sur le sol, positionnés légèrement plus larges que la largeur des hanches.",
+            "En gardant les mains devant la poitrine, laissez tomber les deux genoux d'un côté, créant un angle de 90 degrés avec chaque jambe.",
+            "Soulevez les genoux et tournez-les du côté opposé, en maintenant un mouvement contrôlé.",
+            "Continuez à alterner les côtés dynamiquement."
+        ],
+        "tips": [
+            "Engagez le tronc pour maintenir l'équilibre et le contrôle sans utiliser les mains.",
+            "Gardez la poitrine soulevée et le torse droit tout au long du mouvement.",
+            "Déplacez-vous lentement et concentrez-vous sur une forme correcte pour éviter de solliciter les hanches ou le bas du dos."
+        ],
+        "modifications": [
+            "Réduisez l'amplitude du mouvement si la flexibilité ou l'équilibre est limité.",
+            "Placez les mains derrière vous pour un soutien supplémentaire.",
+            "Asseyez-vous sur un coussin pour surélever les hanches pour plus de confort."
+        ],
+        "benefits": [
+            "Hanches, Tronc, Fessiers"
+        ]
+    },
+    {
+        "id": "ac9751fac7a4",
+        "name": "Équilibre sur une jambe",
+        "image": "/images/exercises/image_00174-df7788ec445bb972924320b979f279d5.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les hanches.",
+            "Engagez le tronc pour soulever un pied du sol et l'étendre devant vous.",
+            "Équilibrez-vous sur la jambe d'appui et maintenez la position."
+        ],
+        "tips": [
+            "Gardez la jambe d'appui légèrement pliée, pas verrouillée."
+        ],
+        "modifications": [
+            "Placez les mains sur un mur ou une chaise pour un soutien."
+        ],
+        "benefits": [
+            "Pieds, Chevilles"
+        ]
+    },
+    {
+        "id": "7cd899801199",
+        "name": "Balances talon-orteil",
+        "image": "/images/exercises/image_00219c-de97158da6ebc779289ade4dcfac15cb.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les côtés.",
+            "Déplacez votre poids vers l'avant sur les orteils, en soulevant les talons du sol.",
+            "Déplacez lentement votre poids vers l'arrière sur les talons, en soulevant les orteils du sol.",
+            "Continuez à balancer d'avant en arrière de manière contrôlée et fluide."
+        ],
+        "tips": [
+            "Engagez le tronc pour maintenir l'équilibre.",
+            "Gardez vos mouvements réguliers et évitez les changements brusques.",
+            "Concentrez-vous sur le maintien d'une posture droite tout au long de l'exercice."
+        ],
+        "modifications": [
+            "Tenez-vous à un mur ou à une chaise pour un soutien supplémentaire à l'équilibre.",
+            "Réduisez l'amplitude du mouvement si l'étirement est trop intense.",
+            "Effectuez le mouvement plus lentement pour un meilleur contrôle."
+        ],
+        "benefits": [
+            "Mollets, Pieds, Tibias, Chevilles"
+        ]
+    },
+    {
+        "id": "009c99e1de55",
+        "name": "Balances latérales du pied",
+        "image": "/images/exercises/image_00220a-034ab3be53ed964a4ad840de46b27f4d.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, mains sur les côtés.",
+            "Déplacez votre poids sur les bords extérieurs des pieds, en soulevant les bords intérieurs.",
+            "Déplacez lentement votre poids sur les bords intérieurs des pieds, en soulevant les bords extérieurs.",
+            "Continuez à balancer d'un côté à l'autre de manière contrôlée et régulière."
+        ],
+        "tips": [
+            "Engagez le tronc pour aider à l'équilibre.",
+            "Déplacez-vous de manière fluide pour éviter les mouvements saccadés.",
+            "Gardez les genoux légèrement pliés et détendus."
+        ],
+        "modifications": [
+            "Utilisez un mur ou une chaise pour un soutien supplémentaire à l'équilibre.",
+            "Effectuez des mouvements latéraux plus petits si une amplitude complète est inconfortable.",
+            "Faites l'exercice assis si la position debout est difficile."
+        ],
+        "benefits": [
+            "Mollets, Pieds, Chevilles"
+        ]
+    },
+    {
+        "id": "b217b32fb939",
+        "name": "Étirement du soléaire",
+        "image": "/images/exercises/image_00172-e65f8b291d9bcb14b84a3c2b482c53e2.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Avancez un pied, puis pliez les deux genoux pour abaisser lentement les hanches vers le bas.",
+            "Gardez les deux pieds à plat sur le sol et penchez-vous légèrement vers l'avant pour sentir un étirement dans le bas du mollet."
+        ],
+        "tips": [
+            "Gardez le talon arrière fermement pressé contre le sol.",
+            "Gardez le dos droit et les pieds pointés vers l'avant."
+        ],
+        "modifications": [
+            "Placez les mains sur un mur ou une chaise pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Mollets, Pieds, Chevilles"
+        ]
+    },
+    {
+        "id": "2e98ef006f3e",
+        "name": "Orteils contre le mur",
+        "image": "/images/exercises/image_00168-05cede7eaa194529ad4e5efa782cacbd.png",
+        "instructions": [
+            "Commencez debout face à un mur, à environ une longueur de bras.",
+            "Placez les mains sur le mur à hauteur d'épaules pour un soutien.",
+            "Placez un pied contre le mur, avec les orteils pointés vers le haut et le talon au sol.",
+            "En gardant les deux jambes droites, penchez-vous vers l'avant et soulevez le talon arrière du sol."
+        ],
+        "tips": [
+            "Gardez les deux pieds pointés droit devant."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Mollets, Pieds, Chevilles, Orteils"
+        ]
+    },
+    {
+        "id": "5def953ec1f9",
+        "name": "Étirement du mollet à une jambe",
+        "image": "/images/exercises/image_00176-256a2c50d08903f1b539863747dd8fd9.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Repliez les orteils et soulevez les hanches vers le haut et l'arrière, en tendant les bras et les jambes.",
+            "Soulevez un pied du sol, en le croisant pour reposer sur le talon opposé, puis tendez la jambe d'appui."
+        ],
+        "tips": [
+            "Répartissez votre poids uniformément entre les mains et le pied.",
+            "Gardez le talon d'appui pressé contre le sol."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Mollets, Pieds, Ischio-jambiers, Chevilles"
+        ]
+    },
+    {
+        "id": "6deadfc9e489",
+        "name": "Étirement du tibia à une jambe",
+        "image": "/images/exercises/image_00175-ef2214a78d37d24f0ee285e9a37285ff.png",
+        "instructions": [
+            "Commencez à genoux, genoux écartés de la largeur du bassin, bras le long du corps.",
+            "Avancez un pied, en le plaçant à plat sur le sol à côté du genou opposé.",
+            "Abaissez lentement les hanches vers l'arrière et le bas pour vous asseoir sur le talon arrière.",
+            "Placez les mains sur le sol derrière vous, doigts pointés vers les pieds, et penchez-vous en arrière."
+        ],
+        "tips": [
+            "Gardez le dos droit et la poitrine soulevée."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Pieds, Tibias, Chevilles"
+        ]
+    },
+    {
+        "id": "c961242b12b5",
+        "name": "Étirement des orteils",
+        "image": "/images/exercises/image_00170-1fb65f8871119c0ff3934ef47d9a8bd9.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table, avec le dessus des pieds à plat sur le sol.",
+            "Repliez les orteils d'un pied, puis penchez-vous lentement en arrière et abaissez les hanches vers les talons, tout en gardant les paumes pressées contre le sol."
+        ],
+        "tips": [
+            "Répartissez votre poids uniformément sur les deux paumes."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Pieds, Orteils"
+        ]
+    },
+    {
+        "id": "4b5a36c791cc",
+        "name": "Étirement du mollet penché",
+        "image": "/images/exercises/image_00169-82a2e50a68ddb31323bd528b29f2de3b.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Avancez un pied, puis pliez la jambe opposée pour abaisser les hanches vers le bas et l'arrière.",
+            "Gardez le pied arrière à plat sur le sol et gardez la jambe avant droite, en levant les orteils pour vous équilibrer sur le talon avant.",
+            "Pivotez au niveau des hanches, en tendant la main opposée pour attraper votre pied et en plaçant l'autre main derrière votre dos."
+        ],
+        "tips": [
+            "Gardez le dos droit et évitez d'arrondir la colonne vertébrale.",
+            "Gardez les deux pieds pointés vers l'avant."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Mollets, Pieds, Chevilles"
+        ]
+    },
+    {
+        "id": "f5848c0b3a5c",
+        "name": "Élévations de mollets",
+        "image": "/images/exercises/image_00173-a56db56c74a9c0162de1fa44cd14dd7b.png",
+        "instructions": [
+            "Commencez debout face à un mur, pieds écartés de la largeur du bassin.",
+            "Placez les mains sur le mur à hauteur d'épaules pour un soutien.",
+            "En gardant les orteils pressés dans le sol, soulevez les talons du sol et maintenez la position."
+        ],
+        "tips": [
+            "Maintenez une posture droite, en évitant de vous pencher contre le mur.",
+            "Gardez les deux pieds pointés droit devant et évitez de laisser les chevilles rouler vers l'extérieur."
+        ],
+        "modifications": [
+            "Utilisez une table ou une chaise pour un soutien si vous n'avez pas accès à un mur."
+        ],
+        "benefits": [
+            "Mollets, Pieds, Chevilles, Orteils"
+        ]
+    },
+    {
+        "id": "aac59fcfc45f",
+        "name": "Élévations des orteils",
+        "image": "/images/exercises/image_00171-080b3021ab72183a07cf83639bbc327b.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, dos contre un mur.",
+            "Avancez avec les deux pieds de sorte que les talons soient à une longueur de bras du mur.",
+            "Soulevez les hanches et la tête du mur de sorte que votre corps soit soutenu seulement par les épaules.",
+            "En gardant les talons pressés dans le sol, soulevez les orteils du sol et maintenez la position."
+        ],
+        "tips": [
+            "Gardez les bras détendus le long du corps."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les hanches contre le mur pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Pieds, Tibias, Chevilles"
+        ]
+    },
+    {
+        "id": "1a8d5ee02cb9",
+        "name": "Genou contre le mur",
+        "image": "/images/exercises/image_00178-252dc0edbf06330e68cd84570793b722.png",
+        "instructions": [
+            "Commencez sur un genou avec le pied avant à une longueur de main d'un mur.",
+            "En gardant le talon avant à plat sur le sol, amenez le genou vers l'avant pour toucher le mur."
+        ],
+        "tips": [
+            "Continuez à éloigner le pied du mur pour approfondir l'étirement."
+        ],
+        "modifications": [
+            "Placez les mains sur le genou ou sur le mur devant vous pour un soutien.",
+            "Si vous ne pouvez pas toucher le genou au mur, rapprochez le pied."
+        ],
+        "benefits": [
+            "Mollets, Pieds, Chevilles"
+        ]
+    },
+    {
+        "id": "b623642dbcdb",
+        "name": "Cercles de chevilles allongé",
+        "image": "/images/exercises/image_00177-5150a84d59397a26ecfa6f78b5ff8c49.png",
+        "instructions": [
+            "Commencez allongé sur le dos, jambes tendues, bras le long du corps.",
+            "Pliez un genou et ramenez-le vers la poitrine, puis tenez la cuisse avec les deux mains.",
+            "Tournez votre pied dans un mouvement circulaire, en changeant de direction toutes les quelques rotations."
+        ],
+        "tips": [
+            "Concentrez-vous sur le mouvement uniquement de l'articulation de la cheville.",
+            "Gardez le reste du corps détendu, particulièrement la hanche et le genou.",
+            "Essayez de faire des cercles fluides et contrôlés."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, effectuez l'exercice avec la jambe reposant sur le sol."
+        ],
+        "benefits": [
+            "Pieds, Chevilles"
+        ]
+    },
+    {
+        "id": "06223b64e7ec",
+        "name": "Pliage latéral jambes écartées",
+        "image": "/images/exercises/image_00201-70102acce87770075a4facd9ef5eb8bb.png",
+        "instructions": [
+            "Commencez debout, pieds plus larges que la largeur des épaules, bras le long du corps.",
+            "Tendez un bras au-dessus de la tête et placez l'autre main sur la cuisse.",
+            "Penchez doucement le torse sur le côté, en étendant le bras au-dessus de la tête."
+        ],
+        "tips": [
+            "Maintenez la longueur de la colonne vertébrale tout au long du mouvement.",
+            "Engagez le tronc pour soutenir le bas du dos.",
+            "Respirez profondément et régulièrement pour améliorer l'étirement."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez le pliage moins profond ou placez la main sur la cuisse pour un soutien.",
+            "Effectuez l'étirement près d'un mur pour un meilleur équilibre si nécessaire."
+        ],
+        "benefits": [
+            "Colonne vertébrale, Obliques, Lombaires, Dorsaux, Abdomen"
+        ]
+    },
+    {
+        "id": "6b3e66d8c655",
+        "name": "Grenouille vers le haut",
+        "image": "/images/exercises/image_00184-401117abcede0f4595a59199bdb8f986.png",
+        "instructions": [
+            "Commencez allongé sur le ventre, jambes tendues, mains sous les épaules.",
+            "Glissez un genou sur le côté et amenez le genou vers la hanche.",
+            "Pressez les paumes dans le sol, en tendant les bras pour soulever le haut du corps du sol.",
+            "Soulevez la poitrine vers le plafond, relâchez les épaules et regardez légèrement vers le haut."
+        ],
+        "tips": [
+            "Gardez les bras droits ou gardez une légère flexion dans les coudes."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, gardez les avant-bras au sol."
+        ],
+        "benefits": [
+            "Psoas, Colonne vertébrale, Poitrine, Abdomen"
+        ]
+    },
+    {
+        "id": "af531c83e99d",
+        "name": "90/90",
+        "image": "/images/exercises/image_00133-f7e34b03fcaf47b3cd86f4195a94ad85.png",
+        "instructions": [
+            "Commencez assis sur le sol, genoux pliés, pieds à plat sur le sol.",
+            "Laissez les genoux tomber d'un côté de sorte que les deux genoux forment des angles de 90 degrés contre le sol.",
+            "Carré les hanches pour faire face à votre jambe avant, et placez les mains sur le sol devant vous pour un soutien.",
+            "Pivotez au niveau des hanches pour vous pencher doucement en avant sur votre jambe avant."
+        ],
+        "tips": [
+            "Gardez le dos droit et évitez d'arrondir la colonne vertébrale."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, asseyez-vous sur un coussin ou une couverture pliée pour surélever les hanches."
+        ],
+        "benefits": [
+            "Genoux, Aine, Hanches, Fessiers"
+        ]
+    },
+    {
+        "id": "45c3cbf1c03c",
+        "name": "Grand écart avant",
+        "image": "/images/exercises/image_00067-82ab96caa45feaa6991b0a8bd2aac71b.png",
+        "instructions": [
+            "Commencez à genoux, mains sur les côtés.",
+            "Étendez une jambe devant vous et penchez-vous en avant pour placer les mains sur le sol devant vous.",
+            "Soulevez le genou arrière du sol pour tendre la jambe, puis glissez lentement le pied vers l'arrière et abaissez les hanches vers le sol."
+        ],
+        "tips": [
+            "Gardez les hanches carrées et le torse droit."
+        ],
+        "modifications": [
+            "Si l'étirement est trop intense, utilisez des blocs sous les mains pour un soutien.",
+            "Gardez une légère flexion dans le genou avant si tendre complètement la jambe est inconfortable."
+        ],
+        "benefits": [
+            "Aine, Mollets, Hanches, Ischio-jambiers, Quadriceps, Fessiers"
+        ]
+    },
+    {
+        "id": "80011840adc8",
+        "name": "Soulevé de terre à une jambe",
+        "image": "/images/exercises/image_00186-7187fd0ddfd9c3b08e4c781a15a3f461.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Déplacez votre poids sur un pied et soulevez légèrement l'autre pied du sol derrière vous.",
+            "Pivotez au niveau des hanches, en abaissant le torse vers l'avant tout en levant simultanément la jambe derrière vous.",
+            "Gardez une légère flexion dans la jambe d'appui et laissez les bras pendre naturellement."
+        ],
+        "tips": [
+            "Visez à abaisser le torse et à lever la jambe arrière jusqu'à ce qu'ils soient tous deux parallèles au sol.",
+            "Gardez le dos droit pour que votre corps soit en ligne droite de la tête aux orteils."
+        ],
+        "modifications": [],
+        "benefits": [
+            "Pieds, Ischio-jambiers, Lombaires, Chevilles, Fessiers"
+        ]
+    },
+    {
+        "id": "0f767ad0897a",
+        "name": "Squats divisés",
+        "image": "/images/exercises/image_00223b-7152e76d9e2e7dd480fedb4924d622e3.png",
+        "instructions": [
+            "Commencez debout avec un pied en avant et l'autre pied reculé en position divisée.",
+            "Pliez les deux genoux pour abaisser les hanches droit vers le bas, en gardant le genou avant aligné au-dessus de la cheville et le genou arrière juste au-dessus du sol.",
+            "Poussez à travers le talon avant pour revenir en position debout.",
+            "Répétez le mouvement et changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Engagez le tronc pour maintenir l'équilibre et la stabilité.",
+            "Gardez le torse droit et évitez de vous pencher en avant.",
+            "Concentrez-vous sur des mouvements contrôlés et réguliers pour maximiser l'efficacité."
+        ],
+        "modifications": [
+            "Réduisez la profondeur de la fente si la flexibilité ou la force est limitée.",
+            "Tenez-vous à une chaise ou à un mur pour l'équilibre si nécessaire.",
+            "Effectuez l'exercice plus lentement pour assurer une forme correcte."
+        ],
+        "benefits": [
+            "Mollets, Ischio-jambiers, Quadriceps, Tronc, Fessiers"
+        ]
+    },
+    {
+        "id": "d64810052d65",
+        "name": "Fente du coureur avec torsion",
+        "image": "/images/exercises/image_00233c-6d91e92702ce68b804ce22fe03f4ef68.png",
+        "instructions": [
+            "Commencez en position de planche, les mains sous les épaules et le corps en ligne droite.",
+            "Avancez un pied à l'extérieur de votre main, entrant en position de fente du coureur.",
+            "Tournez le torse, en tendant le bras opposé vers le plafond.",
+            "Remettez la main au sol et reculez en position de planche, et changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Gardez les hanches basses et vos mouvements fluides pour un bon alignement.",
+            "Concentrez-vous sur l'ouverture de la poitrine en tournant.",
+            "Gardez la jambe arrière forte pour maintenir la stabilité."
+        ],
+        "modifications": [
+            "Réduisez la profondeur de la fente si la flexibilité est limitée.",
+            "Effectuez le mouvement plus lentement pour maintenir l'équilibre.",
+            "Utilisez des blocs de yoga sous les mains pour un soutien supplémentaire."
+        ],
+        "benefits": [
+            "Épaules, Hanches, Poitrine, Tronc"
+        ]
+    },
+    {
+        "id": "f7bc64b2fe47",
+        "name": "Extension de changement de hanches 90/90",
+        "image": "/images/exercises/image_00254a-df70af0a135ebafef711de979d635b4d.png",
+        "instructions": [
+            "Commencez assis sur le sol, genoux pliés, pieds à plat sur le sol, positionnés légèrement plus larges que la largeur des hanches.",
+            "En gardant les mains devant la poitrine, laissez tomber les deux genoux d'un côté, créant un angle de 90 degrés avec chaque jambe.",
+            "Engagez les muscles de la jambe avant pour soulever les hanches du sol.",
+            "Revenez à la position assise, soulevez les genoux et tournez-les du côté opposé, en répétant l'extension de l'autre côté dynamiquement."
+        ],
+        "tips": [
+            "Engagez le tronc pour maintenir l'équilibre et le contrôle sans utiliser les mains.",
+            "Gardez la poitrine soulevée et le torse droit tout au long du mouvement.",
+            "Déplacez-vous lentement et concentrez-vous sur une forme correcte pour éviter de solliciter les hanches ou le bas du dos."
+        ],
+        "modifications": [
+            "Réduisez l'amplitude du mouvement si la flexibilité ou l'équilibre est limité.",
+            "Placez les mains derrière vous pour un soutien supplémentaire.",
+            "Asseyez-vous sur un coussin pour surélever les hanches pour plus de confort."
+        ],
+        "benefits": [
+            "Hanches, Tronc, Fessiers"
+        ]
+    },
+    {
+        "id": "972d7a974f44",
+        "name": "Ponts fessiers à une jambe",
+        "image": "/images/exercises/image_00238b-e919c80b31abb744fc9ba1b239e1fae7.png",
+        "instructions": [
+            "Commencez allongé sur le dos avec un genou plié, pied à plat sur le sol, et l'autre jambe tendue droit vers le haut dans les airs.",
+            "Engagez les fessiers et soulevez les hanches vers le plafond, en gardant la jambe étendue droite vers le haut.",
+            "Abaissez les hanches au sol avec contrôle et répétez le mouvement.",
+            "Changez de côté à mi-parcours."
+        ],
+        "tips": [
+            "Concentrez-vous sur la contraction des fessiers au sommet du mouvement.",
+            "Déplacez-vous de manière fluide et évitez de cambrer le dos."
+        ],
+        "modifications": [
+            "Gardez les deux pieds au sol si l'équilibre est un défi.",
+            "Réduisez l'amplitude du mouvement si l'exercice est trop intense."
+        ],
+        "benefits": [
+            "Ischio-jambiers, Lombaires, Fessiers"
+        ]
+    },
+    {
+        "id": "c42f8e51ee7e",
+        "name": "Flexion des poignets",
+        "image": "/images/exercises/image_00073-77a21d3acaf1cc5d719ebe4a35e7cae7.png",
+        "instructions": [
+            "Commencez à quatre pattes en position de table.",
+            "Retournez les mains de sorte que le dessus des mains soit à plat sur le sol et les doigts pointés vers votre corps.",
+            "Avancez les genoux vers les mains, puis penchez-vous lentement en arrière et abaissez les hanches vers les talons, tout en gardant les mains pressées contre le sol."
+        ],
+        "tips": [
+            "Répartissez votre poids uniformément sur les deux mains."
+        ],
+        "modifications": [
+            "Si être à genoux est inconfortable, faites cet étirement debout avec les mains sur une table."
+        ],
+        "benefits": [
+            "Avant-bras, Poignets, Doigts, Mains"
+        ]
+    },
+    {
+        "id": "ad4e1d344fa4",
+        "name": "Squat divisé profond",
+        "image": "/images/exercises/image_00183-fcd569c29ca8160c4d16f22868418b1f.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Reculez un pied en position de fente, puis abaissez lentement votre corps tout en gardant la jambe arrière droite.",
+            "Permettez au genou avant de se déplacer vers l'avant au-dessus des orteils et gardez le genou arrière au-dessus du sol.",
+            "Gardez le dos droit et le torse droit."
+        ],
+        "tips": [
+            "Gardez le pied avant fermement planté dans le sol.",
+            "Assurez-vous que le genou avant est stable et ne s'affaisse pas vers l'intérieur."
+        ],
+        "modifications": [
+            "Pour une intensité moindre, ne vous abaissez pas aussi profondément ou gardez le genou arrière au sol.",
+            "Utilisez une chaise ou un mur pour un soutien supplémentaire si nécessaire."
+        ],
+        "benefits": [
+            "Hanches, Quadriceps, Abdomen"
+        ]
+    },
+    {
+        "id": "aac499e2e7d2",
+        "name": "Posture de la prière inversée",
+        "image": "/images/exercises/image_00161-034d1c687cc8876cecbbb383a8c8bb69.png",
+        "instructions": [
+            "Commencez debout ou assis, dos droit, bras le long du corps.",
+            "Pliez les deux bras pour amener les mains derrière le dos, puis pressez les paumes l'une contre l'autre avec les doigts pointés vers le haut.",
+            "Soulevez la poitrine et faites glisser les mains vers le haut le long de la colonne vertébrale."
+        ],
+        "tips": [
+            "Gardez les épaules détendues et éloignées des oreilles.",
+            "Évitez de cambrer excessivement le dos."
+        ],
+        "modifications": [
+            "Si rapprocher les paumes est trop difficile, tenez-vous aux coudes opposés derrière le dos à la place."
+        ],
+        "benefits": [
+            "Avant-bras, Épaules, Poitrine, Poignets"
+        ]
+    },
+    {
+        "id": "3355224e2829",
+        "name": "Genoux hauts",
+        "image": "/images/exercises/image_00245a-71c96c55727c6e4a983b586506d595f4.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin et les coudes pliés à 90 degrés, tenant vos mains devant vous.",
+            "Levez un genou vers votre main, visant à le toucher sans bouger les bras.",
+            "Alternez rapidement les jambes dans un mouvement de course, en gardant un rythme régulier et votre torse droit.",
+            "Concentrez-vous sur le fait d'amener les genoux suffisamment haut pour atteindre vos mains à chaque lever."
+        ],
+        "tips": [
+            "Atterrissez doucement sur la plante des pieds pour minimiser l'impact sur vos articulations.",
+            "Maintenez un rythme régulier et un mouvement contrôlé pour garder une bonne forme.",
+            "Gardez le haut du corps détendu et droit."
+        ],
+        "modifications": [
+            "Effectuez le mouvement à un rythme plus lent pour une intensité moindre.",
+            "Gardez les mains plus bas si la flexibilité ou la force limite la hauteur de vos genoux."
+        ],
+        "benefits": [
+            "Genoux, Mollets, Pieds, Hanches, Ischio-jambiers, Quadriceps, Tronc, Chevilles, Orteils, Fessiers"
+        ]
+    },
+    {
+        "id": "143253861312",
+        "name": "Talons-fesses",
+        "image": "/images/exercises/image_00246a-f22559fccbc617d7f8da2fad966b8e58.png",
+        "instructions": [
+            "Commencez debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+            "Pliez un genou pour donner un coup de talon vers les fesses, puis alternez les jambes dynamiquement.",
+            "Continuez à alterner les jambes de manière contrôlée et régulière."
+        ],
+        "tips": [
+            "Atterrissez doucement sur la plante des pieds pour minimiser l'impact.",
+            "Concentrez-vous sur un mouvement fluide et rythmique plutôt que sur la vitesse.",
+            "Gardez le haut du corps détendu et droit."
+        ],
+        "modifications": [
+            "Effectuez le mouvement plus lentement pour un meilleur contrôle.",
+            "Réduisez la hauteur du coup de pied si la flexibilité est limitée."
+        ],
+        "benefits": [
+            "Genoux, Mollets, Pieds, Hanches, Ischio-jambiers, Quadriceps, Tronc, Chevilles, Orteils, Fessiers"
+        ]
+    }
+]

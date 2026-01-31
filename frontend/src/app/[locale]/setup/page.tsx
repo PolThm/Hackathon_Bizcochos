@@ -562,6 +562,7 @@ export default function SetupPage() {
                   onClose={() => setIsExerciseSelectionModalOpen(false)}
                   onSelectExercise={addExerciseFromLibrary}
                   onAddCustomExercise={addCustomExercise}
+                  locale={currentLocale}
                 />
                 <Button
                   sx={{

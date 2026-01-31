@@ -9,6 +9,8 @@ export interface Exercise {
 export interface Routine {
   id: string | number;
   name: string;
+  /** Optional short description of the routine (e.g. from AI generation). */
+  description?: string;
   breakDuration: number;
   preparationDuration: number;
   exercises: Exercise[];

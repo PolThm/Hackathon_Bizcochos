@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import {
   Box,
   Typography,
@@ -18,9 +18,16 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslations } from 'next-intl';
-import { useRouter, Link } from '@/i18n/routing';
+import { useParams } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
+import Image from 'next/image';
 import { getItem, setItem } from '@/utils/indexedDB';
+import { getExercisesByLocale } from '@/utils/exercises';
 import { Routine, Exercise } from '@/types';
+
+const CAROUSEL_INTERVAL_MS = 4000;
+const CAROUSEL_SWIPE_PAUSE_MS = 10000;
+const CAROUSEL_SWIPE_THRESHOLD_PX = 50;
 
 interface LoadingStateProps {
   messages: string[];
@@ -158,6 +165,8 @@ export default function NewRoutinePage() {
   const t = useTranslations('newRoutine');
   const tCommon = useTranslations('common');
   const router = useRouter();
+  const params = useParams();
+  const locale = (params?.locale as string) ?? 'en';
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -166,6 +175,81 @@ export default function NewRoutinePage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [proposedRoutine, setProposedRoutine] = useState<Routine | null>(null);
   const [isRefineModalOpen, setIsRefineModalOpen] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const autoScrollPausedUntilRef = useRef(0);
+  const touchStartXRef = useRef<number | null>(null);
+  const swipeHandledRef = useRef(false);
+
+  // Resolve exercise images from library (by locale)
+  const exercisesWithImage = useMemo(() => {
+    if (!proposedRoutine) return [];
+    const library = getExercisesByLocale(locale);
+    return proposedRoutine.exercises.map((ex) => ({
+      ...ex,
+      image: library.find((e) => e.id === ex.exerciseId)?.image ?? '',
+    }));
+  }, [proposedRoutine, locale]);
+
+  const exerciseCount = exercisesWithImage.length;
+
+  // Auto-advance carousel (skipped while paused after swipe)
+  useEffect(() => {
+    if (!proposedRoutine || exerciseCount <= 1) return;
+    const id = setInterval(() => {
+      if (Date.now() < autoScrollPausedUntilRef.current) return;
+      setCarouselIndex((prev) => (prev >= exerciseCount - 1 ? 0 : prev + 1));
+    }, CAROUSEL_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [proposedRoutine, exerciseCount]);
+
+  // Reset carousel when routine changes
+  useEffect(() => {
+    setCarouselIndex(0);
+  }, [proposedRoutine?.id]);
+
+  const handleCarouselSwipe = useCallback(
+    (direction: 'prev' | 'next') => {
+      setCarouselIndex((prev) => {
+        if (direction === 'next') {
+          return prev >= exerciseCount - 1 ? 0 : prev + 1;
+        }
+        return prev <= 0 ? exerciseCount - 1 : prev - 1;
+      });
+      autoScrollPausedUntilRef.current = Date.now() + CAROUSEL_SWIPE_PAUSE_MS;
+      swipeHandledRef.current = true;
+    },
+    [exerciseCount],
+  );
+
+  const handleCarouselTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    swipeHandledRef.current = false;
+  }, []);
+
+  const handleCarouselTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      const startX = touchStartXRef.current;
+      if (startX === null) return;
+      touchStartXRef.current = null;
+      const endX = e.changedTouches[0].clientX;
+      const deltaX = endX - startX;
+      if (Math.abs(deltaX) < CAROUSEL_SWIPE_THRESHOLD_PX) return;
+      e.preventDefault();
+      handleCarouselSwipe(deltaX > 0 ? 'prev' : 'next');
+    },
+    [handleCarouselSwipe],
+  );
+
+  const handleSlideClick = useCallback(
+    (ex: (typeof exercisesWithImage)[0]) => {
+      if (swipeHandledRef.current) {
+        swipeHandledRef.current = false;
+        return;
+      }
+      router.push(`/exercise/${ex.exerciseId}?from=new-routine`);
+    },
+    [router],
+  );
 
   // Get translated loading messages
   const loadingMessages = [
@@ -224,7 +308,7 @@ export default function NewRoutinePage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ prompt, locale }),
       });
 
       if (!response.ok) {
@@ -239,6 +323,7 @@ export default function NewRoutinePage() {
         const newRoutine: Routine = {
           id: apiRoutine.id,
           name: apiRoutine.name,
+          description: apiRoutine.description,
           breakDuration: 5, // Always set to 5 seconds
           preparationDuration: 5, // Always set to 5 seconds
           exercises: apiRoutine.exercises.map((ex: any, index: number) => ({
@@ -329,19 +414,11 @@ export default function NewRoutinePage() {
           {t('propositionTitle')}
         </Typography>
 
-        <Typography
-          variant='body1'
-          sx={{ color: 'text.secondary', lineHeight: 1.6 }}
-        >
-          {t('introText')}
-        </Typography>
-
         <Box
           sx={{
-            p: 3,
+            p: 2.5,
             borderRadius: 3,
             bgcolor: 'background.paper',
-            boxShadow: 3,
             border: '1px solid',
             borderColor: 'divider',
           }}
@@ -349,6 +426,19 @@ export default function NewRoutinePage() {
           <Typography variant='h5' gutterBottom sx={{ fontWeight: 700 }}>
             {proposedRoutine.name}
           </Typography>
+          {proposedRoutine.description && (
+            <Typography
+              variant='body2'
+              sx={{
+                color: 'text.secondary',
+                lineHeight: 1.6,
+                mb: 1.5,
+                fontStyle: 'italic',
+              }}
+            >
+              {proposedRoutine.description}
+            </Typography>
+          )}
           <Typography variant='body2' color='text.secondary' gutterBottom>
             {proposedRoutine.exercises.length} exercises •{' '}
             {Math.floor(
@@ -360,41 +450,151 @@ export default function NewRoutinePage() {
             min
           </Typography>
 
-          <Box sx={{ mt: 2, overflowY: 'auto' }}>
-            {proposedRoutine.exercises.map((ex, index) => (
+          <Box sx={{ mt: 2 }}>
+            <Box
+              sx={{
+                overflow: 'hidden',
+                borderRadius: 2,
+                position: 'relative',
+                touchAction: 'pan-y',
+              }}
+              onTouchStart={handleCarouselTouchStart}
+              onTouchEnd={handleCarouselTouchEnd}
+            >
               <Box
-                key={ex.id}
                 sx={{
-                  py: 1,
                   display: 'flex',
-                  justifyContent: 'space-between',
-                  borderBottom:
-                    index === proposedRoutine.exercises.length - 1
-                      ? 'none'
-                      : '1px solid',
-                  borderColor: 'divider',
+                  transition:
+                    'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  transform: `translateX(-${carouselIndex * 100}%)`,
                 }}
               >
-                <Typography
-                  component={Link}
-                  href={`/exercise/${ex.exerciseId}?from=new-routine`}
-                  variant='body1'
+                {exercisesWithImage.map((ex) => (
+                  <Box
+                    key={ex.id}
+                    role='button'
+                    tabIndex={0}
+                    onClick={() => handleSlideClick(ex)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleSlideClick(ex);
+                      }
+                    }}
+                    sx={{
+                      flex: '0 0 100%',
+                      minWidth: 0,
+                      cursor: 'pointer',
+                      display: 'block',
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        position: 'relative',
+                        borderRadius: 2,
+                        overflow: 'hidden',
+                        bgcolor: 'action.hover',
+                        aspectRatio: '4/3',
+                      }}
+                    >
+                      {ex.image ? (
+                        <Image
+                          src={ex.image}
+                          alt={ex.name}
+                          fill
+                          sizes='(max-width: 600px) 100vw, 400px'
+                          style={{ objectFit: 'cover' }}
+                        />
+                      ) : (
+                        <Box
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          <Typography variant='body2' color='text.secondary'>
+                            {ex.name}
+                          </Typography>
+                        </Box>
+                      )}
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          px: 1.5,
+                          py: 1,
+                          background:
+                            'linear-gradient(transparent, rgba(0,0,0,0.6))',
+                          display: 'flex',
+                          alignItems: 'flex-end',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        <Typography
+                          variant='body2'
+                          sx={{
+                            color: 'white',
+                            fontWeight: 600,
+                            textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                          }}
+                        >
+                          {ex.name}
+                        </Typography>
+                        <Typography
+                          variant='caption'
+                          sx={{
+                            color: 'rgba(255,255,255,0.9)',
+                            fontWeight: 500,
+                          }}
+                        >
+                          {ex.duration}s
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
+              {exercisesWithImage.length > 1 && (
+                <Box
                   sx={{
-                    textDecoration: 'underline',
-                    cursor: 'pointer',
-                    color: 'primary.main',
-                    '&:hover': {
-                      color: 'secondary.main',
-                    },
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: 0.75,
+                    mt: 1.5,
                   }}
                 >
-                  {ex.name}
-                </Typography>
-                <Typography variant='body2' sx={{ opacity: 0.7 }}>
-                  {ex.duration}s
-                </Typography>
-              </Box>
-            ))}
+                  {exercisesWithImage.map((_, index) => (
+                    <Box
+                      key={index}
+                      onClick={() => setCarouselIndex(index)}
+                      sx={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: '50%',
+                        bgcolor:
+                          index === carouselIndex
+                            ? 'primary.main'
+                            : 'action.selected',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.2s, transform 0.2s',
+                        '&:hover': {
+                          bgcolor:
+                            index === carouselIndex
+                              ? 'primary.dark'
+                              : 'action.hover',
+                          transform: 'scale(1.2)',
+                        },
+                      }}
+                    />
+                  ))}
+                </Box>
+              )}
+            </Box>
           </Box>
 
           <Typography
@@ -413,7 +613,7 @@ export default function NewRoutinePage() {
           </Typography>
         </Box>
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 1 }}>
           <Button
             fullWidth
             variant='contained'

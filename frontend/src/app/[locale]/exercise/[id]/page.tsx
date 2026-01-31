@@ -15,24 +15,16 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import allExercises from '@/mocks/all-exercises-en.json';
+import { getExercisesByLocale } from '@/utils/exercises';
 import { Link } from '@/i18n/routing';
-
-interface Exercise {
-  id: string;
-  name: string;
-  image: string;
-  instructions: string[];
-  tips: string[];
-  modifications: string[];
-  benefits: string[];
-}
 
 export default function ExerciseDetailsPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const t = useTranslations('exerciseDetails');
   const exerciseId = params.id as string;
+  const locale = (params?.locale as string) ?? 'en';
+  const allExercises = getExercisesByLocale(locale);
   const from = searchParams.get('from');
   const backHref =
     from === 'setup'
@@ -42,8 +34,8 @@ export default function ExerciseDetailsPage() {
         : '/library';
 
   const exercise = useMemo(() => {
-    return (allExercises as Exercise[]).find((ex) => ex.id === exerciseId);
-  }, [exerciseId]);
+    return allExercises.find((ex) => ex.id === exerciseId);
+  }, [exerciseId, allExercises]);
 
   if (!exercise) {
     return (

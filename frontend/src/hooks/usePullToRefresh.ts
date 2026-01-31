@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState, useCallback, RefObject } from 'react';
 
+/** Height in px from the top of the viewport: pull-to-refresh only starts if touch begins in this zone. */
+const TOP_ZONE_HEIGHT_PX = 120;
+
 interface UsePullToRefreshOptions {
   onRefresh: () => Promise<void> | void;
   enabled?: boolean;
@@ -30,7 +33,6 @@ export function usePullToRefresh({
   });
 
   const startY = useRef<number>(0);
-  const currentY = useRef<number>(0);
   const isDragging = useRef<boolean>(false);
   const isRefreshingRef = useRef<boolean>(false);
   const pullDistanceRef = useRef<number>(0);
@@ -69,8 +71,10 @@ export function usePullToRefresh({
       if (element.scrollTop > 0) return;
       if (e.touches.length !== 1) return;
 
-      startY.current = e.touches[0].clientY;
-      currentY.current = startY.current;
+      const touchY = e.touches[0].clientY;
+      if (touchY > TOP_ZONE_HEIGHT_PX) return;
+
+      startY.current = touchY;
       isDragging.current = true;
     };
 
@@ -82,8 +86,8 @@ export function usePullToRefresh({
         return;
       }
 
-      currentY.current = e.touches[0].clientY;
-      const deltaY = currentY.current - startY.current;
+      const currentY = e.touches[0].clientY;
+      const deltaY = currentY - startY.current;
 
       if (deltaY > 0) {
         e.preventDefault();

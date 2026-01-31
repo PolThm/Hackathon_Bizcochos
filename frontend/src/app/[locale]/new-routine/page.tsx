@@ -28,6 +28,7 @@ import { Routine, Exercise } from '@/types';
 const CAROUSEL_INTERVAL_MS = 4000;
 const CAROUSEL_SWIPE_PAUSE_MS = 10000;
 const CAROUSEL_SWIPE_THRESHOLD_PX = 50;
+const CAROUSEL_INDEX_STORAGE_KEY_PREFIX = 'newRoutineCarouselIndex_';
 
 interface LoadingStateProps {
   messages: string[];
@@ -176,6 +177,7 @@ export default function NewRoutinePage() {
   const [proposedRoutine, setProposedRoutine] = useState<Routine | null>(null);
   const [isRefineModalOpen, setIsRefineModalOpen] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [skipCarouselTransition, setSkipCarouselTransition] = useState(false);
   const autoScrollPausedUntilRef = useRef(0);
   const touchStartXRef = useRef<number | null>(null);
   const swipeHandledRef = useRef(false);
@@ -202,10 +204,33 @@ export default function NewRoutinePage() {
     return () => clearInterval(id);
   }, [proposedRoutine, exerciseCount]);
 
-  // Reset carousel when routine changes
+  // Restore carousel index when routine is loaded (e.g. back from exercise page)
   useEffect(() => {
-    setCarouselIndex(0);
-  }, [proposedRoutine?.id]);
+    if (!proposedRoutine?.id || exerciseCount <= 0) return;
+    const key = `${CAROUSEL_INDEX_STORAGE_KEY_PREFIX}${proposedRoutine.id}`;
+    const saved = sessionStorage.getItem(key);
+    const idx = saved !== null ? parseInt(saved, 10) : 0;
+    if (!isNaN(idx) && idx >= 0 && idx < exerciseCount) {
+      setSkipCarouselTransition(true);
+      setCarouselIndex(idx);
+    } else {
+      setCarouselIndex(0);
+    }
+  }, [proposedRoutine?.id, exerciseCount]);
+
+  // Re-enable transition after restore (avoids fast scroll-through on back)
+  useEffect(() => {
+    if (!skipCarouselTransition) return;
+    const id = setTimeout(() => setSkipCarouselTransition(false), 0);
+    return () => clearTimeout(id);
+  }, [skipCarouselTransition]);
+
+  // Persist carousel index so it's restored when returning from exercise detail
+  useEffect(() => {
+    if (!proposedRoutine?.id) return;
+    const key = `${CAROUSEL_INDEX_STORAGE_KEY_PREFIX}${proposedRoutine.id}`;
+    sessionStorage.setItem(key, String(carouselIndex));
+  }, [proposedRoutine?.id, carouselIndex]);
 
   const handleCarouselSwipe = useCallback(
     (direction: 'prev' | 'next') => {
@@ -464,8 +489,9 @@ export default function NewRoutinePage() {
               <Box
                 sx={{
                   display: 'flex',
-                  transition:
-                    'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  transition: skipCarouselTransition
+                    ? 'none'
+                    : 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   transform: `translateX(-${carouselIndex * 100}%)`,
                 }}
               >

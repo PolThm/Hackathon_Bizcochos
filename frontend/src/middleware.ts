@@ -6,13 +6,16 @@ import { routing } from './i18n/routing';
 const PREFERRED_LOCALE_COOKIE = 'preferred-locale';
 const intlMiddleware = createMiddleware(routing);
 
+const isValidLocale = (s: string): s is (typeof routing.locales)[number] =>
+  (routing.locales as readonly string[]).includes(s);
+
 export default function middleware(request: NextRequest) {
   const preferredLocale = request.cookies.get(PREFERRED_LOCALE_COOKIE)?.value;
-  if (preferredLocale && routing.locales.includes(preferredLocale)) {
+  if (preferredLocale && isValidLocale(preferredLocale)) {
     const pathname = request.nextUrl.pathname;
     const segments = pathname.split('/').filter(Boolean);
     const currentLocale = segments[0];
-    const hasLocaleInPath = routing.locales.includes(currentLocale);
+    const hasLocaleInPath = isValidLocale(currentLocale);
     const urlLocale = hasLocaleInPath ? currentLocale : routing.defaultLocale;
     if (urlLocale !== preferredLocale) {
       const rest = hasLocaleInPath ? segments.slice(1) : segments;

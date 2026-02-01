@@ -25,3 +25,26 @@ const exercisesByLocale: Record<string, LibraryExercise[]> = {
 export function getExercisesByLocale(locale: string): LibraryExercise[] {
   return exercisesByLocale[locale] ?? exercisesByLocale.en;
 }
+
+/**
+ * Parses exercise benefits (comma-separated strings in the benefits array)
+ * into a flat list of individual benefit names.
+ */
+export function getExerciseBenefitList(exercise: LibraryExercise): string[] {
+  return exercise.benefits.flatMap((s) =>
+    s
+      .split(',')
+      .map((x) => x.trim())
+      .filter(Boolean),
+  );
+}
+
+/**
+ * Returns true if the exercise has the given benefit.
+ */
+export function exerciseHasBenefit(
+  exercise: LibraryExercise,
+  benefit: string,
+): boolean {
+  return getExerciseBenefitList(exercise).includes(benefit);
+}

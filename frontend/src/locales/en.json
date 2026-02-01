@@ -68,7 +68,10 @@
     "library": "Library",
     "searchPlaceholder": "Search an exercise...",
     "noExercisesFound": "No exercise found matching your search",
-    "addCustomExercise": "Add custom exercise"
+    "addCustomExercise": "Add custom exercise",
+    "filterByBenefits": "Filter by benefits",
+    "clearFilters": "Clear",
+    "done": "Done"
   },
   "exerciseDetails": {
     "notFound": "Exercise not found",

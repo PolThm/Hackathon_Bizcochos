@@ -3,19 +3,10 @@
 import { Box, Card, CardContent, Typography, Chip } from '@mui/material';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-
-interface Exercise {
-  id: string;
-  name: string;
-  image: string;
-  instructions: string[];
-  tips: string[];
-  modifications: string[];
-  benefits: string[];
-}
+import { LibraryExercise } from '@/utils/exercises';
 
 interface LibraryExercisePreviewProps {
-  exercise: Exercise;
+  exercise: LibraryExercise;
   disableLink?: boolean;
   hideBadges?: boolean;
   smallImage?: boolean;
@@ -31,50 +22,36 @@ export default function LibraryExercisePreview({
     ? exercise.benefits[0].split(', ').filter(Boolean)
     : [];
 
-  const imageMaxWidth = smallImage ? 80 : 160;
-
   const cardContent = (
     <>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: 2,
-          paddingTop: 2,
-          paddingBottom: 2,
+          position: 'relative',
+          width: '100%',
+          aspectRatio: smallImage ? '3/2' : '4/3',
+          borderRadius: '8px 8px 0 0',
+          overflow: 'hidden',
+          backgroundColor: 'action.hover',
+          flexShrink: 0,
         }}
       >
-        <Box
-          sx={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: imageMaxWidth,
-            aspectRatio: '1 / 1',
-            borderRadius: '50%',
-            backgroundColor: 'background.default',
-            overflow: 'hidden',
-            border: '1px solid',
-            borderColor: 'divider',
+        <Image
+          src={exercise.image}
+          alt={exercise.name}
+          fill
+          style={{
+            objectFit: 'cover',
           }}
-        >
-          <Image
-            src={exercise.image}
-            alt={exercise.name}
-            fill
-            style={{
-              objectFit: 'cover',
-            }}
-            sizes={`${imageMaxWidth}px`}
-          />
-        </Box>
+          sizes={smallImage ? '200px' : '(max-width: 600px) 100vw, 320px'}
+        />
       </Box>
       <CardContent
         sx={{
           flexGrow: 1,
           display: 'flex',
           flexDirection: 'column',
-          paddingTop: 0,
+          paddingTop: 1.5,
+          paddingX: 1.5,
           paddingBottom: hideBadges ? '8px !important' : '',
           minHeight: 0,
           '&:last-child': {

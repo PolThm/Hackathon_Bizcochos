@@ -8,10 +8,21 @@ import {
   TextField,
   Grid,
   InputAdornment,
+  Chip,
+  Stack,
+  Button,
+  Drawer,
+  Badge,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import FilterListIcon from '@mui/icons-material/FilterList';
 import { useTranslations } from 'next-intl';
-import { getExercisesByLocale, LibraryExercise } from '@/utils/exercises';
+import {
+  getExercisesByLocale,
+  getExerciseBenefitList,
+  exerciseHasBenefit,
+  LibraryExercise,
+} from '@/utils/exercises';
 import LibraryExercisePreview from '@/components/LibraryExercisePreview';
 
 export default function LibraryPage() {
@@ -20,24 +31,52 @@ export default function LibraryPage() {
   const locale = (params?.locale as string) ?? 'en';
   const allExercises = getExercisesByLocale(locale);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedBenefits, setSelectedBenefits] = useState<string[]>([]);
+  const [benefitsDrawerOpen, setBenefitsDrawerOpen] = useState(false);
+
+  const uniqueBenefits = useMemo(() => {
+    const set = new Set<string>();
+    allExercises.forEach((ex) =>
+      getExerciseBenefitList(ex).forEach((b) => set.add(b)),
+    );
+    return Array.from(set).sort();
+  }, [allExercises]);
 
   const filteredExercises = useMemo(() => {
-    if (!searchQuery.trim()) {
-      return allExercises;
+    let list = allExercises;
+
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      list = list.filter(
+        (exercise: LibraryExercise) =>
+          exercise.name.toLowerCase().includes(query) ||
+          exercise.benefits.some((benefit) =>
+            benefit.toLowerCase().includes(query),
+          ) ||
+          exercise.instructions.some((instruction) =>
+            instruction.toLowerCase().includes(query),
+          ),
+      );
     }
 
-    const query = searchQuery.toLowerCase().trim();
-    return allExercises.filter(
-      (exercise: LibraryExercise) =>
-        exercise.name.toLowerCase().includes(query) ||
-        exercise.benefits.some((benefit) =>
-          benefit.toLowerCase().includes(query),
-        ) ||
-        exercise.instructions.some((instruction) =>
-          instruction.toLowerCase().includes(query),
+    if (selectedBenefits.length > 0) {
+      list = list.filter((exercise: LibraryExercise) =>
+        selectedBenefits.some((benefit) =>
+          exerciseHasBenefit(exercise, benefit),
         ),
+      );
+    }
+
+    return list;
+  }, [searchQuery, selectedBenefits, allExercises]);
+
+  const toggleBenefit = (benefit: string) => {
+    setSelectedBenefits((prev) =>
+      prev.includes(benefit)
+        ? prev.filter((b) => b !== benefit)
+        : [...prev, benefit],
     );
-  }, [searchQuery, allExercises]);
+  };
 
   return (
     <Box
@@ -71,7 +110,91 @@ export default function LibraryPage() {
         sx={{ mt: 2 }}
       />
 
-      <Box sx={{ flexGrow: 1, overflow: 'auto', mt: 2 }}>
+      <Badge
+        badgeContent={selectedBenefits.length}
+        color='primary'
+        invisible={selectedBenefits.length === 0}
+        sx={{ alignSelf: 'flex-start' }}
+      >
+        <Button
+          variant='outlined'
+          size='medium'
+          startIcon={<FilterListIcon />}
+          onClick={() => setBenefitsDrawerOpen(true)}
+          sx={{ textTransform: 'none' }}
+        >
+          {t('filterByBenefits')}
+        </Button>
+      </Badge>
+
+      <Drawer
+        anchor='bottom'
+        open={benefitsDrawerOpen}
+        onClose={() => setBenefitsDrawerOpen(false)}
+        PaperProps={{
+          sx: {
+            maxHeight: '70vh',
+            borderTopLeftRadius: 16,
+            borderTopRightRadius: 16,
+          },
+        }}
+      >
+        <Box sx={{ p: 2, pb: 3 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              mb: 2,
+            }}
+          >
+            <Typography variant='h6'>{t('filterByBenefits')}</Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+              {selectedBenefits.length > 0 && (
+                <Button
+                  variant='text'
+                  size='small'
+                  color='inherit'
+                  onClick={() => setSelectedBenefits([])}
+                  sx={{ textTransform: 'none', color: 'text.secondary' }}
+                >
+                  {t('clearFilters')}
+                </Button>
+              )}
+              <Button
+                variant='text'
+                size='small'
+                onClick={() => setBenefitsDrawerOpen(false)}
+              >
+                {t('done')}
+              </Button>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              maxHeight: '55vh',
+              overflow: 'auto',
+            }}
+          >
+            <Stack direction='row' flexWrap='wrap' useFlexGap gap={0.75}>
+              {uniqueBenefits.map((benefit) => (
+                <Chip
+                  key={benefit}
+                  label={benefit}
+                  size='small'
+                  variant={
+                    selectedBenefits.includes(benefit) ? 'filled' : 'outlined'
+                  }
+                  onClick={() => toggleBenefit(benefit)}
+                  sx={{ mb: 0.5 }}
+                />
+              ))}
+            </Stack>
+          </Box>
+        </Box>
+      </Drawer>
+
+      <Box sx={{ flexGrow: 1, overflow: 'auto', mt: 0.5 }}>
         {filteredExercises.length === 0 ? (
           <Typography
             variant='body1'

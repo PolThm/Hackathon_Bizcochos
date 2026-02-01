@@ -94,7 +94,7 @@ export default function ExerciseDetailsPage() {
       >
         <Box
           sx={{
-            flex: { xs: 'none', md: '0 0 250px' },
+            width: '100%',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'flex-start',
@@ -104,12 +104,11 @@ export default function ExerciseDetailsPage() {
             sx={{
               position: 'relative',
               width: '100%',
-              maxWidth: 250,
-              aspectRatio: '1 / 1',
-              borderRadius: '50%',
-              backgroundColor: 'background.default',
+              aspectRatio: '4/3',
+              borderRadius: 2,
+              backgroundColor: 'action.hover',
               overflow: 'hidden',
-              border: '2px solid',
+              border: '1px solid',
               borderColor: 'divider',
             }}
           >
@@ -120,7 +119,7 @@ export default function ExerciseDetailsPage() {
               style={{
                 objectFit: 'cover',
               }}
-              sizes='250px'
+              sizes='100vw'
             />
           </Box>
         </Box>

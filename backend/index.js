@@ -1,10 +1,11 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { generateRoutineFromPrompt } from "./services/routineGeneratorService.js";
-import { generateAgenticRoutine } from "./services/langgraphService.js";
+import { streamAgenticRoutine } from "./services/langgraphService.js";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { Readable } from "stream";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,6 +17,7 @@ const fastify = Fastify({
 await fastify.register(cors, {
   origin: ["https://routines-ai.vercel.app", "http://localhost:3000"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
 });
 
 fastify.post("/api/generateRoutine", async (request) => {
@@ -24,46 +26,56 @@ fastify.post("/api/generateRoutine", async (request) => {
   return result;
 });
 
-fastify.post("/api/generateDailyRoutine", async (request) => {
+fastify.post("/api/generateDailyRoutine", async (request, reply) => {
   const { locale } = request.body;
+
+  const stream = new Readable({
+    read() {},
+  });
+
+  reply.type("application/x-ndjson").send(stream);
 
   try {
     const prompt =
       "Please generate my routine for today based on my context (weather, calendar, strava, emails).";
-    const routine = await generateAgenticRoutine(prompt, locale);
+    const agentStream = streamAgenticRoutine(prompt, locale);
 
-    // Map translated names (similar to routineGeneratorService.js)
-    const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
-    const localePath = path.join(
-      __dirname,
-      "common",
-      `all-exercises-${safeLocale}.json`,
-    );
-    const localeContent = await fs.readFile(localePath, "utf-8");
-    const localeExercises = JSON.parse(localeContent);
-    const idToName = Object.fromEntries(
-      localeExercises.map((ex) => [ex.id, ex.name]),
-    );
+    for await (const chunk of agentStream) {
+      if (chunk.type === "final") {
+        const routine = chunk.data;
+        const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
+        const localePath = path.join(
+          __dirname,
+          "common",
+          `all-exercises-${safeLocale}.json`,
+        );
+        const localeContent = await fs.readFile(localePath, "utf-8");
+        const localeExercises = JSON.parse(localeContent);
+        const idToName = Object.fromEntries(
+          localeExercises.map((ex) => [ex.id, ex.name]),
+        );
 
-    routine.exercises = (routine.exercises || []).map((ex) => ({
-      id: ex.id,
-      name: idToName[ex.id] ?? ex.name ?? "Unknown",
-      duration: ex.duration,
-    }));
+        routine.exercises = (routine.exercises || []).map((ex) => ({
+          id: ex.id,
+          name: idToName[ex.id] ?? ex.name ?? "Unknown",
+          duration: ex.duration,
+        }));
 
-    routine.breakDuration = 5;
-    routine.preparationDuration = 5;
+        routine.breakDuration = 5;
+        routine.preparationDuration = 5;
 
-    return {
-      status: "ok",
-      data: routine,
-    };
+        stream.push(JSON.stringify({ type: "data", data: routine }) + "\n");
+      } else {
+        stream.push(JSON.stringify(chunk) + "\n");
+      }
+    }
+    stream.push(null);
   } catch (error) {
     fastify.log.error(error);
-    return {
-      status: "error",
-      message: error.message,
-    };
+    stream.push(
+      JSON.stringify({ type: "error", message: error.message }) + "\n",
+    );
+    stream.push(null);
   }
 });
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from '@/i18n/routing';
 import {
   Box,
@@ -15,6 +15,7 @@ import {
   Avatar,
   Chip,
   CircularProgress,
+  Fade,
 } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
@@ -24,9 +25,18 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TimerIcon from '@mui/icons-material/Timer';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import TerminalIcon from '@mui/icons-material/Terminal';
 import { setItem, getItem } from '@/utils/indexedDB';
 import { API_BASE_URL } from '@/utils/config';
 import type { Routine } from '@/types';
+
+interface StreamLog {
+  type: 'step' | 'data' | 'error';
+  node?: string;
+  description?: string;
+  data?: Routine;
+  message?: string;
+}
 
 export default function DailyRoutinePage() {
   const t = useTranslations('dailyRoutine');
@@ -38,10 +48,17 @@ export default function DailyRoutinePage() {
 
   const [routine, setRoutine] = useState<Routine | null>(null);
   const [loading, setLoading] = useState(true);
+  const [logs, setLogs] = useState<string[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const fetchDailyRoutine = async () => {
-      // Check if we already have a routine for today in session storage
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [logs]);
+
+  useEffect(() => {
+    const fetchDailyRoutineStream = async () => {
       const today = new Date().toISOString().split('T')[0];
       const saved = sessionStorage.getItem(`dailyRoutine_${today}`);
 
@@ -60,28 +77,58 @@ export default function DailyRoutinePage() {
             body: JSON.stringify({ locale }),
           },
         );
-        const result = await response.json();
-        if (result.status === 'ok') {
-          setRoutine(result.data);
-          sessionStorage.setItem(
-            `dailyRoutine_${today}`,
-            JSON.stringify(result.data),
-          );
+
+        if (!response.body) throw new Error('No body');
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+
+          for (const line of lines) {
+            if (!line.trim()) continue;
+            try {
+              const chunk: StreamLog = JSON.parse(line);
+              if (chunk.type === 'step' && chunk.description) {
+                setLogs((prev) => [...prev, chunk.description!]);
+              } else if (chunk.type === 'data' && chunk.data) {
+                setRoutine(chunk.data);
+                // Delay a bit before showing final routine to let user read the last step
+                setTimeout(() => {
+                  setLoading(false);
+                  sessionStorage.setItem(
+                    `dailyRoutine_${today}`,
+                    JSON.stringify(chunk.data),
+                  );
+                }, 1000);
+              } else if (chunk.type === 'error') {
+                console.error('Agent error:', chunk.message);
+                setLogs((prev) => [...prev, `Error: ${chunk.message}`]);
+              }
+            } catch (e) {
+              console.error('Failed to parse stream chunk:', e);
+            }
+          }
         }
       } catch (error) {
-        console.error('Error fetching daily routine:', error);
-      } finally {
+        console.error('Error fetching daily routine stream:', error);
         setLoading(false);
       }
     };
 
-    fetchDailyRoutine();
+    fetchDailyRoutineStream();
   }, [locale]);
 
   const handleStart = async () => {
     if (!routine) return;
 
-    // Save to all routines if not already there
     const existingRoutinesStr = await getItem('allRoutines');
     const existingRoutines: Routine[] = existingRoutinesStr
       ? JSON.parse(existingRoutinesStr)
@@ -102,16 +149,81 @@ export default function DailyRoutinePage() {
     return (
       <Box
         sx={{
+          flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '80vh',
-          gap: 2,
+          p: 3,
+          maxWidth: '800px',
+          margin: '0 auto',
+          width: '100%',
+          bgcolor: '#0d0509',
+          minHeight: '100vh',
+          color: '#d6c3a5',
         }}
       >
-        <CircularProgress color='secondary' />
-        <Typography variant='body1'>{tCommon('refresh')}...</Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 4 }}>
+          <TerminalIcon sx={{ color: theme.palette.secondary.main }} />
+          <Typography
+            variant='h6'
+            sx={{
+              fontFamily: 'monospace',
+              color: theme.palette.secondary.main,
+              fontWeight: 'bold',
+            }}
+          >
+            Bizcocho Agent Intelligence
+          </Typography>
+        </Box>
+
+        <Box
+          ref={scrollRef}
+          sx={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+            overflowY: 'auto',
+            fontFamily: 'monospace',
+            '&::-webkit-scrollbar': {
+              width: '4px',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              bgcolor: 'rgba(214, 195, 165, 0.2)',
+              borderRadius: '2px',
+            },
+          }}
+        >
+          {logs.map((log, i) => (
+            <Fade in key={i} timeout={500}>
+              <Box sx={{ display: 'flex', gap: 1.5 }}>
+                <Typography
+                  variant='body2'
+                  sx={{ color: theme.palette.secondary.main, opacity: 0.7 }}
+                >
+                  &gt;
+                </Typography>
+                <Typography
+                  variant='body2'
+                  sx={{ color: '#fff', lineHeight: 1.5 }}
+                >
+                  {log}
+                </Typography>
+              </Box>
+            </Fade>
+          ))}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 2 }}>
+            <CircularProgress
+              size={16}
+              sx={{ color: theme.palette.secondary.main }}
+            />
+            <Typography
+              variant='caption'
+              sx={{ fontStyle: 'italic', opacity: 0.6 }}
+            >
+              Waiting for agent response...
+            </Typography>
+          </Box>
+        </Box>
       </Box>
     );
   }

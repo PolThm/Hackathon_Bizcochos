@@ -23,7 +23,6 @@ const getWeather = new DynamicStructuredTool({
   }),
   func: async ({ location }) => {
     console.log(`Tool: Fetching weather for ${location}...`);
-    // Mocked response
     return `The weather in ${location} is sunny with 22°C. Perfect for outdoor activity!`;
   },
 });
@@ -121,12 +120,12 @@ Available exercises:
 ${JSON.stringify(simplifiedExercises, null, 2)}
 
 Rules:
-1. Use the "id" exactly as provided in the list for each exercise (do not include "name" in exercises, we will add it server-side).
-2. Find and set a short and catchy name for the routine based on the request (30 characters maximum).
-3. Find and set a short and catchy description for the routine that will explain why this routine is tailored to the request (150 characters maximum).
-4. Estimate a realistic "duration" in seconds for each exercise based on its nature.
-5. The output MUST be a valid JSON object.
-6. Do not include any text before or after the JSON.
+1. Provide a brief, natural language summary (1-2 sentences) of your reasoning BEFORE the JSON. Explain how you adapted the routine to the user's context (e.g., "Creating a routine after aerobic workout, adapting for your doctor appointment...").
+2. Use the "id" exactly as provided in the list for each exercise.
+3. Find and set a short and catchy name for the routine (30 characters maximum).
+4. Find and set a short and catchy description explaining why this is tailored to the request (150 characters maximum).
+5. Estimate a realistic "duration" in seconds for each exercise.
+6. The output MUST end with a valid JSON object.
 
 JSON Structure:
 {
@@ -169,27 +168,129 @@ const workflow = new StateGraph(GraphState)
 
 export const app = workflow.compile();
 
+const toolMapping = {
+  get_weather: "Checking the weather...",
+
+  get_calendar_events: "Consulting your calendar...",
+
+  get_strava_stats: "Reading your latest workouts on Strava...",
+
+  get_emails: "Checking for relevant recent emails...",
+};
+
 /**
- * Execute the agentic workflow to generate a routine.
+
+ * Stream the agentic workflow events.
+
  */
-export const generateAgenticRoutine = async (userPrompt, locale = "en") => {
+
+export async function* streamAgenticRoutine(userPrompt, locale = "en") {
   const initialState = {
     messages: [new HumanMessage(userPrompt)],
+
     locale: locale,
   };
 
-  const finalState = await app.invoke(initialState);
-  const lastMessage = finalState.messages[finalState.messages.length - 1];
+  const stream = await app.stream(initialState, {
+    streamMode: "updates",
+  });
 
-  try {
-    const content = lastMessage.content
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim();
-    const routine = JSON.parse(content);
-    return routine;
-  } catch (e) {
-    console.error("Failed to parse agentic routine:", e);
-    throw new Error("Invalid agentic output");
+  for await (const update of stream) {
+    const nodeName = Object.keys(update)[0];
+
+    const data = update[nodeName];
+
+    if (nodeName === "researcher") {
+      const lastMsg = data.messages[data.messages.length - 1];
+
+      if (lastMsg.tool_calls?.length > 0) {
+        for (const toolCall of lastMsg.tool_calls) {
+          const desc =
+            toolMapping[toolCall.name] || `Consulting ${toolCall.name}...`;
+
+          yield {
+            type: "step",
+
+            node: "tools",
+
+            description: desc,
+          };
+        }
+      }
+    } else if (nodeName === "tools") {
+      for (const msg of data.messages) {
+        let content = msg.content;
+
+        // Transform mocked data into natural language
+
+        if (content.includes("10km")) {
+          content =
+            "I see you ran 10km yesterday, your legs might feel a bit heavy.";
+        } else if (content.includes("sunny")) {
+          content = "It looks like a sunny day, perfect for some stretching!";
+        } else if (content.includes("Physiotherapy")) {
+          content =
+            "I'm considering your physiotherapy session for your shoulder today.";
+        } else if (content.includes("hip mobility")) {
+          content = "Your coach suggests focusing on hip mobility this week.";
+        }
+
+        yield {
+          type: "step",
+
+          node: "tools",
+
+          description: content,
+        };
+      }
+    } else if (nodeName === "planner") {
+      const lastMsg = data.messages[data.messages.length - 1];
+
+      const content = lastMsg.content;
+
+      const jsonMatch = content.match(/\{[\s\S]*\}/);
+
+      // Extract reasoning and make it natural
+
+      let reasoning = content
+
+        .replace(/```json[\s\S]*```/g, "")
+
+        .replace(/\{[\s\S]*\}/g, "")
+
+        .trim();
+
+      if (reasoning) {
+        if (reasoning.length > 150) {
+          reasoning = reasoning.substring(0, 150) + "...";
+        }
+
+        yield {
+          type: "step",
+
+          node: "planner",
+
+          description: reasoning,
+        };
+      } else {
+        yield {
+          type: "step",
+
+          node: "planner",
+
+          description: "Crafting the ideal exercise sequence for you...",
+        };
+      }
+
+      if (jsonMatch) {
+        try {
+          const routine = JSON.parse(jsonMatch[0]);
+
+          yield { type: "final", data: routine };
+        } catch (e) {
+          // Partial or invalid JSON
+        }
+      }
+    }
   }
-};
+}

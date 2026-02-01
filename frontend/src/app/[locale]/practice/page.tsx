@@ -28,6 +28,7 @@ import {
 } from '@mui/icons-material';
 import { useWakeLock } from 'react-screen-wake-lock';
 import { useTranslations } from 'next-intl';
+import { MODAL_MAX_WIDTH } from '@/constants/layout';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { getExercisesByLocale } from '@/utils/exercises';
@@ -1107,14 +1108,14 @@ export default function Practice() {
       >
         <Paper
           sx={{
-            maxWidth: 800,
+            maxWidth: { xs: '90vw', sm: MODAL_MAX_WIDTH },
             width: '100%',
             maxHeight: '90vh',
             overflow: 'auto',
-            p: 3,
+            p: 2,
             display: 'flex',
             flexDirection: 'column',
-            gap: 3,
+            gap: 2,
           }}
         >
           {selectedExercise && (

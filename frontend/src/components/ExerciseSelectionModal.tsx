@@ -26,6 +26,7 @@ import {
   LibraryExercise,
 } from '@/utils/exercises';
 import LibraryExercisePreview from '@/components/LibraryExercisePreview';
+import { CONTENT_MAX_WIDTH, MODAL_MAX_WIDTH } from '@/constants/layout';
 
 interface ExerciseSelectionModalProps {
   open: boolean;
@@ -122,7 +123,7 @@ export default function ExerciseSelectionModal({
           backgroundColor: 'background.paper',
           borderRadius: 2,
           width: '100%',
-          maxWidth: '600px',
+          maxWidth: { xs: '90vw', sm: MODAL_MAX_WIDTH },
           maxHeight: '90vh',
           display: 'flex',
           flexDirection: 'column',
@@ -189,6 +190,10 @@ export default function ExerciseSelectionModal({
               maxHeight: '70vh',
               borderTopLeftRadius: 16,
               borderTopRightRadius: 16,
+              maxWidth: { sm: CONTENT_MAX_WIDTH },
+              width: '100%',
+              marginLeft: 'auto',
+              marginRight: 'auto',
             },
           }}
         >

@@ -24,6 +24,7 @@ import {
   LibraryExercise,
 } from '@/utils/exercises';
 import LibraryExercisePreview from '@/components/LibraryExercisePreview';
+import { CONTENT_MAX_WIDTH } from '@/constants/layout';
 
 export default function LibraryPage() {
   const t = useTranslations('library');
@@ -136,6 +137,10 @@ export default function LibraryPage() {
             maxHeight: '70vh',
             borderTopLeftRadius: 16,
             borderTopRightRadius: 16,
+            maxWidth: { sm: CONTENT_MAX_WIDTH },
+            width: '100%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
           },
         }}
       >

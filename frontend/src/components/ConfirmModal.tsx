@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { useTranslations } from 'next-intl';
 
 import LoadingErrorHandler from '@/components/LoaderErrorHandler';
+import { MODAL_MAX_WIDTH } from '@/constants/layout';
 
 type Props = {
   children: string;
@@ -61,7 +62,7 @@ const ConfirmModal: FC<Props> = ({
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: { xs: '90vw', sm: 550 },
+          width: { xs: '90vw', sm: MODAL_MAX_WIDTH },
           backgroundColor: 'background.default',
           boxShadow: 24,
           p: 2,

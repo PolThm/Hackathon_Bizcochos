@@ -152,7 +152,7 @@ export default function PWAInstallPrompt() {
       <Dialog
         open={showManualInstructions}
         onClose={handleCloseManualInstructions}
-        maxWidth='sm'
+        maxWidth='xs'
         fullWidth
       >
         <DialogTitle

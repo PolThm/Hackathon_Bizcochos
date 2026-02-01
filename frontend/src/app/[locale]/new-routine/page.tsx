@@ -23,7 +23,8 @@ import { useRouter } from '@/i18n/routing';
 import Image from 'next/image';
 import { getItem, setItem } from '@/utils/indexedDB';
 import { getExercisesByLocale } from '@/utils/exercises';
-import { Routine, Exercise } from '@/types';
+import { Routine } from '@/types';
+import { MODAL_MAX_WIDTH } from '@/constants/layout';
 
 const CAROUSEL_INTERVAL_MS = 4000;
 const CAROUSEL_SWIPE_PAUSE_MS = 10000;
@@ -680,9 +681,10 @@ export default function NewRoutinePage() {
           fullScreen={isMobile}
           PaperProps={{
             sx: {
-              borderRadius: isMobile ? 0 : 3,
-              p: isMobile ? 0 : 1,
-              maxHeight: isMobile ? '100%' : '90vh',
+              borderRadius: { sm: 2 },
+              p: 0,
+              maxHeight: { sm: '90vh' },
+              maxWidth: { sm: MODAL_MAX_WIDTH },
             },
           }}
         >

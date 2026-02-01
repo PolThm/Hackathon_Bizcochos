@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Link } from '@/i18n/routing';
 import {
   Box,
@@ -9,17 +9,13 @@ import {
   CircularProgress,
   useTheme,
   Paper,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  Avatar,
   Chip,
   Fade,
 } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useRouter } from '@/i18n/routing';
+import Image from 'next/image';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TimerIcon from '@mui/icons-material/Timer';
@@ -36,6 +32,13 @@ import { setItem, getItem } from '@/utils/indexedDB';
 import { API_BASE_URL } from '@/utils/config';
 import type { Routine } from '@/types';
 import { useObjectStorage } from '@/hooks/useStorage';
+import { getExercisesByLocale } from '@/utils/exercises';
+import CalendarStrip from '@/components/CalendarStrip';
+
+const CAROUSEL_INTERVAL_MS = 4000;
+const CAROUSEL_SWIPE_PAUSE_MS = 10000;
+const CAROUSEL_SWIPE_THRESHOLD_PX = 50;
+const CAROUSEL_INDEX_STORAGE_KEY_PREFIX = 'homeCarouselIndex_';
 
 interface StreamLog {
   type: 'step' | 'data' | 'error';
@@ -48,6 +51,7 @@ interface StreamLog {
 export default function Home() {
   const t = useTranslations('dailyRoutine');
   const tCommon = useTranslations('common');
+  const tNewRoutine = useTranslations('newRoutine');
   const theme = useTheme();
   const router = useRouter();
   const params = useParams();
@@ -67,6 +71,12 @@ export default function Home() {
     description: string;
     code: number;
   } | null>(null);
+
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [skipCarouselTransition, setSkipCarouselTransition] = useState(false);
+  const autoScrollPausedUntilRef = useRef(0);
+  const touchStartXRef = useRef<number | null>(null);
+  const swipeHandledRef = useRef(false);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -221,6 +231,100 @@ export default function Home() {
 
     fetchDailyRoutineStream();
   }, [locale]);
+
+  // Resolve exercise images from library (by locale)
+  const exercisesWithImage = useMemo(() => {
+    if (!routine) return [];
+    const library = getExercisesByLocale(locale);
+    return routine.exercises.map((ex) => ({
+      ...ex,
+      image: library.find((e) => e.id === ex.id)?.image ?? '',
+    }));
+  }, [routine, locale]);
+
+  const exerciseCount = exercisesWithImage.length;
+
+  // Auto-advance carousel (skipped while paused after swipe)
+  useEffect(() => {
+    if (!routine || exerciseCount <= 1) return;
+    const id = setInterval(() => {
+      if (Date.now() < autoScrollPausedUntilRef.current) return;
+      setCarouselIndex((prev) => (prev >= exerciseCount - 1 ? 0 : prev + 1));
+    }, CAROUSEL_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [routine, exerciseCount]);
+
+  // Restore carousel index when routine is loaded
+  useEffect(() => {
+    if (!routine?.id || exerciseCount <= 0) return;
+    const key = `${CAROUSEL_INDEX_STORAGE_KEY_PREFIX}${routine.id}`;
+    const saved = sessionStorage.getItem(key);
+    const idx = saved !== null ? parseInt(saved, 10) : 0;
+    if (!isNaN(idx) && idx >= 0 && idx < exerciseCount) {
+      setSkipCarouselTransition(true);
+      setCarouselIndex(idx);
+    } else {
+      setCarouselIndex(0);
+    }
+  }, [routine?.id, exerciseCount]);
+
+  // Re-enable transition after restore
+  useEffect(() => {
+    if (!skipCarouselTransition) return;
+    const id = setTimeout(() => setSkipCarouselTransition(false), 0);
+    return () => clearTimeout(id);
+  }, [skipCarouselTransition]);
+
+  // Persist carousel index
+  useEffect(() => {
+    if (!routine?.id) return;
+    const key = `${CAROUSEL_INDEX_STORAGE_KEY_PREFIX}${routine.id}`;
+    sessionStorage.setItem(key, String(carouselIndex));
+  }, [routine?.id, carouselIndex]);
+
+  const handleCarouselSwipe = useCallback(
+    (direction: 'prev' | 'next') => {
+      setCarouselIndex((prev) => {
+        if (direction === 'next') {
+          return prev >= exerciseCount - 1 ? 0 : prev + 1;
+        }
+        return prev <= 0 ? exerciseCount - 1 : prev - 1;
+      });
+      autoScrollPausedUntilRef.current = Date.now() + CAROUSEL_SWIPE_PAUSE_MS;
+      swipeHandledRef.current = true;
+    },
+    [exerciseCount],
+  );
+
+  const handleCarouselTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    swipeHandledRef.current = false;
+  }, []);
+
+  const handleCarouselTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      const startX = touchStartXRef.current;
+      if (startX === null) return;
+      touchStartXRef.current = null;
+      const endX = e.changedTouches[0].clientX;
+      const deltaX = endX - startX;
+      if (Math.abs(deltaX) < CAROUSEL_SWIPE_THRESHOLD_PX) return;
+      e.preventDefault();
+      handleCarouselSwipe(deltaX > 0 ? 'prev' : 'next');
+    },
+    [handleCarouselSwipe],
+  );
+
+  const handleSlideClick = useCallback(
+    (ex: (typeof exercisesWithImage)[0]) => {
+      if (swipeHandledRef.current) {
+        swipeHandledRef.current = false;
+        return;
+      }
+      router.push(`/exercise/${ex.id}?from=home`);
+    },
+    [router],
+  );
 
   const handleStart = async () => {
     if (!routine) return;
@@ -386,17 +490,7 @@ export default function Home() {
           zIndex: 1,
         }}
       >
-        <Typography
-          variant='h4'
-          sx={{
-            color: theme.palette.secondary.main,
-            fontWeight: 400,
-            fontSize: '1.2rem',
-            mb: 1,
-          }}
-        >
-          {t('greeting')}
-        </Typography>
+        <CalendarStrip />
 
         {userLocation && (
           <Box
@@ -523,29 +617,162 @@ export default function Home() {
         {routine.name}
       </Typography>
 
-      <List sx={{ mb: 4, width: '100%', zIndex: 1 }}>
-        {routine.exercises.map((exercise, index) => (
-          <Box key={exercise.id}>
-            <ListItem sx={{ px: 0, py: 2 }}>
-              <Avatar
+      <Box
+        sx={{
+          mb: 4,
+          width: '100%',
+          zIndex: 1,
+          overflow: 'hidden',
+          borderRadius: 2,
+          position: 'relative',
+          touchAction: 'pan-y',
+        }}
+        onTouchStart={handleCarouselTouchStart}
+        onTouchEnd={handleCarouselTouchEnd}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            transition: skipCarouselTransition
+              ? 'none'
+              : 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            transform: `translateX(-${carouselIndex * 100}%)`,
+          }}
+        >
+          {exercisesWithImage.map((ex) => (
+            <Box
+              key={ex.id}
+              role='button'
+              tabIndex={0}
+              onClick={() => handleSlideClick(ex)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleSlideClick(ex);
+                }
+              }}
+              sx={{
+                flex: '0 0 100%',
+                minWidth: 0,
+                cursor: 'pointer',
+                display: 'block',
+              }}
+            >
+              <Box
                 sx={{
-                  mr: 2,
-                  bgcolor: theme.palette.primary.main,
-                  fontSize: '0.9rem',
+                  position: 'relative',
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                  bgcolor: 'action.hover',
+                  aspectRatio: '4/3',
                 }}
               >
-                {index + 1}
-              </Avatar>
-              <ListItemText
-                primary={exercise.name}
-                secondary={`${exercise.duration} seconds`}
-                primaryTypographyProps={{ fontWeight: 500 }}
+                {ex.image ? (
+                  <Image
+                    src={ex.image}
+                    alt={ex.name}
+                    fill
+                    sizes='(max-width: 600px) 100vw, 400px'
+                    style={{ objectFit: 'cover' }}
+                  />
+                ) : (
+                  <Box
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Typography variant='body2' color='text.secondary'>
+                      {ex.name}
+                    </Typography>
+                  </Box>
+                )}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    px: 1.5,
+                    py: 1,
+                    background: 'linear-gradient(transparent, rgba(0,0,0,0.6))',
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <Typography
+                    variant='body2'
+                    sx={{
+                      color: 'white',
+                      fontWeight: 600,
+                      textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                    }}
+                  >
+                    {ex.name}
+                  </Typography>
+                  <Typography
+                    variant='caption'
+                    sx={{
+                      color: 'rgba(255,255,255,0.9)',
+                      fontWeight: 500,
+                    }}
+                  >
+                    {ex.duration}s
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          ))}
+        </Box>
+        {exercisesWithImage.length > 1 && (
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 0.75,
+              mt: 1.5,
+            }}
+          >
+            {exercisesWithImage.map((_, index) => (
+              <Box
+                key={index}
+                onClick={() => setCarouselIndex(index)}
+                sx={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: '50%',
+                  bgcolor:
+                    index === carouselIndex
+                      ? 'primary.main'
+                      : 'action.selected',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.2s, transform 0.2s',
+                  '&:hover': {
+                    bgcolor:
+                      index === carouselIndex ? 'primary.dark' : 'action.hover',
+                    transform: 'scale(1.2)',
+                  },
+                }}
               />
-            </ListItem>
-            {index < routine.exercises.length - 1 && <Divider component='li' />}
+            ))}
           </Box>
-        ))}
-      </List>
+        )}
+        <Typography
+          variant='body2'
+          sx={{
+            mt: 2,
+            color: 'text.secondary',
+            textAlign: 'center',
+            fontStyle: 'italic',
+          }}
+        >
+          {tNewRoutine('exploreExercisesText')}
+        </Typography>
+      </Box>
 
       <Box
         sx={{

@@ -27,7 +27,7 @@ fastify.post("/api/generateRoutine", async (request) => {
 });
 
 fastify.post("/api/generateDailyRoutine", async (request, reply) => {
-  const { locale } = request.body;
+  const { locale, latitude, longitude } = request.body;
 
   const stream = new Readable({
     read() {},
@@ -38,7 +38,12 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
   try {
     const prompt =
       "Please generate my routine for today based on my context (weather, calendar, strava, emails).";
-    const agentStream = streamAgenticRoutine(prompt, locale);
+    const agentStream = streamAgenticRoutine(
+      prompt,
+      locale,
+      latitude,
+      longitude,
+    );
 
     for await (const chunk of agentStream) {
       if (chunk.type === "final") {

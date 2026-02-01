@@ -27,6 +27,11 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import ListIcon from '@mui/icons-material/List';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import CloudIcon from '@mui/icons-material/Cloud';
+import UmbrellaIcon from '@mui/icons-material/Umbrella';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import GrainIcon from '@mui/icons-material/Grain';
 import { setItem, getItem } from '@/utils/indexedDB';
 import { API_BASE_URL } from '@/utils/config';
 import type { Routine } from '@/types';
@@ -57,6 +62,11 @@ export default function Home() {
   const hasRoutines = allRoutines.length > 0;
 
   const [userLocation, setUserLocation] = useState<string | null>(null);
+  const [weather, setWeather] = useState<{
+    temp: number;
+    description: string;
+    code: number;
+  } | null>(null);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -65,7 +75,7 @@ export default function Home() {
   }, [logs]);
 
   useEffect(() => {
-    const fetchLocation = async () => {
+    const fetchLocationAndWeather = async () => {
       if (!navigator.geolocation) return;
 
       navigator.geolocation.getCurrentPosition(
@@ -77,15 +87,38 @@ export default function Home() {
           localStorage.setItem('userLon', longitude.toString());
 
           try {
-            const response = await fetch(
-              `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=${locale}`,
-            );
-            const data = await response.json();
-            if (data.city || data.locality) {
-              setUserLocation(data.city || data.locality);
+            // Parallel fetch for location and weather
+            const [locRes, weatherRes] = await Promise.all([
+              fetch(
+                `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=${locale}`,
+              ),
+              fetch(
+                `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code`,
+              ),
+            ]);
+
+            const locData = await locRes.json();
+            if (locData.city || locData.locality) {
+              setUserLocation(locData.city || locData.locality);
             }
+
+            const weatherData = await weatherRes.json();
+            const code = weatherData.current.weather_code;
+            let weatherDesc = 'Unknown';
+            if (code === 0) weatherDesc = 'Clear';
+            else if (code >= 1 && code <= 3) weatherDesc = 'Cloudy';
+            else if (code >= 45 && code <= 48) weatherDesc = 'Foggy';
+            else if (code >= 51 && code <= 67) weatherDesc = 'Rainy';
+            else if (code >= 71 && code <= 77) weatherDesc = 'Snowy';
+            else if (code >= 95) weatherDesc = 'Stormy';
+
+            setWeather({
+              temp: Math.round(weatherData.current.temperature_2m),
+              description: weatherDesc,
+              code,
+            });
           } catch (error) {
-            console.error('Error fetching location:', error);
+            console.error('Error fetching location or weather:', error);
           }
         },
         (error) => {
@@ -94,8 +127,24 @@ export default function Home() {
       );
     };
 
-    fetchLocation();
+    fetchLocationAndWeather();
   }, [locale]);
+
+  const getWeatherIcon = (code: number) => {
+    if (code === 0)
+      return <WbSunnyIcon sx={{ fontSize: '1rem', color: '#ffb300' }} />;
+    if (code >= 1 && code <= 3)
+      return <CloudIcon sx={{ fontSize: '1rem', color: '#90a4ae' }} />;
+    if (code >= 45 && code <= 48)
+      return <GrainIcon sx={{ fontSize: '1rem', color: '#78909c' }} />;
+    if (code >= 51 && code <= 67)
+      return <UmbrellaIcon sx={{ fontSize: '1rem', color: '#4fc3f7' }} />;
+    if (code >= 71 && code <= 77)
+      return <AcUnitIcon sx={{ fontSize: '1rem', color: '#e1f5fe' }} />;
+    if (code >= 95)
+      return <GrainIcon sx={{ fontSize: '1rem', color: '#546e7a' }} />;
+    return <WbSunnyIcon sx={{ fontSize: '1rem' }} />;
+  };
 
   useEffect(() => {
     const fetchDailyRoutineStream = async () => {
@@ -109,12 +158,19 @@ export default function Home() {
       }
 
       try {
+        const storedLat = localStorage.getItem('userLat');
+        const storedLon = localStorage.getItem('userLon');
+
         const response = await fetch(
           `${API_BASE_URL}/api/generateDailyRoutine`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ locale }),
+            body: JSON.stringify({
+              locale,
+              latitude: storedLat ? parseFloat(storedLat) : undefined,
+              longitude: storedLon ? parseFloat(storedLon) : undefined,
+            }),
           },
         );
 
@@ -350,6 +406,7 @@ export default function Home() {
               gap: 0.5,
               mb: 2,
               opacity: 0.8,
+              flexWrap: 'wrap',
             }}
           >
             <LocationOnIcon
@@ -360,7 +417,9 @@ export default function Home() {
               sx={{ color: theme.palette.text.secondary }}
             >
               {t('locationPrefix')} {userLocation}
+              {weather && `, ${weather.description} ${weather.temp}°C`}
             </Typography>
+            {weather && getWeatherIcon(weather.code)}
           </Box>
         )}
 

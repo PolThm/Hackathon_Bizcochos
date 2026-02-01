@@ -15,15 +15,42 @@ const __dirname = path.dirname(__filename);
 
 const getWeather = new DynamicStructuredTool({
   name: "get_weather",
-  description: "Get the current weather for a location",
+  description: "Get the current weather using latitude and longitude.",
   schema: z.object({
-    location: z
-      .string()
-      .describe("The city or location to get the weather for"),
+    latitude: z.number().optional().describe("Latitude of the location"),
+    longitude: z.number().optional().describe("Longitude of the location"),
+    location: z.string().optional().describe("Name of the location (city)"),
   }),
-  func: async ({ location }) => {
-    console.log(`Tool: Fetching weather for ${location}...`);
-    return `The weather in ${location} is sunny with 22°C. Perfect for outdoor activity!`;
+  func: async ({ latitude, longitude }) => {
+    console.log(
+      `Tool: Fetching weather for Lat: ${latitude}, Lon: ${longitude}...`,
+    );
+    if (!latitude || !longitude) {
+      return "I need latitude and longitude to check the weather. Please provide them.";
+    }
+
+    try {
+      const response = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code`,
+      );
+      const data = await response.json();
+      const temp = data.current.temperature_2m;
+      const code = data.current.weather_code;
+
+      // Simple weather code mapping
+      let weatherDesc = "Unknown";
+      if (code === 0) weatherDesc = "Clear sky";
+      else if (code >= 1 && code <= 3) weatherDesc = "Partly cloudy";
+      else if (code >= 45 && code <= 48) weatherDesc = "Foggy";
+      else if (code >= 51 && code <= 67) weatherDesc = "Rainy";
+      else if (code >= 71 && code <= 77) weatherDesc = "Snowy";
+      else if (code >= 95) weatherDesc = "Thunderstorm";
+
+      return `The current weather is ${weatherDesc} with a temperature of ${temp}°C.`;
+    } catch (error) {
+      console.error("Weather fetch error:", error);
+      return "Could not fetch weather data at the moment.";
+    }
   },
 });
 
@@ -184,9 +211,19 @@ const toolMapping = {
 
  */
 
-export async function* streamAgenticRoutine(userPrompt, locale = "en") {
+export async function* streamAgenticRoutine(
+  userPrompt,
+  locale = "en",
+  latitude,
+  longitude,
+) {
+  let contextPrompt = userPrompt;
+  if (latitude && longitude) {
+    contextPrompt += `\n\nContext: User location is Latitude ${latitude}, Longitude ${longitude}. Use these coordinates when checking the weather.`;
+  }
+
   const initialState = {
-    messages: [new HumanMessage(userPrompt)],
+    messages: [new HumanMessage(contextPrompt)],
 
     locale: locale,
   };
@@ -226,13 +263,18 @@ export async function* streamAgenticRoutine(userPrompt, locale = "en") {
         if (content.includes("10km")) {
           content =
             "I see you ran 10km yesterday, your legs might feel a bit heavy.";
-        } else if (content.includes("sunny")) {
+        } else if (content.includes("Sunny") || content.includes("Clear")) {
           content = "It looks like a sunny day, perfect for some stretching!";
+        } else if (content.includes("Rainy") || content.includes("Snowy")) {
+          content =
+            "It looks like it's raining/snowing. Let's do a cozy indoor session.";
         } else if (content.includes("Physiotherapy")) {
           content =
             "I'm considering your physiotherapy session for your shoulder today.";
         } else if (content.includes("hip mobility")) {
           content = "Your coach suggests focusing on hip mobility this week.";
+        } else if (content.includes("temperature")) {
+          content = `I see the weather is quite specific today: ${content}`;
         }
 
         yield {

@@ -27,6 +27,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { setItem, getItem } from '@/utils/indexedDB';
+import { getExercisesByLocale } from '@/utils/exercises';
 
 export default function SetupPage() {
   const router = useRouter();
@@ -300,8 +301,19 @@ export default function SetupPage() {
   };
 
   const getExerciseDisplayName = (exercise: Exercise, index: number) => {
-    if (exercise.isPaused && !exercise.name) {
+    if (exercise.isPaused && !exercise.name && !exercise.exerciseId) {
       return t('pausedExercise');
+    }
+
+    // Use translated name from library when exerciseId is set
+    if (exercise.exerciseId) {
+      const allExercises = getExercisesByLocale(currentLocale);
+      const libraryExercise = allExercises.find(
+        (ex) => ex.id === exercise.exerciseId,
+      );
+      if (libraryExercise?.name) {
+        return libraryExercise.name;
+      }
     }
 
     if (exercise.name) {

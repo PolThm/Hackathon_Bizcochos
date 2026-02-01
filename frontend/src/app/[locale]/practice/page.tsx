@@ -536,12 +536,28 @@ export default function Practice() {
     });
   }, []);
 
+  // Resolve translated exercise name from library by exerciseId, else routine name
+  const getExerciseDisplayName = (
+    exercise: Exercise | undefined,
+  ): string | null => {
+    if (!exercise) return null;
+    if (exercise.exerciseId) {
+      const libraryExercise = allExercises.find(
+        (ex) => ex.id === exercise.exerciseId,
+      );
+      if (libraryExercise?.name) return libraryExercise.name;
+    }
+    if (exercise.name) return exercise.name;
+    return null;
+  };
+
   const getNextExerciseName = () => {
     if (!routine || nextExerciseIndexRef.current >= activeExercises.length)
       return null;
     const nextExercise = activeExercises[nextExerciseIndexRef.current];
+    const displayName = getExerciseDisplayName(nextExercise);
     return (
-      nextExercise.name ||
+      displayName ||
       `${t('exercise').charAt(0).toLocaleUpperCase()}${t('exercise').slice(1)} ${nextExerciseIndexRef.current + 1}`
     );
   };
@@ -549,8 +565,9 @@ export default function Practice() {
   const getCurrentExerciseName = () => {
     if (!routine || exerciseIndex >= activeExercises.length) return null;
     const currentExercise = activeExercises[exerciseIndex];
+    const displayName = getExerciseDisplayName(currentExercise);
     return (
-      currentExercise.name ||
+      displayName ||
       `${t('exercise').charAt(0).toLocaleUpperCase()}${t('exercise').slice(1)} ${exerciseIndex + 1}`
     );
   };
@@ -970,7 +987,9 @@ export default function Practice() {
                         exerciseIndex + 1 === activeExercises.length
                           ? 'none'
                           : 'capitalize',
-                      visibility: !activeExercises[exerciseIndex]?.name
+                      visibility: !getExerciseDisplayName(
+                        activeExercises[exerciseIndex],
+                      )
                         ? 'hidden'
                         : 'visible',
                       minHeight: '24px',
@@ -980,10 +999,10 @@ export default function Practice() {
                       ? t('lastExercise')
                       : `${t('exercise')} ${exerciseIndex + 1}`}
                   </Typography>
-                  {activeExercises[exerciseIndex]?.name ? (
+                  {getExerciseDisplayName(activeExercises[exerciseIndex]) ? (
                     renderExerciseName(
                       activeExercises[exerciseIndex],
-                      activeExercises[exerciseIndex].name,
+                      getExerciseDisplayName(activeExercises[exerciseIndex])!,
                     )
                   ) : (
                     <Typography

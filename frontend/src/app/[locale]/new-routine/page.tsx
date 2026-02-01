@@ -23,6 +23,7 @@ import { useRouter } from '@/i18n/routing';
 import Image from 'next/image';
 import { getItem, setItem } from '@/utils/indexedDB';
 import { getExercisesByLocale } from '@/utils/exercises';
+import { API_BASE_URL } from '@/utils/config';
 import { Routine } from '@/types';
 import { MODAL_MAX_WIDTH } from '@/constants/layout';
 
@@ -329,7 +330,7 @@ export default function NewRoutinePage() {
     if (isRefinement) setIsRefineModalOpen(false);
 
     try {
-      const response = await fetch('/api/generateRoutine', {
+      const response = await fetch(`${API_BASE_URL}/api/generateRoutine`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

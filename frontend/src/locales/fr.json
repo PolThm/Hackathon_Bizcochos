@@ -60,8 +60,9 @@
     "routinePolux": "Étirements & Musculation",
     "routineExample": "Exemple",
     "createNewRoutineWithAI": "Créer nouvelle Routine avec IA",
-    "goToPractice": "Lancer la pratique",
-    "noRoutinesMessage": "Tu n'as pas encore de routines.",
+    "goToPractice": "Commencer la pratique",
+    "dailyRoutine": "Routine du jour",
+    "noRoutinesMessage": "Vous n'avez pas encore de routines.",
     "or": "OU"
   },
   "library": {
@@ -104,15 +105,23 @@
     "refineButton": "Mettre à jour",
     "startOverButton": "Recommencer de zéro",
     "loadingMessages": [
-      "Conception de ta routine idéale...",
-      "À l'écoute des besoins de ton corps...",
-      "Sélection des exercices pour ton confort...",
-      "Construction de ton flux personnalisé...",
-      "Création de mouvements rien que pour toi...",
-      "Presque terminé, finalisation de ta routine...",
-      "Création de ton chemin vers la souplesse...",
-      "Adaptation des étirements à tes objectifs..."
+      "Conception de votre étirement parfait...",
+      "À l'écoute des besoins de votre corps...",
+      "Sélection d'exercices pour votre confort...",
+      "Construction de votre flux personnalisé...",
+      "Création de mouvements juste pour vous...",
+      "Presque là, finalisation de votre routine...",
+      "Création de votre chemin vers la flexibilité...",
+      "Adaptation des étirements à vos objectifs..."
     ]
+  },
+  "dailyRoutine": {
+    "title": "Routine du Jour",
+    "greeting": "Bonjour ! Voici ce que nous avons préparé pour vous aujourd'hui",
+    "locationPrefix": "Vous êtes à",
+    "aiReasoning": "Basé sur votre activité récente et la raideur matinale courante, j'ai conçu cette routine pour ouvrir vos hanches et allonger votre colonne vertébrale. Ce flux vous aidera à vous sentir plus énergique et mobile pour la journée à venir.",
+    "benefitsTitle": "Pourquoi cette routine ?",
+    "startToday": "Commencer la routine d'aujourd'hui"
   },
   "pwa": {
     "installPrompt": {

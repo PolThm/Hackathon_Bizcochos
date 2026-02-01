@@ -98,14 +98,10 @@ const createTools = (googleToken) => {
     func: async () => {
       console.log("Tool: Fetching calendar events...");
 
-      // Use the token passed to the factory
-
       const token = googleToken || process.env.GOOGLE_CALENDAR_TOKEN;
 
       if (!token) {
-        console.log("No Google Calendar token found. Returning mock data.");
-
-        return "Today you have: 10:00 AM Team Meeting, 2:00 PM Deep Work, 5:00 PM Physiotherapy session for shoulder pain.";
+        return "Google Calendar is not connected. I cannot see the user's schedule for today. Advise the user to connect it in the Home page for a better experience.";
       }
 
       try {
@@ -132,7 +128,7 @@ const createTools = (googleToken) => {
         const data = await response.json();
 
         if (!data.items || data.items.length === 0) {
-          return "No events found for today.";
+          return "The user has no events scheduled for today. They have a completely free day.";
         }
 
         const eventsSummary = data.items
@@ -141,8 +137,6 @@ const createTools = (googleToken) => {
             const start = event.start.dateTime || event.start.date;
 
             const summary = event.summary || "Busy";
-
-            // Simple time formatting
 
             const timeStr = new Date(start).toLocaleTimeString("en-US", {
               hour: "2-digit",
@@ -155,11 +149,11 @@ const createTools = (googleToken) => {
 
           .join("\n");
 
-        return `Events for today:\n${eventsSummary}`;
+        return `User's events for today:\n${eventsSummary}`;
       } catch (error) {
         console.error("Failed to fetch calendar events:", error);
 
-        return "Failed to fetch real calendar events. (Mock: Today you have: 10:00 AM Team Meeting, 2:00 PM Deep Work, 5:00 PM Physiotherapy session for shoulder pain.)";
+        return "I encountered an error trying to read the calendar. I will proceed without schedule context.";
       }
     },
   });
@@ -174,7 +168,9 @@ const createTools = (googleToken) => {
     func: async () => {
       console.log("Tool: Fetching Strava stats...");
 
-      return "Yesterday you ran 10km. Your legs might be stiff. Average heart rate was 155 bpm.";
+      // Still mocked for now as Strava OAuth is pending
+
+      return "Yesterday you had a moderate workout. Heart rate was stable. Ready for mobility.";
     },
   });
 
@@ -188,7 +184,9 @@ const createTools = (googleToken) => {
     func: async () => {
       console.log("Tool: Fetching emails...");
 
-      return "Email from Coach: 'Focus on hip mobility this week to improve your running form'.";
+      // Still mocked for now
+
+      return "No urgent fitness-related emails today.";
     },
   });
 
@@ -196,28 +194,14 @@ const createTools = (googleToken) => {
 };
 
 const toolMapping = {
-  get_weather: "Checking the weather...",
+  get_weather: "Analyzing local weather conditions...",
 
-  get_calendar_events: "Consulting your calendar...",
+  get_calendar_events: "Checking your schedule for today...",
 
-  get_strava_stats: "Reading your latest workouts on Strava...",
+  get_strava_stats: "Syncing your latest fitness activity...",
 
-  get_emails: "Checking for relevant recent emails...",
+  get_emails: "Looking for coach feedback in your inbox...",
 };
-
-/**
-
-
-
-
-
-
-
- * Stream the agentic workflow events.
-
-
-
- */
 
 export async function* streamAgenticRoutine(
   userPrompt,
@@ -229,7 +213,22 @@ export async function* streamAgenticRoutine(
   longitude,
 
   googleToken,
+
+  history = [],
 ) {
+  // 0. Initial Log for Memory Retrieval (Marathon Agent Signature)
+
+  yield {
+    type: "step",
+
+    node: "memory",
+
+    description:
+      history.length > 0
+        ? `Thinking Level 0: Retrieving your last ${history.length} sessions for continuity...`
+        : "Thinking Level 0: Starting fresh session (no previous history found).",
+  };
+
   // 1. Create tools with the user-specific token
 
   const tools = createTools(googleToken);
@@ -293,64 +292,132 @@ export async function* streamAgenticRoutine(
 
     let systemPrompt = `
 
-You are a world-class fitness and mobility expert. Your task is to generate a professional workout routine based ONLY on the exercises provided in the list below.
+  
 
+    
 
+  
 
-Available exercises:
+        You are a world-class fitness and mobility expert. Your task is to generate a professional workout routine based ONLY on the exercises provided in the list below.
 
-${JSON.stringify(simplifiedExercises, null, 2)}
+  
 
+    
 
+  
 
-Rules:
+        Available exercises:
 
-1. Provide a brief, natural language summary (1-2 sentences) of your reasoning BEFORE the JSON. Explain how you adapted the routine to the user's context (e.g., "Creating a routine after aerobic workout, adapting for your doctor appointment...").
+  
 
-2. Use the "id" exactly as provided in the list for each exercise.
+        ${JSON.stringify(simplifiedExercises, null, 2)}
 
-3. Find and set a short and catchy name for the routine (30 characters maximum).
+  
 
-4. Find and set a short and catchy description explaining why this is tailored to the request and the current weather (e.g. "Perfect for a sunny day..." or "Cozy routine for a rainy day...") (150 characters maximum).
+    
 
-5. Estimate a realistic "duration" in seconds for each exercise.
+  
 
-6. The output MUST end with a valid JSON object.
+        User History (Last sessions):
 
+  
 
+        ${JSON.stringify(history, null, 2)}
 
-JSON Structure:
+  
 
-{
+    
 
-  "id": "unique-id",
+  
 
-  "name": "Routine Name",
+        Rules:
 
-  "description": "Routine Description",
+  
 
-  "exercises": [
+        1. Provide a brief, natural language summary (1-2 sentences) of your reasoning BEFORE the JSON. You MUST explain how you adapted the routine to the user's context: weather, schedule, and specifically their HISTORY (ensure variety from previous sessions).
 
-    {
+  
 
-      "id": "exercise-id-from-list",
+        2. Use the "id" exactly as provided in the list for each exercise.
 
-      "duration": number
+  
 
-    }
+        3. Find and set a short and catchy name for the routine (30 characters maximum).
 
-  ]
+  
 
-}
+        4. Find and set a short and catchy description (150 characters maximum) explaining why this is tailored to the request and the current context.
 
-`;
+  
+
+        5. Estimate a realistic "duration" in seconds for each exercise.
+
+  
+
+        6. The output MUST end with a valid JSON object.
+
+  
+
+    
+
+  
+
+        JSON Structure:
+
+  
+
+        {
+
+  
+
+          "id": "unique-id",
+
+  
+
+          "name": "Routine Name",
+
+  
+
+          "description": "Routine Description",
+
+  
+
+          "exercises": [
+
+  
+
+            {
+
+  
+
+              "id": "exercise-id-from-list",
+
+  
+
+              "duration": number
+
+  
+
+            }
+
+  
+
+          ]
+
+  
+
+        }
+
+  
+
+        `;
 
     if (feedback) {
       systemPrompt += `\n\nCRITICAL UPDATE: Your previous attempt was reviewed and needs correction.
 
-      Feedback: "${feedback}"
+        Feedback: "${feedback}"
 
-      Please regenerate the routine addressing this feedback explicitly.`;
+        Please regenerate the routine addressing this feedback explicitly.`;
     }
 
     const response = await model.invoke([
@@ -371,27 +438,27 @@ JSON Structure:
       new SystemMessage(
         `You are a senior fitness editor (Reviewer Node - Thinking Level 2). 
 
-        Your goal is to validate the workout routine proposed by the planner.
+          Your goal is to validate the workout routine proposed by the planner.
 
-        
+          
 
-        Check for:
+          Check for:
 
-        1. Weather safety (e.g., no outdoor running if it's raining/snowing/stormy).
+          1. Weather safety (e.g., no outdoor running if it's raining/snowing/stormy).
 
-        2. Time constraints (is it too long based on calendar context?).
+          2. Time constraints (is it too long based on calendar context?).
 
-        3. Balance (does it mix mobility and strength?).
+          3. Balance (does it mix mobility and strength?).
 
-        
+          
 
-        If the routine is GOOD and SAFE, reply exactly with: "APPROVE".
+          If the routine is GOOD and SAFE, reply exactly with: "APPROVE".
 
-        If the routine has issues, reply with a concise instruction to fix it (e.g., "It is raining, remove outdoor cardio and replace with indoor drill").
+          If the routine has issues, reply with a concise instruction to fix it.
 
-        
+          
 
-        Context from previous messages: ${messages.map((m) => m.content).join("\n")}`,
+          Context from previous messages: ${messages.map((m) => m.content).join("\n")}`,
       ),
 
       new HumanMessage(`Review this plan: ${lastMessage.content}`),
@@ -467,6 +534,8 @@ JSON Structure:
 
   const stream = await app.stream(initialState, {
     streamMode: "updates",
+
+    runName: "Bizcocho Marathon Agent Daily Routine",
   });
 
   let finalRoutine = null;
@@ -497,23 +566,27 @@ JSON Structure:
       for (const msg of data.messages) {
         let content = msg.content;
 
-        // Transform mocked data into natural language
-
-        if (content.includes("10km")) {
+        if (
+          content.includes("Not connected") ||
+          content.includes("not connected")
+        ) {
+          content = "I noticed your Google Calendar isn't connected yet.";
+        } else if (
+          content.includes("User's events") ||
+          content.includes("Events for today")
+        ) {
           content =
-            "I see you ran 10km yesterday, your legs might feel a bit heavy.";
+            "I've analyzed your schedule to find the best time for your routine.";
         } else if (content.includes("Sunny") || content.includes("Clear")) {
-          content = "It looks like a sunny day, perfect for some stretching!";
-        } else if (content.includes("Rainy") || content.includes("Snowy")) {
-          content =
-            "It looks like it's raining/snowing. Let's do a cozy indoor session.";
-        } else if (content.includes("Physiotherapy")) {
-          content =
-            "I'm considering your physiotherapy session for your shoulder today.";
-        } else if (content.includes("hip mobility")) {
-          content = "Your coach suggests focusing on hip mobility this week.";
+          content = "It's a clear day, great for any type of session!";
+        } else if (
+          content.includes("Rain") ||
+          content.includes("Snow") ||
+          content.includes("Storm")
+        ) {
+          content = "Weather looks challenging, I'll favor indoor exercises.";
         } else if (content.includes("temperature")) {
-          content = `I see the weather is quite specific today: ${content}`;
+          content = "Factoring in the local temperature for your comfort.";
         }
 
         yield {

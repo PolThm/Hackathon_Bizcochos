@@ -1,3 +1,4 @@
+import "dotenv/config";
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { generateRoutineFromPrompt } from "./services/routineGeneratorService.js";
@@ -27,7 +28,8 @@ fastify.post("/api/generateRoutine", async (request) => {
 });
 
 fastify.post("/api/generateDailyRoutine", async (request, reply) => {
-  const { locale, latitude, longitude, prompt, googleToken } = request.body;
+  const { locale, latitude, longitude, prompt, googleToken, history } =
+    request.body;
 
   const stream = new Readable({
     read() {},
@@ -45,6 +47,7 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
       latitude,
       longitude,
       googleToken,
+      history,
     );
 
     for await (const chunk of agentStream) {

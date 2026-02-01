@@ -208,6 +208,13 @@ export default function Home() {
       const storedLon = localStorage.getItem('userLon');
       const googleToken = localStorage.getItem('googleAccessToken');
 
+      // Get the last 5 routines for context persistence (Marathon Agent Memory)
+      const history = allRoutines.slice(-5).map((r) => ({
+        name: r.name,
+        description: r.description,
+        exercises: r.exercises.map((e) => e.name),
+      }));
+
       const response = await fetch(`${API_BASE_URL}/api/generateDailyRoutine`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -217,6 +224,7 @@ export default function Home() {
           longitude: storedLon ? parseFloat(storedLon) : undefined,
           prompt: userInput,
           googleToken,
+          history,
         }),
       });
 

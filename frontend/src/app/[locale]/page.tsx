@@ -19,7 +19,6 @@ import { useRouter } from '@/i18n/routing';
 import Image from 'next/image';
 import Script from 'next/script';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TimerIcon from '@mui/icons-material/Timer';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -64,7 +63,6 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
-  const [userInput, setUserInput] = useState('');
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [userProfile, setUserProfile] = useState<any>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -87,6 +85,12 @@ export default function Home() {
   const swipeHandledRef = useRef(false);
 
   useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [logs]);
+
+  useEffect(() => {
     const token = localStorage.getItem('googleAccessToken');
     setGoogleConnected(!!token);
 
@@ -96,6 +100,14 @@ export default function Home() {
     } else {
       setUserProfile(JSON.parse(profile));
     }
+
+    // Check if we already have a generated routine for today
+    const today = new Date().toISOString().split('T')[0];
+    const saved = sessionStorage.getItem(`dailyRoutine_${today}`);
+    if (saved) {
+      setRoutine(JSON.parse(saved));
+      setHasStarted(true);
+    }
   }, []);
 
   const handleOnboardingComplete = (profile: any) => {
@@ -104,44 +116,109 @@ export default function Home() {
     setShowOnboarding(false);
   };
 
-  const handleConnectCalendar = () => {
-    if (!isGisLoaded) {
-      console.error('Google Identity Services script not loaded');
-      return;
-    }
+  const handleGenerateSession = useCallback(
+    async (currentProfile?: any) => {
+      const today = new Date().toISOString().split('T')[0];
+      const profileToUse = currentProfile || userProfile;
 
-    try {
-      const client = (window as any).google.accounts.oauth2.initTokenClient({
-        client_id: GOOGLE_CLIENT_ID,
-        scope: 'https://www.googleapis.com/auth/calendar.readonly',
-        callback: (response: any) => {
-          if (response.access_token) {
-            localStorage.setItem('googleAccessToken', response.access_token);
-            setGoogleConnected(true);
-          }
-        },
-      });
-      client.requestAccessToken();
-    } catch (e) {
-      console.error('Error initiating Google OAuth:', e);
-    }
-  };
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [logs]);
-
-  useEffect(() => {
-    // Check if we already have a generated routine for today in session storage
-    const today = new Date().toISOString().split('T')[0];
-    const saved = sessionStorage.getItem(`dailyRoutine_${today}`);
-    if (saved) {
-      setRoutine(JSON.parse(saved));
+      setLoading(true);
       setHasStarted(true);
+      setLogs([]);
+
+      try {
+        const storedLat = localStorage.getItem('userLat');
+        const storedLon = localStorage.getItem('userLon');
+        const googleToken = localStorage.getItem('googleAccessToken');
+
+        // Get the last 5 routines for context persistence
+        const history = allRoutines.slice(-5).map((r) => ({
+          name: r.name,
+          description: r.description,
+          exercises: r.exercises.map((e) => e.name),
+        }));
+
+        const response = await fetch(
+          `${API_BASE_URL}/api/generateDailyRoutine`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              locale,
+              latitude: storedLat ? parseFloat(storedLat) : undefined,
+              longitude: storedLon ? parseFloat(storedLon) : undefined,
+              prompt: '',
+              googleToken,
+              history,
+              userProfile: profileToUse,
+            }),
+          },
+        );
+
+        if (!response.body) throw new Error('No body');
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+
+          for (const line of lines) {
+            if (!line.trim()) continue;
+            try {
+              const chunk: StreamLog = JSON.parse(line);
+              if (chunk.type === 'step' && chunk.description) {
+                setLogs((prev) => [...prev, chunk.description!]);
+              } else if (chunk.type === 'data' && chunk.data) {
+                const backendRoutine = chunk.data;
+                const formattedRoutine: Routine = {
+                  ...backendRoutine,
+                  exercises: backendRoutine.exercises.map(
+                    (ex: any, i: number) => ({
+                      id: Date.now() + i,
+                      name: ex.name,
+                      duration: ex.duration,
+                      exerciseId: ex.id,
+                    }),
+                  ),
+                };
+
+                setRoutine(formattedRoutine);
+                setTimeout(() => {
+                  setLoading(false);
+                  sessionStorage.setItem(
+                    `dailyRoutine_${today}`,
+                    JSON.stringify(formattedRoutine),
+                  );
+                }, 1000);
+              } else if (chunk.type === 'error') {
+                console.error('Agent error:', chunk.message);
+                setLogs((prev) => [...prev, `Error: ${chunk.message}`]);
+              }
+            } catch (e) {
+              console.error('Failed to parse stream chunk:', e);
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching daily routine stream:', error);
+        setLoading(false);
+      }
+    },
+    [allRoutines, locale, userProfile],
+  );
+
+  // Auto-trigger generation when profile is ready and no routine exists
+  useEffect(() => {
+    if (userProfile && !routine && !loading && !showOnboarding) {
+      handleGenerateSession();
     }
-  }, []);
+  }, [userProfile, routine, loading, showOnboarding, handleGenerateSession]);
 
   useEffect(() => {
     const fetchLocationAndWeather = async () => {
@@ -213,95 +290,6 @@ export default function Home() {
     return <WbSunnyIcon sx={{ fontSize: '1rem' }} />;
   };
 
-  const handleGenerateSession = async () => {
-    const today = new Date().toISOString().split('T')[0];
-    setLoading(true);
-    setHasStarted(true);
-    setLogs([]);
-
-    try {
-      const storedLat = localStorage.getItem('userLat');
-      const storedLon = localStorage.getItem('userLon');
-      const googleToken = localStorage.getItem('googleAccessToken');
-
-      // Get the last 5 routines for context persistence
-      const history = allRoutines.slice(-5).map((r) => ({
-        name: r.name,
-        description: r.description,
-        exercises: r.exercises.map((e) => e.name),
-      }));
-
-      const response = await fetch(`${API_BASE_URL}/api/generateDailyRoutine`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          locale,
-          latitude: storedLat ? parseFloat(storedLat) : undefined,
-          longitude: storedLon ? parseFloat(storedLon) : undefined,
-          prompt: userInput,
-          googleToken,
-          history,
-          userProfile, // Pass the profile to the AI
-        }),
-      });
-
-      if (!response.body) throw new Error('No body');
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() || '';
-
-        for (const line of lines) {
-          if (!line.trim()) continue;
-          try {
-            const chunk: StreamLog = JSON.parse(line);
-            if (chunk.type === 'step' && chunk.description) {
-              setLogs((prev) => [...prev, chunk.description!]);
-            } else if (chunk.type === 'data' && chunk.data) {
-              const backendRoutine = chunk.data;
-              const formattedRoutine: Routine = {
-                ...backendRoutine,
-                exercises: backendRoutine.exercises.map(
-                  (ex: any, i: number) => ({
-                    id: Date.now() + i,
-                    name: ex.name,
-                    duration: ex.duration,
-                    exerciseId: ex.id,
-                  }),
-                ),
-              };
-
-              setRoutine(formattedRoutine);
-              setTimeout(() => {
-                setLoading(false);
-                sessionStorage.setItem(
-                  `dailyRoutine_${today}`,
-                  JSON.stringify(formattedRoutine),
-                );
-              }, 1000);
-            } else if (chunk.type === 'error') {
-              console.error('Agent error:', chunk.message);
-              setLogs((prev) => [...prev, `Error: ${chunk.message}`]);
-            }
-          } catch (e) {
-            console.error('Failed to parse stream chunk:', e);
-          }
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching daily routine stream:', error);
-      setLoading(false);
-    }
-  };
-
   const handleAction = async (path: '/setup' | '/practice') => {
     if (!routine) return;
 
@@ -322,6 +310,29 @@ export default function Home() {
       router.push(path);
     } catch (error) {
       console.error('Error saving routine:', error);
+    }
+  };
+
+  const handleConnectCalendar = () => {
+    if (!isGisLoaded) {
+      console.error('Google Identity Services script not loaded');
+      return;
+    }
+
+    try {
+      const client = (window as any).google.accounts.oauth2.initTokenClient({
+        client_id: GOOGLE_CLIENT_ID,
+        scope: 'https://www.googleapis.com/auth/calendar.readonly',
+        callback: (response: any) => {
+          if (response.access_token) {
+            localStorage.setItem('googleAccessToken', response.access_token);
+            setGoogleConnected(true);
+          }
+        },
+      });
+      client.requestAccessToken();
+    } catch (e) {
+      console.error('Error initiating Google OAuth:', e);
     }
   };
 
@@ -440,6 +451,7 @@ export default function Home() {
         position: 'relative',
       }}
     >
+      {/* Decorative background element */}
       <Box
         sx={{
           position: 'absolute',
@@ -514,88 +526,6 @@ export default function Home() {
             )}
           </Box>
         )}
-
-        {!hasStarted && !routine && (
-          <Box
-            sx={{
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 2,
-              mb: 4,
-            }}
-          >
-            <Typography variant='h6' sx={{ fontWeight: 600 }}>
-              How do you feel today?
-            </Typography>
-            <TextField
-              fullWidth
-              multiline
-              rows={3}
-              placeholder='e.g. My lower back hurts, I have 15 minutes...'
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: '16px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                },
-              }}
-            />
-            {!googleConnected && (
-              <Button
-                variant='outlined'
-                onClick={handleConnectCalendar}
-                startIcon={
-                  <Image
-                    src='https://www.gstatic.com/images/branding/product/1x/calendar_2020q4_48dp.png'
-                    alt='Google Calendar'
-                    width={20}
-                    height={20}
-                  />
-                }
-                sx={{
-                  borderRadius: '12px',
-                  textTransform: 'none',
-                  borderColor: 'rgba(0,0,0,0.1)',
-                  color: 'text.secondary',
-                  '&:hover': {
-                    borderColor: 'rgba(0,0,0,0.2)',
-                    backgroundColor: 'rgba(0,0,0,0.02)',
-                  },
-                }}
-              >
-                Connect Google Calendar
-              </Button>
-            )}
-            <Button
-              variant='contained'
-              size='large'
-              fullWidth
-              onClick={handleGenerateSession}
-              sx={{
-                py: 2,
-                borderRadius: '12px',
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                textTransform: 'none',
-                backgroundColor: theme.palette.primary.main,
-                boxShadow: '0 4px 20px rgba(13, 5, 9, 0.15)',
-                '&:hover': {
-                  backgroundColor: theme.palette.primary.main,
-                  opacity: 0.9,
-                },
-              }}
-            >
-              Generate Daily Session
-            </Button>
-          </Box>
-        )}
-
-        <Script
-          src='https://accounts.google.com/gsi/client'
-          onLoad={() => setIsGisLoaded(true)}
-        />
 
         {loading && (
           <Box
@@ -1057,9 +987,22 @@ export default function Home() {
             zIndex: 1,
             alignSelf: 'center',
             margin: '0 auto',
-            mt: 4,
+            mt: loading || routine ? 4 : 'auto',
           }}
         >
+          {loading && (
+            <Button
+              variant='contained'
+              size='large'
+              fullWidth
+              disabled
+              startIcon={<CircularProgress size={20} color='inherit' />}
+              sx={{ py: 2, borderRadius: '12px', mb: 2 }}
+            >
+              Preparing your daily session...
+            </Button>
+          )}
+
           <Button
             variant='outlined'
             size='large'

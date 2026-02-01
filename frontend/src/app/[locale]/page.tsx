@@ -601,34 +601,117 @@ export default function Home() {
           <Box
             sx={{
               width: '100%',
-              py: 8,
+              py: 6,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 3,
-              minHeight: '200px',
+              gap: 4,
+              minHeight: '300px',
             }}
           >
-            <CircularProgress
-              size={40}
-              thickness={4}
-              sx={{ color: theme.palette.primary.main }}
-            />
-            <Fade in={!!latestLog} key={latestLog}>
-              <Typography
-                variant='body1'
+            <Box
+              sx={{
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <CircularProgress
+                size={80}
+                thickness={3}
                 sx={{
-                  textAlign: 'center',
-                  color: theme.palette.text.secondary,
-                  fontStyle: 'italic',
-                  maxWidth: '80%',
-                  lineHeight: 1.6,
+                  color: 'secondary.main',
+                  '& .MuiCircularProgress-circle': {
+                    strokeLinecap: 'round',
+                  },
+                }}
+              />
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
                 }}
               >
-                {latestLog || 'Preparing your daily session...'}
-              </Typography>
+                <Box
+                  sx={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: '50%',
+                    bgcolor: 'secondary.main',
+                    animation: 'pulse 2s ease-in-out infinite',
+                    '@keyframes pulse': {
+                      '0%, 100%': {
+                        opacity: 0.4,
+                        transform: 'scale(1)',
+                      },
+                      '50%': {
+                        opacity: 1,
+                        transform: 'scale(1.3)',
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Box>
+
+            <Fade in={!!latestLog} key={latestLog} timeout={500}>
+              <Box
+                sx={{
+                  minHeight: '60px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Typography
+                  variant='body1'
+                  sx={{
+                    textAlign: 'center',
+                    fontWeight: 400,
+                    px: 3,
+                    maxWidth: '350px',
+                    color: 'text.primary',
+                    lineHeight: 1.6,
+                    fontStyle: 'italic',
+                  }}
+                >
+                  {latestLog || 'Preparing your daily session...'}
+                </Typography>
+              </Box>
             </Fade>
+
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 1.5,
+              }}
+            >
+              {[0, 1, 2].map((i) => (
+                <Box
+                  key={i}
+                  sx={{
+                    width: 6,
+                    height: 6,
+                    borderRadius: '50%',
+                    bgcolor: 'secondary.main',
+                    animation: `bounce 1.4s ease-in-out ${i * 0.16}s infinite`,
+                    '@keyframes bounce': {
+                      '0%, 80%, 100%': {
+                        transform: 'scale(0.6)',
+                        opacity: 0.3,
+                      },
+                      '40%': {
+                        transform: 'scale(1)',
+                        opacity: 1,
+                      },
+                    },
+                  }}
+                />
+              ))}
+            </Box>
           </Box>
         )}
 

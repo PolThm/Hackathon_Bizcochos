@@ -36,6 +36,7 @@ import type { Routine } from '@/types';
 import { useObjectStorage } from '@/hooks/useStorage';
 import { getExercisesByLocale } from '@/utils/exercises';
 import CalendarStrip from '@/components/CalendarStrip';
+import OnboardingModal from '@/components/OnboardingModal';
 
 const CAROUSEL_INTERVAL_MS = 4000;
 const CAROUSEL_SWIPE_PAUSE_MS = 10000;
@@ -64,6 +65,8 @@ export default function Home() {
   const [hasStarted, setHasStarted] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
   const [userInput, setUserInput] = useState('');
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [userProfile, setUserProfile] = useState<any>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [allRoutines] = useObjectStorage<Routine[]>('allRoutines', []);
@@ -86,7 +89,20 @@ export default function Home() {
   useEffect(() => {
     const token = localStorage.getItem('googleAccessToken');
     setGoogleConnected(!!token);
+
+    const profile = localStorage.getItem('userProfile');
+    if (!profile) {
+      setShowOnboarding(true);
+    } else {
+      setUserProfile(JSON.parse(profile));
+    }
   }, []);
+
+  const handleOnboardingComplete = (profile: any) => {
+    localStorage.setItem('userProfile', JSON.stringify(profile));
+    setUserProfile(profile);
+    setShowOnboarding(false);
+  };
 
   const handleConnectCalendar = () => {
     if (!isGisLoaded) {
@@ -208,7 +224,7 @@ export default function Home() {
       const storedLon = localStorage.getItem('userLon');
       const googleToken = localStorage.getItem('googleAccessToken');
 
-      // Get the last 5 routines for context persistence (Marathon Agent Memory)
+      // Get the last 5 routines for context persistence
       const history = allRoutines.slice(-5).map((r) => ({
         name: r.name,
         description: r.description,
@@ -225,6 +241,7 @@ export default function Home() {
           prompt: userInput,
           googleToken,
           history,
+          userProfile, // Pass the profile to the AI
         }),
       });
 
@@ -1004,6 +1021,18 @@ export default function Home() {
             {tCommon('practice')}
           </Button>
         </Box>
+
+        <Script
+          src='https://accounts.google.com/gsi/client'
+          onLoad={() => setIsGisLoaded(true)}
+        />
+
+        <OnboardingModal
+          isOpen={showOnboarding}
+          onComplete={handleOnboardingComplete}
+          handleConnectCalendar={handleConnectCalendar}
+          googleConnected={googleConnected}
+        />
       </Box>
     </Box>
   );

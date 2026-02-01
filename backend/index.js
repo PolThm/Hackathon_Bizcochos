@@ -28,8 +28,15 @@ fastify.post("/api/generateRoutine", async (request) => {
 });
 
 fastify.post("/api/generateDailyRoutine", async (request, reply) => {
-  const { locale, latitude, longitude, prompt, googleToken, history } =
-    request.body;
+  const {
+    locale,
+    latitude,
+    longitude,
+    prompt,
+    googleToken,
+    history,
+    userProfile,
+  } = request.body;
 
   const stream = new Readable({
     read() {},
@@ -48,6 +55,7 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
       longitude,
       googleToken,
       history,
+      userProfile,
     );
 
     for await (const chunk of agentStream) {

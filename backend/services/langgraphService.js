@@ -34,7 +34,34 @@ const GraphState = Annotation.Root({
 
 // --- 3. Define Nodes and Graph Factory ---
 
-const createTools = (googleToken) => {
+const createTools = (googleToken, userProfile) => {
+  const getUserInfo = new DynamicStructuredTool({
+    name: "get_user_info",
+
+    description:
+      "Get the user's profile information including name, fitness goals, level, and physical limitations.",
+
+    schema: z.object({}),
+
+    func: async () => {
+      console.log("Tool: Fetching user profile...");
+
+      if (!userProfile) {
+        return "No user profile found. Proceed with general fitness advice.";
+      }
+
+      return `User Profile:
+
+      - Name: ${userProfile.name}
+
+      - Goals: ${userProfile.goals}
+
+      - Fitness Level: ${userProfile.level}
+
+      - Injuries/Limitations: ${userProfile.limitations || "None"}`;
+    },
+  });
+
   const getWeather = new DynamicStructuredTool({
     name: "get_weather",
 
@@ -190,7 +217,17 @@ const createTools = (googleToken) => {
     },
   });
 
-  return [getWeather, getCalendarEvents, getStravaStats, getEmails];
+  return [
+    getWeather,
+
+    getCalendarEvents,
+
+    getStravaStats,
+
+    getEmails,
+
+    getUserInfo,
+  ];
 };
 
 const toolMapping = {
@@ -201,6 +238,8 @@ const toolMapping = {
   get_strava_stats: "Syncing your latest fitness activity...",
 
   get_emails: "Looking for coach feedback in your inbox...",
+
+  get_user_info: "Personalizing for your profile and goals...",
 };
 
 export async function* streamAgenticRoutine(
@@ -215,23 +254,23 @@ export async function* streamAgenticRoutine(
   googleToken,
 
   history = [],
+
+  userProfile = null,
 ) {
   // 0. Initial Log for Memory Retrieval (Marathon Agent Signature)
 
   yield {
     type: "step",
 
-    node: "memory",
+    node: "context",
 
     description:
-      history.length > 0
-        ? `Thinking Level 0: Retrieving your last ${history.length} sessions for continuity...`
-        : "Thinking Level 0: Starting fresh session (no previous history found).",
+      "Thinking Level 0: Loading user profile and historical context...",
   };
 
   // 1. Create tools with the user-specific token
 
-  const tools = createTools(googleToken);
+  const tools = createTools(googleToken, userProfile);
 
   const toolNode = new ToolNode(tools);
 
@@ -254,7 +293,7 @@ export async function* streamAgenticRoutine(
 
     const response = await researcherModel.invoke([
       new SystemMessage(
-        "You are a research agent. Your goal is to gather all relevant information (weather, calendar, strava, emails) to help plan a fitness routine. Use the available tools.",
+        "You are a research agent. Your goal is to gather all relevant information (weather, calendar, strava, emails, and user profile) to help plan a fitness routine. Use the available tools.",
       ),
 
       ...messages,
@@ -292,123 +331,243 @@ export async function* streamAgenticRoutine(
 
     let systemPrompt = `
 
+
+
   
+
+
 
     
 
+
+
   
+
+
 
         You are a world-class fitness and mobility expert. Your task is to generate a professional workout routine based ONLY on the exercises provided in the list below.
 
+
+
   
+
+
 
     
 
+
+
   
+
+
 
         Available exercises:
 
+
+
   
+
+
 
         ${JSON.stringify(simplifiedExercises, null, 2)}
 
+
+
   
+
+
 
     
 
+
+
   
+
+
 
         User History (Last sessions):
 
+
+
   
+
+
 
         ${JSON.stringify(history, null, 2)}
 
+
+
   
+
+
 
     
 
+
+
   
+
+
 
         Rules:
 
-  
 
-        1. Provide a brief, natural language summary (1-2 sentences) of your reasoning BEFORE the JSON. You MUST explain how you adapted the routine to the user's context: weather, schedule, and specifically their HISTORY (ensure variety from previous sessions).
 
   
+
+
+
+        1. Provide a brief, natural language summary (1-2 sentences) of your reasoning BEFORE the JSON. You MUST explain how you adapted the routine to the user's PROFILE (goals, level, injuries), weather, schedule, and HISTORY.
+
+
+
+  
+
+
 
         2. Use the "id" exactly as provided in the list for each exercise.
 
+
+
   
+
+
 
         3. Find and set a short and catchy name for the routine (30 characters maximum).
 
-  
 
-        4. Find and set a short and catchy description (150 characters maximum) explaining why this is tailored to the request and the current context.
 
   
+
+
+
+        4. Find and set a short and catchy description (150 characters maximum) explaining why this is tailored to the user's specific context and goals.
+
+
+
+  
+
+
 
         5. Estimate a realistic "duration" in seconds for each exercise.
 
+
+
   
+
+
 
         6. The output MUST end with a valid JSON object.
 
+
+
   
+
+
 
     
 
+
+
   
+
+
 
         JSON Structure:
 
+
+
   
+
+
 
         {
 
+
+
   
+
+
 
           "id": "unique-id",
 
+
+
   
+
+
 
           "name": "Routine Name",
 
+
+
   
+
+
 
           "description": "Routine Description",
 
+
+
   
+
+
 
           "exercises": [
 
+
+
   
+
+
 
             {
 
+
+
   
+
+
 
               "id": "exercise-id-from-list",
 
+
+
   
+
+
 
               "duration": number
 
+
+
   
+
+
 
             }
 
+
+
   
+
+
 
           ]
 
+
+
   
+
+
 
         }
 
+
+
   
+
+
 
         `;
 

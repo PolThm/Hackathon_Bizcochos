@@ -207,12 +207,25 @@ export default function Home() {
             if (chunk.type === 'step' && chunk.description) {
               setLogs((prev) => [...prev, chunk.description!]);
             } else if (chunk.type === 'data' && chunk.data) {
-              setRoutine(chunk.data);
+              const backendRoutine = chunk.data;
+              const formattedRoutine: Routine = {
+                ...backendRoutine,
+                exercises: backendRoutine.exercises.map(
+                  (ex: any, i: number) => ({
+                    id: Date.now() + i,
+                    name: ex.name,
+                    duration: ex.duration,
+                    exerciseId: ex.id,
+                  }),
+                ),
+              };
+
+              setRoutine(formattedRoutine);
               setTimeout(() => {
                 setLoading(false);
                 sessionStorage.setItem(
                   `dailyRoutine_${today}`,
-                  JSON.stringify(chunk.data),
+                  JSON.stringify(formattedRoutine),
                 );
               }, 1000);
             } else if (chunk.type === 'error') {
@@ -258,7 +271,7 @@ export default function Home() {
     const library = getExercisesByLocale(locale);
     return routine.exercises.map((ex) => ({
       ...ex,
-      image: library.find((e) => e.id === ex.id)?.image ?? '',
+      image: library.find((e) => e.id === ex.exerciseId)?.image ?? '',
     }));
   }, [routine, locale]);
 

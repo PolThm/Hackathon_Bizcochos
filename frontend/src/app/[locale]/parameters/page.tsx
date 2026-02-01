@@ -46,10 +46,14 @@ export default function ParametersPage() {
     'success',
   );
   const [openResetModal, setOpenResetModal] = useState(false);
+  const [googleToken, setGoogleToken] = useState('');
 
   useEffect(() => {
     const loadSettings = async () => {
       try {
+        const savedToken = localStorage.getItem('googleAccessToken');
+        if (savedToken) setGoogleToken(savedToken);
+
         const savedMutedState = await getItem('isMuted');
         if (savedMutedState !== null) {
           setIsMuted(
@@ -162,11 +166,19 @@ export default function ParametersPage() {
       await removeItem('routine');
       // Reset the flag for deleted default routines on full reset
       await removeItem('deletedDefaultRoutines');
+      localStorage.removeItem('googleAccessToken');
       intlRouter.push('/');
       setOpenResetModal(false);
     } catch (error) {
       console.error('Failed to reset data:', error);
     }
+  };
+
+  const handleSaveToken = () => {
+    localStorage.setItem('googleAccessToken', googleToken);
+    setSnackMessage('Google Token saved!');
+    setSnackSeverity('success');
+    setSnackOpen(true);
   };
 
   return (
@@ -185,6 +197,36 @@ export default function ParametersPage() {
       >
         {t('parameters')}
       </Typography>
+
+      <Box sx={{ mt: 2 }}>
+        <Typography variant='subtitle2' sx={{ mb: 1, opacity: 0.7 }}>
+          Google Calendar Integration
+        </Typography>
+        <TextField
+          label='Access Token'
+          value={googleToken}
+          onChange={(e) => setGoogleToken(e.target.value)}
+          fullWidth
+          placeholder='Paste OAuth Access Token here'
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '12px',
+            },
+          }}
+        />
+        <Button
+          variant='outlined'
+          size='small'
+          onClick={handleSaveToken}
+          sx={{
+            mt: 1,
+            borderRadius: '8px',
+            textTransform: 'none',
+          }}
+        >
+          Save Token
+        </Button>
+      </Box>
 
       <Box sx={{ mt: 2 }}>
         <FormControl fullWidth sx={{ mt: 2 }}>

@@ -17,7 +17,9 @@ import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useRouter } from '@/i18n/routing';
 import Image from 'next/image';
+import Script from 'next/script';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TimerIcon from '@mui/icons-material/Timer';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -29,7 +31,7 @@ import UmbrellaIcon from '@mui/icons-material/Umbrella';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import GrainIcon from '@mui/icons-material/Grain';
 import { setItem, getItem } from '@/utils/indexedDB';
-import { API_BASE_URL } from '@/utils/config';
+import { API_BASE_URL, GOOGLE_CLIENT_ID } from '@/utils/config';
 import type { Routine } from '@/types';
 import { useObjectStorage } from '@/hooks/useStorage';
 import { getExercisesByLocale } from '@/utils/exercises';
@@ -72,12 +74,42 @@ export default function Home() {
     description: string;
     code: number;
   } | null>(null);
+  const [googleConnected, setGoogleConnected] = useState(false);
+  const [isGisLoaded, setIsGisLoaded] = useState(false);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [skipCarouselTransition, setSkipCarouselTransition] = useState(false);
   const autoScrollPausedUntilRef = useRef(0);
   const touchStartXRef = useRef<number | null>(null);
   const swipeHandledRef = useRef(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('googleAccessToken');
+    setGoogleConnected(!!token);
+  }, []);
+
+  const handleConnectCalendar = () => {
+    if (!isGisLoaded) {
+      console.error('Google Identity Services script not loaded');
+      return;
+    }
+
+    try {
+      const client = (window as any).google.accounts.oauth2.initTokenClient({
+        client_id: GOOGLE_CLIENT_ID,
+        scope: 'https://www.googleapis.com/auth/calendar.readonly',
+        callback: (response: any) => {
+          if (response.access_token) {
+            localStorage.setItem('googleAccessToken', response.access_token);
+            setGoogleConnected(true);
+          }
+        },
+      });
+      client.requestAccessToken();
+    } catch (e) {
+      console.error('Error initiating Google OAuth:', e);
+    }
+  };
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -174,6 +206,7 @@ export default function Home() {
     try {
       const storedLat = localStorage.getItem('userLat');
       const storedLon = localStorage.getItem('userLon');
+      const googleToken = localStorage.getItem('googleAccessToken');
 
       const response = await fetch(`${API_BASE_URL}/api/generateDailyRoutine`, {
         method: 'POST',
@@ -183,6 +216,7 @@ export default function Home() {
           latitude: storedLat ? parseFloat(storedLat) : undefined,
           longitude: storedLon ? parseFloat(storedLon) : undefined,
           prompt: userInput,
+          googleToken,
         }),
       });
 
@@ -350,7 +384,7 @@ export default function Home() {
         swipeHandledRef.current = false;
         return;
       }
-      router.push(`/exercise/${ex.id}?from=home`);
+      router.push(`/exercise/${ex.exerciseId}?from=home`);
     },
     [router],
   );
@@ -429,6 +463,30 @@ export default function Home() {
               {weather && `, ${weather.description} ${weather.temp}°C`}
             </Typography>
             {weather && getWeatherIcon(weather.code)}
+            {googleConnected && (
+              <Chip
+                icon={
+                  <Image
+                    src='https://www.gstatic.com/images/branding/product/1x/calendar_2020q4_48dp.png'
+                    alt='Google Calendar'
+                    width={14}
+                    height={14}
+                  />
+                }
+                label='Connected'
+                size='small'
+                variant='outlined'
+                sx={{
+                  ml: 1,
+                  height: '20px',
+                  fontSize: '0.65rem',
+                  borderColor: 'rgba(214, 195, 165, 0.3)',
+                  color: theme.palette.text.secondary,
+                  '& .MuiChip-label': { px: 1 },
+                  '& .MuiChip-icon': { ml: '4px', mr: 0 },
+                }}
+              />
+            )}
           </Box>
         )}
 
@@ -459,6 +517,32 @@ export default function Home() {
                 },
               }}
             />
+            {!googleConnected && (
+              <Button
+                variant='outlined'
+                onClick={handleConnectCalendar}
+                startIcon={
+                  <Image
+                    src='https://www.gstatic.com/images/branding/product/1x/calendar_2020q4_48dp.png'
+                    alt='Google Calendar'
+                    width={20}
+                    height={20}
+                  />
+                }
+                sx={{
+                  borderRadius: '12px',
+                  textTransform: 'none',
+                  borderColor: 'rgba(0,0,0,0.1)',
+                  color: 'text.secondary',
+                  '&:hover': {
+                    borderColor: 'rgba(0,0,0,0.2)',
+                    backgroundColor: 'rgba(0,0,0,0.02)',
+                  },
+                }}
+              >
+                Connect Google Calendar
+              </Button>
+            )}
             <Button
               variant='contained'
               size='large'
@@ -482,6 +566,11 @@ export default function Home() {
             </Button>
           </Box>
         )}
+
+        <Script
+          src='https://accounts.google.com/gsi/client'
+          onLoad={() => setIsGisLoaded(true)}
+        />
 
         {loading && (
           <Box

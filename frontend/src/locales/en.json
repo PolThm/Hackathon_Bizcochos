@@ -61,6 +61,7 @@
     "routineExample": "Example",
     "createNewRoutineWithAI": "Create new Routine with AI",
     "goToPractice": "Start the practice",
+    "dailyRoutine": "Daily Routine",
     "noRoutinesMessage": "You have no routines yet.",
     "or": "OR"
   },
@@ -113,6 +114,12 @@
       "Creating your path to flexibility...",
       "Tailoring stretches to your goals..."
     ]
+  },
+  "dailyRoutine": {
+    "title": "Routine of the Day",
+    "aiReasoning": "Based on your recent activity and common morning stiffness, I've designed this routine to open up your hips and lengthen your spine. This flow will help you feel more energized and mobile for the day ahead.",
+    "benefitsTitle": "Why this routine?",
+    "startToday": "Start Today's Routine"
   },
   "pwa": {
     "installPrompt": {

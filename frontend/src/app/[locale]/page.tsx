@@ -165,6 +165,30 @@ export default function Home() {
               </Button>
             )}
             <Button
+              variant='outlined'
+              size='large'
+              component={Link}
+              href='/daily-routine'
+              sx={{
+                py: 2.5,
+                px: 4,
+                borderRadius: '12px',
+                fontSize: '1.1rem',
+                fontWeight: 500,
+                textTransform: 'none',
+                borderColor: theme.palette.secondary.main,
+                color: theme.palette.secondary.main,
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  borderColor: theme.palette.secondary.main,
+                  backgroundColor: 'rgba(214, 195, 165, 0.1)',
+                  transform: 'translateY(-2px)',
+                },
+              }}
+            >
+              {tCommon('dailyRoutine')}
+            </Button>
+            <Button
               variant={hasNoRoutines ? 'contained' : 'outlined'}
               size='large'
               component={Link}

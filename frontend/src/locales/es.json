@@ -60,8 +60,9 @@
     "routinePolux": "Estiramientos & Musculación",
     "routineExample": "Ejemplo",
     "createNewRoutineWithAI": "Crear nueva Rutina con IA",
-    "goToPractice": "Iniciar la práctica",
-    "noRoutinesMessage": "No tienes rutinas todavía.",
+    "goToPractice": "Comenzar la práctica",
+    "dailyRoutine": "Rutina del día",
+    "noRoutinesMessage": "Aún no tienes rutinas.",
     "or": "O"
   },
   "library": {
@@ -103,15 +104,21 @@
     "refineButton": "Actualizar rutina",
     "startOverButton": "Empezar de cero",
     "loadingMessages": [
-      "Diseñando tu rutina perfecta...",
+      "Diseñando tu estiramiento perfecto...",
       "Escuchando las necesidades de tu cuerpo...",
-      "Seleccionando ejercicios para tu confort...",
+      "Seleccionando ejercicios para tu comodidad...",
       "Construyendo tu flujo personalizado...",
       "Creando movimientos solo para ti...",
       "Casi listo, finalizando tu rutina...",
       "Creando tu camino hacia la flexibilidad...",
-      "Adaptando estiramientos a tus objetivos..."
+      "Adaptando los estiramientos a tus objetivos..."
     ]
+  },
+  "dailyRoutine": {
+    "title": "Rutina del Día",
+    "aiReasoning": "Basado en tu actividad reciente y la rigidez matutina común, he diseñado esta rutina para abrir tus caderas y alargar tu columna. Este flujo te ayudará a sentirte más energizado y móvil para el día que tienes por delante.",
+    "benefitsTitle": "¿Por qué esta rutina?",
+    "startToday": "Comenzar la Rutina de Hoy"
   },
   "pwa": {
     "installPrompt": {

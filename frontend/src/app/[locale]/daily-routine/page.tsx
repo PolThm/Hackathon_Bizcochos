@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Link } from '@/i18n/routing';
 import {
   Box,
@@ -13,65 +14,127 @@ import {
   ListItemText,
   Avatar,
   Chip,
+  CircularProgress,
 } from '@mui/material';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
+import { useRouter } from '@/i18n/routing';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TimerIcon from '@mui/icons-material/Timer';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-
-const MOCK_DAILY_ROUTINE = {
-  id: 'daily-mock',
-  name: 'Morning Vitality',
-  description: 'A quick flow to wake up your body and mind.',
-  focus: 'Spine & Hips',
-  breakDuration: 10,
-  preparationDuration: 15,
-  exercises: [
-    {
-      id: 1,
-      name: 'Rag Doll',
-      duration: 60,
-      exerciseId: 'd70415d950a2',
-    },
-    {
-      id: 2,
-      name: 'Upward Dog',
-      duration: 45,
-      exerciseId: '7e6077a58ec2',
-    },
-    {
-      id: 3,
-      name: "Child's Pose",
-      duration: 60,
-      exerciseId: 'f0e3ea656db8',
-    },
-    {
-      id: 4,
-      name: 'Knees-to-chest',
-      duration: 45,
-      exerciseId: '0334bf01a6dd',
-    },
-  ],
-};
+import { setItem, getItem } from '@/utils/indexedDB';
+import { API_BASE_URL } from '@/utils/config';
+import type { Routine } from '@/types';
 
 export default function DailyRoutinePage() {
   const t = useTranslations('dailyRoutine');
   const tCommon = useTranslations('common');
   const theme = useTheme();
+  const router = useRouter();
+  const params = useParams();
+  const locale = (params?.locale as string) ?? 'en';
 
-  const totalDurationSeconds = MOCK_DAILY_ROUTINE.exercises.reduce(
+  const [routine, setRoutine] = useState<Routine | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDailyRoutine = async () => {
+      // Check if we already have a routine for today in session storage
+      const today = new Date().toISOString().split('T')[0];
+      const saved = sessionStorage.getItem(`dailyRoutine_${today}`);
+
+      if (saved) {
+        setRoutine(JSON.parse(saved));
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `${API_BASE_URL}/api/generateDailyRoutine`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ locale }),
+          },
+        );
+        const result = await response.json();
+        if (result.status === 'ok') {
+          setRoutine(result.data);
+          sessionStorage.setItem(
+            `dailyRoutine_${today}`,
+            JSON.stringify(result.data),
+          );
+        }
+      } catch (error) {
+        console.error('Error fetching daily routine:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDailyRoutine();
+  }, [locale]);
+
+  const handleStart = async () => {
+    if (!routine) return;
+
+    // Save to all routines if not already there
+    const existingRoutinesStr = await getItem('allRoutines');
+    const existingRoutines: Routine[] = existingRoutinesStr
+      ? JSON.parse(existingRoutinesStr)
+      : [];
+
+    if (!existingRoutines.some((r) => r.id === routine.id)) {
+      await setItem(
+        'allRoutines',
+        JSON.stringify([...existingRoutines, routine]),
+      );
+    }
+
+    await setItem('routine', JSON.stringify(routine));
+    router.push('/practice');
+  };
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '80vh',
+          gap: 2,
+        }}
+      >
+        <CircularProgress color='secondary' />
+        <Typography variant='body1'>{tCommon('refresh')}...</Typography>
+      </Box>
+    );
+  }
+
+  if (!routine) {
+    return (
+      <Box sx={{ p: 4, textAlign: 'center' }}>
+        <Typography>{tCommon('error')}</Typography>
+        <Button component={Link} href='/'>
+          {tCommon('home')}
+        </Button>
+      </Box>
+    );
+  }
+
+  const totalDurationSeconds = routine.exercises.reduce(
     (acc, ex) => acc + ex.duration,
     0,
   );
   const totalBreaks =
-    (MOCK_DAILY_ROUTINE.exercises.length - 1) *
-    MOCK_DAILY_ROUTINE.breakDuration;
+    (routine.exercises.length - 1) * (routine.breakDuration || 5);
   const estimatedTimeMinutes = Math.ceil(
-    (totalDurationSeconds +
-      totalBreaks +
-      MOCK_DAILY_ROUTINE.preparationDuration) /
+    (totalDurationSeconds + totalBreaks + (routine.preparationDuration || 5)) /
       60,
   );
 
@@ -151,7 +214,9 @@ export default function DailyRoutinePage() {
           }}
         >
           <FitnessCenterIcon sx={{ fontSize: '1.2rem', mr: 0.5 }} />
-          <Typography variant='body2'>{MOCK_DAILY_ROUTINE.focus}</Typography>
+          <Typography variant='body2'>
+            {routine.exercises.length} Exercises
+          </Typography>
         </Box>
       </Box>
 
@@ -179,16 +244,16 @@ export default function DailyRoutinePage() {
           variant='body1'
           sx={{ lineHeight: 1.6, color: theme.palette.text.secondary }}
         >
-          {t('aiReasoning')}
+          {routine.description || t('aiReasoning')}
         </Typography>
       </Paper>
 
       <Typography variant='h5' sx={{ mb: 2, fontWeight: 600 }}>
-        {MOCK_DAILY_ROUTINE.name}
+        {routine.name}
       </Typography>
 
       <List sx={{ mb: 4 }}>
-        {MOCK_DAILY_ROUTINE.exercises.map((exercise, index) => (
+        {routine.exercises.map((exercise, index) => (
           <Box key={exercise.id}>
             <ListItem sx={{ px: 0, py: 2 }}>
               <Avatar
@@ -206,9 +271,7 @@ export default function DailyRoutinePage() {
                 primaryTypographyProps={{ fontWeight: 500 }}
               />
             </ListItem>
-            {index < MOCK_DAILY_ROUTINE.exercises.length - 1 && (
-              <Divider component='li' />
-            )}
+            {index < routine.exercises.length - 1 && <Divider component='li' />}
           </Box>
         ))}
       </List>
@@ -218,6 +281,7 @@ export default function DailyRoutinePage() {
         size='large'
         fullWidth
         startIcon={<PlayArrowIcon />}
+        onClick={handleStart}
         sx={{
           py: 2,
           borderRadius: '12px',
@@ -245,7 +309,7 @@ export default function DailyRoutinePage() {
           fontStyle: 'italic',
         }}
       >
-        Personalized for you by Bizcocho AI Agent
+        Personalized for you by Bizcocho AI Agent with LangGraph
       </Typography>
     </Box>
   );

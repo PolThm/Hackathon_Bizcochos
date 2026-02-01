@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const client = new OpenAI();
+const client = new OpenAI({
+  baseURL: process.env.ENDPOINT_URL,
+});
 
 /**
  * Generic AI service to handle completions.

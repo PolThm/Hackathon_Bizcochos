@@ -2419,7 +2419,7 @@
     },
     {
         "id": "792c21bfd4f0",
-        "name": "Rodilla al Pecho (Single Knee-to-Chest)",
+        "name": "Rodilla al Pecho",
         "image": "/images/exercises/image_00131-768b4cd5cbdf2cd2824ac99ed0d515a0.png",
         "instructions": [
             "Comienza tumbado boca arriba con las piernas extendidas y los brazos a los lados.",
@@ -2439,7 +2439,7 @@
     },
     {
         "id": "2082265fe5f8",
-        "name": "Estiramiento de Cuádriceps Tumbado (Lying Quad Stretch)",
+        "name": "Estiramiento de Cuádriceps Tumbado",
         "image": "/images/exercises/image_00132-b76725df4d5b527c21080fe7e882505e.png",
         "instructions": [
             "Comienza tumbado de lado con las piernas extendidas y los pies uno sobre el otro.",
@@ -2459,7 +2459,7 @@
     },
     {
         "id": "712f12d31f7b",
-        "name": "Plegado con Piernas Cruzadas (Cross Leg Fold)",
+        "name": "Plegado con Piernas Cruzadas",
         "image": "/images/exercises/image_00148-47aead12d25992d72536450f7edd1643.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",
@@ -2480,7 +2480,7 @@
     },
     {
         "id": "8ddf93dab49b",
-        "name": "Brazos en la Pared (Wall Arms)",
+        "name": "Brazos en la Pared",
         "image": "/images/exercises/image_00157-e76701cf977c7fef7cf4ac6af24754b9.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y el lado del hombro contra una pared.",
@@ -2497,7 +2497,7 @@
     },
     {
         "id": "422023136d71",
-        "name": "Brazo de Águila (Eagle Arm)",
+        "name": "Brazo de Águila",
         "image": "/images/exercises/image_00152-e12eae0f8b163f4afb1ff25c565e6c00.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos extendidos frente a ti a la altura de los hombros.",
@@ -2516,7 +2516,7 @@
     },
     {
         "id": "64c897a254bf",
-        "name": "Oreja al Hombro (Ear-to-Shoulder)",
+        "name": "Oreja al Hombro",
         "image": "/images/exercises/image_00153-2642a1a3f3072ea2ecc4d1cec81b9af4.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos a los lados.",
@@ -2534,7 +2534,7 @@
     },
     {
         "id": "7966db640529",
-        "name": "Abrazo de Oso (Bear Hug)",
+        "name": "Abrazo de Oso",
         "image": "/images/exercises/image_00150-c6265918ff8ede8b0d8a546206580ead.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos extendidos a los lados.",
@@ -2553,7 +2553,7 @@
     },
     {
         "id": "3bda0249e5c3",
-        "name": "Cara de Vaca (Cow Face)",
+        "name": "Cara de Vaca",
         "image": "/images/exercises/image_00151-50d5ed1df8adc9cb6e22b5b470767a06.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos a los lados.",
@@ -2573,7 +2573,7 @@
     },
     {
         "id": "ebc945bbbd5f",
-        "name": "Pecho Sentado (Seated Chest)",
+        "name": "Pecho Sentado",
         "image": "/images/exercises/image_00129-09cec47bf2a53734c5ff5a6c88258938.png",
         "instructions": [
             "Comienza en el suelo en posición sentada con las rodillas flexionadas y los pies apoyados en el suelo.",
@@ -2594,7 +2594,7 @@
     },
     {
         "id": "e13c627bca71",
-        "name": "Thread the Needle (Pasar el Hilo por la Aguja)",
+        "name": "Thread the Needle",
         "image": "/images/exercises/image_00160a-af4499d4f5493961f775c4551ad076ca.png",
         "instructions": [
             "Comienza en posición de mesa, sobre manos y rodillas.",
@@ -2613,7 +2613,7 @@
     },
     {
         "id": "3bac00c5b8ea",
-        "name": "Postura del Camello (Camel Pose)",
+        "name": "Postura del Camello",
         "image": "/images/exercises/image_00166-9e4e43fd88a4e4c1664965e7da941793.png",
         "instructions": [
             "Comienza de rodillas con las manos en la zona lumbar, dedos apuntando hacia abajo.",
@@ -2634,7 +2634,7 @@
     },
     {
         "id": "0c2f9e3bb529",
-        "name": "Medio Arco (Half Bow)",
+        "name": "Medio Arco",
         "image": "/images/exercises/image_00163-cdcdfec97cc329b5401edd879b25a72e.png",
         "instructions": [
             "Comienza tumbado boca abajo con las piernas extendidas y los antebrazos en el suelo.",
@@ -2654,7 +2654,7 @@
     },
     {
         "id": "3a6db1120f93",
-        "name": "Postura del Arco (Bow Pose)",
+        "name": "Postura del Arco",
         "image": "/images/exercises/image_00164-de0f83243efcbe4bcde744975c78eb55.png",
         "instructions": [
             "Comienza tumbado boca abajo con las piernas extendidas y los brazos a los lados.",
@@ -2673,7 +2673,7 @@
     },
     {
         "id": "b942f75ed662",
-        "name": "Rotación de Cuello (Neck Rotation)",
+        "name": "Rotación de Cuello",
         "image": "/images/exercises/image_00156-d632cf7385942b466fba8267c163cfd1.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos a los lados.",
@@ -2691,7 +2691,7 @@
     },
     {
         "id": "93a8730fceef",
-        "name": "Estiramiento de Escápulas (Scapula Stretch)",
+        "name": "Estiramiento de Escápulas",
         "image": "/images/exercises/image_00139-a167beaeffddb0dcf40b32d4117677cc.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos a los lados.",
@@ -2708,7 +2708,7 @@
     },
     {
         "id": "dddb9558312f",
-        "name": "Estiramiento de Escalenos (Scalene Stretch)",
+        "name": "Estiramiento de Escalenos",
         "image": "/images/exercises/image_00140-b3b7968582d5037f9d96f8ba55366061.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos a los lados.",
@@ -2725,7 +2725,7 @@
     },
     {
         "id": "e5b7348b0c6f",
-        "name": "Torsión Sentada Modificada (Modified Seated Twist)",
+        "name": "Torsión Sentada Modificada",
         "image": "/images/exercises/image_00141-ccd843a1e7cbdf064e8e0887501bcaa1.png",
         "instructions": [
             "Comienza en el suelo en posición sentada con las piernas extendidas frente a ti.",
@@ -2743,7 +2743,7 @@
     },
     {
         "id": "7fe07c67edfd",
-        "name": "Inclinación 90/90 (Leaning 90/90)",
+        "name": "Inclinación 90/90",
         "image": "/images/exercises/image_00134-a72f2f9c3645edf51c6f067c14014211.png",
         "instructions": [
             "Comienza en el suelo en posición sentada con las rodillas flexionadas y los pies apoyados en el suelo.",
@@ -2762,7 +2762,7 @@
     },
     {
         "id": "a668023bd61a",
-        "name": "Psoas Arrodillado (Kneeling Psoas)",
+        "name": "Psoas Arrodillado",
         "image": "/images/exercises/image_00149-273a58dd3bdd5cc87ace6e9adf77ae82.png",
         "instructions": [
             "Comienza de rodillas con las rodillas separadas a la anchura de las caderas y los brazos a los lados.",
@@ -2782,7 +2782,7 @@
     },
     {
         "id": "c4cd8f238a9f",
-        "name": "Inclinación en Figura de Cuatro (Leaning Figure Four)",
+        "name": "Inclinación en Figura de Cuatro",
         "image": "/images/exercises/image_00136-35d48fee27be19e5746c71fb6f00d2d7.png",
         "instructions": [
             "Comienza en el suelo en posición sentada con las piernas extendidas frente a ti y las manos detrás de ti como apoyo.",
@@ -2799,7 +2799,7 @@
     },
     {
         "id": "cf1857ade38c",
-        "name": "Torsión en Figura de Cuatro (Figure Four Twist)",
+        "name": "Torsión en Figura de Cuatro",
         "image": "/images/exercises/image_00135-700a6e79da77681d242cf82a915ad33c.png",
         "instructions": [
             "Comienza tumbado boca arriba con las rodillas flexionadas y los pies apoyados en el suelo.",
@@ -2816,7 +2816,7 @@
     },
     {
         "id": "84cc27796b48",
-        "name": "Rana de Pie (Standing Frog)",
+        "name": "Rana de Pie",
         "image": "/images/exercises/image_00138-75295414029e4b3dc0a1919db326709a.png",
         "instructions": [
             "Comienza de pie con los pies muy separados y las puntas de los pies apuntando hacia afuera.",
@@ -2836,7 +2836,7 @@
     },
     {
         "id": "37c2f256bfed",
-        "name": "Mariposa Inversa (Reverse Butterfly)",
+        "name": "Mariposa Inversa",
         "image": "/images/exercises/image_00137-02fda21d7728b3892e7e2d65b4a334c3.png",
         "instructions": [
             "Comienza tumbado boca arriba con las rodillas flexionadas y los pies apoyados en el suelo.",
@@ -2853,7 +2853,7 @@
     },
     {
         "id": "4557b5b65cd2",
-        "name": "Flexiones Laterales Dinámicas (Dynamic Side Bends)",
+        "name": "Flexiones Laterales Dinámicas",
         "image": "/images/exercises/image_00226a-89a5310701e494db2e493967186f28d5.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",
@@ -2875,7 +2875,7 @@
     },
     {
         "id": "dc8ab33332e7",
-        "name": "Good Mornings (Buenos Días)",
+        "name": "Good Mornings",
         "image": "/images/exercises/image_00227b-7e815ddb054420195ca2f3be276451d1.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos detrás de la cabeza.",
@@ -2897,7 +2897,7 @@
     },
     {
         "id": "f049a1a49e0f",
-        "name": "Círculos de Cadera (Hip Circles)",
+        "name": "Círculos de Cadera",
         "image": "/images/exercises/image_00225-e389e294bca776b0406414689dbf5360.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos en las caderas.",
@@ -2917,7 +2917,7 @@
     },
     {
         "id": "81c0ca13c14a",
-        "name": "Recogida de Isquiotibiales (Hamstring Scoops)",
+        "name": "Recogida de Isquiotibiales",
         "image": "/images/exercises/image_00221b-5f17468cf3abcc33359813eab3b2f53c.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos descansando en las caderas.",
@@ -2940,7 +2940,7 @@
     },
     {
         "id": "a648053cf21b",
-        "name": "Abrepuertas (Gate Opener)",
+        "name": "Abrepuertas",
         "image": "/images/exercises/image_00190c-be4c5b79eb9cdbc29ed70e3c946a26eb.png",
         "instructions": [
             "Comienza de pie con una mano apoyada en una pared o silla para sostener.",
@@ -2960,7 +2960,7 @@
     },
     {
         "id": "83494436dc16",
-        "name": "Balanceo Lateral de Pierna (Lateral Leg Swing)",
+        "name": "Balanceo Lateral de Pierna",
         "image": "/images/exercises/image_00189a-334666822f855130150de95d51d067b5.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos en las caderas.",
@@ -2982,7 +2982,7 @@
     },
     {
         "id": "235f70820956",
-        "name": "Plegado Hacia Adelante con Piernas Abiertas Dinámico (Dynamic Wide Leg Forward Fold)",
+        "name": "Plegado Hacia Adelante con Piernas Abiertas Dinámico",
         "image": "/images/exercises/image_00228b-60bc1b537089c91dd5395f7b1663ec6c.png",
         "instructions": [
             "Comienza de pie con una postura amplia y las manos descansando en las caderas.",
@@ -3005,7 +3005,7 @@
     },
     {
         "id": "29e3ae7befd0",
-        "name": "Círculos de Torso con Piernas Abiertas (Wide Leg Torso Circles)",
+        "name": "Círculos de Torso con Piernas Abiertas",
         "image": "/images/exercises/image_00222b-57f9c95a9e12adac4c93e565bb1ac998.png",
         "instructions": [
             "Comienza de pie con una postura amplia y las manos en las caderas.",
@@ -3026,7 +3026,7 @@
     },
     {
         "id": "5a9c734cc37a",
-        "name": "Aperturas de Cadera de Pie (Standing Hip Openers)",
+        "name": "Aperturas de Cadera de Pie",
         "image": "/images/exercises/image_00235a-6d68db81c1868447d1bd2eab639f89c6.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",
@@ -3049,7 +3049,7 @@
     },
     {
         "id": "23594574bc5e",
-        "name": "Giros con Rodillas Altas (High Knee Twists)",
+        "name": "Giros con Rodillas Altas",
         "image": "/images/exercises/image_00236a-f899933bfcde9262815bf1c9547add6a.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos detrás de la cabeza.",
@@ -3071,7 +3071,7 @@
     },
     {
         "id": "0fc452bf611d",
-        "name": "Círculos de Tobillo (Ankle Circles)",
+        "name": "Círculos de Tobillo",
         "image": "/images/exercises/image_00218-1b4752a4051c837515c1c8d48c0e53fb.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos a los lados o en las caderas.",
@@ -3095,7 +3095,7 @@
     },
     {
         "id": "4643a201bb99",
-        "name": "Círculos de Muñeca (Wrist Circles)",
+        "name": "Círculos de Muñeca",
         "image": "/images/exercises/image_00207-f5afda03eb033d4ff0cf080ca01012f9.png",
         "instructions": [
             "Comienza de pie o sentado con las manos frente al pecho.",
@@ -3116,7 +3116,7 @@
     },
     {
         "id": "02f0bda145fd",
-        "name": "Pica de Codo (Elbow Pike)",
+        "name": "Pica de Codo",
         "image": "/images/exercises/image_00117-a36c380f4acb3d4187fc941a04f0d24c.png",
         "instructions": [
             "Comienza en el suelo en posición de plancha con los antebrazos apoyados.",
@@ -3137,7 +3137,7 @@
     },
     {
         "id": "1ab1140bf30b",
-        "name": "Sostén en Fondos (Dip Hold)",
+        "name": "Sostén en Fondos",
         "image": "/images/exercises/image_00120-ecc50c076dea3c04e47d68066fd0063c.png",
         "instructions": [
             "Comienza en el suelo en posición sentada con las rodillas flexionadas y los pies apoyados en el suelo.",
@@ -3157,7 +3157,7 @@
     },
     {
         "id": "3b85e5d2a85f",
-        "name": "Estocada con Giro de Pie (Standing Lunge Twist)",
+        "name": "Estocada con Giro de Pie",
         "image": "/images/exercises/image_00142-324c322424110da6b6a162e7e209a3d5.png",
         "instructions": [
             "Comienza de rodillas con las rodillas separadas a la anchura de las caderas y los brazos a los lados.",
@@ -3178,7 +3178,7 @@
     },
     {
         "id": "6c32f1c59275",
-        "name": "Extensión de Cuello (Neck Extension)",
+        "name": "Extensión de Cuello",
         "image": "/images/exercises/image_00154-f5e02f3638ede3410b143d22b440ecbf.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos a los lados.",
@@ -3196,7 +3196,7 @@
     },
     {
         "id": "c08139433959",
-        "name": "Flexión de Cuello (Neck Flexion)",
+        "name": "Flexión de Cuello",
         "image": "/images/exercises/image_00155-588b56678ca486f54226601cfc5f6d20.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos a los lados.",
@@ -3214,7 +3214,7 @@
     },
     {
         "id": "ebcee3a909bf",
-        "name": "Marcha de Zombie (Zombie Walks)",
+        "name": "Marcha de Zombie",
         "image": "/images/exercises/image_00237a-033fa40c48352947cede12a4cd749d75.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos extendidos rectos frente a ti.",
@@ -3237,7 +3237,7 @@
     },
     {
         "id": "6efac1500afc",
-        "name": "Estiramiento Dinámico de Cuádriceps (Dynamic Quad Stretch)",
+        "name": "Estiramiento Dinámico de Cuádriceps",
         "image": "/images/exercises/image_00224b-29835a5abd324dedfba7c8b573afdde2.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",
@@ -3260,7 +3260,7 @@
     },
     {
         "id": "c2dc52a2d4cb",
-        "name": "Toques de Dedos con Piernas Abiertas (Wide Leg Toe Touches)",
+        "name": "Toques de Dedos con Piernas Abiertas",
         "image": "/images/exercises/image_00229c-5b58b26daf025487fc9ab4f95dcf4980.png",
         "instructions": [
             "Comienza de pie con una postura amplia y las manos frente a ti.",
@@ -3281,7 +3281,7 @@
     },
     {
         "id": "5b06e93d196d",
-        "name": "Círculos de Cadera Arrodillado (Kneeling Hip Circles)",
+        "name": "Círculos de Cadera Arrodillado",
         "image": "/images/exercises/image_00255c-0f40302919af63bec5f6a80e17828284.png",
         "instructions": [
             "Comienza en posición de mesa, con las manos bajo los hombros y las rodillas bajo las caderas.",
@@ -3302,7 +3302,7 @@
     },
     {
         "id": "52f849ce1e5f",
-        "name": "Cambio de Cadera 90/90 (90/90 Hip Switch)",
+        "name": "Cambio de Cadera 90/90",
         "image": "/images/exercises/image_00242c-615a5c1e790effff179183c728c6be4d.png",
         "instructions": [
             "Comienza sentado en el suelo con las rodillas flexionadas y los pies apoyados en el suelo frente a ti.",
@@ -3322,7 +3322,7 @@
     },
     {
         "id": "d44b35d6e48c",
-        "name": "Cambio de Cadera 90/90 (Sin Manos) (90/90 Hip Switch (No Hands))",
+        "name": "Cambio de Cadera 90/90 (Sin Manos)",
         "image": "/images/exercises/image_00253a-152f2a1dded6ca93a8cd62f13dfd51ad.png",
         "instructions": [
             "Comienza sentado en el suelo con las rodillas flexionadas y los pies apoyados en el suelo, colocados ligeramente más anchos que las caderas.",
@@ -3346,7 +3346,7 @@
     },
     {
         "id": "ac9751fac7a4",
-        "name": "Equilibrio sobre una Pierna (Single Leg Stand)",
+        "name": "Equilibrio sobre una Pierna",
         "image": "/images/exercises/image_00174-df7788ec445bb972924320b979f279d5.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos en las caderas.",
@@ -3365,7 +3365,7 @@
     },
     {
         "id": "7cd899801199",
-        "name": "Balanceos de Talón a Punta (Heel-to-Toe Rocks)",
+        "name": "Balanceos de Talón a Punta",
         "image": "/images/exercises/image_00219c-de97158da6ebc779289ade4dcfac15cb.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos a los lados.",
@@ -3389,7 +3389,7 @@
     },
     {
         "id": "009c99e1de55",
-        "name": "Balanceos Laterales del Pie (Lateral Foot Rocks)",
+        "name": "Balanceos Laterales del Pie",
         "image": "/images/exercises/image_00220a-034ab3be53ed964a4ad840de46b27f4d.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y las manos a los lados.",
@@ -3413,7 +3413,7 @@
     },
     {
         "id": "b217b32fb939",
-        "name": "Estiramiento del Sóleo (Soleus Stretch)",
+        "name": "Estiramiento del Sóleo",
         "image": "/images/exercises/image_00172-e65f8b291d9bcb14b84a3c2b482c53e2.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",
@@ -3433,7 +3433,7 @@
     },
     {
         "id": "2e98ef006f3e",
-        "name": "Dedos a la Pared (Toe-to-Wall)",
+        "name": "Dedos a la Pared",
         "image": "/images/exercises/image_00168-05cede7eaa194529ad4e5efa782cacbd.png",
         "instructions": [
             "Comienza de pie frente a una pared, a la distancia de un brazo aproximadamente.",
@@ -3451,7 +3451,7 @@
     },
     {
         "id": "5def953ec1f9",
-        "name": "Estiramiento de Gemelo a una Pierna (Single Leg Calf Stretch)",
+        "name": "Estiramiento de Gemelo a una Pierna",
         "image": "/images/exercises/image_00176-256a2c50d08903f1b539863747dd8fd9.png",
         "instructions": [
             "Comienza en posición de mesa, sobre manos y rodillas.",
@@ -3469,7 +3469,7 @@
     },
     {
         "id": "6deadfc9e489",
-        "name": "Estiramiento de Espinilla a una Pierna (Single Leg Shin Stretch)",
+        "name": "Estiramiento de Espinilla a una Pierna",
         "image": "/images/exercises/image_00175-ef2214a78d37d24f0ee285e9a37285ff.png",
         "instructions": [
             "Comienza de rodillas con las rodillas separadas a la anchura de las caderas y los brazos a los lados.",
@@ -3487,7 +3487,7 @@
     },
     {
         "id": "c961242b12b5",
-        "name": "Estiramiento de Dedos (Toe Stretch)",
+        "name": "Estiramiento de Dedos",
         "image": "/images/exercises/image_00170-1fb65f8871119c0ff3934ef47d9a8bd9.png",
         "instructions": [
             "Comienza en posición de mesa, sobre manos y rodillas, con el dorso de los pies plano en el suelo.",
@@ -3503,7 +3503,7 @@
     },
     {
         "id": "4b5a36c791cc",
-        "name": "Gemelo Inclinado (Bent Over Calf)",
+        "name": "Gemelo Inclinado",
         "image": "/images/exercises/image_00169-82a2e50a68ddb31323bd528b29f2de3b.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",
@@ -3522,7 +3522,7 @@
     },
     {
         "id": "f5848c0b3a5c",
-        "name": "Elevaciones de Gemelos (Calf Raises)",
+        "name": "Elevaciones de Gemelos",
         "image": "/images/exercises/image_00173-a56db56c74a9c0162de1fa44cd14dd7b.png",
         "instructions": [
             "Comienza de pie frente a una pared con los pies separados a la anchura de las caderas.",
@@ -3542,7 +3542,7 @@
     },
     {
         "id": "aac59fcfc45f",
-        "name": "Elevaciones de Dedos (Toe Raises)",
+        "name": "Elevaciones de Dedos",
         "image": "/images/exercises/image_00171-080b3021ab72183a07cf83639bbc327b.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y la espalda contra una pared.",
@@ -3562,7 +3562,7 @@
     },
     {
         "id": "1a8d5ee02cb9",
-        "name": "Rodilla a la Pared (Knee-to-Wall)",
+        "name": "Rodilla a la Pared",
         "image": "/images/exercises/image_00178-252dc0edbf06330e68cd84570793b722.png",
         "instructions": [
             "Comienza con una rodilla en el suelo y el pie delantero a la distancia de una mano de una pared.",
@@ -3581,7 +3581,7 @@
     },
     {
         "id": "b623642dbcdb",
-        "name": "Círculos de Tobillo Tumbado (Lying Ankle Circles)",
+        "name": "Círculos de Tobillo Tumbado",
         "image": "/images/exercises/image_00177-5150a84d59397a26ecfa6f78b5ff8c49.png",
         "instructions": [
             "Comienza tumbado boca arriba con las piernas extendidas y los brazos a los lados.",
@@ -3602,7 +3602,7 @@
     },
     {
         "id": "06223b64e7ec",
-        "name": "Flexión Lateral con Piernas Abiertas (Wide Leg Side Bend)",
+        "name": "Flexión Lateral con Piernas Abiertas",
         "image": "/images/exercises/image_00201-70102acce87770075a4facd9ef5eb8bb.png",
         "instructions": [
             "Comienza de pie con los pies más anchos que los hombros y los brazos a los lados.",
@@ -3624,7 +3624,7 @@
     },
     {
         "id": "6b3e66d8c655",
-        "name": "Rana hacia Arriba (Upward Frog)",
+        "name": "Rana hacia Arriba",
         "image": "/images/exercises/image_00184-401117abcede0f4595a59199bdb8f986.png",
         "instructions": [
             "Comienza tumbado boca abajo con las piernas extendidas y las manos bajo los hombros.",
@@ -3664,7 +3664,7 @@
     },
     {
         "id": "45c3cbf1c03c",
-        "name": "Split Frontal (Front Split)",
+        "name": "Split Frontal",
         "image": "/images/exercises/image_00067-82ab96caa45feaa6991b0a8bd2aac71b.png",
         "instructions": [
             "Comienza de rodillas con las manos a los lados.",
@@ -3684,7 +3684,7 @@
     },
     {
         "id": "80011840adc8",
-        "name": "Peso Muerto a una Pierna (Single Leg Deadlift)",
+        "name": "Peso Muerto a una Pierna",
         "image": "/images/exercises/image_00186-7187fd0ddfd9c3b08e4c781a15a3f461.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",
@@ -3703,7 +3703,7 @@
     },
     {
         "id": "0f767ad0897a",
-        "name": "Sentadillas Divididas (Split Squats)",
+        "name": "Sentadillas Divididas",
         "image": "/images/exercises/image_00223b-7152e76d9e2e7dd480fedb4924d622e3.png",
         "instructions": [
             "Comienza de pie con un pie adelante y el otro hacia atrás en una postura dividida.",
@@ -3727,7 +3727,7 @@
     },
     {
         "id": "d64810052d65",
-        "name": "Estocada de Corredor con Giro (Runner's Lunge Twist)",
+        "name": "Estocada de Corredor con Giro",
         "image": "/images/exercises/image_00233c-6d91e92702ce68b804ce22fe03f4ef68.png",
         "instructions": [
             "Comienza en posición de plancha con las manos bajo los hombros y el cuerpo en línea recta.",
@@ -3751,7 +3751,7 @@
     },
     {
         "id": "f7bc64b2fe47",
-        "name": "Extensión de Cambio de Cadera 90/90 (90/90 Hip Switch Extension)",
+        "name": "Extensión de Cambio de Cadera 90/90",
         "image": "/images/exercises/image_00254a-df70af0a135ebafef711de979d635b4d.png",
         "instructions": [
             "Comienza sentado en el suelo con las rodillas flexionadas y los pies apoyados en el suelo, colocados ligeramente más anchos que las caderas.",
@@ -3775,7 +3775,7 @@
     },
     {
         "id": "972d7a974f44",
-        "name": "Puentes de Glúteo a una Pierna (Single Leg Glute Bridges)",
+        "name": "Puentes de Glúteo a una Pierna",
         "image": "/images/exercises/image_00238b-e919c80b31abb744fc9ba1b239e1fae7.png",
         "instructions": [
             "Comienza tumbado boca arriba con una rodilla flexionada, el pie plano en el suelo, y la otra pierna extendida recta hacia el aire.",
@@ -3797,7 +3797,7 @@
     },
     {
         "id": "c42f8e51ee7e",
-        "name": "Flexión de Muñeca (Wrist Flexion)",
+        "name": "Flexión de Muñeca",
         "image": "/images/exercises/image_00073-77a21d3acaf1cc5d719ebe4a35e7cae7.png",
         "instructions": [
             "Comienza en posición de mesa, sobre manos y rodillas.",
@@ -3816,7 +3816,7 @@
     },
     {
         "id": "ad4e1d344fa4",
-        "name": "Sentadilla Dividida Profunda (Deep Split Squat)",
+        "name": "Sentadilla Dividida Profunda",
         "image": "/images/exercises/image_00183-fcd569c29ca8160c4d16f22868418b1f.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",
@@ -3838,7 +3838,7 @@
     },
     {
         "id": "aac499e2e7d2",
-        "name": "Postura de Oración Inversa (Reverse Prayer Pose)",
+        "name": "Postura de Oración Inversa",
         "image": "/images/exercises/image_00161-034d1c687cc8876cecbbb383a8c8bb69.png",
         "instructions": [
             "Comienza de pie o sentado con la espalda recta y los brazos a los lados.",
@@ -3858,7 +3858,7 @@
     },
     {
         "id": "3355224e2829",
-        "name": "Rodillas Altas (High Knees)",
+        "name": "Rodillas Altas",
         "image": "/images/exercises/image_00245a-71c96c55727c6e4a983b586506d595f4.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los codos flexionados a 90 grados, sosteniendo las manos frente a ti.",
@@ -3881,7 +3881,7 @@
     },
     {
         "id": "143253861312",
-        "name": "Patadas al Glúteo (Butt Kicks)",
+        "name": "Patadas al Glúteo",
         "image": "/images/exercises/image_00246a-f22559fccbc617d7f8da2fad966b8e58.png",
         "instructions": [
             "Comienza de pie con los pies separados a la anchura de las caderas y los brazos a los lados.",

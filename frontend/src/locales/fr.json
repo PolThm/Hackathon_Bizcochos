@@ -87,7 +87,7 @@
   },
   "newRoutine": {
     "title": "Nouvelle Routine",
-    "description": "Aide-nous à te construire une routine adaptée",
+    "description": "Aide-nous à te construire une routine adaptée.",
     "invitationText": "Parle-nous de tes sensations, mobilité, confort physique, et des zones que tu aimerais améliorer dans ta vie quotidienne.",
     "placeholder": "ex. : hanches serrées, mobilité limitée des épaules, sensation de raideur après le travail, récupération après les entraînements...",
     "generateButton": "Générer ma routine",

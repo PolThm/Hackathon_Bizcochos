@@ -150,7 +150,7 @@ Rules:
 1. Provide a brief, natural language summary (1-2 sentences) of your reasoning BEFORE the JSON. Explain how you adapted the routine to the user's context (e.g., "Creating a routine after aerobic workout, adapting for your doctor appointment...").
 2. Use the "id" exactly as provided in the list for each exercise.
 3. Find and set a short and catchy name for the routine (30 characters maximum).
-4. Find and set a short and catchy description explaining why this is tailored to the request (150 characters maximum).
+4. Find and set a short and catchy description explaining why this is tailored to the request and the current weather (e.g. "Perfect for a sunny day..." or "Cozy routine for a rainy day...") (150 characters maximum).
 5. Estimate a realistic "duration" in seconds for each exercise.
 6. The output MUST end with a valid JSON object.
 

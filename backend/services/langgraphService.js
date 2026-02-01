@@ -98,6 +98,14 @@ const GraphState = Annotation.Root({
     reducer: (x, y) => y ?? x,
     default: () => "en",
   }),
+  feedback: Annotation({
+    reducer: (x, y) => y ?? x,
+    default: () => null,
+  }),
+  iterations: Annotation({
+    reducer: (x, y) => y ?? x,
+    default: () => 0,
+  }),
 });
 
 // --- 3. Define Nodes ---
@@ -123,7 +131,7 @@ const researcher = async (state) => {
 };
 
 const planner = async (state) => {
-  const { messages } = state;
+  const { messages, feedback } = state;
 
   // Load exercises to provide to the planner
   const exercisesPathEn = path.join(
@@ -140,7 +148,7 @@ const planner = async (state) => {
     benefits: ex.benefits,
   }));
 
-  const systemPrompt = `
+  let systemPrompt = `
 You are a world-class fitness and mobility expert. Your task is to generate a professional workout routine based ONLY on the exercises provided in the list below.
 
 Available exercises:
@@ -168,6 +176,12 @@ JSON Structure:
 }
 `;
 
+  if (feedback) {
+    systemPrompt += `\n\nCRITICAL UPDATE: Your previous attempt was reviewed and needs correction.
+    Feedback: "${feedback}"
+    Please regenerate the routine addressing this feedback explicitly.`;
+  }
+
   const response = await model.invoke([
     new SystemMessage(systemPrompt),
     ...messages,
@@ -176,12 +190,42 @@ JSON Structure:
   return { messages: [response] };
 };
 
+const reviewer = async (state) => {
+  const { messages, iterations } = state;
+  const lastMessage = messages[messages.length - 1];
+
+  const response = await model.invoke([
+    new SystemMessage(
+      `You are a senior fitness editor (Reviewer Node - Thinking Level 2). 
+      Your goal is to validate the workout routine proposed by the planner.
+      
+      Check for:
+      1. Weather safety (e.g., no outdoor running if it's raining/snowing/stormy).
+      2. Time constraints (is it too long based on calendar context?).
+      3. Balance (does it mix mobility and strength?).
+      
+      If the routine is GOOD and SAFE, reply exactly with: "APPROVE".
+      If the routine has issues, reply with a concise instruction to fix it (e.g., "It is raining, remove outdoor cardio and replace with indoor drill").
+      
+      Context from previous messages: ${messages.map((m) => m.content).join("\n")}`,
+    ),
+    new HumanMessage(`Review this plan: ${lastMessage.content}`),
+  ]);
+
+  return {
+    messages: [response],
+    iterations: iterations + 1,
+    feedback: response.content,
+  };
+};
+
 // --- 4. Define Graph ---
 
 const workflow = new StateGraph(GraphState)
   .addNode("researcher", researcher)
   .addNode("tools", (state) => toolNode.invoke(state))
   .addNode("planner", planner)
+  .addNode("reviewer", reviewer)
   .addEdge(START, "researcher")
   .addConditionalEdges("researcher", (state) => {
     const lastMessage = state.messages[state.messages.length - 1];
@@ -191,7 +235,16 @@ const workflow = new StateGraph(GraphState)
     return "planner";
   })
   .addEdge("tools", "researcher")
-  .addEdge("planner", END);
+  .addEdge("planner", "reviewer")
+  .addConditionalEdges("reviewer", (state) => {
+    if (
+      state.feedback.includes("APPROVE") ||
+      state.iterations > 2 // Max 2 retries to prevent infinite loops
+    ) {
+      return END;
+    }
+    return "planner";
+  });
 
 export const app = workflow.compile();
 
@@ -224,17 +277,19 @@ export async function* streamAgenticRoutine(
 
   const initialState = {
     messages: [new HumanMessage(contextPrompt)],
-
     locale: locale,
+    iterations: 0,
+    feedback: null,
   };
 
   const stream = await app.stream(initialState, {
     streamMode: "updates",
   });
 
+  let finalRoutine = null;
+
   for await (const update of stream) {
     const nodeName = Object.keys(update)[0];
-
     const data = update[nodeName];
 
     if (nodeName === "researcher") {
@@ -287,52 +342,65 @@ export async function* streamAgenticRoutine(
       }
     } else if (nodeName === "planner") {
       const lastMsg = data.messages[data.messages.length - 1];
-
       const content = lastMsg.content;
-
       const jsonMatch = content.match(/\{[\s\S]*\}/);
 
-      // Extract reasoning and make it natural
+      // Temporarily store the routine, but don't emit "final" yet until Reviewer approves
+      if (jsonMatch) {
+        try {
+          finalRoutine = JSON.parse(jsonMatch[0]);
+        } catch (e) {
+          // Partial or invalid JSON
+        }
+      }
 
       let reasoning = content
-
         .replace(/```json[\s\S]*```/g, "")
-
         .replace(/\{[\s\S]*\}/g, "")
-
         .trim();
 
       if (reasoning) {
         if (reasoning.length > 150) {
           reasoning = reasoning.substring(0, 150) + "...";
         }
-
         yield {
           type: "step",
-
           node: "planner",
-
-          description: reasoning,
+          description: `Drafting Plan: ${reasoning}`,
         };
       } else {
         yield {
           type: "step",
-
           node: "planner",
-
-          description: "Crafting the ideal exercise sequence for you...",
+          description: "Drafting the ideal exercise sequence for you...",
         };
       }
-
-      if (jsonMatch) {
-        try {
-          const routine = JSON.parse(jsonMatch[0]);
-
-          yield { type: "final", data: routine };
-        } catch (e) {
-          // Partial or invalid JSON
-        }
+    } else if (nodeName === "reviewer") {
+      const feedback = data.feedback;
+      if (feedback && !feedback.includes("APPROVE")) {
+        yield {
+          type: "step",
+          node: "reviewer",
+          description: `Thinking Level 2 (Critique): ${feedback}`,
+        };
+        yield {
+          type: "step",
+          node: "reviewer",
+          description: `Self-Correcting...`,
+        };
+      } else {
+        yield {
+          type: "step",
+          node: "reviewer",
+          description:
+            "Thinking Level 2: Plan approved. Validating constraints...",
+        };
       }
     }
+  }
+
+  // After the graph finishes, we emit the final routine
+  if (finalRoutine) {
+    yield { type: "final", data: finalRoutine };
   }
 }

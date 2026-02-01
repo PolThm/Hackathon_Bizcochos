@@ -11,6 +11,7 @@ import {
   Paper,
   Chip,
   Fade,
+  TextField,
 } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
@@ -20,7 +21,6 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TimerIcon from '@mui/icons-material/Timer';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import TerminalIcon from '@mui/icons-material/Terminal';
 import ListIcon from '@mui/icons-material/List';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
@@ -58,12 +58,13 @@ export default function Home() {
   const locale = (params?.locale as string) ?? 'en';
 
   const [routine, setRoutine] = useState<Routine | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
+  const [userInput, setUserInput] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [allRoutines] = useObjectStorage<Routine[]>('allRoutines', []);
-  const hasRoutines = allRoutines.length > 0;
 
   const [userLocation, setUserLocation] = useState<string | null>(null);
   const [weather, setWeather] = useState<{
@@ -85,6 +86,16 @@ export default function Home() {
   }, [logs]);
 
   useEffect(() => {
+    // Check if we already have a generated routine for today in session storage
+    const today = new Date().toISOString().split('T')[0];
+    const saved = sessionStorage.getItem(`dailyRoutine_${today}`);
+    if (saved) {
+      setRoutine(JSON.parse(saved));
+      setHasStarted(true);
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchLocationAndWeather = async () => {
       if (!navigator.geolocation) return;
 
@@ -92,12 +103,10 @@ export default function Home() {
         async (position) => {
           const { latitude, longitude } = position.coords;
 
-          // Save coordinates to localStorage
           localStorage.setItem('userLat', latitude.toString());
           localStorage.setItem('userLon', longitude.toString());
 
           try {
-            // Parallel fetch for location and weather
             const [locRes, weatherRes] = await Promise.all([
               fetch(
                 `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=${locale}`,
@@ -156,83 +165,94 @@ export default function Home() {
     return <WbSunnyIcon sx={{ fontSize: '1rem' }} />;
   };
 
-  useEffect(() => {
-    const fetchDailyRoutineStream = async () => {
-      const today = new Date().toISOString().split('T')[0];
-      const saved = sessionStorage.getItem(`dailyRoutine_${today}`);
+  const handleGenerateSession = async () => {
+    const today = new Date().toISOString().split('T')[0];
+    setLoading(true);
+    setHasStarted(true);
+    setLogs([]);
 
-      if (saved) {
-        setRoutine(JSON.parse(saved));
-        setLoading(false);
-        return;
-      }
+    try {
+      const storedLat = localStorage.getItem('userLat');
+      const storedLon = localStorage.getItem('userLon');
 
-      try {
-        const storedLat = localStorage.getItem('userLat');
-        const storedLon = localStorage.getItem('userLon');
+      const response = await fetch(`${API_BASE_URL}/api/generateDailyRoutine`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          locale,
+          latitude: storedLat ? parseFloat(storedLat) : undefined,
+          longitude: storedLon ? parseFloat(storedLon) : undefined,
+          prompt: userInput,
+        }),
+      });
 
-        const response = await fetch(
-          `${API_BASE_URL}/api/generateDailyRoutine`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              locale,
-              latitude: storedLat ? parseFloat(storedLat) : undefined,
-              longitude: storedLon ? parseFloat(storedLon) : undefined,
-            }),
-          },
-        );
+      if (!response.body) throw new Error('No body');
 
-        if (!response.body) throw new Error('No body');
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
 
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = '';
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
 
-        while (true) {
-          const { value, done } = await reader.read();
-          if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
 
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split('\n');
-          buffer = lines.pop() || '';
-
-          for (const line of lines) {
-            if (!line.trim()) continue;
-            try {
-              const chunk: StreamLog = JSON.parse(line);
-              if (chunk.type === 'step' && chunk.description) {
-                setLogs((prev) => [...prev, chunk.description!]);
-              } else if (chunk.type === 'data' && chunk.data) {
-                setRoutine(chunk.data);
-                // Delay a bit before showing final routine to let user read the last step
-                setTimeout(() => {
-                  setLoading(false);
-                  sessionStorage.setItem(
-                    `dailyRoutine_${today}`,
-                    JSON.stringify(chunk.data),
-                  );
-                }, 1000);
-              } else if (chunk.type === 'error') {
-                console.error('Agent error:', chunk.message);
-                setLogs((prev) => [...prev, `Error: ${chunk.message}`]);
-              }
-            } catch (e) {
-              console.error('Failed to parse stream chunk:', e);
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          try {
+            const chunk: StreamLog = JSON.parse(line);
+            if (chunk.type === 'step' && chunk.description) {
+              setLogs((prev) => [...prev, chunk.description!]);
+            } else if (chunk.type === 'data' && chunk.data) {
+              setRoutine(chunk.data);
+              setTimeout(() => {
+                setLoading(false);
+                sessionStorage.setItem(
+                  `dailyRoutine_${today}`,
+                  JSON.stringify(chunk.data),
+                );
+              }, 1000);
+            } else if (chunk.type === 'error') {
+              console.error('Agent error:', chunk.message);
+              setLogs((prev) => [...prev, `Error: ${chunk.message}`]);
             }
+          } catch (e) {
+            console.error('Failed to parse stream chunk:', e);
           }
         }
-      } catch (error) {
-        console.error('Error fetching daily routine stream:', error);
-        setLoading(false);
       }
-    };
+    } catch (error) {
+      console.error('Error fetching daily routine stream:', error);
+      setLoading(false);
+    }
+  };
 
-    fetchDailyRoutineStream();
-  }, [locale]);
+  const handleAction = async (path: '/setup' | '/practice') => {
+    if (!routine) return;
 
-  // Resolve exercise images from library (by locale)
+    try {
+      const existingRoutinesStr = await getItem('allRoutines');
+      const existingRoutines: Routine[] = existingRoutinesStr
+        ? JSON.parse(existingRoutinesStr)
+        : [];
+
+      if (!existingRoutines.some((r) => r.id === routine.id)) {
+        await setItem(
+          'allRoutines',
+          JSON.stringify([...existingRoutines, routine]),
+        );
+      }
+
+      await setItem('routine', JSON.stringify(routine));
+      router.push(path);
+    } catch (error) {
+      console.error('Error saving routine:', error);
+    }
+  };
+
   const exercisesWithImage = useMemo(() => {
     if (!routine) return [];
     const library = getExercisesByLocale(locale);
@@ -244,7 +264,6 @@ export default function Home() {
 
   const exerciseCount = exercisesWithImage.length;
 
-  // Auto-advance carousel (skipped while paused after swipe)
   useEffect(() => {
     if (!routine || exerciseCount <= 1) return;
     const id = setInterval(() => {
@@ -254,7 +273,6 @@ export default function Home() {
     return () => clearInterval(id);
   }, [routine, exerciseCount]);
 
-  // Restore carousel index when routine is loaded
   useEffect(() => {
     if (!routine?.id || exerciseCount <= 0) return;
     const key = `${CAROUSEL_INDEX_STORAGE_KEY_PREFIX}${routine.id}`;
@@ -268,14 +286,12 @@ export default function Home() {
     }
   }, [routine?.id, exerciseCount]);
 
-  // Re-enable transition after restore
   useEffect(() => {
     if (!skipCarouselTransition) return;
     const id = setTimeout(() => setSkipCarouselTransition(false), 0);
     return () => clearTimeout(id);
   }, [skipCarouselTransition]);
 
-  // Persist carousel index
   useEffect(() => {
     if (!routine?.id) return;
     const key = `${CAROUSEL_INDEX_STORAGE_KEY_PREFIX}${routine.id}`;
@@ -326,129 +342,16 @@ export default function Home() {
     [router],
   );
 
-  const handleStart = async () => {
-    if (!routine) return;
+  const estimatedTimeMinutes = routine
+    ? Math.ceil(
+        (routine.exercises.reduce((acc, ex) => acc + ex.duration, 0) +
+          (routine.exercises.length - 1) * (routine.breakDuration || 5) +
+          (routine.preparationDuration || 5)) /
+          60,
+      )
+    : 0;
 
-    const existingRoutinesStr = await getItem('allRoutines');
-    const existingRoutines: Routine[] = existingRoutinesStr
-      ? JSON.parse(existingRoutinesStr)
-      : [];
-
-    if (!existingRoutines.some((r) => r.id === routine.id)) {
-      await setItem(
-        'allRoutines',
-        JSON.stringify([...existingRoutines, routine]),
-      );
-    }
-
-    await setItem('routine', JSON.stringify(routine));
-    router.push('/practice');
-  };
-
-  if (loading) {
-    return (
-      <Box
-        sx={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          p: 3,
-          maxWidth: '800px',
-          margin: '0 auto',
-          width: '100%',
-          bgcolor: '#0d0509',
-          minHeight: '100vh',
-          color: '#d6c3a5',
-        }}
-      >
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 4 }}>
-          <TerminalIcon sx={{ color: theme.palette.secondary.main }} />
-          <Typography
-            variant='h6'
-            sx={{
-              fontFamily: 'monospace',
-              color: theme.palette.secondary.main,
-              fontWeight: 'bold',
-            }}
-          >
-            Bizcocho Agent Intelligence
-          </Typography>
-        </Box>
-
-        <Box
-          ref={scrollRef}
-          sx={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-            overflowY: 'auto',
-            fontFamily: 'monospace',
-            '&::-webkit-scrollbar': {
-              width: '4px',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              bgcolor: 'rgba(214, 195, 165, 0.2)',
-              borderRadius: '2px',
-            },
-          }}
-        >
-          {logs.map((log, i) => (
-            <Fade in key={i} timeout={500}>
-              <Box sx={{ display: 'flex', gap: 1.5 }}>
-                <Typography
-                  variant='body2'
-                  sx={{ color: theme.palette.secondary.main, opacity: 0.7 }}
-                >
-                  &gt;
-                </Typography>
-                <Typography
-                  variant='body2'
-                  sx={{ color: '#fff', lineHeight: 1.5 }}
-                >
-                  {log}
-                </Typography>
-              </Box>
-            </Fade>
-          ))}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 2 }}>
-            <CircularProgress
-              size={16}
-              sx={{ color: theme.palette.secondary.main }}
-            />
-            <Typography
-              variant='caption'
-              sx={{ fontStyle: 'italic', opacity: 0.6 }}
-            >
-              Waiting for agent response...
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
-    );
-  }
-
-  if (!routine) {
-    return (
-      <Box sx={{ p: 4, textAlign: 'center' }}>
-        <Typography>{tCommon('error')}</Typography>
-        <Button component={Link} href='/'>
-          {tCommon('refresh')}
-        </Button>
-      </Box>
-    );
-  }
-
-  const totalDurationSeconds = routine.exercises.reduce(
-    (acc, ex) => acc + ex.duration,
-    0,
-  );
-  const totalBreaks =
-    (routine.exercises.length - 1) * (routine.breakDuration || 5);
-  const estimatedTimeMinutes = Math.ceil(
-    (totalDurationSeconds + totalBreaks + (routine.preparationDuration || 5)) /
-      60,
-  );
+  const latestLog = logs[logs.length - 1];
 
   return (
     <Box
@@ -465,7 +368,6 @@ export default function Home() {
         position: 'relative',
       }}
     >
-      {/* Decorative background element */}
       <Box
         sx={{
           position: 'absolute',
@@ -517,340 +419,481 @@ export default function Home() {
           </Box>
         )}
 
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '100%',
-          }}
-        >
-          <Typography
-            variant='h1'
+        {!hasStarted && !routine && (
+          <Box
             sx={{
-              fontSize: '2rem !important',
-              fontWeight: 700,
-              color: theme.palette.primary.main,
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+              mb: 4,
             }}
           >
-            {t('title')}
-          </Typography>
-          <Chip
-            icon={<AutoAwesomeIcon style={{ fontSize: '1rem' }} />}
-            label='AI Generated'
-            size='small'
-            sx={{
-              backgroundColor: 'rgba(214, 195, 165, 0.2)',
-              color: theme.palette.secondary.main,
-              fontWeight: 600,
-              border: `1px solid ${theme.palette.secondary.main}`,
-            }}
-          />
-        </Box>
-      </Box>
-
-      <Box sx={{ display: 'flex', gap: 2, mb: 4, width: '100%', zIndex: 1 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            color: theme.palette.text.secondary,
-          }}
-        >
-          <TimerIcon sx={{ fontSize: '1.2rem', mr: 0.5 }} />
-          <Typography variant='body2'>{estimatedTimeMinutes} min</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            color: theme.palette.text.secondary,
-          }}
-        >
-          <FitnessCenterIcon sx={{ fontSize: '1.2rem', mr: 0.5 }} />
-          <Typography variant='body2'>
-            {routine.exercises.length} Exercises
-          </Typography>
-        </Box>
-      </Box>
-
-      <Paper
-        elevation={0}
-        sx={{
-          p: 3,
-          mb: 4,
-          borderRadius: '16px',
-          backgroundColor: 'rgba(214, 195, 165, 0.1)',
-          border: '1px solid rgba(214, 195, 165, 0.3)',
-          position: 'relative',
-          overflow: 'hidden',
-          width: '100%',
-          zIndex: 1,
-        }}
-      >
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <AutoAwesomeIcon
-            sx={{ color: theme.palette.secondary.main, mr: 1 }}
-          />
-          <Typography variant='h6' sx={{ fontWeight: 600 }}>
-            {t('benefitsTitle')}
-          </Typography>
-        </Box>
-        <Typography
-          variant='body1'
-          sx={{ lineHeight: 1.6, color: theme.palette.text.secondary }}
-        >
-          {routine.description || t('aiReasoning')}
-        </Typography>
-      </Paper>
-
-      <Typography
-        variant='h5'
-        sx={{
-          mb: 2,
-          fontWeight: 600,
-          width: '100%',
-          textAlign: 'left',
-          zIndex: 1,
-        }}
-      >
-        {routine.name}
-      </Typography>
-
-      <Box
-        sx={{
-          mb: 4,
-          width: '100%',
-          zIndex: 1,
-          overflow: 'hidden',
-          borderRadius: 2,
-          position: 'relative',
-          touchAction: 'pan-y',
-        }}
-        onTouchStart={handleCarouselTouchStart}
-        onTouchEnd={handleCarouselTouchEnd}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            transition: skipCarouselTransition
-              ? 'none'
-              : 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-            transform: `translateX(-${carouselIndex * 100}%)`,
-          }}
-        >
-          {exercisesWithImage.map((ex) => (
-            <Box
-              key={ex.id}
-              role='button'
-              tabIndex={0}
-              onClick={() => handleSlideClick(ex)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleSlideClick(ex);
-                }
-              }}
+            <Typography variant='h6' sx={{ fontWeight: 600 }}>
+              How do you feel today?
+            </Typography>
+            <TextField
+              fullWidth
+              multiline
+              rows={3}
+              placeholder='e.g. My lower back hurts, I have 15 minutes...'
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
               sx={{
-                flex: '0 0 100%',
-                minWidth: 0,
-                cursor: 'pointer',
-                display: 'block',
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '16px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                },
+              }}
+            />
+            <Button
+              variant='contained'
+              size='large'
+              fullWidth
+              onClick={handleGenerateSession}
+              sx={{
+                py: 2,
+                borderRadius: '12px',
+                fontSize: '1.1rem',
+                fontWeight: 600,
+                textTransform: 'none',
+                backgroundColor: theme.palette.primary.main,
+                boxShadow: '0 4px 20px rgba(13, 5, 9, 0.15)',
+                '&:hover': {
+                  backgroundColor: theme.palette.primary.main,
+                  opacity: 0.9,
+                },
+              }}
+            >
+              Generate Daily Session
+            </Button>
+          </Box>
+        )}
+
+        {loading && (
+          <Box
+            sx={{
+              width: '100%',
+              py: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 3,
+              minHeight: '200px',
+            }}
+          >
+            <CircularProgress
+              size={40}
+              thickness={4}
+              sx={{ color: theme.palette.primary.main }}
+            />
+            <Fade in={!!latestLog} key={latestLog}>
+              <Typography
+                variant='body1'
+                sx={{
+                  textAlign: 'center',
+                  color: theme.palette.text.secondary,
+                  fontStyle: 'italic',
+                  maxWidth: '80%',
+                  lineHeight: 1.6,
+                }}
+              >
+                {latestLog || 'Preparing your daily session...'}
+              </Typography>
+            </Fade>
+          </Box>
+        )}
+
+        {!loading && routine && (
+          <Box sx={{ width: '100%', mt: 1 }}>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: '100%',
+              }}
+            >
+              <Typography
+                variant='h1'
+                sx={{
+                  fontSize: '2rem !important',
+                  fontWeight: 700,
+                  color: theme.palette.primary.main,
+                }}
+              >
+                {t('title')}
+              </Typography>
+              <Chip
+                icon={<AutoAwesomeIcon style={{ fontSize: '1rem' }} />}
+                label='AI Generated'
+                size='small'
+                sx={{
+                  backgroundColor: 'rgba(214, 195, 165, 0.2)',
+                  color: theme.palette.secondary.main,
+                  fontWeight: 600,
+                  border: `1px solid ${theme.palette.secondary.main}`,
+                }}
+              />
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 2,
+                mb: 4,
+                mt: 2,
+                width: '100%',
+                zIndex: 1,
               }}
             >
               <Box
                 sx={{
-                  position: 'relative',
-                  borderRadius: 2,
-                  overflow: 'hidden',
-                  bgcolor: 'action.hover',
-                  aspectRatio: '4/3',
+                  display: 'flex',
+                  alignItems: 'center',
+                  color: theme.palette.text.secondary,
                 }}
               >
-                {ex.image ? (
-                  <Image
-                    src={ex.image}
-                    alt={ex.name}
-                    fill
-                    sizes='(max-width: 600px) 100vw, 400px'
-                    style={{ objectFit: 'cover' }}
-                  />
-                ) : (
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Typography variant='body2' color='text.secondary'>
-                      {ex.name}
-                    </Typography>
-                  </Box>
-                )}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    px: 1.5,
-                    py: 1,
-                    background: 'linear-gradient(transparent, rgba(0,0,0,0.6))',
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <Typography
-                    variant='body2'
-                    sx={{
-                      color: 'white',
-                      fontWeight: 600,
-                      textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                    }}
-                  >
-                    {ex.name}
-                  </Typography>
-                  <Typography
-                    variant='caption'
-                    sx={{
-                      color: 'rgba(255,255,255,0.9)',
-                      fontWeight: 500,
-                    }}
-                  >
-                    {ex.duration}s
-                  </Typography>
-                </Box>
+                <TimerIcon sx={{ fontSize: '1.2rem', mr: 0.5 }} />
+                <Typography variant='body2'>
+                  {estimatedTimeMinutes} min
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  color: theme.palette.text.secondary,
+                }}
+              >
+                <FitnessCenterIcon sx={{ fontSize: '1.2rem', mr: 0.5 }} />
+                <Typography variant='body2'>
+                  {routine.exercises.length} Exercises
+                </Typography>
               </Box>
             </Box>
-          ))}
-        </Box>
-        {exercisesWithImage.length > 1 && (
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: 0.75,
-              mt: 1.5,
-            }}
-          >
-            {exercisesWithImage.map((_, index) => (
+
+            <Paper
+              elevation={0}
+              sx={{
+                p: 3,
+                mb: 4,
+                borderRadius: '16px',
+                backgroundColor: 'rgba(214, 195, 165, 0.1)',
+                border: '1px solid rgba(214, 195, 165, 0.3)',
+                position: 'relative',
+                overflow: 'hidden',
+                width: '100%',
+                zIndex: 1,
+              }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <AutoAwesomeIcon
+                  sx={{ color: theme.palette.secondary.main, mr: 1 }}
+                />
+                <Typography variant='h6' sx={{ fontWeight: 600 }}>
+                  {t('benefitsTitle')}
+                </Typography>
+              </Box>
+              <Typography
+                variant='body1'
+                sx={{ lineHeight: 1.6, color: theme.palette.text.secondary }}
+              >
+                {routine.description || t('aiReasoning')}
+              </Typography>
+            </Paper>
+
+            <Typography
+              variant='h5'
+              sx={{
+                mb: 2,
+                fontWeight: 600,
+                width: '100%',
+                textAlign: 'left',
+                zIndex: 1,
+              }}
+            >
+              {routine.name}
+            </Typography>
+
+            <Box
+              sx={{
+                mb: 4,
+                width: '100%',
+                zIndex: 1,
+                overflow: 'hidden',
+                borderRadius: 2,
+                position: 'relative',
+                touchAction: 'pan-y',
+              }}
+              onTouchStart={handleCarouselTouchStart}
+              onTouchEnd={handleCarouselTouchEnd}
+            >
               <Box
-                key={index}
-                onClick={() => setCarouselIndex(index)}
                 sx={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  bgcolor:
-                    index === carouselIndex
-                      ? 'primary.main'
-                      : 'action.selected',
-                  cursor: 'pointer',
-                  transition: 'background-color 0.2s, transform 0.2s',
+                  display: 'flex',
+                  transition: skipCarouselTransition
+                    ? 'none'
+                    : 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  transform: `translateX(-${carouselIndex * 100}%)`,
+                }}
+              >
+                {exercisesWithImage.map((ex) => (
+                  <Box
+                    key={ex.id}
+                    role='button'
+                    tabIndex={0}
+                    onClick={() => handleSlideClick(ex)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleSlideClick(ex);
+                      }
+                    }}
+                    sx={{
+                      flex: '0 0 100%',
+                      minWidth: 0,
+                      cursor: 'pointer',
+                      display: 'block',
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        position: 'relative',
+                        borderRadius: 2,
+                        overflow: 'hidden',
+                        bgcolor: 'action.hover',
+                        aspectRatio: '4/3',
+                      }}
+                    >
+                      {ex.image ? (
+                        <Image
+                          src={ex.image}
+                          alt={ex.name}
+                          fill
+                          sizes='(max-width: 600px) 100vw, 400px'
+                          style={{ objectFit: 'cover' }}
+                        />
+                      ) : (
+                        <Box
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          <Typography variant='body2' color='text.secondary'>
+                            {ex.name}
+                          </Typography>
+                        </Box>
+                      )}
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          px: 1.5,
+                          py: 1,
+                          background:
+                            'linear-gradient(transparent, rgba(0,0,0,0.6))',
+                          display: 'flex',
+                          alignItems: 'flex-end',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        <Typography
+                          variant='body2'
+                          sx={{
+                            color: 'white',
+                            fontWeight: 600,
+                            textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                          }}
+                        >
+                          {ex.name}
+                        </Typography>
+                        <Typography
+                          variant='caption'
+                          sx={{
+                            color: 'rgba(255,255,255,0.9)',
+                            fontWeight: 500,
+                          }}
+                        >
+                          {ex.duration}s
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
+              {exercisesWithImage.length > 1 && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: 0.75,
+                    mt: 1.5,
+                  }}
+                >
+                  {exercisesWithImage.map((_, index) => (
+                    <Box
+                      key={index}
+                      onClick={() => setCarouselIndex(index)}
+                      sx={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: '50%',
+                        bgcolor:
+                          index === carouselIndex
+                            ? 'primary.main'
+                            : 'action.selected',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.2s, transform 0.2s',
+                        '&:hover': {
+                          bgcolor:
+                            index === carouselIndex
+                              ? 'primary.dark'
+                              : 'action.hover',
+                          transform: 'scale(1.2)',
+                        },
+                      }}
+                    />
+                  ))}
+                </Box>
+              )}
+              <Typography
+                variant='body2'
+                sx={{
+                  mt: 2,
+                  color: 'text.secondary',
+                  textAlign: 'center',
+                  fontStyle: 'italic',
+                }}
+              >
+                {tNewRoutine('exploreExercisesText')}
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2,
+                width: '100%',
+                maxWidth: '400px',
+                zIndex: 1,
+                alignSelf: 'center',
+                margin: '0 auto',
+              }}
+            >
+              <Button
+                variant='contained'
+                size='large'
+                fullWidth
+                startIcon={<PlayArrowIcon />}
+                onClick={() => handleAction('/practice')}
+                sx={{
+                  py: 2,
+                  borderRadius: '12px',
+                  fontSize: '1.1rem',
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  backgroundColor: theme.palette.primary.main,
+                  boxShadow: '0 4px 20px rgba(13, 5, 9, 0.15)',
                   '&:hover': {
-                    bgcolor:
-                      index === carouselIndex ? 'primary.dark' : 'action.hover',
-                    transform: 'scale(1.2)',
+                    backgroundColor: theme.palette.primary.main,
+                    opacity: 0.9,
                   },
                 }}
-              />
-            ))}
+              >
+                {tNewRoutine('startPractice')}
+              </Button>
+
+              <Button
+                variant='outlined'
+                size='large'
+                fullWidth
+                onClick={() => handleAction('/setup')}
+                sx={{
+                  py: 2,
+                  borderRadius: '12px',
+                  fontSize: '1.1rem',
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  borderColor: theme.palette.primary.main,
+                  color: theme.palette.primary.main,
+                  '&:hover': {
+                    borderColor: theme.palette.secondary.main,
+                    backgroundColor: 'rgba(214, 195, 165, 0.1)',
+                  },
+                }}
+              >
+                {tNewRoutine('editRoutine')}
+              </Button>
+            </Box>
           </Box>
         )}
-        <Typography
-          variant='body2'
-          sx={{
-            mt: 2,
-            color: 'text.secondary',
-            textAlign: 'center',
-            fontStyle: 'italic',
-          }}
-        >
-          {tNewRoutine('exploreExercisesText')}
-        </Typography>
-      </Box>
 
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 2,
-          width: '100%',
-          maxWidth: '400px',
-          zIndex: 1,
-        }}
-      >
-        <Button
-          variant='contained'
-          size='large'
-          fullWidth
-          startIcon={<PlayArrowIcon />}
-          onClick={handleStart}
+        <Box
           sx={{
-            py: 2,
-            borderRadius: '12px',
-            fontSize: '1.1rem',
-            fontWeight: 600,
-            textTransform: 'none',
-            backgroundColor: theme.palette.primary.main,
-            boxShadow: '0 4px 20px rgba(13, 5, 9, 0.15)',
-            '&:hover': {
-              backgroundColor: theme.palette.primary.main,
-              opacity: 0.9,
-            },
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+            width: '100%',
+            maxWidth: '400px',
+            zIndex: 1,
+            alignSelf: 'center',
+            margin: '0 auto',
+            mt: 4,
           }}
         >
-          {t('startToday')}
-        </Button>
+          <Button
+            variant='outlined'
+            size='large'
+            fullWidth
+            component={Link}
+            href='/new-routine'
+            startIcon={<AutoAwesomeIcon />}
+            sx={{
+              py: 2,
+              borderRadius: '12px',
+              fontSize: '1rem',
+              fontWeight: 500,
+              textTransform: 'none',
+              borderColor: theme.palette.primary.main,
+              color: theme.palette.primary.main,
+              '&:hover': {
+                borderColor: theme.palette.secondary.main,
+                backgroundColor: 'rgba(214, 195, 165, 0.1)',
+              },
+            }}
+          >
+            {tCommon('createNewRoutineWithAI')}
+          </Button>
 
-        <Button
-          variant='outlined'
-          size='large'
-          fullWidth
-          component={Link}
-          href='/new-routine'
-          startIcon={<AutoAwesomeIcon />}
-          sx={{
-            py: 2,
-            borderRadius: '12px',
-            fontSize: '1rem',
-            fontWeight: 500,
-            textTransform: 'none',
-            borderColor: theme.palette.primary.main,
-            color: theme.palette.primary.main,
-            '&:hover': {
-              borderColor: theme.palette.secondary.main,
-              backgroundColor: 'rgba(214, 195, 165, 0.1)',
-            },
-          }}
-        >
-          {tCommon('createNewRoutineWithAI')}
-        </Button>
-
-        <Button
-          variant='text'
-          size='large'
-          fullWidth
-          component={Link}
-          href='/practice'
-          startIcon={<ListIcon />}
-          sx={{
-            py: 1,
-            fontSize: '1rem',
-            textTransform: 'none',
-            color: theme.palette.text.secondary,
-            '&:hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.05)',
-            },
-          }}
-        >
-          {tCommon('practice')}{' '}
-          {/* Using 'Practice' label, could handle 'See Routines' translation if needed */}
-        </Button>
+          <Button
+            variant='text'
+            size='large'
+            fullWidth
+            component={Link}
+            href='/practice'
+            startIcon={<ListIcon />}
+            sx={{
+              py: 1,
+              fontSize: '1rem',
+              textTransform: 'none',
+              color: theme.palette.text.secondary,
+              '&:hover': {
+                backgroundColor: 'rgba(0, 0, 0, 0.05)',
+              },
+            }}
+          >
+            {tCommon('practice')}
+          </Button>
+        </Box>
       </Box>
     </Box>
   );

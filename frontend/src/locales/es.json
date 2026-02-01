@@ -116,9 +116,10 @@
   },
   "dailyRoutine": {
     "title": "Rutina del Día",
-    "aiReasoning": "Basado en tu actividad reciente y la rigidez matutina común, he diseñado esta rutina para abrir tus caderas y alargar tu columna. Este flujo te ayudará a sentirte más energizado y móvil para el día que tienes por delante.",
+    "greeting": "¡Hola! Aquí tienes lo que hemos preparado para ti hoy",
+    "aiReasoning": "Basado en tu actividad reciente y la rigidez matutina común, he diseñado esta rutina para abrir tus caderas y alargar tu columna. Este flujo te ayudará a sentirte más energizado y móvil durante el día.",
     "benefitsTitle": "¿Por qué esta rutina?",
-    "startToday": "Comenzar la Rutina de Hoy"
+    "startToday": "Empezar la Rutina de Hoy"
   },
   "pwa": {
     "installPrompt": {

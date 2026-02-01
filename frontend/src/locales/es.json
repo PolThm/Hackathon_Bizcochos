@@ -117,6 +117,7 @@
   "dailyRoutine": {
     "title": "Rutina del Día",
     "greeting": "¡Hola! Aquí tienes lo que hemos preparado para ti hoy",
+    "locationPrefix": "Estás en",
     "aiReasoning": "Basado en tu actividad reciente y la rigidez matutina común, he diseñado esta rutina para abrir tus caderas y alargar tu columna. Este flujo te ayudará a sentirte más energizado y móvil durante el día.",
     "benefitsTitle": "¿Por qué esta rutina?",
     "startToday": "Empezar la Rutina de Hoy"

@@ -26,6 +26,7 @@ import TimerIcon from '@mui/icons-material/Timer';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import ListIcon from '@mui/icons-material/List';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { setItem, getItem } from '@/utils/indexedDB';
 import { API_BASE_URL } from '@/utils/config';
 import type { Routine } from '@/types';
@@ -55,11 +56,46 @@ export default function Home() {
   const [allRoutines] = useObjectStorage<Routine[]>('allRoutines', []);
   const hasRoutines = allRoutines.length > 0;
 
+  const [userLocation, setUserLocation] = useState<string | null>(null);
+
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [logs]);
+
+  useEffect(() => {
+    const fetchLocation = async () => {
+      if (!navigator.geolocation) return;
+
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+
+          // Save coordinates to localStorage
+          localStorage.setItem('userLat', latitude.toString());
+          localStorage.setItem('userLon', longitude.toString());
+
+          try {
+            const response = await fetch(
+              `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=${locale}`,
+            );
+            const data = await response.json();
+            if (data.city || data.locality) {
+              setUserLocation(data.city || data.locality);
+            }
+          } catch (error) {
+            console.error('Error fetching location:', error);
+          }
+        },
+        (error) => {
+          console.error('Error getting geolocation:', error);
+        },
+      );
+    };
+
+    fetchLocation();
+  }, [locale]);
 
   useEffect(() => {
     const fetchDailyRoutineStream = async () => {
@@ -305,6 +341,29 @@ export default function Home() {
         >
           {t('greeting')}
         </Typography>
+
+        {userLocation && (
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 0.5,
+              mb: 2,
+              opacity: 0.8,
+            }}
+          >
+            <LocationOnIcon
+              sx={{ fontSize: '1rem', color: theme.palette.text.secondary }}
+            />
+            <Typography
+              variant='body2'
+              sx={{ color: theme.palette.text.secondary }}
+            >
+              {t('locationPrefix')} {userLocation}
+            </Typography>
+          </Box>
+        )}
+
         <Box
           sx={{
             display: 'flex',

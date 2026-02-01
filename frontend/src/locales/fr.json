@@ -118,6 +118,7 @@
   "dailyRoutine": {
     "title": "Routine du Jour",
     "greeting": "Bonjour ! Voici ce que nous avons préparé pour vous aujourd'hui",
+    "locationPrefix": "Vous êtes à",
     "aiReasoning": "Basé sur votre activité récente et la raideur matinale courante, j'ai conçu cette routine pour ouvrir vos hanches et allonger votre colonne vertébrale. Ce flux vous aidera à vous sentir plus énergique et mobile pour la journée à venir.",
     "benefitsTitle": "Pourquoi cette routine ?",
     "startToday": "Commencer la routine d'aujourd'hui"

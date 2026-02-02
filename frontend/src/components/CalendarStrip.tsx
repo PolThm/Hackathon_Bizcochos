@@ -47,10 +47,9 @@ export default function CalendarStrip() {
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        mb: 2,
         gap: 1.5,
         overflowX: 'auto',
-        pb: 1, // Padding for scrollbar/shadow
+        pb: 2.5, // Padding for scrollbar/shadow
         scrollbarWidth: 'none',
         '&::-webkit-scrollbar': { display: 'none' },
       }}

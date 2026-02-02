@@ -60,6 +60,7 @@
     "routinePolux": "Étirements & Musculation",
     "routineExample": "Exemple",
     "createNewRoutineWithAI": "Créer nouvelle Routine avec IA",
+    "createNewRoutine": "Créer une nouvelle Routine",
     "goToPractice": "Commencer la pratique",
     "dailyRoutine": "Routine du jour",
     "noRoutinesMessage": "Tu n'as pas encore de routines.",
@@ -121,7 +122,11 @@
     "locationPrefix": "Tu es à",
     "benefitsTitle": "Pourquoi cette routine ?",
     "startToday": "Commencer la routine d'aujourd'hui",
-    "connected": "Connecté"
+    "connected": "Connecté",
+    "preparingSession": "Préparation de ta séance du jour...",
+    "aiGenerated": "Généré par l'IA",
+    "exercisesCount": "{count} exercices",
+    "googleCalendarAlt": "Google Calendar"
   },
   "onboarding": {
     "title": "Bienvenue sur Routines",

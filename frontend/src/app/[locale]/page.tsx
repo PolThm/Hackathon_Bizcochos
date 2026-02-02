@@ -446,8 +446,6 @@ export default function Home() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        px: 3,
-        py: 4,
         maxWidth: '800px',
         margin: '0 auto',
         width: '100%',
@@ -474,7 +472,6 @@ export default function Home() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          mb: 3,
           width: '100%',
           zIndex: 1,
         }}
@@ -487,7 +484,7 @@ export default function Home() {
               display: 'flex',
               alignItems: 'center',
               gap: 0.5,
-              mb: 2,
+              mb: 1.5,
               opacity: 0.8,
               flexWrap: 'wrap',
             }}
@@ -508,7 +505,7 @@ export default function Home() {
                 icon={
                   <Image
                     src='https://www.gstatic.com/images/branding/product/1x/calendar_2020q4_48dp.png'
-                    alt='Google Calendar'
+                    alt={t('googleCalendarAlt')}
                     width={14}
                     height={14}
                   />
@@ -611,7 +608,7 @@ export default function Home() {
                     fontStyle: 'italic',
                   }}
                 >
-                  {latestLog || 'Preparing your daily session...'}
+                  {latestLog || t('preparingSession')}
                 </Typography>
               </Box>
             </Fade>
@@ -668,24 +665,13 @@ export default function Home() {
               >
                 {t('title')}
               </Typography>
-              <Chip
-                icon={<AutoAwesomeIcon style={{ fontSize: '1rem' }} />}
-                label='AI Generated'
-                size='small'
-                sx={{
-                  backgroundColor: 'rgba(214, 195, 165, 0.2)',
-                  color: theme.palette.secondary.main,
-                  fontWeight: 600,
-                  border: `1px solid ${theme.palette.secondary.main}`,
-                }}
-              />
             </Box>
 
             <Box
               sx={{
                 display: 'flex',
                 gap: 2,
-                mb: 4,
+                mb: 3,
                 mt: 2,
                 width: '100%',
                 zIndex: 1,
@@ -712,16 +698,30 @@ export default function Home() {
               >
                 <FitnessCenterIcon sx={{ fontSize: '1.2rem', mr: 0.5 }} />
                 <Typography variant='body2'>
-                  {routine.exercises.length} Exercises
+                  {t('exercisesCount', {
+                    count: routine.exercises.length,
+                  })}
                 </Typography>
               </Box>
+              <Chip
+                icon={<AutoAwesomeIcon style={{ fontSize: '1rem' }} />}
+                label={t('aiGenerated')}
+                size='small'
+                sx={{
+                  backgroundColor: 'rgba(214, 195, 165, 0.2)',
+                  color: theme.palette.secondary.main,
+                  fontWeight: 600,
+                  border: `1px solid ${theme.palette.secondary.main}`,
+                  ml: 'auto',
+                }}
+              />
             </Box>
 
             <Paper
               elevation={0}
               sx={{
-                p: 3,
-                mb: 4,
+                p: 2,
+                mb: 3,
                 borderRadius: '16px',
                 backgroundColor: 'rgba(214, 195, 165, 0.1)',
                 border: '1px solid rgba(214, 195, 165, 0.3)',
@@ -990,7 +990,7 @@ export default function Home() {
             zIndex: 1,
             alignSelf: 'center',
             margin: '0 auto',
-            mt: loading || routine ? 4 : 'auto',
+            mt: loading || routine ? 2.5 : 'auto',
           }}
         >
           {loading && (
@@ -1002,53 +1002,34 @@ export default function Home() {
               startIcon={<CircularProgress size={20} color='inherit' />}
               sx={{ py: 2, borderRadius: '12px', mb: 2 }}
             >
-              Preparing your daily session...
+              {t('preparingSession')}
             </Button>
           )}
 
-          <Button
-            variant='outlined'
-            size='large'
-            fullWidth
-            component={Link}
-            href='/new-routine'
-            startIcon={<AutoAwesomeIcon />}
-            sx={{
-              py: 2,
-              borderRadius: '12px',
-              fontSize: '1rem',
-              fontWeight: 500,
-              textTransform: 'none',
-              borderColor: theme.palette.primary.main,
-              color: theme.palette.primary.main,
-              '&:hover': {
-                borderColor: theme.palette.secondary.main,
-                backgroundColor: 'rgba(214, 195, 165, 0.1)',
-              },
-            }}
-          >
-            {tCommon('createNewRoutineWithAI')}
-          </Button>
-
-          <Button
-            variant='text'
-            size='large'
-            fullWidth
-            component={Link}
-            href='/practice'
-            startIcon={<ListIcon />}
-            sx={{
-              py: 1,
-              fontSize: '1rem',
-              textTransform: 'none',
-              color: theme.palette.text.secondary,
-              '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.05)',
-              },
-            }}
-          >
-            {tCommon('practice')}
-          </Button>
+          {!loading && (
+            <Button
+              variant='text'
+              size='large'
+              fullWidth
+              component={Link}
+              href='/new-routine'
+              sx={{
+                borderRadius: '12px',
+                fontSize: '1rem',
+                fontWeight: 500,
+                textTransform: 'none',
+                borderColor: theme.palette.primary.main,
+                color: theme.palette.primary.main,
+                textDecoration: 'underline',
+                '&:hover': {
+                  borderColor: theme.palette.secondary.main,
+                  backgroundColor: 'rgba(214, 195, 165, 0.1)',
+                },
+              }}
+            >
+              {tCommon('createNewRoutine')}
+            </Button>
+          )}
         </Box>
 
         <Script

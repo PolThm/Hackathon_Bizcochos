@@ -60,6 +60,7 @@
     "routinePolux": "Stretching & Musculation",
     "routineExample": "Example",
     "createNewRoutineWithAI": "Create new Routine with AI",
+    "createNewRoutine": "Create new Routine",
     "goToPractice": "Start the practice",
     "dailyRoutine": "Daily Routine",
     "noRoutinesMessage": "You have no routines yet.",
@@ -121,7 +122,11 @@
     "locationPrefix": "You're in",
     "benefitsTitle": "Why this routine?",
     "startToday": "Start Today's Routine",
-    "connected": "Connected"
+    "connected": "Connected",
+    "preparingSession": "Preparing your daily session...",
+    "aiGenerated": "AI Generated",
+    "exercisesCount": "{count} Exercises",
+    "googleCalendarAlt": "Google Calendar"
   },
   "onboarding": {
     "title": "Welcome to Routines",

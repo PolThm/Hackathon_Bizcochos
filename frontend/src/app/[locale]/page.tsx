@@ -129,6 +129,8 @@ export default function Home() {
         const storedLat = localStorage.getItem('userLat');
         const storedLon = localStorage.getItem('userLon');
         const googleToken = localStorage.getItem('googleAccessToken');
+        const timeZone =
+          Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Rome';
 
         // Get the last 5 routines for context persistence
         const history = allRoutines.slice(-5).map((r) => ({
@@ -150,6 +152,7 @@ export default function Home() {
               googleToken,
               history,
               userProfile: profileToUse,
+              timeZone,
             }),
           },
         );
@@ -322,7 +325,7 @@ export default function Home() {
     try {
       const client = (window as any).google.accounts.oauth2.initTokenClient({
         client_id: GOOGLE_CLIENT_ID,
-        scope: 'https://www.googleapis.com/auth/calendar.readonly',
+        scope: 'https://www.googleapis.com/auth/calendar.events',
         callback: (response: any) => {
           if (response.access_token) {
             localStorage.setItem('googleAccessToken', response.access_token);

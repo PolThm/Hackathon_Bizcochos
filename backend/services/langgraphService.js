@@ -186,11 +186,21 @@ export async function* streamAgenticRoutine(
       name: ex.name,
     }));
 
+    const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
+    const langInstruction =
+      safeLocale === "en"
+        ? "English"
+        : safeLocale === "fr"
+          ? "French"
+          : "Spanish";
+
     const plannerModel = model.bindTools(tools);
     const response = await plannerModel.invoke([
-      new SystemMessage(`You are a fitness AI. 
+      new SystemMessage(`You are a fitness AI.
       1. USE 'create_calendar_event' NOW for a 30m slot.
       2. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
+      3. Write "name" and "description" in ${langInstruction}.
+      4. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 600 seconds (5–10 minutes). Use 4–8 exercises. Never exceed 600 seconds total.
       Available exercises: ${JSON.stringify(exercises)}
       Be fast. One-shot.`),
       ...state.messages,
@@ -259,6 +269,21 @@ export async function* streamAgenticRoutine(
       if (jsonMatch) {
         try {
           finalRoutine = JSON.parse(jsonMatch[0]);
+
+          // Enforce 5–10 min total duration: scale down if AI exceeded 600s
+          const exercises = finalRoutine.exercises || [];
+          const totalSeconds = exercises.reduce(
+            (sum, ex) => sum + (ex.duration || 0),
+            0,
+          );
+          const MAX_TOTAL_SECONDS = 600;
+          if (totalSeconds > MAX_TOTAL_SECONDS && totalSeconds > 0) {
+            const scale = MAX_TOTAL_SECONDS / totalSeconds;
+            finalRoutine.exercises = exercises.map((ex) => ({
+              ...ex,
+              duration: Math.max(15, Math.round((ex.duration || 0) * scale)),
+            }));
+          }
         } catch (e) {
           console.error("JSON parse error:", e);
         }

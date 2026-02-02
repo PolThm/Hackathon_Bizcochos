@@ -928,7 +928,7 @@ export default function Home() {
                 },
               }}
             >
-              {tCommon('createNewRoutine')}
+              {tCommon('createMorePersonalizedRoutine')}
             </Button>
           )}
 

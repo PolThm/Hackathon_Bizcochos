@@ -541,7 +541,7 @@ export default function Home() {
               flexDirection: 'column',
             }}
           >
-            <LoadingState messages={loadingMessages} />
+            <LoadingState messages={loadingMessages} stepMessages={logs} />
           </Box>
         )}
 

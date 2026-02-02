@@ -1,28 +1,63 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Box, Typography, CircularProgress, Fade } from '@mui/material';
+
+const STEP_STALE_MS = 7000;
 
 interface LoadingStateProps {
   messages: string[];
+  stepMessages?: string[];
 }
 
-export default function LoadingState({ messages }: LoadingStateProps) {
+export default function LoadingState({
+  messages,
+  stepMessages = [],
+}: LoadingStateProps) {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
+  const [useBackendMessage, setUseBackendMessage] = useState(true);
+  const prevStepLengthRef = useRef(0);
 
+  // When backend sends a new step, show it and reset the 7s timer
+  useEffect(() => {
+    if (stepMessages.length > prevStepLengthRef.current) {
+      prevStepLengthRef.current = stepMessages.length;
+      setUseBackendMessage(true);
+    }
+  }, [stepMessages.length]);
+
+  // After 7s without backend update, switch to frontend message
+  useEffect(() => {
+    if (stepMessages.length === 0) return;
+    const timer = setTimeout(() => {
+      setUseBackendMessage(false);
+    }, STEP_STALE_MS);
+    return () => clearTimeout(timer);
+  }, [stepMessages.length]);
+
+  // Rotate frontend messages every 7s
   useEffect(() => {
     const interval = setInterval(() => {
       setFadeIn(false);
-
       setTimeout(() => {
         setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
         setFadeIn(true);
       }, 500);
     }, 7000);
-
     return () => clearInterval(interval);
   }, [messages.length]);
+
+  const hasBackendSteps = stepMessages.length > 0;
+  const showBackend = hasBackendSteps && useBackendMessage;
+  const displayText = showBackend
+    ? stepMessages[stepMessages.length - 1]
+    : messages[currentMessageIndex];
+  const textColor = showBackend
+    ? 'text.primary'
+    : hasBackendSteps
+      ? 'secondary.main'
+      : 'text.primary';
 
   return (
     <Box
@@ -92,11 +127,11 @@ export default function LoadingState({ messages }: LoadingStateProps) {
               textAlign: 'center',
               fontWeight: 400,
               px: 3,
-              color: 'text.primary',
+              color: textColor,
               lineHeight: 1.6,
             }}
           >
-            {messages[currentMessageIndex]}
+            {displayText}
           </Typography>
         </Box>
       </Fade>

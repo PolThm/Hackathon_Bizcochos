@@ -22,7 +22,7 @@ import { useTranslations } from 'next-intl';
 import routinePolux from '@/mocks/routine-polux.json';
 import routineRapido from '@/mocks/routine-rapido.json';
 import ConfirmModal from '@/components/ConfirmModal';
-import { setItem, getItem, removeItem } from '@/utils/indexedDB';
+import { setItem, getItem, clear as clearIndexedDB } from '@/utils/indexedDB';
 import versionData from '@/version.json';
 
 const { English, French, Spanish } = Language;
@@ -158,13 +158,23 @@ export default function ParametersPage() {
 
   const handleReset = async () => {
     try {
-      await removeItem('allRoutines');
-      await removeItem('routine');
-      // Reset the flag for deleted default routines on full reset
-      await removeItem('deletedDefaultRoutines');
+      // Clear all IndexedDB data (routines, preferences, streak, etc.)
+      await clearIndexedDB();
+
+      // Clear localStorage (Google auth, user profile, location)
       localStorage.removeItem('googleAccessToken');
-      intlRouter.push('/');
+      localStorage.removeItem('userProfile');
+      localStorage.removeItem('userLat');
+      localStorage.removeItem('userLon');
+
+      // Clear session storage (temp routine drafts, daily cache, carousel state)
+      sessionStorage.clear();
+
+      // Clear language preference cookie
+      document.cookie = 'preferred-locale=; path=/; max-age=0';
+
       setOpenResetModal(false);
+      intlRouter.push('/');
     } catch (error) {
       console.error('Failed to reset data:', error);
     }

@@ -543,7 +543,7 @@ export default function NewRoutinePage() {
           fullScreen={isMobile}
           PaperProps={{
             sx: {
-              borderRadius: 2,
+              borderRadius: { sm: 2 },
               maxHeight: { sm: '90vh' },
               maxWidth: { sm: MODAL_MAX_WIDTH },
             },

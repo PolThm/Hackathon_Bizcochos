@@ -21,7 +21,6 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TimerIcon from '@mui/icons-material/Timer';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import ListIcon from '@mui/icons-material/List';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import CloudIcon from '@mui/icons-material/Cloud';
@@ -36,6 +35,7 @@ import { getExercisesByLocale } from '@/utils/exercises';
 import CalendarStrip from '@/components/CalendarStrip';
 import OnboardingModal from '@/components/OnboardingModal';
 import LoadingState from '@/components/LoadingState';
+import { CONTENT_MAX_WIDTH } from '@/constants/layout';
 
 const CAROUSEL_INTERVAL_MS = 4000;
 const CAROUSEL_SWIPE_PAUSE_MS = 10000;
@@ -89,7 +89,6 @@ export default function Home() {
   const autoScrollPausedUntilRef = useRef(0);
   const touchStartXRef = useRef<number | null>(null);
   const swipeHandledRef = useRef(false);
-
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -447,10 +446,11 @@ export default function Home() {
     <Box
       sx={{
         flex: 1,
+        minHeight: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        maxWidth: '800px',
+        maxWidth: CONTENT_MAX_WIDTH,
         margin: '0 auto',
         width: '100%',
         position: 'relative',
@@ -460,29 +460,41 @@ export default function Home() {
       <Box
         sx={{
           position: 'absolute',
-          top: '7%',
-          right: '5%',
-          width: '120px',
-          height: '120px',
-          borderRadius: '50%',
-          backgroundColor: theme.palette.secondary.main,
-          opacity: 0.1,
+          top: 0,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '100%',
+          maxWidth: CONTENT_MAX_WIDTH,
+          height: '100dvh',
+          pointerEvents: 'none',
           zIndex: 0,
         }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: '15%',
-          left: '10%',
-          width: '100px',
-          height: '100px',
-          borderRadius: '50%',
-          backgroundColor: theme.palette.secondary.main,
-          opacity: 0.1,
-          zIndex: 0,
-        }}
-      />
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '10%',
+            right: '10%',
+            width: '120px',
+            height: '120px',
+            borderRadius: '50%',
+            backgroundColor: theme.palette.secondary.main,
+            opacity: 0.1,
+          }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: '25%',
+            left: '10%',
+            width: '90px',
+            height: '90px',
+            borderRadius: '50%',
+            backgroundColor: theme.palette.primary.main,
+            opacity: 0.05,
+          }}
+        />
+      </Box>
 
       <Box
         sx={{

@@ -151,7 +151,6 @@ export async function* streamAgenticRoutine(
   const toolNode = new ToolNode(tools);
   const model = new ChatOpenAI({
     modelName: "gpt-5-nano",
-    temperature: 0.5,
     configuration: { baseURL: process.env.ENDPOINT_URL },
   });
 

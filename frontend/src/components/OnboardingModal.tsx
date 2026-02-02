@@ -14,10 +14,9 @@ import {
   Stepper,
   Step,
   StepLabel,
-  IconButton,
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import Image from 'next/image';
+import { MODAL_MAX_WIDTH } from '@/constants/layout';
 
 interface OnboardingModalProps {
   isOpen: boolean;
@@ -56,8 +55,14 @@ export default function OnboardingModal({
     <Dialog
       open={isOpen}
       fullWidth
-      maxWidth='sm'
-      PaperProps={{ sx: { borderRadius: '24px', p: 1 } }}
+      maxWidth='xs'
+      PaperProps={{
+        sx: {
+          borderRadius: 2,
+          maxHeight: { sm: '90vh' },
+          maxWidth: { sm: MODAL_MAX_WIDTH },
+        },
+      }}
     >
       <DialogTitle sx={{ fontWeight: 700, textAlign: 'center' }}>
         Welcome to Bizcochos!

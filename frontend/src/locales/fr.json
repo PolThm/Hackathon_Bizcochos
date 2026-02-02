@@ -62,7 +62,7 @@
     "createNewRoutineWithAI": "Créer nouvelle Routine avec IA",
     "goToPractice": "Commencer la pratique",
     "dailyRoutine": "Routine du jour",
-    "noRoutinesMessage": "Vous n'avez pas encore de routines.",
+    "noRoutinesMessage": "Tu n'as pas encore de routines.",
     "or": "OU"
   },
   "library": {
@@ -105,23 +105,47 @@
     "refineButton": "Mettre à jour",
     "startOverButton": "Recommencer de zéro",
     "loadingMessages": [
-      "Conception de votre étirement parfait...",
-      "À l'écoute des besoins de votre corps...",
-      "Sélection d'exercices pour votre confort...",
-      "Construction de votre flux personnalisé...",
-      "Création de mouvements juste pour vous...",
-      "Presque là, finalisation de votre routine...",
-      "Création de votre chemin vers la flexibilité...",
-      "Adaptation des étirements à vos objectifs..."
+      "Conception de ton étirement parfait...",
+      "À l'écoute des besoins de ton corps...",
+      "Sélection d'exercices pour ton confort...",
+      "Construction de ton flux personnalisé...",
+      "Création de mouvements juste pour toi...",
+      "Presque là, finalisation de ta routine...",
+      "Création de ton chemin vers la flexibilité...",
+      "Adaptation des étirements à tes objectifs..."
     ]
   },
   "dailyRoutine": {
     "title": "Routine du Jour",
-    "greeting": "Bonjour ! Voici ce que nous avons préparé pour vous aujourd'hui",
-    "locationPrefix": "Vous êtes à",
-    "aiReasoning": "Basé sur votre activité récente et la raideur matinale courante, j'ai conçu cette routine pour ouvrir vos hanches et allonger votre colonne vertébrale. Ce flux vous aidera à vous sentir plus énergique et mobile pour la journée à venir.",
+    "greeting": "Bonjour ! Voici ce que nous avons préparé pour toi aujourd'hui",
+    "locationPrefix": "Tu es à",
     "benefitsTitle": "Pourquoi cette routine ?",
     "startToday": "Commencer la routine d'aujourd'hui"
+  },
+  "onboarding": {
+    "title": "Bienvenue sur Routines",
+    "subtitle": "Personnalisons tes séances quotidiennes",
+    "stepProfile": "Profil",
+    "stepContext": "Contexte",
+    "nameLabel": "Quel est ton prénom ?",
+    "namePlaceholder": "ex. Alessio",
+    "fitnessLevel": "Niveau de forme",
+    "levelBeginner": "Débutant",
+    "levelIntermediate": "Intermédiaire",
+    "levelAdvanced": "Avancé",
+    "primaryGoal": "Objectif principal",
+    "goalMobility": "Mobilité & Souplesse",
+    "goalStrength": "Force & Tonus",
+    "goalRecovery": "Récupération & Soulagement",
+    "limitationsLabel": "Blessures ou limitations ?",
+    "limitationsPlaceholder": "ex. Mal de dos, nuque raide...",
+    "calendarIntro": "Connecte ton Google Calendar pour que l'IA adapte tes routines à ton emploi du temps.",
+    "googleCalendarAlt": "Google Calendar",
+    "connectCalendar": "Connecter Google Calendar",
+    "calendarConnected": "Calendrier connecté !",
+    "calendarPrivacy": "On consulte ton agenda seulement pour optimiser le moment des exercices.",
+    "continue": "Continuer",
+    "finish": "Terminer l'onboarding"
   },
   "pwa": {
     "installPrompt": {

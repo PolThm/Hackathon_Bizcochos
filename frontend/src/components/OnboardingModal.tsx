@@ -16,6 +16,7 @@ import {
   StepLabel,
 } from '@mui/material';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { MODAL_MAX_WIDTH } from '@/constants/layout';
 
 interface OnboardingModalProps {
@@ -31,6 +32,7 @@ export default function OnboardingModal({
   handleConnectCalendar,
   googleConnected,
 }: OnboardingModalProps) {
+  const t = useTranslations('onboarding');
   const [activeStep, setActiveStep] = useState(0);
   const [profile, setProfile] = useState({
     name: '',
@@ -65,66 +67,66 @@ export default function OnboardingModal({
       }}
     >
       <DialogTitle sx={{ fontWeight: 700, textAlign: 'center' }}>
-        Welcome to Bizcochos!
+        {t('title')}
         <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
-          Let's personalize your daily sessions.
+          {t('subtitle')}
         </Typography>
       </DialogTitle>
 
       <DialogContent>
         <Stepper activeStep={activeStep} sx={{ mb: 4, mt: 2 }}>
           <Step>
-            <StepLabel>Profile</StepLabel>
+            <StepLabel>{t('stepProfile')}</StepLabel>
           </Step>
           <Step>
-            <StepLabel>Context</StepLabel>
+            <StepLabel>{t('stepContext')}</StepLabel>
           </Step>
         </Stepper>
 
         {activeStep === 0 ? (
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             <TextField
-              label="What's your name?"
+              label={t('nameLabel')}
               name='name'
               fullWidth
               value={profile.name}
               onChange={handleChange}
-              placeholder='e.g. Alessio'
+              placeholder={t('namePlaceholder')}
               required
             />
             <TextField
               select
-              label='Fitness Level'
+              label={t('fitnessLevel')}
               name='level'
               fullWidth
               value={profile.level}
               onChange={handleChange}
             >
-              <MenuItem value='Beginner'>Beginner</MenuItem>
-              <MenuItem value='Intermediate'>Intermediate</MenuItem>
-              <MenuItem value='Advanced'>Advanced</MenuItem>
+              <MenuItem value='Beginner'>{t('levelBeginner')}</MenuItem>
+              <MenuItem value='Intermediate'>{t('levelIntermediate')}</MenuItem>
+              <MenuItem value='Advanced'>{t('levelAdvanced')}</MenuItem>
             </TextField>
             <TextField
               select
-              label='Primary Goal'
+              label={t('primaryGoal')}
               name='goals'
               fullWidth
               value={profile.goals}
               onChange={handleChange}
             >
-              <MenuItem value='Mobility'>Mobility & Flexibility</MenuItem>
-              <MenuItem value='Strength'>Strength & Tone</MenuItem>
-              <MenuItem value='Recovery'>Recovery & Pain Relief</MenuItem>
+              <MenuItem value='Mobility'>{t('goalMobility')}</MenuItem>
+              <MenuItem value='Strength'>{t('goalStrength')}</MenuItem>
+              <MenuItem value='Recovery'>{t('goalRecovery')}</MenuItem>
             </TextField>
             <TextField
-              label='Injuries or Limitations?'
+              label={t('limitationsLabel')}
               name='limitations'
               fullWidth
               multiline
               rows={2}
               value={profile.limitations}
               onChange={handleChange}
-              placeholder='e.g. Lower back pain, stiff neck...'
+              placeholder={t('limitationsPlaceholder')}
             />
           </Box>
         ) : (
@@ -138,8 +140,7 @@ export default function OnboardingModal({
             }}
           >
             <Typography variant='body1' textAlign='center'>
-              Connect your Google Calendar to allow the AI to adapt your
-              routines to your schedule.
+              {t('calendarIntro')}
             </Typography>
             <Button
               variant='outlined'
@@ -148,7 +149,7 @@ export default function OnboardingModal({
               startIcon={
                 <Image
                   src='https://www.gstatic.com/images/branding/product/1x/calendar_2020q4_48dp.png'
-                  alt='Google Calendar'
+                  alt={t('googleCalendarAlt')}
                   width={24}
                   height={24}
                 />
@@ -164,16 +165,14 @@ export default function OnboardingModal({
                 color: googleConnected ? 'success.main' : 'text.primary',
               }}
             >
-              {googleConnected
-                ? 'Calendar Connected!'
-                : 'Connect Google Calendar'}
+              {googleConnected ? t('calendarConnected') : t('connectCalendar')}
             </Button>
             <Typography
               variant='caption'
               color='text.secondary'
               textAlign='center'
             >
-              We only read your schedule to optimize exercise timing.
+              {t('calendarPrivacy')}
             </Typography>
           </Box>
         )}
@@ -187,7 +186,7 @@ export default function OnboardingModal({
           disabled={activeStep === 0 && !profile.name}
           sx={{ py: 1.5, borderRadius: '12px', fontWeight: 600 }}
         >
-          {activeStep === 0 ? 'Continue' : 'Finish Onboarding'}
+          {activeStep === 0 ? t('continue') : t('finish')}
         </Button>
       </DialogActions>
     </Dialog>

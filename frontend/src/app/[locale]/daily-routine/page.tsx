@@ -356,7 +356,7 @@ export default function DailyRoutinePage() {
           variant='body1'
           sx={{ lineHeight: 1.6, color: theme.palette.text.secondary }}
         >
-          {routine.description || t('aiReasoning')}
+          {routine.description}
         </Typography>
       </Paper>
 

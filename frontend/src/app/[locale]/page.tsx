@@ -456,14 +456,27 @@ export default function Home() {
         position: 'relative',
       }}
     >
-      {/* Decorative background element */}
+      {/* Decorative background elements */}
       <Box
         sx={{
           position: 'absolute',
-          top: '5%',
+          top: '7%',
           right: '5%',
           width: '120px',
           height: '120px',
+          borderRadius: '50%',
+          backgroundColor: theme.palette.secondary.main,
+          opacity: 0.1,
+          zIndex: 0,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '15%',
+          left: '10%',
+          width: '100px',
+          height: '100px',
           borderRadius: '50%',
           backgroundColor: theme.palette.secondary.main,
           opacity: 0.1,

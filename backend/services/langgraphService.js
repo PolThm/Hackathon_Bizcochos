@@ -210,6 +210,22 @@ export async function* streamAgenticRoutine(
     })
     .addEdge("tools", "planner");
 
+  const stepMessages = {
+    en: {
+      fetcher: "Analyzing context and scheduling...",
+      calendarReserved: "Slot reserved in your calendar! ✅",
+    },
+    fr: {
+      fetcher: "Analyse du contexte et planification...",
+      calendarReserved: "Créneau réservé dans ton calendrier ! ✅",
+    },
+    es: {
+      fetcher: "Analizando contexto y planificación...",
+      calendarReserved: "¡Slot reservado en tu calendario! ✅",
+    },
+  };
+  const t = stepMessages[locale] ?? stepMessages.en;
+
   const app = workflow.compile();
   const stream = await app.stream(
     { messages: [new HumanMessage(userPrompt)], locale, timeZone },
@@ -225,7 +241,7 @@ export async function* streamAgenticRoutine(
       yield {
         type: "step",
         node: "fetcher",
-        description: "Analisi contesto e scheduling...",
+        description: t.fetcher,
       };
     } else if (nodeName === "tools") {
       for (const msg of data.messages) {
@@ -233,7 +249,7 @@ export async function* streamAgenticRoutine(
           yield {
             type: "step",
             node: "tools",
-            description: "Ho riservato uno slot nel tuo calendario! ✅",
+            description: t.calendarReserved,
           };
         }
       }

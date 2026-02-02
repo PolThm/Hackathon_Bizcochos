@@ -46,9 +46,9 @@ ${JSON.stringify(simplifiedExercises, null, 2)}
 
 Rules:
 1. Use the "id" exactly as provided in the list for each exercise (do not include "name" in exercises, we will add it server-side).
-2. Find and set a short and catchy name for the routine based on the request (30 characters maximum).
-3. Find and set a short and catchy description for the routine that will explain why this routine is tailored to the request (150 characters maximum).
-4. Estimate a realistic "duration" in seconds for each exercise based on its nature.
+2. Find and set a short and catchy name for the routine based on the request (30 characters maximum). Write the name in ${safeLocale === "en" ? "English" : safeLocale === "fr" ? "French" : "Spanish"}.
+3. Find and set a short and catchy description for the routine that will explain why this routine is tailored to the request (150 characters maximum). Write the description in ${safeLocale === "en" ? "English" : safeLocale === "fr" ? "French" : "Spanish"}.
+4. Estimate a realistic "duration" in seconds for each exercise based on its nature (but the SUM of all exercise "duration" values MUST be between 300 and 600 seconds (5–10 minutes).  Never exceed 600 seconds total).
 5. The output MUST be a valid JSON object.
 6. Do not include any text before or after the JSON.
 

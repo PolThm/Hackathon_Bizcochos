@@ -513,7 +513,7 @@ export default function Home() {
                     height={14}
                   />
                 }
-                label='Connected'
+                label={t('connected')}
                 size='small'
                 variant='outlined'
                 sx={{

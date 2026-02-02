@@ -120,7 +120,8 @@
     "greeting": "Bonjour ! Voici ce que nous avons préparé pour toi aujourd'hui",
     "locationPrefix": "Tu es à",
     "benefitsTitle": "Pourquoi cette routine ?",
-    "startToday": "Commencer la routine d'aujourd'hui"
+    "startToday": "Commencer la routine d'aujourd'hui",
+    "connected": "Connecté"
   },
   "onboarding": {
     "title": "Bienvenue sur Routines",
@@ -139,11 +140,11 @@
     "goalRecovery": "Récupération & Soulagement",
     "limitationsLabel": "Blessures ou limitations ?",
     "limitationsPlaceholder": "ex. Mal de dos, nuque raide...",
-    "calendarIntro": "Connecte ton Google Calendar pour que l'IA adapte tes routines à ton emploi du temps.",
+    "calendarIntro": "Connecte ton Google Calendar pour que l'IA adapte tes routines à ton emploi du temps",
     "googleCalendarAlt": "Google Calendar",
     "connectCalendar": "Connecter Google Calendar",
     "calendarConnected": "Calendrier connecté !",
-    "calendarPrivacy": "On consulte ton agenda seulement pour optimiser le moment des exercices.",
+    "calendarPrivacy": "On consulte ton agenda seulement pour optimiser le moment des exercices",
     "continue": "Continuer",
     "finish": "Terminer l'onboarding"
   },

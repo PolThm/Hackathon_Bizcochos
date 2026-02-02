@@ -120,7 +120,8 @@
     "greeting": "Hello! Here's what we prepared for you today",
     "locationPrefix": "You're in",
     "benefitsTitle": "Why this routine?",
-    "startToday": "Start Today's Routine"
+    "startToday": "Start Today's Routine",
+    "connected": "Connected"
   },
   "onboarding": {
     "title": "Welcome to Routines",
@@ -139,11 +140,11 @@
     "goalRecovery": "Recovery & Pain Relief",
     "limitationsLabel": "Injuries or Limitations?",
     "limitationsPlaceholder": "e.g. Lower back pain, stiff neck...",
-    "calendarIntro": "Connect your Google Calendar to allow the AI to adapt your routines to your schedule.",
+    "calendarIntro": "Connect your Google Calendar to allow the AI to adapt your routines to your schedule",
     "googleCalendarAlt": "Google Calendar",
     "connectCalendar": "Connect Google Calendar",
     "calendarConnected": "Calendar Connected!",
-    "calendarPrivacy": "We only read your schedule to optimize exercise timing.",
+    "calendarPrivacy": "We only read your schedule to optimize exercise timing",
     "continue": "Continue",
     "finish": "Finish Onboarding"
   },

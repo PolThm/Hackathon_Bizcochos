@@ -10,7 +10,6 @@ import {
   useTheme,
   Paper,
   Chip,
-  Fade,
   TextField,
 } from '@mui/material';
 import { useTranslations } from 'next-intl';
@@ -36,6 +35,7 @@ import { useObjectStorage } from '@/hooks/useStorage';
 import { getExercisesByLocale } from '@/utils/exercises';
 import CalendarStrip from '@/components/CalendarStrip';
 import OnboardingModal from '@/components/OnboardingModal';
+import LoadingState from '@/components/LoadingState';
 
 const CAROUSEL_INTERVAL_MS = 4000;
 const CAROUSEL_SWIPE_PAUSE_MS = 10000;
@@ -54,6 +54,12 @@ export default function Home() {
   const t = useTranslations('dailyRoutine');
   const tCommon = useTranslations('common');
   const tNewRoutine = useTranslations('newRoutine');
+
+  const loadingMessages = useMemo(
+    () =>
+      Array.from({ length: 30 }, (_, i) => tNewRoutine(`loadingMessages.${i}`)),
+    [tNewRoutine],
+  );
   const theme = useTheme();
   const router = useRouter();
   const params = useParams();
@@ -437,8 +443,6 @@ export default function Home() {
       )
     : 0;
 
-  const latestLog = logs[logs.length - 1];
-
   return (
     <Box
       sx={{
@@ -474,6 +478,7 @@ export default function Home() {
           alignItems: 'flex-start',
           width: '100%',
           zIndex: 1,
+          flex: loading || !routine ? 1 : undefined,
         }}
       >
         <CalendarStrip />
@@ -531,117 +536,12 @@ export default function Home() {
           <Box
             sx={{
               width: '100%',
-              py: 6,
+              flex: 1,
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 4,
-              minHeight: '300px',
             }}
           >
-            <Box
-              sx={{
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <CircularProgress
-                size={80}
-                thickness={3}
-                sx={{
-                  color: 'secondary.main',
-                  '& .MuiCircularProgress-circle': {
-                    strokeLinecap: 'round',
-                  },
-                }}
-              />
-              <Box
-                sx={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                }}
-              >
-                <Box
-                  sx={{
-                    width: 10,
-                    height: 10,
-                    borderRadius: '50%',
-                    bgcolor: 'secondary.main',
-                    animation: 'pulse 2s ease-in-out infinite',
-                    '@keyframes pulse': {
-                      '0%, 100%': {
-                        opacity: 0.4,
-                        transform: 'scale(1)',
-                      },
-                      '50%': {
-                        opacity: 1,
-                        transform: 'scale(1.3)',
-                      },
-                    },
-                  }}
-                />
-              </Box>
-            </Box>
-
-            <Fade in={!!latestLog} key={latestLog} timeout={500}>
-              <Box
-                sx={{
-                  minHeight: '60px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <Typography
-                  variant='body1'
-                  sx={{
-                    textAlign: 'center',
-                    fontWeight: 400,
-                    px: 3,
-                    maxWidth: '350px',
-                    color: 'text.primary',
-                    lineHeight: 1.6,
-                    fontStyle: 'italic',
-                  }}
-                >
-                  {latestLog || t('preparingSession')}
-                </Typography>
-              </Box>
-            </Fade>
-
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 1.5,
-              }}
-            >
-              {[0, 1, 2].map((i) => (
-                <Box
-                  key={i}
-                  sx={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: '50%',
-                    bgcolor: 'secondary.main',
-                    animation: `bounce 1.4s ease-in-out ${i * 0.16}s infinite`,
-                    '@keyframes bounce': {
-                      '0%, 80%, 100%': {
-                        transform: 'scale(0.6)',
-                        opacity: 0.3,
-                      },
-                      '40%': {
-                        transform: 'scale(1)',
-                        opacity: 1,
-                      },
-                    },
-                  }}
-                />
-              ))}
-            </Box>
+            <LoadingState messages={loadingMessages} />
           </Box>
         )}
 
@@ -990,7 +890,8 @@ export default function Home() {
             zIndex: 1,
             alignSelf: 'center',
             margin: '0 auto',
-            mt: loading || routine ? 2.5 : 'auto',
+            mt: loading ? 'auto' : routine ? 2.5 : 'auto',
+            flex: !loading && !routine ? 1 : undefined,
           }}
         >
           {loading && (
@@ -1000,13 +901,13 @@ export default function Home() {
               fullWidth
               disabled
               startIcon={<CircularProgress size={20} color='inherit' />}
-              sx={{ py: 2, borderRadius: '12px', mb: 2 }}
+              sx={{ py: 2, borderRadius: '12px' }}
             >
               {t('preparingSession')}
             </Button>
           )}
 
-          {!loading && (
+          {!loading && routine && (
             <Button
               variant='text'
               size='large'
@@ -1029,6 +930,20 @@ export default function Home() {
             >
               {tCommon('createNewRoutine')}
             </Button>
+          )}
+
+          {!loading && !routine && (
+            <Box
+              sx={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                mt: '-92px',
+              }}
+            >
+              <CircularProgress sx={{ color: 'secondary.main' }} />
+            </Box>
           )}
         </Box>
 

@@ -13,7 +13,6 @@ import {
   useMediaQuery,
   useTheme,
   CircularProgress,
-  Fade,
   IconButton,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -26,143 +25,12 @@ import { getExercisesByLocale } from '@/utils/exercises';
 import { API_BASE_URL } from '@/utils/config';
 import { Routine } from '@/types';
 import { MODAL_MAX_WIDTH } from '@/constants/layout';
+import LoadingState from '@/components/LoadingState';
 
 const CAROUSEL_INTERVAL_MS = 4000;
 const CAROUSEL_SWIPE_PAUSE_MS = 10000;
 const CAROUSEL_SWIPE_THRESHOLD_PX = 50;
 const CAROUSEL_INDEX_STORAGE_KEY_PREFIX = 'newRoutineCarouselIndex_';
-
-interface LoadingStateProps {
-  messages: string[];
-}
-
-function LoadingState({ messages }: LoadingStateProps) {
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [fadeIn, setFadeIn] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFadeIn(false);
-
-      setTimeout(() => {
-        setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
-        setFadeIn(true);
-      }, 500);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [messages.length]);
-
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-        gap: 4,
-        py: 6,
-      }}
-    >
-      <Box
-        sx={{
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <CircularProgress
-          size={80}
-          thickness={3}
-          sx={{
-            color: 'secondary.main',
-            '& .MuiCircularProgress-circle': {
-              strokeLinecap: 'round',
-            },
-          }}
-        />
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          <Box
-            sx={{
-              width: 10,
-              height: 10,
-              borderRadius: '50%',
-              bgcolor: 'secondary.main',
-              animation: 'pulse 2s ease-in-out infinite',
-              '@keyframes pulse': {
-                '0%, 100%': {
-                  opacity: 0.4,
-                  transform: 'scale(1)',
-                },
-                '50%': {
-                  opacity: 1,
-                  transform: 'scale(1.3)',
-                },
-              },
-            }}
-          />
-        </Box>
-      </Box>
-
-      <Fade in={fadeIn} timeout={500}>
-        <Box sx={{ minHeight: '60px', display: 'flex', alignItems: 'center' }}>
-          <Typography
-            variant='body1'
-            sx={{
-              textAlign: 'center',
-              fontWeight: 400,
-              px: 3,
-              maxWidth: '350px',
-              color: 'text.primary',
-              lineHeight: 1.6,
-            }}
-          >
-            {messages[currentMessageIndex]}
-          </Typography>
-        </Box>
-      </Fade>
-
-      <Box
-        sx={{
-          display: 'flex',
-          gap: 1.5,
-        }}
-      >
-        {[0, 1, 2].map((i) => (
-          <Box
-            key={i}
-            sx={{
-              width: 6,
-              height: 6,
-              borderRadius: '50%',
-              bgcolor: 'secondary.main',
-              animation: `bounce 1.4s ease-in-out ${i * 0.16}s infinite`,
-              '@keyframes bounce': {
-                '0%, 80%, 100%': {
-                  transform: 'scale(0.6)',
-                  opacity: 0.3,
-                },
-                '40%': {
-                  transform: 'scale(1)',
-                  opacity: 1,
-                },
-              },
-            }}
-          />
-        ))}
-      </Box>
-    </Box>
-  );
-}
 
 export default function NewRoutinePage() {
   const t = useTranslations('newRoutine');
@@ -279,16 +147,9 @@ export default function NewRoutinePage() {
   );
 
   // Get translated loading messages
-  const loadingMessages = [
-    t('loadingMessages.0'),
-    t('loadingMessages.1'),
-    t('loadingMessages.2'),
-    t('loadingMessages.3'),
-    t('loadingMessages.4'),
-    t('loadingMessages.5'),
-    t('loadingMessages.6'),
-    t('loadingMessages.7'),
-  ];
+  const loadingMessages = Array.from({ length: 30 }, (_, i) =>
+    t(`loadingMessages.${i}`),
+  );
 
   // Restore proposed routine from sessionStorage on mount
   useEffect(() => {

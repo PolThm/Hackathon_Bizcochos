@@ -18,6 +18,12 @@ import Image from 'next/image';
 import { getExercisesByLocale } from '@/utils/exercises';
 import { Link } from '@/i18n/routing';
 
+const BACK_HREF_BY_FROM: Record<string, string> = {
+  home: '/',
+  setup: '/setup',
+  'new-routine': '/new-routine',
+};
+
 export default function ExerciseDetailsPage() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -26,12 +32,7 @@ export default function ExerciseDetailsPage() {
   const locale = (params?.locale as string) ?? 'en';
   const allExercises = getExercisesByLocale(locale);
   const from = searchParams.get('from');
-  const backHref =
-    from === 'setup'
-      ? '/setup'
-      : from === 'new-routine'
-        ? '/new-routine'
-        : '/library';
+  const backHref = (from && BACK_HREF_BY_FROM[from]) ?? '/library';
 
   const exercise = useMemo(() => {
     return allExercises.find((ex) => ex.id === exerciseId);

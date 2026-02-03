@@ -232,15 +232,15 @@ export async function* streamAgenticRoutine(
   const stepMessages = {
     en: {
       fetcher: "Analyzing context and scheduling",
-      calendarReserved: "Slot reserved in your Google Calendar!",
+      calendarReserved: "Reserving slot in your Google Calendar",
     },
     fr: {
       fetcher: "Analyse du contexte et planification",
-      calendarReserved: "Créneau réservé dans ton calendrier Google !",
+      calendarReserved: "Réservation de créneau dans ton calendrier Google",
     },
     es: {
       fetcher: "Analizando contexto y planificación",
-      calendarReserved: "¡Slot reservado en tu calendario Google!",
+      calendarReserved: "Reservando slot en tu calendario Google",
     },
   };
   const t = stepMessages[locale] ?? stepMessages.en;

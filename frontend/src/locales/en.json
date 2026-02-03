@@ -15,7 +15,7 @@
     "referenceAlreadyUsed": "This routine is already in your list",
     "reset": "Reset",
     "resetRoutinesConfirm": "Reset all routines? This action cannot be undone.",
-    "letsGo": "LET'S GO!"
+    "letsGo": "Let's go!"
   },
   "home": {
     "start": "START",
@@ -39,7 +39,7 @@
     "resetRoutine": "Reset the routine?",
     "delete": "Delete",
     "deleteRoutine": "Delete the routine?",
-    "letsGo": "LET'S GO!",
+    "letsGo": "Let's go!",
     "newRoutine": "Routine",
     "createNewRoutine": "Create a new routine?",
     "deleteExercise": "Delete this exercise?",
@@ -49,7 +49,7 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "error": "Oops, an error occurred...",
-    "refresh": "REFRESH",
+    "refresh": "Refresh",
     "home": "HOME",
     "pageNotFound": "Page not found",
     "practice": "PRACTICE",
@@ -178,7 +178,7 @@
     "calendarConnected": "Calendar Connected!",
     "calendarPrivacy": "We only read your schedule to optimize exercise timing",
     "continue": "Continue",
-    "finish": "Finish Onboarding"
+    "finish": "Create my first Routine!"
   },
   "pwa": {
     "installPrompt": {

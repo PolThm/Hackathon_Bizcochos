@@ -15,7 +15,7 @@
     "referenceAlreadyUsed": "Esta rutina ya está en tu lista",
     "reset": "Restablecimiento",
     "resetRoutinesConfirm": "Restablecer todas las rutinas? Esta acción es irreversible.",
-    "letsGo": "¡VAMOS!"
+    "letsGo": "¡Vamos!"
   },
   "home": {
     "start": "COMENZAR",
@@ -39,7 +39,7 @@
     "resetRoutine": "Reiniciar la rutina?",
     "delete": "Eliminar",
     "deleteRoutine": "Eliminar la rutina?",
-    "letsGo": "¡VAMOS!",
+    "letsGo": "¡Vamos!",
     "newRoutine": "Routine",
     "createNewRoutine": "¿Crear una nueva rutina?",
     "deleteExercise": "¿Eliminar este ejercicio?",
@@ -49,7 +49,7 @@
     "confirm": "Confirmar",
     "cancel": "Cancelar",
     "error": "Ups, ocurrió un error...",
-    "refresh": "ACTUALIZAR",
+    "refresh": "Actualizar",
     "home": "INICIO",
     "pageNotFound": "Página no encontrada",
     "practice": "PRÁCTICA",
@@ -177,7 +177,7 @@
     "calendarConnected": "¡Calendario conectado!",
     "calendarPrivacy": "Solo leemos tu agenda para optimizar el momento de los ejercicios",
     "continue": "Continuar",
-    "finish": "Finalizar onboarding"
+    "finish": "¡Crear mi primera Rutina!"
   },
   "pwa": {
     "installPrompt": {

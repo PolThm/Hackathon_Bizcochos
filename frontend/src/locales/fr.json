@@ -15,7 +15,7 @@
     "referenceAlreadyUsed": "Cette routine est déjà dans ta liste",
     "reset": "Réinitialisation",
     "resetRoutinesConfirm": "Réinitialiser toutes les routines ? Cette action est irréversible.",
-    "letsGo": "C'EST PARTI !"
+    "letsGo": "C'est parti !"
   },
   "home": {
     "start": "COMMENCER",
@@ -39,7 +39,7 @@
     "resetRoutine": "Réinitialiser la routine ?",
     "delete": "Supprimer",
     "deleteRoutine": "Supprimer la routine ?",
-    "letsGo": "C'EST PARTI !",
+    "letsGo": "C'est parti !",
     "newRoutine": "Routine",
     "createNewRoutine": "Créer une nouvelle routine ?",
     "deleteExercise": "Supprimer cet exercice ?",
@@ -49,7 +49,7 @@
     "confirm": "Confirmer",
     "cancel": "Annuler",
     "error": "Oups, une erreur est survenue...",
-    "refresh": "RAFRAÎCHIR",
+    "refresh": "Rafraîchir",
     "home": "ACCUEIL",
     "pageNotFound": "Page non trouvée",
     "practice": "PRATIQUE",
@@ -178,7 +178,7 @@
     "calendarConnected": "Calendrier connecté !",
     "calendarPrivacy": "On consulte ton agenda seulement pour optimiser le moment des exercices",
     "continue": "Continuer",
-    "finish": "Terminer l'onboarding"
+    "finish": "Créer ma première Routine !"
   },
   "pwa": {
     "installPrompt": {

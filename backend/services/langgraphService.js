@@ -207,7 +207,7 @@ export async function* streamAgenticRoutine(
       new SystemMessage(`You are a fitness AI.
       1. USE 'create_calendar_event' NOW for a 30m slot (with the name of the routine). The slot MUST start AFTER the current time, never in the past.
       2. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
-      3. Write a short and catchy "name" in ${langInstruction}, starting by the date (dd/mm - ...) (30 characters maximum, without talking about the routine duration).
+      3. Write a short and catchy "name" in ${langInstruction} (30 characters maximum, without talking about the routine duration).
       4. Write "description" in ${langInstruction} (between 100 and 300 characters maximum, without giving the exercise names, without giving the routine name, and without talking about the routine duration). The description MUST: (a) mention the user's first name naturally at least once; (b) explain why this routine was chosen—if possible, reference today's context (weather, calendar, schedule) that justifies these choices; otherwise explain more globally why it fits the user's profile (goals, level, limitations).
       5. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 900 seconds (5–15 minutes). Never exceed 900 seconds total.
       Available exercises: ${JSON.stringify(exercises)}

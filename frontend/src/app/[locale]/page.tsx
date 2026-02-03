@@ -638,7 +638,7 @@ export default function Home() {
         )}
 
         {userProfile && !loading && routine && (
-          <Box sx={{ width: '100%', mt: 0.5 }}>
+          <Box sx={{ width: '100%', mt: 1 }}>
             <Box
               sx={{
                 display: 'flex',

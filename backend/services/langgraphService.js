@@ -209,7 +209,7 @@ export async function* streamAgenticRoutine(
       2. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
       3. Write a short and catchy "name" in ${langInstruction} (30 characters maximum, without talking about the routine duration).
       4. Write "description" in ${langInstruction} (between 100 and 300 characters maximum, without giving the exercise names, without giving the routine name, and without talking about the routine duration). The description MUST: (a) mention the user's first name naturally at least once; (b) explain why this routine was chosen—if possible, reference today's context (weather, calendar, schedule) that justifies these choices; otherwise explain more globally why it fits the user's profile (goals, level, limitations).
-      5. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 900 seconds (5–15 minutes). Never exceed 900 seconds total.
+      5. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 900 seconds (5–15 minutes). Never exceed 900 seconds total. The longer the routine, the greater the number of exercises should be (an exercise should be at minimum 15 seconds, and at most 60 seconds).
       Available exercises: ${JSON.stringify(exercises)}
       Be fast. One-shot.`),
       ...state.messages,

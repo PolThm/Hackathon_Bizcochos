@@ -67,15 +67,19 @@ export default function PWAInstallPrompt() {
     return null;
   }
 
+  const snackbarOpen = isVisible && !showManualInstructions;
+
   return (
     <>
-      {/* Install Prompt Snackbar */}
       <Snackbar
-        open={isVisible && !showManualInstructions}
+        open={snackbarOpen}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        sx={{ mb: 2, px: 2 }}
+        sx={{
+          mb: 2,
+          px: 2,
+          ...(!snackbarOpen && { pointerEvents: 'none' }),
+        }}
         TransitionComponent={(props) => <Slide {...props} direction='up' />}
-        // No onClose handler - prevents clickaway dismissal
       >
         <Card
           sx={{

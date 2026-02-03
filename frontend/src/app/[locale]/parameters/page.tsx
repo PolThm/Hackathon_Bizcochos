@@ -161,13 +161,16 @@ export default function ParametersPage() {
       // Clear all IndexedDB data (routines, preferences, streak, etc.)
       await clearIndexedDB();
 
-      // Clear localStorage (Google auth, user profile, location)
+      // Clear localStorage (Google auth, user profile, location, daily routine cache)
       localStorage.removeItem('googleAccessToken');
       localStorage.removeItem('userProfile');
       localStorage.removeItem('userLat');
       localStorage.removeItem('userLon');
+      Object.keys(localStorage)
+        .filter((k) => k.startsWith('dailyRoutine_'))
+        .forEach((k) => localStorage.removeItem(k));
 
-      // Clear session storage (temp routine drafts, daily cache, carousel state)
+      // Clear session storage (temp routine drafts, carousel state)
       sessionStorage.clear();
 
       // Clear language preference cookie

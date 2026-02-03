@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Howl } from 'howler';
-import { getItem, setItem } from '@/utils/indexedDB';
+import { getItem } from '@/utils/indexedDB';
 import { routing } from '@/i18n/routing';
-import routineExampleEn from '@/mocks/routine-example-en.json';
-import routineExampleFr from '@/mocks/routine-example-fr.json';
-import routineExampleEs from '@/mocks/routine-example-es.json';
+// import routineExampleEn from '@/mocks/routine-example-en.json';
+// import routineExampleFr from '@/mocks/routine-example-fr.json';
+// import routineExampleEs from '@/mocks/routine-example-es.json';
 
 const PREFERRED_LOCALE_COOKIE = 'preferred-locale';
 
@@ -107,59 +107,59 @@ export default function AppInitializer() {
 
     checkAllSoundsLoaded();
 
-    // TODO: See if it's better to remove it or no
-    // Initialize default routines if none exist
-    const initializeDefaultRoutines = async () => {
-      try {
-        const existingRoutines = await getItem('allRoutines');
-        let routines = existingRoutines ? JSON.parse(existingRoutines) : [];
+    // TODO: See if it's better to keep or remove the default routines
+    // Initialize default routines if none exist (disabled)
+    // const initializeDefaultRoutines = async () => {
+    //   try {
+    //     const existingRoutines = await getItem('allRoutines');
+    //     let routines = existingRoutines ? JSON.parse(existingRoutines) : [];
 
-        // Check if default routines were voluntarily deleted
-        const deletedDefaultRoutinesStr = await getItem(
-          'deletedDefaultRoutines',
-        );
-        const deletedDefaultRoutines = deletedDefaultRoutinesStr
-          ? JSON.parse(deletedDefaultRoutinesStr)
-          : { example: false };
+    //     // Check if default routines were voluntarily deleted
+    //     const deletedDefaultRoutinesStr = await getItem(
+    //       'deletedDefaultRoutines',
+    //     );
+    //     const deletedDefaultRoutines = deletedDefaultRoutinesStr
+    //       ? JSON.parse(deletedDefaultRoutinesStr)
+    //       : { example: false };
 
-        // Check if Example routine exists (in any language)
-        const hasExample = routines.some((r: any) => r.id === 'example');
+    //     // Check if Example routine exists (in any language)
+    //     const hasExample = routines.some((r: any) => r.id === 'example');
 
-        // Only add default routines if they don't exist AND weren't voluntarily deleted
-        if (!hasExample && !deletedDefaultRoutines.example) {
-          // Get user locale or default to English
-          const locale =
-            typeof window !== 'undefined' && navigator.language.startsWith('fr')
-              ? 'fr'
-              : typeof window !== 'undefined' &&
-                  navigator.language.startsWith('es')
-                ? 'es'
-                : 'en';
+    //     // Only add default routines if they don't exist AND weren't voluntarily deleted
+    //     if (!hasExample && !deletedDefaultRoutines.example) {
+    //       // Get user locale or default to English
+    //       const locale =
+    //         typeof window !== 'undefined' && navigator.language.startsWith('fr')
+    //           ? 'fr'
+    //           : typeof window !== 'undefined' &&
+    //               navigator.language.startsWith('es')
+    //             ? 'es'
+    //             : 'en';
 
-          let exampleRoutine;
-          switch (locale) {
-            case 'fr':
-              exampleRoutine = routineExampleFr;
-              break;
-            case 'es':
-              exampleRoutine = routineExampleEs;
-              break;
-            default:
-              exampleRoutine = routineExampleEn;
-          }
+    //       let exampleRoutine;
+    //       switch (locale) {
+    //         case 'fr':
+    //           exampleRoutine = routineExampleFr;
+    //           break;
+    //         case 'es':
+    //           exampleRoutine = routineExampleEs;
+    //           break;
+    //         default:
+    //           exampleRoutine = routineExampleEn;
+    //       }
 
-          if (!hasExample && !deletedDefaultRoutines.example) {
-            routines.push(exampleRoutine);
-          }
+    //       if (!hasExample && !deletedDefaultRoutines.example) {
+    //         routines.push(exampleRoutine);
+    //       }
 
-          await setItem('allRoutines', JSON.stringify(routines));
-        }
-      } catch (error) {
-        console.error('Failed to initialize default routines:', error);
-      }
-    };
+    //       await setItem('allRoutines', JSON.stringify(routines));
+    //     }
+    //   } catch (error) {
+    //     console.error('Failed to initialize default routines:', error);
+    //   }
+    // };
 
-    initializeDefaultRoutines();
+    // initializeDefaultRoutines();
   }, []);
 
   // Make sounds available globally on window for other components to use

@@ -10,13 +10,11 @@ import {
   useTheme,
   Paper,
   Chip,
-  TextField,
 } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useRouter } from '@/i18n/routing';
 import Image from 'next/image';
-import Script from 'next/script';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TimerIcon from '@mui/icons-material/Timer';
@@ -28,14 +26,18 @@ import UmbrellaIcon from '@mui/icons-material/Umbrella';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import GrainIcon from '@mui/icons-material/Grain';
 import { setItem, getItem } from '@/utils/indexedDB';
-import { API_BASE_URL, GOOGLE_CLIENT_ID } from '@/utils/config';
+import { API_BASE_URL } from '@/utils/config';
+import { getDailyRoutineStorageKey } from '@/utils/dailyRoutineStorage';
 import type { Routine } from '@/types';
 import { useObjectStorage } from '@/hooks/useStorage';
 import { getExercisesByLocale } from '@/utils/exercises';
 import CalendarStrip from '@/components/CalendarStrip';
-import OnboardingModal from '@/components/OnboardingModal';
 import LoadingState from '@/components/LoadingState';
 import { CONTENT_MAX_WIDTH } from '@/constants/layout';
+import {
+  vortexBallAnimations,
+  vortexBallAnimationConfig,
+} from '@/styles/vortexBallAnimations';
 
 const CAROUSEL_INTERVAL_MS = 4000;
 const CAROUSEL_SWIPE_PAUSE_MS = 10000;
@@ -54,6 +56,7 @@ export default function Home() {
   const t = useTranslations('dailyRoutine');
   const tCommon = useTranslations('common');
   const tNewRoutine = useTranslations('newRoutine');
+  const tWelcome = useTranslations('welcome');
 
   const loadingMessages = useMemo(
     () =>
@@ -69,8 +72,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
-  const [showOnboarding, setShowOnboarding] = useState(false);
   const [userProfile, setUserProfile] = useState<any>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [allRoutines] = useObjectStorage<Routine[]>('allRoutines', []);
@@ -82,7 +85,6 @@ export default function Home() {
     code: number;
   } | null>(null);
   const [googleConnected, setGoogleConnected] = useState(false);
-  const [isGisLoaded, setIsGisLoaded] = useState(false);
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [skipCarouselTransition, setSkipCarouselTransition] = useState(false);
@@ -100,30 +102,24 @@ export default function Home() {
     setGoogleConnected(!!token);
 
     const profile = localStorage.getItem('userProfile');
-    if (!profile) {
-      setShowOnboarding(true);
-    } else {
+    if (profile) {
       setUserProfile(JSON.parse(profile));
     }
 
-    // Check if we already have a generated routine for today
-    const today = new Date().toISOString().split('T')[0];
-    const saved = sessionStorage.getItem(`dailyRoutine_${today}`);
+    // Check if we already have a generated routine for today (day = until 6am)
+    const key = getDailyRoutineStorageKey();
+    const saved = localStorage.getItem(key);
     if (saved) {
       setRoutine(JSON.parse(saved));
       setHasStarted(true);
     }
-  }, []);
 
-  const handleOnboardingComplete = (profile: any) => {
-    localStorage.setItem('userProfile', JSON.stringify(profile));
-    setUserProfile(profile);
-    setShowOnboarding(false);
-  };
+    setIsInitialized(true);
+  }, []);
 
   const handleGenerateSession = useCallback(
     async (currentProfile?: any) => {
-      const today = new Date().toISOString().split('T')[0];
+      const storageKey = getDailyRoutineStorageKey();
       const profileToUse = currentProfile || userProfile;
 
       setLoading(true);
@@ -199,8 +195,8 @@ export default function Home() {
                 setRoutine(formattedRoutine);
                 setTimeout(() => {
                   setLoading(false);
-                  sessionStorage.setItem(
-                    `dailyRoutine_${today}`,
+                  localStorage.setItem(
+                    storageKey,
                     JSON.stringify(formattedRoutine),
                   );
                 }, 1000);
@@ -222,11 +218,15 @@ export default function Home() {
   );
 
   // Auto-trigger generation when profile is ready and no routine exists
+  // Check localStorage directly to avoid race: a routine may exist but state not yet updated
   useEffect(() => {
-    if (userProfile && !routine && !loading && !showOnboarding) {
+    const key = getDailyRoutineStorageKey();
+    const saved = localStorage.getItem(key);
+    if (saved) return; // Already have a routine for today (even if not validated), don't regenerate
+    if (userProfile && !routine && !loading) {
       handleGenerateSession();
     }
-  }, [userProfile, routine, loading, showOnboarding, handleGenerateSession]);
+  }, [userProfile, routine, loading, handleGenerateSession]);
 
   useEffect(() => {
     const fetchLocationAndWeather = async () => {
@@ -318,29 +318,6 @@ export default function Home() {
       router.push(path);
     } catch (error) {
       console.error('Error saving routine:', error);
-    }
-  };
-
-  const handleConnectCalendar = () => {
-    if (!isGisLoaded) {
-      console.error('Google Identity Services script not loaded');
-      return;
-    }
-
-    try {
-      const client = (window as any).google.accounts.oauth2.initTokenClient({
-        client_id: GOOGLE_CLIENT_ID,
-        scope: 'https://www.googleapis.com/auth/calendar.events',
-        callback: (response: any) => {
-          if (response.access_token) {
-            localStorage.setItem('googleAccessToken', response.access_token);
-            setGoogleConnected(true);
-          }
-        },
-      });
-      client.requestAccessToken();
-    } catch (e) {
-      console.error('Error initiating Google OAuth:', e);
     }
   };
 
@@ -456,45 +433,52 @@ export default function Home() {
         position: 'relative',
       }}
     >
-      {/* Decorative background elements */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '100%',
-          maxWidth: CONTENT_MAX_WIDTH,
-          height: '100dvh',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      >
+      {/* Decorative background elements - only before onboarding */}
+      {!userProfile && (
         <Box
           sx={{
             position: 'absolute',
-            top: '10%',
-            right: '10%',
-            width: '120px',
-            height: '120px',
-            borderRadius: '50%',
-            backgroundColor: theme.palette.secondary.main,
-            opacity: 0.1,
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '100%',
+            maxWidth: CONTENT_MAX_WIDTH,
+            height: '90dvh',
+            pointerEvents: 'none',
+            zIndex: 0,
+            ...vortexBallAnimations,
           }}
-        />
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '25%',
-            left: '10%',
-            width: '90px',
-            height: '90px',
-            borderRadius: '50%',
-            backgroundColor: theme.palette.primary.main,
-            opacity: 0.05,
-          }}
-        />
-      </Box>
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: '120px',
+              height: '120px',
+              borderRadius: '50%',
+              backgroundColor: theme.palette.secondary.main,
+              transform: 'translate(-50%, -50%) scale(0.12)',
+              opacity: 0,
+              animation: `vortexBallTopRight ${vortexBallAnimationConfig.duration} ${vortexBallAnimationConfig.easing} forwards`,
+            }}
+          />
+          <Box
+            sx={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: '90px',
+              height: '90px',
+              borderRadius: '50%',
+              backgroundColor: theme.palette.primary.main,
+              transform: 'translate(-50%, -50%) scale(0.12)',
+              opacity: 0,
+              animation: `vortexBallBottomLeft ${vortexBallAnimationConfig.duration} ${vortexBallAnimationConfig.easing} ${vortexBallAnimationConfig.delay} forwards`,
+            }}
+          />
+        </Box>
+      )}
 
       <Box
         sx={{
@@ -503,12 +487,12 @@ export default function Home() {
           alignItems: 'flex-start',
           width: '100%',
           zIndex: 1,
-          flex: loading || !routine ? 1 : undefined,
+          flex: loading || !routine || !userProfile ? 1 : undefined,
         }}
       >
-        <CalendarStrip />
+        {userProfile && <CalendarStrip />}
 
-        {userLocation && (
+        {userProfile && userLocation && (
           <Box
             sx={{
               display: 'flex',
@@ -557,21 +541,104 @@ export default function Home() {
           </Box>
         )}
 
-        {loading && (
+        {!userProfile && (
+          <Box
+            sx={{
+              flex: 1,
+              alignSelf: 'stretch',
+              minHeight: 'calc(100dvh - 140px)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              px: 2,
+              py: 4,
+            }}
+          >
+            <Typography
+              variant='overline'
+              sx={{
+                fontSize: '0.75rem',
+                letterSpacing: '0.2em',
+                color: theme.palette.text.secondary,
+                mb: 1,
+              }}
+            >
+              {tWelcome('welcomeTo')}
+            </Typography>
+            <Typography
+              variant='h1'
+              sx={{
+                mb: 2,
+                fontSize: '2.5rem !important',
+                background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              ROUTINES
+            </Typography>
+            <Typography
+              variant='body1'
+              sx={{
+                color: theme.palette.text.secondary,
+                fontStyle: 'italic',
+                fontSize: '0.95rem',
+                mb: 4,
+              }}
+            >
+              {tWelcome('description')}
+            </Typography>
+            {!isInitialized ? (
+              <CircularProgress
+                sx={{ color: theme.palette.primary.main, mt: 2 }}
+              />
+            ) : (
+              <Button
+                variant='contained'
+                size='large'
+                onClick={() => router.push('/onboarding')}
+                sx={{
+                  py: 1.75,
+                  px: 5,
+                  borderRadius: '12px',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  backgroundColor: theme.palette.primary.main,
+                  color: '#fff',
+                  boxShadow: 'none',
+                  '&:hover': {
+                    backgroundColor: theme.palette.primary.main,
+                    opacity: 0.9,
+                  },
+                }}
+              >
+                {tWelcome('startAdventure')}
+              </Button>
+            )}
+          </Box>
+        )}
+
+        {userProfile && loading && (
           <Box
             sx={{
               width: '100%',
               flex: 1,
               display: 'flex',
               flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
             <LoadingState messages={loadingMessages} stepMessages={logs} />
           </Box>
         )}
 
-        {!loading && routine && (
-          <Box sx={{ width: '100%', mt: 1 }}>
+        {userProfile && !loading && routine && (
+          <Box sx={{ width: '100%', mt: 0.5 }}>
             <Box
               sx={{
                 display: 'flex',
@@ -583,7 +650,7 @@ export default function Home() {
               <Typography
                 variant='h1'
                 sx={{
-                  fontSize: '2rem !important',
+                  fontSize: '1.8rem !important',
                   fontWeight: 700,
                   color: theme.palette.primary.main,
                 }}
@@ -919,20 +986,19 @@ export default function Home() {
             flex: !loading && !routine ? 1 : undefined,
           }}
         >
-          {loading && (
+          {userProfile && loading && (
             <Button
               variant='contained'
               size='large'
               fullWidth
               disabled
-              startIcon={<CircularProgress size={20} color='inherit' />}
               sx={{ py: 2, borderRadius: '12px' }}
             >
               {t('preparingSession')}
             </Button>
           )}
 
-          {!loading && routine && (
+          {userProfile && !loading && routine && (
             <Button
               variant='text'
               size='large'
@@ -957,7 +1023,7 @@ export default function Home() {
             </Button>
           )}
 
-          {!loading && !routine && (
+          {userProfile && !loading && !routine && (
             <Box
               sx={{
                 flex: 1,
@@ -971,18 +1037,6 @@ export default function Home() {
             </Box>
           )}
         </Box>
-
-        <Script
-          src='https://accounts.google.com/gsi/client'
-          onLoad={() => setIsGisLoaded(true)}
-        />
-
-        <OnboardingModal
-          isOpen={showOnboarding}
-          onComplete={handleOnboardingComplete}
-          handleConnectCalendar={handleConnectCalendar}
-          googleConnected={googleConnected}
-        />
       </Box>
     </Box>
   );

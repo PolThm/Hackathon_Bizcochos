@@ -150,8 +150,13 @@
     "exercisesCount": "{count} Exercises",
     "googleCalendarAlt": "Google Calendar"
   },
+  "welcome": {
+    "welcomeTo": "Welcome to",
+    "description": "The stretching app powered by AI",
+    "startAdventure": "Let's Get Started"
+  },
   "onboarding": {
-    "title": "Welcome to Routines",
+    "title": "Welcome",
     "subtitle": "Let's personalize your daily sessions",
     "stepProfile": "Profile",
     "stepContext": "Context",

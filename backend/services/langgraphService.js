@@ -105,6 +105,11 @@ const createTools = (googleToken, userProfile) => {
     func: async (args) => {
       const token = googleToken || process.env.GOOGLE_CALENDAR_TOKEN;
       if (!token) return "Calendar not connected.";
+      const now = new Date();
+      const startTime = new Date(args.startTime);
+      if (startTime < now) {
+        return "Cannot schedule in the past. The slot must start at or after the current time.";
+      }
       try {
         const response = await fetch(
           `https://www.googleapis.com/calendar/v3/calendars/primary/events`,
@@ -161,14 +166,17 @@ export async function* streamAgenticRoutine(
       tools.find((t) => t.name === "get_user_info").func(),
     ]);
 
+    const now = new Date();
+    const currentTimeIso = now.toISOString();
     return {
       messages: [
         new SystemMessage(`CONTEXT:
       - Weather: ${weather}
       - Calendar: ${calendar}
       - Profile: ${info}
+      - Current time (UTC): ${currentTimeIso}
       
-      Mandate: Call 'create_calendar_event' for a 30m FREE slot TODAY. ColorId 6, TimeZone ${timeZone}. Then generate the routine JSON.`),
+      Mandate: Call 'create_calendar_event' for a 30m FREE slot TODAY (with the name of the routine). The slot MUST start AFTER the current time, never before. ColorId 6, TimeZone ${timeZone}. Then generate the routine JSON.`),
       ],
     };
   };
@@ -197,10 +205,11 @@ export async function* streamAgenticRoutine(
     const plannerModel = model.bindTools(tools);
     const response = await plannerModel.invoke([
       new SystemMessage(`You are a fitness AI.
-      1. USE 'create_calendar_event' NOW for a 30m slot.
+      1. USE 'create_calendar_event' NOW for a 30m slot (with the name of the routine). The slot MUST start AFTER the current time, never in the past.
       2. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
-      3. Write "name" and "description" in ${langInstruction}.
-      4. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 600 seconds (5–10 minutes). Use 4–8 exercises. Never exceed 600 seconds total.
+      3. Write a short and catchy "name" in ${langInstruction}, starting by the date (dd/mm - ...) (30 characters maximum, without talking about the routine duration).
+      4. Write "description" in ${langInstruction} (between 100 and 300 characters maximum, without giving the exercise names, without giving the routine name, and without talking about the routine duration). The description MUST: (a) mention the user's first name naturally at least once; (b) explain why this routine was chosen—if possible, reference today's context (weather, calendar, schedule) that justifies these choices; otherwise explain more globally why it fits the user's profile (goals, level, limitations).
+      5. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 900 seconds (5–15 minutes). Never exceed 900 seconds total.
       Available exercises: ${JSON.stringify(exercises)}
       Be fast. One-shot.`),
       ...state.messages,
@@ -222,16 +231,16 @@ export async function* streamAgenticRoutine(
 
   const stepMessages = {
     en: {
-      fetcher: "Analyzing context and scheduling...",
-      calendarReserved: "Slot reserved in your calendar! ✅",
+      fetcher: "Analyzing context and scheduling",
+      calendarReserved: "Slot reserved in your Google Calendar!",
     },
     fr: {
-      fetcher: "Analyse du contexte et planification...",
-      calendarReserved: "Créneau réservé dans ton calendrier ! ✅",
+      fetcher: "Analyse du contexte et planification",
+      calendarReserved: "Créneau réservé dans ton calendrier Google !",
     },
     es: {
-      fetcher: "Analizando contexto y planificación...",
-      calendarReserved: "¡Slot reservado en tu calendario! ✅",
+      fetcher: "Analizando contexto y planificación",
+      calendarReserved: "¡Slot reservado en tu calendario Google!",
     },
   };
   const t = stepMessages[locale] ?? stepMessages.en;

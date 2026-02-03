@@ -150,8 +150,13 @@
     "exercisesCount": "{count} exercices",
     "googleCalendarAlt": "Google Calendar"
   },
+  "welcome": {
+    "welcomeTo": "Bienvenue sur",
+    "description": "L'app d'étirements propulsée par l'IA",
+    "startAdventure": "C'est parti !"
+  },
   "onboarding": {
-    "title": "Bienvenue sur Routines",
+    "title": "Bienvenue",
     "subtitle": "Personnalisons tes séances quotidiennes",
     "stepProfile": "Profil",
     "stepContext": "Contexte",

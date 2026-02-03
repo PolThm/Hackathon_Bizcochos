@@ -3,8 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Box, Typography, CircularProgress, Fade } from '@mui/material';
 
-const STEP_STALE_MS = 7000;
-
 interface LoadingStateProps {
   messages: string[];
   stepMessages?: string[];
@@ -15,49 +13,42 @@ export default function LoadingState({
   stepMessages = [],
 }: LoadingStateProps) {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [fadeIn, setFadeIn] = useState(true);
-  const [useBackendMessage, setUseBackendMessage] = useState(true);
+  const [frontendFadeIn, setFrontendFadeIn] = useState(true);
+  const [backendFadeIn, setBackendFadeIn] = useState(true);
   const prevStepLengthRef = useRef(0);
 
-  // When backend sends a new step, show it and reset the 7s timer
+  // When backend sends a new step, fade in the new message (only when adding, not on initial mount)
   useEffect(() => {
     if (stepMessages.length > prevStepLengthRef.current) {
+      const hadPrevious = prevStepLengthRef.current > 0;
       prevStepLengthRef.current = stepMessages.length;
-      setUseBackendMessage(true);
+      if (hadPrevious) {
+        setBackendFadeIn(false);
+        const timer = setTimeout(() => {
+          setBackendFadeIn(true);
+        }, 300);
+        return () => clearTimeout(timer);
+      }
     }
-  }, [stepMessages.length]);
-
-  // After 7s without backend update, switch to frontend message
-  useEffect(() => {
-    if (stepMessages.length === 0) return;
-    const timer = setTimeout(() => {
-      setUseBackendMessage(false);
-    }, STEP_STALE_MS);
-    return () => clearTimeout(timer);
   }, [stepMessages.length]);
 
   // Rotate frontend messages every 7s
   useEffect(() => {
     const interval = setInterval(() => {
-      setFadeIn(false);
+      setFrontendFadeIn(false);
       setTimeout(() => {
         setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
-        setFadeIn(true);
+        setFrontendFadeIn(true);
       }, 500);
     }, 7000);
     return () => clearInterval(interval);
   }, [messages.length]);
 
   const hasBackendSteps = stepMessages.length > 0;
-  const showBackend = hasBackendSteps && useBackendMessage;
-  const displayText = showBackend
+  const backendText = hasBackendSteps
     ? stepMessages[stepMessages.length - 1]
-    : messages[currentMessageIndex];
-  const textColor = showBackend
-    ? 'text.primary'
-    : hasBackendSteps
-      ? 'secondary.main'
-      : 'text.primary';
+    : null;
+  const frontendText = messages[currentMessageIndex];
 
   return (
     <Box
@@ -119,22 +110,66 @@ export default function LoadingState({
         </Box>
       </Box>
 
-      <Fade in={fadeIn} timeout={500}>
-        <Box sx={{ minHeight: '60px', display: 'flex', alignItems: 'center' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 1,
+        }}
+      >
+        {backendText && (
+          <Fade in={backendFadeIn} timeout={300}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 1.5,
+              }}
+            >
+              <Typography
+                variant='body1'
+                sx={{
+                  textAlign: 'center',
+                  fontWeight: 400,
+                  lineHeight: 1.6,
+                  px: 3,
+                  mb: 1,
+                  background: (theme) =>
+                    `linear-gradient(90deg, ${theme.palette.text.primary} 0%, ${theme.palette.grey[500]} 25%, ${theme.palette.text.primary} 50%, ${theme.palette.grey[500]} 75%, ${theme.palette.text.primary} 100%)`,
+                  backgroundSize: '200% 100%',
+                  animation: 'shimmer 2.5s ease-in-out infinite',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  color: 'transparent',
+                  '@keyframes shimmer': {
+                    '0%': { backgroundPosition: '100% 50%' },
+                    '100%': { backgroundPosition: '0% 50%' },
+                  },
+                }}
+              >
+                {backendText}
+              </Typography>
+            </Box>
+          </Fade>
+        )}
+        <Fade in={frontendFadeIn} timeout={500}>
           <Typography
             variant='body1'
             sx={{
               textAlign: 'center',
               fontWeight: 400,
               px: 3,
-              color: textColor,
+              color: hasBackendSteps ? 'secondary.main' : 'text.primary',
               lineHeight: 1.6,
+              fontStyle: 'italic',
             }}
           >
-            {displayText}
+            {frontendText}
           </Typography>
-        </Box>
-      </Fade>
+        </Fade>
+      </Box>
 
       <Box
         sx={{

@@ -28,6 +28,7 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import { setItem, getItem } from '@/utils/indexedDB';
 import { API_BASE_URL } from '@/utils/config';
+import { getDailyRoutineStorageKey } from '@/utils/dailyRoutineStorage';
 import type { Routine } from '@/types';
 
 interface StreamLog {
@@ -59,8 +60,8 @@ export default function DailyRoutinePage() {
 
   useEffect(() => {
     const fetchDailyRoutineStream = async () => {
-      const today = new Date().toISOString().split('T')[0];
-      const saved = sessionStorage.getItem(`dailyRoutine_${today}`);
+      const key = getDailyRoutineStorageKey();
+      const saved = localStorage.getItem(key);
 
       if (saved) {
         setRoutine(JSON.parse(saved));
@@ -103,10 +104,7 @@ export default function DailyRoutinePage() {
                 // Delay a bit before showing final routine to let user read the last step
                 setTimeout(() => {
                   setLoading(false);
-                  sessionStorage.setItem(
-                    `dailyRoutine_${today}`,
-                    JSON.stringify(chunk.data),
-                  );
+                  localStorage.setItem(key, JSON.stringify(chunk.data));
                 }, 1000);
               } else if (chunk.type === 'error') {
                 console.error('Agent error:', chunk.message);

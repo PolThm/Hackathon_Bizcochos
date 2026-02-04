@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'www.gstatic.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        pathname: '/**',
+      },
     ],
   },
   webpack: (config) => {

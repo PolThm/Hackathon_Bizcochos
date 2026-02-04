@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Button,
   TextField,
@@ -17,7 +17,12 @@ import Script from 'next/script';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/routing';
 import { CONTENT_MAX_WIDTH } from '@/constants/layout';
-import { GOOGLE_CLIENT_ID } from '@/utils/config';
+import {
+  GOOGLE_CLIENT_ID,
+  STRAVA_CLIENT_ID,
+  STRAVA_REDIRECT_URI,
+  API_BASE_URL,
+} from '@/utils/config';
 
 export default function OnboardingPage() {
   const t = useTranslations('onboarding');
@@ -32,11 +37,46 @@ export default function OnboardingPage() {
     limitations: '',
   });
   const [googleConnected, setGoogleConnected] = useState(false);
+  const [stravaConnected, setStravaConnected] = useState(false);
   const [isGisLoaded, setIsGisLoaded] = useState(false);
+  const authProcessing = useRef(false);
 
   useEffect(() => {
     const token = localStorage.getItem('googleAccessToken');
     setGoogleConnected(!!token);
+
+    const sToken = localStorage.getItem('stravaAccessToken');
+    setStravaConnected(!!sToken);
+
+    // Handle Strava Redirect
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+      if (code && !authProcessing.current) {
+        authProcessing.current = true;
+        setActiveStep(1); // Restore context step
+        // Exchange code for token
+        fetch(`${API_BASE_URL}/api/auth/strava`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.access_token) {
+              localStorage.setItem('stravaAccessToken', data.access_token);
+              setStravaConnected(true);
+              // Clean URL
+              window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname,
+              );
+            }
+          })
+          .catch((err) => console.error('Strava Auth Error:', err));
+      }
+    }
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +104,12 @@ export default function OnboardingPage() {
     } catch (e) {
       console.error('Error initiating Google OAuth:', e);
     }
+  };
+
+  const handleConnectStrava = () => {
+    window.location.href = `https://www.strava.com/oauth/authorize?client_id=${STRAVA_CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(
+      STRAVA_REDIRECT_URI,
+    )}&approval_prompt=auto&scope=activity:read_all`;
   };
 
   const handleNext = () => {
@@ -189,39 +235,90 @@ export default function OnboardingPage() {
             width: '100%',
           }}
         >
-          <Typography variant='body1' textAlign='center'>
-            {t('calendarIntro')}
-          </Typography>
-          <Button
-            variant='outlined'
-            onClick={handleConnectCalendar}
-            disabled={googleConnected}
-            startIcon={
-              <Image
-                src='https://www.gstatic.com/images/branding/product/1x/calendar_2020q4_48dp.png'
-                alt={t('googleCalendarAlt')}
-                width={24}
-                height={24}
-              />
-            }
-            sx={{
-              borderRadius: '12px',
-              py: 1.5,
-              px: 4,
-              textTransform: 'none',
-              borderColor: googleConnected ? 'success.main' : 'rgba(0,0,0,0.1)',
-              color: googleConnected ? 'success.main' : 'text.primary',
-            }}
-          >
-            {googleConnected ? t('calendarConnected') : t('connectCalendar')}
-          </Button>
-          <Typography
-            variant='caption'
-            color='text.secondary'
-            textAlign='center'
-          >
-            {t('calendarPrivacy')}
-          </Typography>
+          {/* Calendar Section */}
+          <Box sx={{ width: '100%', textAlign: 'center' }}>
+            <Typography variant='body1' textAlign='center' sx={{ mb: 2 }}>
+              {t('calendarIntro')}
+            </Typography>
+            <Button
+              variant='outlined'
+              onClick={handleConnectCalendar}
+              disabled={googleConnected}
+              startIcon={
+                <Image
+                  src='https://www.gstatic.com/images/branding/product/1x/calendar_2020q4_48dp.png'
+                  alt={t('googleCalendarAlt')}
+                  width={24}
+                  height={24}
+                />
+              }
+              sx={{
+                borderRadius: '12px',
+                py: 1.5,
+                px: 4,
+                textTransform: 'none',
+                borderColor: googleConnected
+                  ? 'success.main'
+                  : 'rgba(0,0,0,0.1)',
+                color: googleConnected ? 'success.main' : 'text.primary',
+                width: '100%',
+              }}
+            >
+              {googleConnected ? t('calendarConnected') : t('connectCalendar')}
+            </Button>
+            <Typography
+              variant='caption'
+              color='text.secondary'
+              textAlign='center'
+              display='block'
+              sx={{ mt: 1 }}
+            >
+              {t('calendarPrivacy')}
+            </Typography>
+          </Box>
+
+          {/* Strava Section */}
+          <Box sx={{ width: '100%', textAlign: 'center' }}>
+            <Typography variant='body1' textAlign='center' sx={{ mb: 2 }}>
+              {t('stravaIntro')}
+            </Typography>
+            <Button
+              variant='outlined'
+              onClick={handleConnectStrava}
+              disabled={stravaConnected}
+              startIcon={
+                <Image
+                  src='/images/strava-logo.svg'
+                  alt={t('stravaAlt')}
+                  width={24}
+                  height={24}
+                  style={{ objectFit: 'contain' }}
+                />
+              }
+              sx={{
+                borderRadius: '12px',
+                py: 1.5,
+                px: 4,
+                textTransform: 'none',
+                borderColor: stravaConnected
+                  ? 'success.main'
+                  : 'rgba(0,0,0,0.1)',
+                color: stravaConnected ? 'success.main' : 'text.primary',
+                width: '100%',
+              }}
+            >
+              {stravaConnected ? t('stravaConnected') : t('connectStrava')}
+            </Button>
+            <Typography
+              variant='caption'
+              color='text.secondary'
+              textAlign='center'
+              display='block'
+              sx={{ mt: 1 }}
+            >
+              {t('stravaPrivacy')}
+            </Typography>
+          </Box>
         </Box>
       )}
 

@@ -130,6 +130,7 @@ export default function Home() {
         const storedLat = localStorage.getItem('userLat');
         const storedLon = localStorage.getItem('userLon');
         const googleToken = localStorage.getItem('googleAccessToken');
+        const stravaToken = localStorage.getItem('stravaAccessToken');
         const timeZone =
           Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Rome';
 
@@ -151,6 +152,7 @@ export default function Home() {
               longitude: storedLon ? parseFloat(storedLon) : undefined,
               prompt: '',
               googleToken,
+              stravaToken,
               history,
               userProfile: profileToUse,
               timeZone,

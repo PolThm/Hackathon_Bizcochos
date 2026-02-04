@@ -30,7 +30,7 @@ const GraphState = Annotation.Root({
 
 // --- 3. Define Nodes and Graph Factory ---
 
-const createTools = (googleToken, userProfile) => {
+const createTools = (googleToken, stravaToken, userProfile) => {
   const getUserInfo = new DynamicStructuredTool({
     name: "get_user_info",
     description: "Get user's profile information.",
@@ -42,6 +42,34 @@ const createTools = (googleToken, userProfile) => {
       - Goals: ${userProfile.goals}
       - Fitness Level: ${userProfile.level}
       - Injuries/Limitations: ${userProfile.limitations || "None"}`;
+    },
+  });
+
+  const getStravaActivities = new DynamicStructuredTool({
+    name: "get_strava_activities",
+    description: "Get recent Strava activities.",
+    schema: z.object({}),
+    func: async () => {
+      if (!stravaToken) return "Strava not connected.";
+      try {
+        const response = await fetch(
+          "https://www.strava.com/api/v3/athlete/activities?per_page=5",
+          {
+            headers: { Authorization: `Bearer ${stravaToken}` },
+          },
+        );
+        if (!response.ok) return "Error fetching Strava activities.";
+        const activities = await response.json();
+        if (!activities.length) return "No recent activities.";
+        return activities
+          .map(
+            (a) =>
+              `- ${a.start_date_local.split("T")[0]}: ${a.name} (${a.type}, ${(a.distance / 1000).toFixed(1)}km, ${(a.moving_time / 60).toFixed(0)}min)`,
+          )
+          .join("\n");
+      } catch (e) {
+        return "Error connecting to Strava.";
+      }
     },
   });
 
@@ -141,7 +169,13 @@ const createTools = (googleToken, userProfile) => {
     },
   });
 
-  return [getWeather, getCalendarEvents, createCalendarEvent, getUserInfo];
+  return [
+    getWeather,
+    getCalendarEvents,
+    createCalendarEvent,
+    getUserInfo,
+    getStravaActivities,
+  ];
 };
 
 export async function* streamAgenticRoutine(
@@ -152,8 +186,9 @@ export async function* streamAgenticRoutine(
   googleToken,
   userProfile = null,
   timeZone = "Europe/Rome",
+  stravaToken = null,
 ) {
-  const tools = createTools(googleToken, userProfile);
+  const tools = createTools(googleToken, stravaToken, userProfile);
   const toolNode = new ToolNode(tools);
   const model = new ChatOpenAI({
     modelName: "gpt-5-nano",
@@ -161,10 +196,11 @@ export async function* streamAgenticRoutine(
   });
 
   const fetchContextNode = async () => {
-    const [weather, calendar, info] = await Promise.all([
+    const [weather, calendar, info, strava] = await Promise.all([
       tools.find((t) => t.name === "get_weather").func({ latitude, longitude }),
       tools.find((t) => t.name === "get_calendar_events").func({}),
       tools.find((t) => t.name === "get_user_info").func(),
+      tools.find((t) => t.name === "get_strava_activities").func(),
     ]);
 
     const now = new Date();
@@ -174,6 +210,7 @@ export async function* streamAgenticRoutine(
         new SystemMessage(`CONTEXT:
       - Weather: ${weather}
       - Calendar: ${calendar}
+      - Strava (Last activities): ${strava}
       - Profile: ${info}
       - Current time (UTC): ${currentTimeIso}
       

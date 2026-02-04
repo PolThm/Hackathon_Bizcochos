@@ -177,6 +177,11 @@
     "connectCalendar": "Connecter Google Calendar",
     "calendarConnected": "Calendrier connecté !",
     "calendarPrivacy": "On consulte ton agenda seulement pour optimiser le moment des exercices",
+    "stravaIntro": "Connecte Strava pour adapter les routines à ton activité physique",
+    "stravaAlt": "Strava",
+    "connectStrava": "Connecter Strava",
+    "stravaConnected": "Strava connecté !",
+    "stravaPrivacy": "On consulte tes activités seulement pour ajuster l'intensité",
     "continue": "Continuer",
     "finish": "Créer ma première Routine !"
   },

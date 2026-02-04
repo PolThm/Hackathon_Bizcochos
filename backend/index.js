@@ -36,6 +36,7 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
     googleToken,
     userProfile,
     timeZone,
+    stravaToken,
   } = request.body;
 
   const stream = new Readable({
@@ -56,6 +57,7 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
       googleToken,
       userProfile,
       timeZone,
+      stravaToken,
     );
 
     for await (const chunk of agentStream) {
@@ -94,6 +96,36 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
       JSON.stringify({ type: "error", message: error.message }) + "\n",
     );
     stream.push(null);
+  }
+});
+
+fastify.post("/api/auth/strava", async (request, reply) => {
+  const { code } = request.body;
+  if (!code) {
+    return reply.status(400).send({ error: "Missing code" });
+  }
+
+  try {
+    const params = new URLSearchParams();
+    params.append("client_id", process.env.STRAVA_CLIENT_ID);
+    params.append("client_secret", process.env.STRAVA_CLIENT_SECRET);
+    params.append("code", code);
+    params.append("grant_type", "authorization_code");
+
+    const response = await fetch("https://www.strava.com/oauth/token", {
+      method: "POST",
+      body: params,
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to exchange token");
+    }
+
+    return data;
+  } catch (error) {
+    fastify.log.error(error);
+    return reply.status(500).send({ error: "Auth failed" });
   }
 });
 

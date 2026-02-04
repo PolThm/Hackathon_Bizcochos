@@ -93,7 +93,8 @@ const createTools = (googleToken, userProfile) => {
 
   const createCalendarEvent = new DynamicStructuredTool({
     name: "create_calendar_event",
-    description: "Create a new event in the user's Google Calendar.",
+    description:
+      "MANDATORY: Put an event on Google Calendar (if connected). Create a new event in the user's Google Calendar.",
     schema: z.object({
       summary: z.string(),
       description: z.string(),
@@ -176,7 +177,7 @@ export async function* streamAgenticRoutine(
       - Profile: ${info}
       - Current time (UTC): ${currentTimeIso}
       
-      Mandate: Call 'create_calendar_event' for a 30m FREE slot TODAY (with the name of the routine). The slot MUST start AFTER the current time, never before. ColorId 6, TimeZone ${timeZone}. Then generate the routine JSON.`),
+      MANDATORY: Put an event on Google Calendar (if connected). Call 'create_calendar_event' for a 30m FREE slot TODAY (with the name of the routine). The slot MUST be booked AFTER the current time, never before. ColorId 6, TimeZone ${timeZone}. Then generate the routine JSON.`),
       ],
     };
   };
@@ -205,10 +206,10 @@ export async function* streamAgenticRoutine(
     const plannerModel = model.bindTools(tools);
     const response = await plannerModel.invoke([
       new SystemMessage(`You are a fitness AI.
-      1. USE 'create_calendar_event' NOW for a 30m slot (with the name of the routine). The slot MUST start AFTER the current time, never in the past.
+      1. MANDATORY: Put an event on Google Calendar (if connected). USE 'create_calendar_event' NOW for a 30m slot (with the name of the routine). The slot MUST be booked AFTER the current time, never in the past.
       2. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
       3. Write a short and catchy "name" in ${langInstruction} (30 characters maximum, without mentioning the routine duration, and without mentioning the user's name).
-      4. Write "description" in ${langInstruction} (between 100 and 300 characters maximum, without mentioning the exercise names, without mentioning the routine name, and without mentioning the routine duration). The description MUST: (a) mention the user's first name naturally at least once; (b) explain why this routine was chosen—if possible, reference today's context (weather, calendar, schedule) that justifies these choices; otherwise explain more globally why it fits the user's profile (goals, level, limitations).
+      4. Write "description" in ${langInstruction} (between 100 and 300 characters maximum, without mentioning the exercise names, without mentioning the routine name, and without mentioning the routine duration). The description MUST: (a) mention the user's first name naturally at least once; (b) explain why this routine was chosen—if possible, reference today's context (weather (if it’s brings something interesting, but don’t focus on the temperature of the current moment, but rather on the overall weather for the day), calendar, schedule) that justifies these choices; otherwise explain more globally why it fits the user's profile (goals, level, limitations).
       5. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 900 seconds (5–15 minutes). Never exceed 900 seconds total. The longer the routine, the greater the number of exercises should be (an exercise should be at minimum 15 seconds, and at most 60 seconds). Choose the exercise durations smartly regarding each exercise nature and user's profile.
       Available exercises: ${JSON.stringify(exercises)}
       Be fast. One-shot.`),

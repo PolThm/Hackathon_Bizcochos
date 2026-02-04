@@ -709,36 +709,6 @@ export default function Home() {
               />
             </Box>
 
-            <Paper
-              elevation={0}
-              sx={{
-                p: 2,
-                mb: 3,
-                borderRadius: '16px',
-                backgroundColor: 'rgba(214, 195, 165, 0.1)',
-                border: '1px solid rgba(214, 195, 165, 0.3)',
-                position: 'relative',
-                overflow: 'hidden',
-                width: '100%',
-                zIndex: 1,
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <AutoAwesomeIcon
-                  sx={{ color: theme.palette.secondary.main, mr: 1 }}
-                />
-                <Typography variant='h6' sx={{ fontWeight: 600 }}>
-                  {t('benefitsTitle')}
-                </Typography>
-              </Box>
-              <Typography
-                variant='body1'
-                sx={{ lineHeight: 1.6, color: theme.palette.text.secondary }}
-              >
-                {routine.description}
-              </Typography>
-            </Paper>
-
             <Typography
               variant='h5'
               sx={{
@@ -754,7 +724,7 @@ export default function Home() {
 
             <Box
               sx={{
-                mb: 4,
+                mb: 3,
                 width: '100%',
                 zIndex: 1,
                 overflow: 'hidden',
@@ -911,6 +881,36 @@ export default function Home() {
                 {tNewRoutine('exploreExercisesText')}
               </Typography>
             </Box>
+
+            <Paper
+              elevation={0}
+              sx={{
+                p: 2,
+                mb: 4,
+                borderRadius: '16px',
+                backgroundColor: 'rgba(214, 195, 165, 0.1)',
+                border: '1px solid rgba(214, 195, 165, 0.3)',
+                position: 'relative',
+                overflow: 'hidden',
+                width: '100%',
+                zIndex: 1,
+              }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <AutoAwesomeIcon
+                  sx={{ color: theme.palette.secondary.main, mr: 1 }}
+                />
+                <Typography variant='h6' sx={{ fontWeight: 600 }}>
+                  {t('benefitsTitle')}
+                </Typography>
+              </Box>
+              <Typography
+                variant='body1'
+                sx={{ lineHeight: 1.6, color: theme.palette.text.secondary }}
+              >
+                {routine.description}
+              </Typography>
+            </Paper>
 
             <Box
               sx={{

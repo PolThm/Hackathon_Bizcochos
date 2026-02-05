@@ -1,11 +1,12 @@
 // Script to generate manifest.json with translations
 // This script will be used by Next.js to generate the manifest dynamically
+// Note: We load messages directly by locale because manifest.json requests
+// bypass the next-intl middleware (paths with dots are excluded from matcher)
 
-import { getMessages } from 'next-intl/server';
 import { AbstractIntlMessages } from 'next-intl';
 
 export async function generateManifest(locale: string) {
-  const messages = await getMessages();
+  const messages = (await import(`@/locales/${locale}.json`)).default;
   const metadata = (
     messages as AbstractIntlMessages & {
       metadata?: {

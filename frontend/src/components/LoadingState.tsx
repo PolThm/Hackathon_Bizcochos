@@ -27,7 +27,7 @@ export default function LoadingState({
     }
   }, [stepMessages]);
 
-  // 2. Start a rotation timer that cycles through the rotationQueue every 3 seconds
+  // 2. Start a rotation timer that cycles through the rotationQueue every 7 seconds
   useEffect(() => {
     if (rotationQueue.length > 0) {
       const interval = setInterval(() => {
@@ -36,7 +36,7 @@ export default function LoadingState({
           setRotationIndex((prev) => (prev + 1) % rotationQueue.length);
           setBackendFadeIn(true);
         }, 500);
-      }, 3000); // Change AI thought every 3 seconds
+      }, 7000); // Change AI thought every 7 seconds
       return () => clearInterval(interval);
     }
   }, [rotationQueue.length]);

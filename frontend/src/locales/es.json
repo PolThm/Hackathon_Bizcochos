@@ -78,6 +78,7 @@
   },
   "exerciseDetails": {
     "notFound": "Ejercicio no encontrado",
+    "back": "Volver",
     "backToLibrary": "Volver a la biblioteca",
     "benefits": "Beneficios",
     "instructions": "Instrucciones",

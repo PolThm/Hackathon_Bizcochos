@@ -11,12 +11,13 @@ import {
   ListItemText,
   Paper,
   IconButton,
+  Button,
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useExercises } from '@/hooks/useExercises';
-import { Link } from '@/i18n/routing';
+import { Link, useRouter } from '@/i18n/routing';
 
 const BACK_HREF_BY_FROM: Record<string, string> = {
   home: '/',
@@ -27,6 +28,7 @@ const BACK_HREF_BY_FROM: Record<string, string> = {
 export default function ExerciseDetailsPage() {
   const params = useParams();
   const searchParams = useSearchParams();
+  const router = useRouter();
   const t = useTranslations('exerciseDetails');
   const exerciseId = params.id as string;
   const locale = (params?.locale as string) ?? 'en';
@@ -38,20 +40,30 @@ export default function ExerciseDetailsPage() {
     return allExercises.find((ex) => ex.id === exerciseId);
   }, [exerciseId, allExercises]);
 
+  const handleBack = () => {
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/');
+    }
+  };
+
   if (!exercise) {
     return (
       <Box
         sx={{
+          flex: 1,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          flex: 1,
           gap: 2,
         }}
       >
-        <Typography variant='h4'>{t('notFound')}</Typography>
-        <Link href='/library'>{t('backToLibrary')}</Link>
+        <Typography variant='h5'>{t('notFound')}</Typography>
+        <Button variant='contained' onClick={handleBack}>
+          {t('back')}
+        </Button>
       </Box>
     );
   }

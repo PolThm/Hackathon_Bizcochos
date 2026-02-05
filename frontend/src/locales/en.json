@@ -78,6 +78,7 @@
   },
   "exerciseDetails": {
     "notFound": "Exercise not found",
+    "back": "Back",
     "backToLibrary": "Back to Library",
     "benefits": "Benefits",
     "instructions": "Instructions",

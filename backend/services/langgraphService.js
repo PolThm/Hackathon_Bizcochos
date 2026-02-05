@@ -278,7 +278,12 @@ export async function* streamAgenticRoutine(
       2. REASONING: Before calling a tool or outputting JSON, provide a brief sentence in ${langInstruction} explaining your strategy based on Strava/Weather (e.g., "I see you ran 10km, so I'm focusing on your legs").
       3. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
       4. Write a short and catchy "name" in ${langInstruction} (30 characters maximum).
-      5. Write "description" in ${langInstruction} (100-300 chars). You MUST mention why you chose these exercises based on their Strava activities or context. Mention the user's name naturally.
+      5. Write "description" in ${langInstruction} (100-300 chars). You MUST be extremely specific:
+         - Mention the EXACT distance or duration of the last Strava activity (e.g., "After your 6.5km run...").
+         - Mention the EXACT time slot you chose for the calendar (e.g., "...I scheduled this session for 18:30 today").
+         - Explain the physiological benefit (e.g., "...to release your tight hamstrings").
+         - Mention the user's name naturally.
+         - NO generic filler like "this is for you" or "adapting to your activity".
       6. DURATION (STRICT): Total duration between 300 and 900 seconds (5–15 minutes).
       
       Available exercises: ${JSON.stringify(exercises)}

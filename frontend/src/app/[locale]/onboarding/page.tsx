@@ -237,7 +237,7 @@ export default function OnboardingPage() {
         >
           {/* Calendar Section */}
           <Box sx={{ width: '100%', textAlign: 'center' }}>
-            <Typography variant='body1' textAlign='center' sx={{ mb: 2 }}>
+            <Typography variant='body1' textAlign='left' sx={{ mb: 2 }}>
               {t('calendarIntro')}
             </Typography>
             <Button
@@ -279,7 +279,7 @@ export default function OnboardingPage() {
 
           {/* Strava Section */}
           <Box sx={{ width: '100%', textAlign: 'center' }}>
-            <Typography variant='body1' textAlign='center' sx={{ mb: 2 }}>
+            <Typography variant='body1' textAlign='left' sx={{ mb: 2 }}>
               {t('stravaIntro')}
             </Typography>
             <Button
@@ -288,7 +288,7 @@ export default function OnboardingPage() {
               disabled={stravaConnected}
               startIcon={
                 <Image
-                  src='/images/strava-logo.png'
+                  src='/images/strava-logo.svg'
                   alt={t('stravaAlt')}
                   width={24}
                   height={24}

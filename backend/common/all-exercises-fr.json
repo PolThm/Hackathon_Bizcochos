@@ -3516,5 +3516,29 @@
     "benefits": [
       "Genoux, Mollets, Pieds, Hanches, Ischio-jambiers, Quadriceps, Tronc, Chevilles, Orteils, Fessiers"
     ]
+  },
+  {
+    "id": "163253561213",
+    "name": "Curl aux haltères",
+    "image": "/images/exercises/image_00256-1f40302919af63cec5f6a80e17828285.png",
+    "instructions": [
+      "Debout, dos droit, haltères le long du corps.",
+      "Fléchis les avant-bras en gardant les coudes près du corps.",
+      "Monte jusqu'à ce que les haltères atteignent tes épaules.",
+      "Redescends en contrôlant le mouvement."
+    ],
+    "tips": [
+      "Garde les coudes fixes et près du corps tout au long du mouvement.",
+      "Évite de balancer les haltères pour ne pas tricher.",
+      "Contrôle la descente pour maximiser le travail musculaire."
+    ],
+    "modifications": [
+      "Assieds-toi sur un banc pour plus de stabilité.",
+      "Alterne les bras (un bras à la fois) si tu préfères.",
+      "Utilise des poids plus légers pour maîtriser la technique."
+    ],
+    "benefits": [
+      "Biceps, Avant-bras"
+    ]
   }
 ]

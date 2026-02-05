@@ -6,43 +6,51 @@
   "exercises": [
     {
       "id": 11543534543423,
-      "name": "Mains en l’air",
-      "duration": 10
+      "name": "Salut vers le haut",
+      "duration": 10,
+      "exerciseId": "369d1020c63e"
     },
     {
       "id": 115435345443363,
-      "name": "Mouvements de bassin",
-      "duration": 60
+      "name": "Cercles de hanches",
+      "duration": 60,
+      "exerciseId": "f049a1a49e0f"
     },
     {
       "id": 55435435,
-      "name": "Touché d’orteils",
-      "duration": 60
+      "name": "Toucher des orteils",
+      "duration": 60,
+      "exerciseId": "0fed7a6992c5"
     },
     {
       "id": 633457746,
       "name": "Chien tête en haut",
-      "duration": 15
+      "duration": 15,
+      "exerciseId": "7e6077a58ec2"
     },
     {
       "id": 76343245,
-      "name": "Posture de l’enfant",
-      "duration": 10
+      "name": "Posture de l'enfant",
+      "duration": 10,
+      "exerciseId": "f0e3ea656db8"
     },
     {
       "id": 763435356245,
-      "name": "Posture du chat",
-      "duration": 15
+      "name": "Chat-Vache",
+      "duration": 15,
+      "exerciseId": "98e8d35695d2"
     },
     {
       "id": 11543534543,
-      "name": "Mains en l’air",
-      "duration": 10
+      "name": "Salut vers le haut",
+      "duration": 10,
+      "exerciseId": "369d1020c63e"
     },
     {
       "id": 17303792439233,
-      "name": "Lever de poids",
-      "duration": 70
+      "name": "Curl aux haltères",
+      "duration": 70,
+      "exerciseId": "163253561213"
     }
   ]
 }

@@ -3470,5 +3470,29 @@
     "benefits": [
       "Knees, Calves, Feet, Hips, Hamstrings, Quadriceps, Core, Ankles, Toes, Glutes"
     ]
+  },
+  {
+    "id": "163253561213",
+    "name": "Dumbbell Curl",
+    "image": "/images/exercises/image_00256-1f40302919af63cec5f6a80e17828285.png",
+    "instructions": [
+      "Stand with a straight back, dumbbells along your body.",
+      "Bend your forearms while keeping your elbows close to your body.",
+      "Raise until the dumbbells reach your shoulders.",
+      "Lower down while controlling the movement."
+    ],
+    "tips": [
+      "Keep your elbows fixed and close to your body throughout the movement.",
+      "Avoid swinging the dumbbells to prevent cheating.",
+      "Control the descent to maximize muscle work."
+    ],
+    "modifications": [
+      "Sit on a bench for more stability.",
+      "Alternate arms (one arm at a time) if you prefer.",
+      "Use lighter weights to master the technique."
+    ],
+    "benefits": [
+      "Biceps, Forearms"
+    ]
   }
 ]

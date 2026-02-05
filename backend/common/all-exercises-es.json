@@ -3506,5 +3506,29 @@
     "benefits": [
       "Rodillas, Gemelos, Pies, Caderas, Isquiotibiales, Cuádriceps, Core, Tobillos, Dedos de los Pies, Glúteos"
     ]
+  },
+  {
+    "id": "163253561213",
+    "name": "Curl con Mancuernas",
+    "image": "/images/exercises/image_00256-1f40302919af63cec5f6a80e17828285.png",
+    "instructions": [
+      "De pie, espalda recta, mancuernas a lo largo del cuerpo.",
+      "Flexiona los antebrazos manteniendo los codos cerca del cuerpo.",
+      "Sube hasta que las mancuernas alcancen tus hombros.",
+      "Baja controlando el movimiento."
+    ],
+    "tips": [
+      "Mantén los codos fijos y cerca del cuerpo durante todo el movimiento.",
+      "Evita balancear las mancuernas para no hacer trampa.",
+      "Controla el descenso para maximizar el trabajo muscular."
+    ],
+    "modifications": [
+      "Siéntate en un banco para mayor estabilidad.",
+      "Alterna los brazos (un brazo a la vez) si lo prefieres.",
+      "Usa pesos más ligeros para dominar la técnica."
+    ],
+    "benefits": [
+      "Bíceps, Antebrazos"
+    ]
   }
 ]

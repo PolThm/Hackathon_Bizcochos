@@ -1145,7 +1145,7 @@ export default function Practice() {
               <Box
                 sx={{
                   display: 'flex',
-                  flexDirection: { xs: 'column', md: 'row' },
+                  flexDirection: 'column',
                   gap: 3,
                 }}
               >
@@ -1239,7 +1239,7 @@ export default function Practice() {
                     <Typography
                       variant='h6'
                       gutterBottom
-                      sx={{ fontWeight: 600, mb: 1.5 }}
+                      sx={{ fontWeight: 600 }}
                     >
                       {tExerciseDetails('instructions')}
                     </Typography>
@@ -1273,7 +1273,7 @@ export default function Practice() {
                       <Typography
                         variant='h6'
                         gutterBottom
-                        sx={{ fontWeight: 600, mb: 1.5 }}
+                        sx={{ fontWeight: 600 }}
                       >
                         {tExerciseDetails('tips')}
                       </Typography>
@@ -1306,7 +1306,7 @@ export default function Practice() {
                       <Typography
                         variant='h6'
                         gutterBottom
-                        sx={{ fontWeight: 600, mb: 1.5 }}
+                        sx={{ fontWeight: 600 }}
                       >
                         {tExerciseDetails('modifications')}
                       </Typography>

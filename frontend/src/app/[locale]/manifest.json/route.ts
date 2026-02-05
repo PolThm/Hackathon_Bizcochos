@@ -8,7 +8,7 @@ export async function GET(
 ) {
   try {
     const { locale } = params;
-    if (!routing.locales.includes(locale)) {
+    if (!(routing.locales as readonly string[]).includes(locale)) {
       return NextResponse.json({ error: 'Invalid locale' }, { status: 404 });
     }
     const manifest = await generateManifest(locale);

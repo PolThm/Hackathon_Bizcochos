@@ -1,3 +1,4 @@
+// --- 1. Imports and Setup ---
 import { Annotation, StateGraph, START, END } from "@langchain/langgraph";
 import { ChatOpenAI } from "@langchain/openai";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
@@ -10,6 +11,35 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// --- 1b. Global Cache for Exercises ---
+let exercisesCache = {
+  en: null,
+  es: null,
+  fr: null,
+  demo_en: null,
+  demo_es: null,
+  demo_fr: null,
+};
+
+async function loadExercises(locale, isDemo) {
+  const cacheKey = isDemo ? `demo_${locale}` : locale;
+  if (exercisesCache[cacheKey]) return exercisesCache[cacheKey];
+
+  const fileName = isDemo
+    ? `demo-exercises-${locale}.json`
+    : `all-exercises-${locale}.json`;
+  const filePath = path.join(__dirname, "..", "common", fileName);
+
+  try {
+    const content = await fs.readFile(filePath, "utf-8");
+    exercisesCache[cacheKey] = JSON.parse(content);
+    return exercisesCache[cacheKey];
+  } catch (e) {
+    console.error(`Error loading exercises for ${cacheKey}:`, e);
+    return [];
+  }
+}
 
 // --- 2. Define State ---
 
@@ -26,11 +56,43 @@ const GraphState = Annotation.Root({
     reducer: (x, y) => y ?? x,
     default: () => "Europe/Rome",
   }),
+  isDemo: Annotation({
+    reducer: (x, y) => y ?? x,
+    default: () => false,
+  }),
 });
 
-// --- 3. Define Nodes and Graph Factory ---
+// --- 3. Define Tools ---
 
-const createTools = (googleToken, stravaToken, userProfile) => {
+const createTools = (googleToken, stravaToken, userProfile, locale, isDemo) => {
+  const searchExercises = new DynamicStructuredTool({
+    name: "search_exercises",
+    description:
+      "Search for specific exercises in the database by name or muscle group. Returns a list of exercise IDs and names.",
+    schema: z.object({
+      query: z
+        .string()
+        .describe("The search term (e.g., 'psoas', 'legs', 'warmup')"),
+    }),
+    func: async ({ query }) => {
+      const allEx = await loadExercises(locale, isDemo);
+      const q = query.toLowerCase();
+      // Simple search in name and instructions (simulating what a vector search would do better)
+      const results = allEx
+        .filter(
+          (ex) =>
+            ex.name.toLowerCase().includes(q) ||
+            ex.instructions.some((i) => i.toLowerCase().includes(q)),
+        )
+        .slice(0, 15) // Limit results to avoid context stuffing
+        .map((ex) => ({ id: ex.id, name: ex.name }));
+
+      return results.length > 0
+        ? JSON.stringify(results)
+        : "No exercises found for this query. Try a more general term like 'stretch' or 'mobility'.";
+    },
+  });
+
   const getUserInfo = new DynamicStructuredTool({
     name: "get_user_info",
     description: "Get user's profile information.",
@@ -170,6 +232,7 @@ const createTools = (googleToken, stravaToken, userProfile) => {
   });
 
   return [
+    searchExercises,
     getWeather,
     getCalendarEvents,
     createCalendarEvent,
@@ -189,10 +252,17 @@ export async function* streamAgenticRoutine(
   stravaToken = null,
   isDemoActivated = false,
 ) {
-  const tools = createTools(googleToken, stravaToken, userProfile);
+  const tools = createTools(
+    googleToken,
+    stravaToken,
+    userProfile,
+    locale,
+    isDemoActivated,
+  );
   const toolNode = new ToolNode(tools);
   const model = new ChatOpenAI({
-    modelName: "gpt-5-nano",
+    modelName: "gpt-4o",
+    temperature: 0,
     configuration: { baseURL: process.env.ENDPOINT_URL },
   });
 
@@ -215,42 +285,16 @@ export async function* streamAgenticRoutine(
       - Profile: ${info}
       - Current time (UTC): ${currentTimeIso}
       
-      MANDATORY: Put an event on Google Calendar (if connected). Call 'create_calendar_event' for a 30m FREE slot TODAY (with the name of the routine). The slot MUST be booked AFTER the current time, never before. ColorId 6, TimeZone ${timeZone}. Then generate the routine JSON.`),
+      MANDATORY: 
+      1. ANALYZE context and Strava activities.
+      2. SEARCH for exercises using 'search_exercises' based on your analysis.
+      3. BOOK a 30m slot on Google Calendar with 'create_calendar_event'.
+      4. GENERATE the routine JSON.`),
       ],
     };
   };
 
-  const analyzer = async (state) => {
-    const lastMessage = state.messages[state.messages.length - 1];
-    const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
-    const lang =
-      safeLocale === "en"
-        ? "English"
-        : safeLocale === "fr"
-          ? "French"
-          : "Spanish";
-
-    const response = await model.invoke([
-      new SystemMessage(`Analyze the context (Weather, Calendar, Strava, Profile). 
-      Generate exactly 3 very brief thoughts (max 60 characters each). Be specific (e.g., temperature, a Strava activity, a free slot). End each thought with "...".
-      Language: ${lang}.
-      Output ONLY a JSON object: { "thoughts": ["...", "...", "..."] }`),
-      lastMessage,
-    ]);
-    return { messages: [response] };
-  };
-
   const planner = async (state) => {
-    const exercisesFile = isDemoActivated
-      ? "demo-exercises-en.json"
-      : "all-exercises-en.json";
-    const exercisesPath = path.join(__dirname, "..", "common", exercisesFile);
-    const fileContent = await fs.readFile(exercisesPath, "utf-8");
-    const exercises = JSON.parse(fileContent).map((ex) => ({
-      id: ex.id,
-      name: ex.name,
-    }));
-
     const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
     const langInstruction =
       safeLocale === "en"
@@ -261,31 +305,23 @@ export async function* streamAgenticRoutine(
 
     const plannerModel = model.bindTools(tools);
     const response = await plannerModel.invoke([
-      new SystemMessage(`You are a world-class personal trainer and mobility expert.
+      new SystemMessage(`You are a world-class personal trainer.
       
-      CRITICAL REASONING RULES:
-      1. ANALYZE STRAVA: Look at the "Strava (Last activities)".
-         - If the user did a "Run" or "Ride" recently: Prioritize exercises for Psoas, Hamstrings, Quads, and Lower Back. Focus on recovery.
-         - If the user did "Weight Training": Focus on stretching the muscle groups involved or general full-body mobility.
-         - If NO activities are shown in the last 2-3 days: The user is likely sedentary. Prioritize "Opening" exercises (Chest, Shoulders, Hip Flexors) and overall activation.
-      2. ANALYZE WEATHER: If it's cold, include a longer warmup. If it's sunny/nice, encourage the user's mood.
-      3. CALENDAR: If the user has a busy day, keep the routine efficient.
+      WORKFLOW:
+      1. If you haven't searched for exercises yet, use 'search_exercises' to find relevant movements based on the user's Strava activity or goals.
+      2. If you haven't booked the calendar, use 'create_calendar_event'.
+      3. Once you have the exercise IDs from the search tool, output the final routine JSON.
+
+      CRITICAL REASONING:
+      - Strava Run/Ride -> Search for: psoas, hamstrings, glutes, lower back.
+      - Strava Weight Training -> Search for: chest, shoulders, or specific muscle groups.
+      - Sedentary -> Search for: opening, posture, chest, hip flexors.
+
+      OUTPUT FORMAT:
+      - Reasoning: A brief sentence in ${langInstruction} explaining your choices.
+      - JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
       
-      TASK:
-      1. MANDATORY: Put an event on Google Calendar (if connected). USE 'create_calendar_event' NOW for a 30m slot (with the name of the routine). The slot MUST be booked AFTER the current time, never in the past.
-      2. REASONING: Before calling a tool or outputting JSON, provide a brief sentence in ${langInstruction} explaining your strategy based on Strava/Weather (e.g., "I see you ran 10km, so I'm focusing on your legs").
-      3. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
-      4. Write a short and catchy "name" in ${langInstruction} (30 characters maximum).
-      5. Write "description" in ${langInstruction} (100-300 chars). You MUST be extremely specific:
-         - Mention the EXACT distance or duration of the last Strava activity (e.g., "After your 6.5km run...").
-         - Mention the EXACT time slot you chose for the calendar (e.g., "...I scheduled this session for 18:30 today").
-         - Explain the physiological benefit (e.g., "...to release your tight hamstrings").
-         - Mention the user's name naturally.
-         - NO generic filler like "this is for you" or "adapting to your activity".
-      6. DURATION (STRICT): Total duration between 300 and 900 seconds (5–15 minutes).
-      
-      Available exercises: ${JSON.stringify(exercises)}
-      Be precise. One-shot.`),
+      Total routine duration: 300-600 seconds.`),
       ...state.messages,
     ]);
     return { messages: [response] };
@@ -293,12 +329,10 @@ export async function* streamAgenticRoutine(
 
   const workflow = new StateGraph(GraphState)
     .addNode("fetcher", fetchContextNode)
-    .addNode("analyzer", analyzer)
     .addNode("tools", (state) => toolNode.invoke(state))
     .addNode("planner", planner)
     .addEdge(START, "fetcher")
-    .addEdge("fetcher", "analyzer")
-    .addEdge("analyzer", "planner")
+    .addEdge("fetcher", "planner")
     .addConditionalEdges("planner", (state) => {
       const last = state.messages[state.messages.length - 1];
       return last.tool_calls?.length > 0 ? "tools" : END;
@@ -307,7 +341,12 @@ export async function* streamAgenticRoutine(
 
   const app = workflow.compile();
   const stream = await app.stream(
-    { messages: [new HumanMessage(userPrompt)], locale, timeZone },
+    {
+      messages: [new HumanMessage(userPrompt)],
+      locale,
+      timeZone,
+      isDemo: isDemoActivated,
+    },
     { streamMode: "updates" },
   );
 
@@ -316,35 +355,37 @@ export async function* streamAgenticRoutine(
     const nodeName = Object.keys(update)[0];
     const data = update[nodeName];
 
-    if (nodeName === "analyzer") {
-      const content = data.messages[data.messages.length - 1].content;
-      try {
-        const jsonMatch = content.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          const parsed = JSON.parse(jsonMatch[0]);
-          if (parsed.thoughts && Array.isArray(parsed.thoughts)) {
-            for (const thought of parsed.thoughts) {
-              yield {
-                type: "step",
-                node: "analyzer",
-                description: thought,
-              };
-            }
-          }
-        }
-      } catch (e) {
-        console.error("Analyzer parse error:", e);
-      }
-    } else if (nodeName === "planner") {
+    if (nodeName === "planner") {
       const lastMsg = data.messages[data.messages.length - 1];
       const content = lastMsg.content;
 
-      // If there is reasoning content (not just JSON), yield it
+      if (lastMsg.tool_calls?.length > 0) {
+        for (const tc of lastMsg.tool_calls) {
+          if (tc.name === "search_exercises") {
+            const query =
+              typeof tc.args === "string"
+                ? JSON.parse(tc.args).query
+                : tc.args.query;
+            yield {
+              type: "step",
+              node: "planner",
+              description: `Searching for ${query} exercises...`,
+            };
+          } else if (tc.name === "create_calendar_event") {
+            yield {
+              type: "step",
+              node: "planner",
+              description: "Booking your session in Google Calendar...",
+            };
+          }
+        }
+      }
+
       if (content && content.trim() && !content.trim().startsWith("{")) {
         yield {
           type: "step",
           node: "planner",
-          description: content.trim().split("\n")[0], // Take first line of reasoning
+          description: content.trim().split("\n")[0],
         };
       }
 
@@ -352,23 +393,8 @@ export async function* streamAgenticRoutine(
       if (jsonMatch) {
         try {
           finalRoutine = JSON.parse(jsonMatch[0]);
-
-          // Enforce 5–10 min total duration: scale down if AI exceeded 600s
-          const exercises = finalRoutine.exercises || [];
-          const totalSeconds = exercises.reduce(
-            (sum, ex) => sum + (ex.duration || 0),
-            0,
-          );
-          const MAX_TOTAL_SECONDS = 600;
-          if (totalSeconds > MAX_TOTAL_SECONDS && totalSeconds > 0) {
-            const scale = MAX_TOTAL_SECONDS / totalSeconds;
-            finalRoutine.exercises = exercises.map((ex) => ({
-              ...ex,
-              duration: Math.max(15, Math.round((ex.duration || 0) * scale)),
-            }));
-          }
         } catch (e) {
-          // It might just be reasoning without JSON yet
+          // Ignore partial JSON or parsing errors during streaming
         }
       }
     }

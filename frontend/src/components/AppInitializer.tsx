@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Howl } from 'howler';
 import { getItem } from '@/utils/indexedDB';
 import { routing } from '@/i18n/routing';
+// TODO: See if it's better to keep or remove the default routines
 // import routineExampleEn from '@/mocks/routine-example-en.json';
 // import routineExampleFr from '@/mocks/routine-example-fr.json';
 // import routineExampleEs from '@/mocks/routine-example-es.json';

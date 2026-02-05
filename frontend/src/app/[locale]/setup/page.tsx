@@ -1,9 +1,10 @@
 'use client';
 
 import { Box, Button, Typography, CircularProgress } from '@mui/material';
-import routineExampleEn from '@/mocks/routine-example-en.json';
-import routineExampleFr from '@/mocks/routine-example-fr.json';
-import routineExampleEs from '@/mocks/routine-example-es.json';
+// TODO: See if it's better to keep or remove the default routines
+// import routineExampleEn from '@/mocks/routine-example-en.json';
+// import routineExampleFr from '@/mocks/routine-example-fr.json';
+// import routineExampleEs from '@/mocks/routine-example-es.json';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useObjectStorage } from '@/hooks/useStorage';
 import { Link } from '@/i18n/routing';
@@ -44,16 +45,17 @@ export default function SetupPage() {
   const t = useTranslations('setup');
   const tCommon = useTranslations('common');
 
-  const getLocalizedRoutineExample = useCallback(() => {
-    switch (currentLocale) {
-      case 'fr':
-        return routineExampleFr;
-      case 'es':
-        return routineExampleEs;
-      default:
-        return routineExampleEn;
-    }
-  }, [currentLocale]);
+  // TODO: See if it's better to keep or remove the default routines
+  // const getLocalizedRoutineExample = useCallback(() => {
+  //   switch (currentLocale) {
+  //     case 'fr':
+  //       return routineExampleFr;
+  //     case 'es':
+  //       return routineExampleEs;
+  //     default:
+  //       return routineExampleEn;
+  //   }
+  // }, [currentLocale]);
 
   const debouncedSave = useRef(
     debounce(async (routine: Routine) => {
@@ -69,25 +71,32 @@ export default function SetupPage() {
     const loadRoutine = async () => {
       try {
         const savedRoutine = await getItem('routine');
+        const savedAllRoutines = await getItem('allRoutines');
+        const allRoutinesParsed = savedAllRoutines
+          ? JSON.parse(savedAllRoutines)
+          : [];
         if (savedRoutine) {
           const parsedRoutine = JSON.parse(savedRoutine);
-          // Always use the saved routine, even if it's the example routine
-          // This allows users to modify the example routine
           setRoutine(parsedRoutine);
+        } else if (allRoutinesParsed.length > 0) {
+          setRoutine(allRoutinesParsed[0]);
         } else {
-          // By default, load the example routine instead of basic
-          setRoutine(getLocalizedRoutineExample());
+          // TODO: See if it's better to keep or remove the default routines
+          // setRoutine(getLocalizedRoutineExample());
+          setRoutine(undefined);
         }
       } catch (error) {
         console.error('Failed to load routine:', error);
-        setRoutine(getLocalizedRoutineExample());
+        // TODO: See if it's better to keep or remove the default routines
+        // setRoutine(getLocalizedRoutineExample());
+        setRoutine(undefined);
       } finally {
         setIsLoading(false);
       }
     };
 
     loadRoutine();
-  }, [currentLocale, getLocalizedRoutineExample]);
+  }, [currentLocale]);
 
   useEffect(() => {
     if (routine) debouncedSave(routine);

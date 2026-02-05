@@ -4,9 +4,10 @@ import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import routineExampleEn from '@/mocks/routine-example-en.json';
-import routineExampleFr from '@/mocks/routine-example-fr.json';
-import routineExampleEs from '@/mocks/routine-example-es.json';
+// TODO: See if it's better to keep or remove the default routines
+// import routineExampleEn from '@/mocks/routine-example-en.json';
+// import routineExampleFr from '@/mocks/routine-example-fr.json';
+// import routineExampleEs from '@/mocks/routine-example-es.json';
 import { FC, useEffect, useState, useCallback } from 'react';
 import ConfirmModal from '@/components/ConfirmModal';
 import { useTranslations } from 'next-intl';
@@ -40,16 +41,17 @@ const SwitchRoutineTitle: FC<Props> = ({
   const [currentRoutineIndex, setCurrentRoutineIndex] = useState(0);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
-  const getLocalizedRoutineExample = useCallback(() => {
-    switch (currentLocale) {
-      case 'fr':
-        return routineExampleFr;
-      case 'es':
-        return routineExampleEs;
-      default:
-        return routineExampleEn;
-    }
-  }, [currentLocale]);
+  // TODO: See if it's better to keep or remove the default routines
+  // const getLocalizedRoutineExample = useCallback(() => {
+  //   switch (currentLocale) {
+  //     case 'fr':
+  //       return routineExampleFr;
+  //     case 'es':
+  //       return routineExampleEs;
+  //     default:
+  //       return routineExampleEn;
+  //   }
+  // }, [currentLocale]);
 
   const getRoutineDisplayName = useCallback(
     (routine: Routine) => {
@@ -95,10 +97,12 @@ const SwitchRoutineTitle: FC<Props> = ({
         const savedAllRoutinesParsed: Routine[] =
           savedAllRoutines && JSON.parse(savedAllRoutines);
 
-        // If no saved routines, use default routines
-        let newAllRoutines: Routine[] = savedAllRoutinesParsed || [
-          getLocalizedRoutineExample(),
-        ];
+        // TODO: See if it's better to keep or remove the default routines
+        // If no saved routines, use default routines (disabled)
+        let newAllRoutines: Routine[] = savedAllRoutinesParsed || [];
+        // let newAllRoutines: Routine[] = savedAllRoutinesParsed || [
+        //   getLocalizedRoutineExample(),
+        // ];
 
         // If we have saved routines, use them as-is
         if (savedAllRoutinesParsed) {
@@ -117,13 +121,7 @@ const SwitchRoutineTitle: FC<Props> = ({
     };
 
     loadRoutines();
-  }, [
-    routine,
-    getRoutineDisplayName,
-    getLocalizedRoutineExample,
-    currentLocale,
-    setRoutine,
-  ]);
+  }, [routine, getRoutineDisplayName, currentLocale, setRoutine]);
 
   const selectAnotherRoutine = async (navigation: Navigation) => {
     if (!routine || !allRoutines) return;

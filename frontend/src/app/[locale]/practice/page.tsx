@@ -35,9 +35,10 @@ import { getExercisesByLocale } from '@/utils/exercises';
 
 import { useConsecutiveDays } from '@/contexts/ConsecutiveDaysContext';
 import SwitchRoutineTitle from '@/components/SwitchRoutineTitle';
-import routineExampleEn from '@/mocks/routine-example-en.json';
-import routineExampleFr from '@/mocks/routine-example-fr.json';
-import routineExampleEs from '@/mocks/routine-example-es.json';
+// TODO: See if it's better to keep or remove the default routines
+// import routineExampleEn from '@/mocks/routine-example-en.json';
+// import routineExampleFr from '@/mocks/routine-example-fr.json';
+// import routineExampleEs from '@/mocks/routine-example-es.json';
 import { Routine, Exercise } from '@/types';
 import { setItem, getItem } from '@/utils/indexedDB';
 import { useObjectStorage } from '@/hooks/useStorage';
@@ -88,16 +89,17 @@ export default function Practice() {
 
   const nextExerciseIndexRef = useRef<number>(0);
 
-  const getLocalizedRoutineExample = useCallback(() => {
-    switch (currentLocale) {
-      case 'fr':
-        return routineExampleFr;
-      case 'es':
-        return routineExampleEs;
-      default:
-        return routineExampleEn;
-    }
-  }, [currentLocale]);
+  // TODO: See if it's better to keep or remove the default routines
+  // const getLocalizedRoutineExample = useCallback(() => {
+  //   switch (currentLocale) {
+  //     case 'fr':
+  //       return routineExampleFr;
+  //     case 'es':
+  //       return routineExampleEs;
+  //     default:
+  //       return routineExampleEn;
+  //   }
+  // }, [currentLocale]);
 
   const t = useTranslations('home');
   const tExerciseDetails = useTranslations('exerciseDetails');
@@ -218,23 +220,30 @@ export default function Practice() {
     const loadRoutine = async () => {
       try {
         const savedRoutine = await getItem('routine');
+        const savedAllRoutines = await getItem('allRoutines');
+        const allRoutinesParsed = savedAllRoutines
+          ? JSON.parse(savedAllRoutines)
+          : [];
         if (savedRoutine) {
           const parsedRoutine = JSON.parse(savedRoutine);
-          // Always use the saved routine, even if it's the example routine
-          // This allows users to modify the example routine
           setRoutine(parsedRoutine);
+        } else if (allRoutinesParsed.length > 0) {
+          setRoutine(allRoutinesParsed[0]);
         } else {
-          // By default, load the example routine instead of basic
-          setRoutine(getLocalizedRoutineExample());
+          // TODO: See if it's better to keep or remove the default routines
+          // setRoutine(getLocalizedRoutineExample());
+          setRoutine(undefined);
         }
       } catch (error) {
         console.error('Failed to load routine:', error);
-        setRoutine(getLocalizedRoutineExample());
+        // TODO: See if it's better to keep or remove the default routines
+        // setRoutine(getLocalizedRoutineExample());
+        setRoutine(undefined);
       }
     };
 
     loadRoutine();
-  }, [currentLocale, getLocalizedRoutineExample]);
+  }, [currentLocale]);
 
   useEffect(() => {
     if (routine) {

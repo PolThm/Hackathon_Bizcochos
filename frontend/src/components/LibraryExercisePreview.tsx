@@ -139,6 +139,7 @@ export default function LibraryExercisePreview({
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
+        width: '100%',
         borderRadius: 3,
         overflow: 'hidden',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',

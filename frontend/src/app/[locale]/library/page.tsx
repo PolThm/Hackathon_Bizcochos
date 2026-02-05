@@ -199,7 +199,7 @@ export default function LibraryPage() {
         </Box>
       </Drawer>
 
-      <Box sx={{ flexGrow: 1, overflow: 'auto', mt: 0.5 }}>
+      <Box sx={{ flexGrow: 1, overflow: 'auto', mt: 0.5, pb: 0.5 }}>
         {filteredExercises.length === 0 ? (
           <Typography
             variant='body1'

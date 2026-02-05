@@ -10,95 +10,97 @@ interface LoadingStateProps {
 
 export default function LoadingState({
   messages,
+
   stepMessages = [],
 }: LoadingStateProps) {
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [currentFrontendIndex, setCurrentFrontendIndex] = useState(0);
+
   const [frontendFadeIn, setFrontendFadeIn] = useState(true);
+
   const [backendFadeIn, setBackendFadeIn] = useState(true);
 
-  // New states for the staggered queue
-  const [displayedMessage, setDisplayedMessage] = useState<string | null>(null);
-  const [messageQueue, setMessageQueue] = useState<string[]>([]);
-  const isDisplayingRef = useRef(false);
+  const [rotationIndex, setRotationIndex] = useState(0);
 
-  // 1. Add new incoming messages to the queue
+  const [rotationQueue, setRotationQueue] = useState<string[]>([]);
+
+  // 1. Sync the rotation queue with incoming stepMessages
+
   useEffect(() => {
     if (stepMessages.length > 0) {
-      const lastMessage = stepMessages[stepMessages.length - 1];
-      setMessageQueue((prev) => {
-        // Prevent adding the same message if it somehow duplicates
-        if (prev.length > 0 && prev[prev.length - 1] === lastMessage)
-          return prev;
-        return [...prev, lastMessage];
-      });
+      // Use the raw stepMessages as our rotation pool
+
+      setRotationQueue(stepMessages);
     }
-  }, [stepMessages.length]); // We only care about the length change to pick up new ones
+  }, [stepMessages]);
 
-  // 2. Process the queue
+  // 2. Start a rotation timer that cycles through the rotationQueue every 3 seconds
+
   useEffect(() => {
-    if (messageQueue.length > 0 && !isDisplayingRef.current) {
-      const processNextMessage = () => {
-        if (messageQueue.length === 0) {
-          isDisplayingRef.current = false;
-          return;
-        }
-
-        isDisplayingRef.current = true;
-        const nextMsg = messageQueue[0];
-
-        // Remove the message we're about to show from the queue
-        setMessageQueue((prev) => prev.slice(1));
-
-        // Fade out previous
+    if (rotationQueue.length > 0) {
+      const interval = setInterval(() => {
         setBackendFadeIn(false);
 
         setTimeout(() => {
-          setDisplayedMessage(nextMsg);
+          setRotationIndex((prev) => (prev + 1) % rotationQueue.length);
+
           setBackendFadeIn(true);
+        }, 500);
+      }, 3000); // Change AI thought every 3 seconds
 
-          // Keep it visible for at least 2.5 seconds
-          setTimeout(() => {
-            isDisplayingRef.current = false;
-          }, 2500);
-        }, 300);
-      };
-
-      processNextMessage();
+      return () => clearInterval(interval);
     }
-  }, [messageQueue, displayedMessage]);
+  }, [rotationQueue.length]);
 
-  // Rotate frontend messages every 7s
+  // 3. Rotate generic frontend messages every 7s
+
   useEffect(() => {
     const interval = setInterval(() => {
       setFrontendFadeIn(false);
+
       setTimeout(() => {
-        setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
+        setCurrentFrontendIndex((prev) => (prev + 1) % messages.length);
+
         setFrontendFadeIn(true);
       }, 500);
     }, 7000);
+
     return () => clearInterval(interval);
   }, [messages.length]);
 
-  const hasBackendSteps = displayedMessage !== null;
-  const frontendText = messages[currentMessageIndex];
+  const hasBackendSteps = rotationQueue.length > 0;
+
+  const displayedBackendText = hasBackendSteps
+    ? rotationQueue[rotationIndex]
+    : null;
+
+  const frontendText = messages[currentFrontendIndex];
 
   return (
     <Box
       sx={{
         display: 'flex',
+
         flexDirection: 'column',
+
         alignItems: 'center',
+
         justifyContent: 'center',
+
         flex: 1,
+
         gap: 4,
+
         py: 6,
       }}
     >
       <Box
         sx={{
           position: 'relative',
+
           display: 'flex',
+
           alignItems: 'center',
+
           justifyContent: 'center',
         }}
       >
@@ -107,33 +109,46 @@ export default function LoadingState({
           thickness={3}
           sx={{
             color: 'secondary.main',
+
             '& .MuiCircularProgress-circle': {
               strokeLinecap: 'round',
             },
           }}
         />
+
         <Box
           sx={{
             position: 'absolute',
+
             top: '50%',
+
             left: '50%',
+
             transform: 'translate(-50%, -50%)',
           }}
         >
           <Box
             sx={{
               width: 10,
+
               height: 10,
+
               borderRadius: '50%',
+
               bgcolor: 'secondary.main',
+
               animation: 'pulse 2s ease-in-out infinite',
+
               '@keyframes pulse': {
                 '0%, 100%': {
                   opacity: 0.4,
+
                   transform: 'scale(1)',
                 },
+
                 '50%': {
                   opacity: 1,
+
                   transform: 'scale(1.3)',
                 },
               },
@@ -145,18 +160,24 @@ export default function LoadingState({
       <Box
         sx={{
           display: 'flex',
+
           flexDirection: 'column',
+
           alignItems: 'center',
+
           gap: 1,
         }}
       >
-        {displayedMessage && (
-          <Fade in={backendFadeIn} timeout={300}>
+        {displayedBackendText && (
+          <Fade in={backendFadeIn} timeout={500}>
             <Box
               sx={{
                 display: 'flex',
+
                 alignItems: 'center',
+
                 justifyContent: 'center',
+
                 gap: 1.5,
               }}
             >
@@ -164,24 +185,36 @@ export default function LoadingState({
                 variant='body1'
                 sx={{
                   textAlign: 'center',
+
                   fontWeight: 400,
+
                   lineHeight: 1.6,
+
                   px: 3,
+
                   mb: 1,
+
                   background: (theme) =>
                     `linear-gradient(90deg, ${theme.palette.text.primary} 0%, ${theme.palette.grey[500]} 25%, ${theme.palette.text.primary} 50%, ${theme.palette.grey[500]} 75%, ${theme.palette.text.primary} 100%)`,
+
                   backgroundSize: '200% 100%',
+
                   animation: 'shimmer 2.5s ease-in-out infinite',
+
                   WebkitBackgroundClip: 'text',
+
                   backgroundClip: 'text',
+
                   color: 'transparent',
+
                   '@keyframes shimmer': {
                     '0%': { backgroundPosition: '100% 50%' },
+
                     '100%': { backgroundPosition: '0% 50%' },
                   },
                 }}
               >
-                {displayedMessage}
+                {displayedBackendText}
               </Typography>
             </Box>
           </Fade>

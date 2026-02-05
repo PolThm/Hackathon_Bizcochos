@@ -330,7 +330,7 @@ export default function OnboardingPage() {
               disabled={true}
               startIcon={
                 <Image
-                  src='/images/apple-logo.png'
+                  src='/images/apple-logo.svg'
                   alt={t('appleHealthAlt')}
                   width={24}
                   height={24}
@@ -374,7 +374,7 @@ export default function OnboardingPage() {
               disabled={true}
               startIcon={
                 <Image
-                  src='/images/myfitnesspal-logo.png'
+                  src='/images/myfitnesspal-logo.jpg'
                   alt={t('myFitnessPalAlt')}
                   width={24}
                   height={24}

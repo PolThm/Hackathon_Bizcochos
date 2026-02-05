@@ -132,7 +132,11 @@ export default function ParametersPage() {
           }
         }
 
-        if (isNewValidReference) {
+        if (reference.toLowerCase() === ValidReferences.Demo) {
+          await setItem('isDemoActivated', JSON.stringify(true));
+          setSnackMessage(t('referenceDemoActivated'));
+          setSnackSeverity('success');
+        } else if (isNewValidReference) {
           setSnackMessage(t('referenceValid'));
           setSnackSeverity('success');
         } else {

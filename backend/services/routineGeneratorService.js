@@ -8,25 +8,26 @@ const __dirname = path.dirname(__filename);
 
 const SUPPORTED_LOCALES = ["en", "fr", "es"];
 
-function getExercisesFilePath(locale) {
+function getExercisesFilePath(locale, isDemoActivated = false) {
   const safeLocale = SUPPORTED_LOCALES.includes(locale) ? locale : "en";
-  return path.join(
-    __dirname,
-    "..",
-    "common",
-    `all-exercises-${safeLocale}.json`,
-  );
+  const prefix = isDemoActivated ? "demo-exercises" : "all-exercises";
+  return path.join(__dirname, "..", "common", `${prefix}-${safeLocale}.json`);
 }
 
-export const generateRoutineFromPrompt = async (prompt, locale = "en") => {
+export const generateRoutineFromPrompt = async (
+  prompt,
+  locale = "en",
+  isDemoActivated = false,
+) => {
   const safeLocale = SUPPORTED_LOCALES.includes(locale) ? locale : "en";
 
   // Load exercises in English for the AI (consistent list for generation)
+  const exercisesPrefix = isDemoActivated ? "demo-exercises" : "all-exercises";
   const exercisesPathEn = path.join(
     __dirname,
     "..",
     "common",
-    "all-exercises-en.json",
+    `${exercisesPrefix}-en.json`,
   );
   const fileContent = await fs.readFile(exercisesPathEn, "utf-8");
   const allExercises = JSON.parse(fileContent);
@@ -92,7 +93,7 @@ JSON Structure:
     }
 
     // Load exercises in the requested locale to get translated names
-    const localePath = getExercisesFilePath(safeLocale);
+    const localePath = getExercisesFilePath(safeLocale, isDemoActivated);
     const localeContent = await fs.readFile(localePath, "utf-8");
     const localeExercises = JSON.parse(localeContent);
     const idToName = Object.fromEntries(

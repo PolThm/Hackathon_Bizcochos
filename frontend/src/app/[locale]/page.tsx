@@ -30,7 +30,7 @@ import { API_BASE_URL } from '@/utils/config';
 import { getDailyRoutineStorageKey } from '@/utils/dailyRoutineStorage';
 import type { Routine } from '@/types';
 import { useObjectStorage } from '@/hooks/useStorage';
-import { getExercisesByLocale } from '@/utils/exercises';
+import { useExercises } from '@/hooks/useExercises';
 import CalendarStrip from '@/components/CalendarStrip';
 import LoadingState from '@/components/LoadingState';
 import { CONTENT_MAX_WIDTH } from '@/constants/layout';
@@ -77,6 +77,7 @@ export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [allRoutines] = useObjectStorage<Routine[]>('allRoutines', []);
+  const exercisesLibrary = useExercises(locale);
 
   const [userLocation, setUserLocation] = useState<string | null>(null);
   const [weather, setWeather] = useState<{
@@ -141,6 +142,8 @@ export default function Home() {
           exercises: r.exercises.map((e) => e.name),
         }));
 
+        const saved = await getItem('isDemoActivated');
+        const isDemoActivated = saved === true || saved === 'true';
         const response = await fetch(
           `${API_BASE_URL}/api/generateDailyRoutine`,
           {
@@ -156,6 +159,7 @@ export default function Home() {
               history,
               userProfile: profileToUse,
               timeZone,
+              isDemoActivated: !!isDemoActivated,
             }),
           },
         );
@@ -325,12 +329,11 @@ export default function Home() {
 
   const exercisesWithImage = useMemo(() => {
     if (!routine) return [];
-    const library = getExercisesByLocale(locale);
     return routine.exercises.map((ex) => ({
       ...ex,
-      image: library.find((e) => e.id === ex.exerciseId)?.image ?? '',
+      image: exercisesLibrary.find((e) => e.id === ex.exerciseId)?.image ?? '',
     }));
-  }, [routine, locale]);
+  }, [routine, exercisesLibrary]);
 
   const exerciseCount = exercisesWithImage.length;
 
@@ -635,7 +638,11 @@ export default function Home() {
               alignItems: 'center',
             }}
           >
-            <LoadingState messages={loadingMessages} stepMessages={logs} />
+            <LoadingState
+              messages={loadingMessages}
+              stepMessages={logs}
+              hideFrontendMessages
+            />
           </Box>
         )}
 

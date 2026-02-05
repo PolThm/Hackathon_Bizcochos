@@ -187,6 +187,7 @@ export async function* streamAgenticRoutine(
   userProfile = null,
   timeZone = "Europe/Rome",
   stravaToken = null,
+  isDemoActivated = false,
 ) {
   const tools = createTools(googleToken, stravaToken, userProfile);
   const toolNode = new ToolNode(tools);
@@ -231,8 +232,7 @@ export async function* streamAgenticRoutine(
 
     const response = await model.invoke([
       new SystemMessage(`Analyze the context (Weather, Calendar, Strava, Profile). 
-      Generate exactly 3 very brief thoughts (max 60 characters each) about what you see.
-      Be specific (e.g., mention the temperature, a specific Strava activity, or a free slot).
+      Generate exactly 3 very brief thoughts (max 60 characters each). Be specific (e.g., temperature, a Strava activity, a free slot). End each thought with "...".
       Language: ${lang}.
       Output ONLY a JSON object: { "thoughts": ["...", "...", "..."] }`),
       lastMessage,
@@ -241,12 +241,10 @@ export async function* streamAgenticRoutine(
   };
 
   const planner = async (state) => {
-    const exercisesPath = path.join(
-      __dirname,
-      "..",
-      "common",
-      `all-exercises-en.json`,
-    );
+    const exercisesFile = isDemoActivated
+      ? "demo-exercises-en.json"
+      : "all-exercises-en.json";
+    const exercisesPath = path.join(__dirname, "..", "common", exercisesFile);
     const fileContent = await fs.readFile(exercisesPath, "utf-8");
     const exercises = JSON.parse(fileContent).map((ex) => ({
       id: ex.id,

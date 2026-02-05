@@ -70,12 +70,17 @@ export default function DailyRoutinePage() {
       }
 
       try {
+        const saved = await getItem('isDemoActivated');
+        const isDemoActivated = saved === true || saved === 'true';
         const response = await fetch(
           `${API_BASE_URL}/api/generateDailyRoutine`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ locale }),
+            body: JSON.stringify({
+              locale,
+              isDemoActivated: !!isDemoActivated,
+            }),
           },
         );
 

@@ -1,0 +1,156 @@
+[
+  {
+    "id": "demo-upward-salute",
+    "name": "Salut vers le haut",
+    "image": "/images/exercises/demo/upward-salute.png",
+    "instructions": [
+      "Commence debout, pieds écartés de la largeur du bassin, bras le long du corps.",
+      "Balaye lentement les bras sur les côtés et vers le haut au-dessus de la tête.",
+      "Garde les mains écartées de la largeur des épaules et tends-les vers le plafond.",
+      "Relâche les épaules et regarde légèrement vers le haut."
+    ],
+    "tips": [
+      "Ancre fermement les pieds au sol et répartis le poids uniformément.",
+      "Engage les muscles du tronc pour éviter de cambrer le bas du dos."
+    ],
+    "modifications": [
+      "Pour une intensité moindre, place les mains derrière la tête ou sur les hanches."
+    ],
+    "benefits": ["Abdomen, Dorsaux, Poitrine, Épaules, Obliques, Haut du dos, Colonne vertébrale"]
+  },
+  {
+    "id": "demo-standing-forward-bend",
+    "name": "Poupée de chiffon",
+    "image": "/images/exercises/demo/standing-forward-bend.png",
+    "instructions": [
+      "Commence debout, pieds écartés de la largeur du bassin, genoux légèrement fléchis.",
+      "Inspire et étends les bras au-dessus de la tête, en allongeant la colonne vertébrale.",
+      "Expire et penche-toi lentement vers l'avant à partir des hanches, laissant le haut du corps pendre.",
+      "Attrape tes cuisses et laisse ta tête et tes bras pendre lourdement."
+    ],
+    "tips": [
+      "Répartis ton poids uniformément entre les talons et la plante des pieds.",
+      "Concentre-toi sur l'allongement de la colonne plutôt que d'essayer de toucher le sol."
+    ],
+    "modifications": [
+      "Plie davantage les genoux pour éviter de solliciter le dos.",
+      "Utilise un bloc ou une chaise pour reposer tes coudes si atteindre le sol est difficile."
+    ],
+    "benefits": ["Fessiers, Lombaires, Ischio-jambiers, Hanches, Épaules, Mollets"]
+  },
+  {
+    "id": "demo-upward-facing-dog",
+    "name": "Chien tête en haut",
+    "image": "/images/exercises/demo/upward-facing-dog.png",
+    "instructions": [
+      "Commence allongé sur le ventre, jambes tendues, mains sous les épaules.",
+      "Presse les paumes dans le sol, tends les bras pour soulever le haut du corps et les jambes du sol.",
+      "Soulève la poitrine, relâche les épaules et regarde légèrement vers le haut."
+    ],
+    "tips": [
+      "Seuls le dessus des pieds et tes paumes doivent toucher le sol.",
+      "Garde les bras tendus mais évite de verrouiller les coudes."
+    ],
+    "modifications": ["Pour une intensité moindre, garde les cuisses au sol."],
+    "benefits": ["Abdomen, Poitrine, Colonne vertébrale, Psoas"]
+  },
+  {
+    "id": "demo-childs-pose",
+    "name": "Posture de l'enfant",
+    "image": "/images/exercises/demo/childs-pose.png",
+    "instructions": [
+      "Commence à quatre pattes, en position de table.",
+      "Écarte les genoux et rapproche les gros orteils pour qu'ils se touchent.",
+      "Assieds-toi sur tes talons, puis étends les mains vers l'avant et abaisse la poitrine vers le sol.",
+      "Relâche les hanches et repose le front sur le sol."
+    ],
+    "tips": [
+      "Avance le bout des doigts pour augmenter l'étirement.",
+      "Laisse ta poitrine s'affaisser vers le sol."
+    ],
+    "modifications": [
+      "Pour une intensité moindre, n'écarte pas autant les genoux.",
+      "Si ton front n'atteint pas le sol, repose-le sur un bloc ou une couverture pliée."
+    ],
+    "benefits": ["Chevilles, Lombaires, Hanches, Épaules, Tibias, Pieds"]
+  },
+  {
+    "id": "demo-knees-to-chest",
+    "name": "Genoux à la poitrine",
+    "image": "/images/exercises/demo/knees-to-chest.png",
+    "instructions": [
+      "Commence allongé sur le dos, jambes tendues, bras le long du corps.",
+      "Plie les genoux et ramène-les vers la poitrine.",
+      "Entoure tes tibias avec tes bras et tire-les doucement plus près de ta poitrine."
+    ],
+    "tips": [
+      "Relâche la tête et le cou sur le sol.",
+      "Garde le bas du dos pressé contre le sol."
+    ],
+    "modifications": [
+      "Si tu ne peux pas atteindre tes tibias, enroule tes bras derrière tes cuisses."
+    ],
+    "benefits": ["Fessiers, Lombaires, Ischio-jambiers, Hanches"]
+  },
+  {
+    "id": "demo-legs-up-the-wall",
+    "name": "Jambes contre le mur",
+    "image": "/images/exercises/demo/legs-up-the-wall.png",
+    "instructions": [
+      "Commence assis sur le sol, le côté de la hanche touchant le mur.",
+      "Allonge-toi sur le dos et balance les jambes vers le haut contre le mur d'un seul mouvement.",
+      "Glisse les hanches aussi près du mur que confortable et étends les jambes droit vers le haut le long du mur.",
+      "Repose les bras le long du corps, paumes vers le haut."
+    ],
+    "tips": [
+      "Garde les jambes relativement détendues et évite de verrouiller les genoux."
+    ],
+    "modifications": [
+      "Si tes ischio-jambiers sont tendus, éloigne légèrement les hanches du mur.",
+      "Place un coussin ou une couverture pliée sous les hanches pour un soutien supplémentaire."
+    ],
+    "benefits": ["Fessiers, Lombaires, Ischio-jambiers, Hanches"]
+  },
+  {
+    "id": "demo-downward-facing-dog",
+    "name": "Chien tête en bas",
+    "image": "/images/exercises/demo/downward-facing-dog.png",
+    "instructions": [
+      "Commence à quatre pattes en position de table.",
+      "Replie les orteils, presse les paumes dans le sol et tends les bras et les jambes pour soulever les hanches vers le haut et l'arrière.",
+      "Pousse la poitrine vers les cuisses et les talons vers le sol."
+    ],
+    "tips": [
+      "Relâche les épaules et laisse la tête pendre entre les bras.",
+      "Répartis ton poids uniformément entre les mains et les pieds.",
+      "Garde une légère flexion dans les genoux pour éviter l'hyperextension."
+    ],
+    "modifications": [
+      "Pour une intensité moindre, plie davantage les genoux ou place les mains sur le bord d'une chaise.",
+      "Pour réduire la pression sur les poignets, place les avant-bras au sol ou utilise un bloc sous les mains."
+    ],
+    "benefits": ["Fessiers, Lombaires, Ischio-jambiers, Épaules, Mollets"]
+  },
+  {
+    "id": "demo-lunge",
+    "name": "Fente",
+    "image": "/images/exercises/demo/lunge.png",
+    "instructions": [
+      "Commence à genoux, bras le long du corps.",
+      "Avance une jambe, en plaçant le pied à plat sur le sol devant toi.",
+      "Pousse les hanches vers l'avant et lève les bras au-dessus de la tête.",
+      "Soulève la poitrine et tends vers le plafond."
+    ],
+    "tips": [
+      "Garde le genou avant stable et aligné directement au-dessus de la cheville.",
+      "Engage la jambe arrière, en appuyant le dessus du pied dans le sol.",
+      "Garde le torse droit et évite de cambrer le bas du dos."
+    ],
+    "modifications": [
+      "Pour une intensité moindre, garde les mains sur la cuisse avant.",
+      "Place une serviette ou un coussin sous le genou arrière pour un soutien.",
+      "Tiens-toi à un mur ou à une chaise pour l'équilibre si nécessaire."
+    ],
+    "benefits": ["Abdomen, Lombaires, Quadriceps, Hanches, Psoas"]
+  }
+]

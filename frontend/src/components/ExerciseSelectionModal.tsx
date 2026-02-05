@@ -20,11 +20,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { useTranslations } from 'next-intl';
 import {
-  getExercisesByLocale,
   getExerciseBenefitList,
   exerciseHasBenefit,
   LibraryExercise,
 } from '@/utils/exercises';
+import { useExercises } from '@/hooks/useExercises';
 import LibraryExercisePreview from '@/components/LibraryExercisePreview';
 import { CONTENT_MAX_WIDTH, MODAL_MAX_WIDTH } from '@/constants/layout';
 
@@ -47,7 +47,7 @@ export default function ExerciseSelectionModal({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBenefits, setSelectedBenefits] = useState<string[]>([]);
   const [benefitsDrawerOpen, setBenefitsDrawerOpen] = useState(false);
-  const allExercises = getExercisesByLocale(locale);
+  const allExercises = useExercises(locale);
 
   useEffect(() => {
     if (open) {

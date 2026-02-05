@@ -22,8 +22,12 @@ await fastify.register(cors, {
 });
 
 fastify.post("/api/generateRoutine", async (request) => {
-  const { prompt, locale } = request.body;
-  const result = await generateRoutineFromPrompt(prompt, locale);
+  const { prompt, locale, isDemoActivated } = request.body;
+  const result = await generateRoutineFromPrompt(
+    prompt,
+    locale,
+    isDemoActivated,
+  );
   return result;
 });
 
@@ -37,6 +41,7 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
     userProfile,
     timeZone,
     stravaToken,
+    isDemoActivated,
   } = request.body;
 
   const stream = new Readable({
@@ -58,17 +63,17 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
       userProfile,
       timeZone,
       stravaToken,
+      isDemoActivated,
     );
 
     for await (const chunk of agentStream) {
       if (chunk.type === "final") {
         const routine = chunk.data;
         const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
-        const localePath = path.join(
-          __dirname,
-          "common",
-          `all-exercises-${safeLocale}.json`,
-        );
+        const exercisesFile = isDemoActivated
+          ? `demo-exercises-${safeLocale}.json`
+          : `all-exercises-${safeLocale}.json`;
+        const localePath = path.join(__dirname, "common", exercisesFile);
         const localeContent = await fs.readFile(localePath, "utf-8");
         const localeExercises = JSON.parse(localeContent);
         const idToName = Object.fromEntries(

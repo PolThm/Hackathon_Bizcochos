@@ -1,0 +1,154 @@
+[
+  {
+    "id": "demo-upward-salute",
+    "name": "Upward Salute",
+    "image": "/images/exercises/demo/upward-salute.png",
+    "instructions": [
+      "Stand with feet hip-width apart and arms at your sides.",
+      "Slowly sweep your arms out to the sides and up overhead.",
+      "Keep your hands shoulder-width apart and reach toward the ceiling.",
+      "Relax your shoulders and gaze slightly upward."
+    ],
+    "tips": [
+      "Press your feet firmly into the floor and distribute your weight evenly.",
+      "Engage your core to avoid arching your lower back."
+    ],
+    "modifications": [
+      "To reduce intensity, place your hands behind your head or on your hips."
+    ],
+    "benefits": ["Abdomen, Lats, Chest, Shoulders, Obliques, Upper Back, Spine"]
+  },
+  {
+    "id": "demo-standing-forward-bend",
+    "name": "Standing Forward Bend",
+    "image": "/images/exercises/demo/standing-forward-bend.png",
+    "instructions": [
+      "Stand with feet hip-width apart and knees slightly bent.",
+      "Breathe in and extend your arms overhead to lengthen your spine.",
+      "Breathe out and slowly fold forward from the hips, allowing your upper body to hang down.",
+      "Hold your thighs and let your head and arms hang loosely."
+    ],
+    "tips": [
+      "Distribute your weight evenly between your heels and the balls of your feet.",
+      "Prioritize lengthening your spine over touching the floor."
+    ],
+    "modifications": [
+      "Bend your knees more deeply to protect your back.",
+      "Place a block or chair under your elbows if you cannot reach the floor."
+    ],
+    "benefits": ["Glutes, Lower Back, Hamstrings, Hips, Shoulders, Calves"]
+  },
+  {
+    "id": "demo-upward-facing-dog",
+    "name": "Upward-Facing Dog",
+    "image": "/images/exercises/demo/upward-facing-dog.png",
+    "instructions": [
+      "Lie face down with legs extended and hands under your shoulders.",
+      "Press through your palms with straight arms to lift your chest and legs off the ground.",
+      "Raise your chest, relax your shoulders, and gaze slightly upward."
+    ],
+    "tips": [
+      "Only the tops of your feet and your palms should contact the floor.",
+      "Keep your arms straight without locking your elbows."
+    ],
+    "modifications": ["To reduce intensity, keep your thighs on the floor."],
+    "benefits": ["Abdomen, Chest, Spine, Psoas"]
+  },
+  {
+    "id": "demo-childs-pose",
+    "name": "Child's Pose",
+    "image": "/images/exercises/demo/childs-pose.png",
+    "instructions": [
+      "Begin on hands and knees in a tabletop position.",
+      "Widen your knees and bring your big toes together to touch.",
+      "Sit back onto your heels, then reach forward with your hands and lower your chest toward the floor.",
+      "Relax your hips and rest your forehead on the floor."
+    ],
+    "tips": [
+      "Walk your fingertips forward to deepen the stretch.",
+      "Allow your chest to sink towards the floor."
+    ],
+    "modifications": [
+      "To reduce intensity, keep your knees closer together.",
+      "If your forehead doesn't reach the floor, rest it on a block or folded blanket."
+    ],
+    "benefits": ["Ankles, Lower Back, Hips, Shoulders, Shins, Feet"]
+  },
+  {
+    "id": "demo-knees-to-chest",
+    "name": "Knees-to-chest",
+    "image": "/images/exercises/demo/knees-to-chest.png",
+    "instructions": [
+      "Lie on your back with legs extended and arms at your sides.",
+      "Bend your knees and bring them toward your chest.",
+      "Hug your shins with your arms and gently pull them closer."
+    ],
+    "tips": [
+      "Let your head and neck relax on the floor.",
+      "Press your lower back into the floor."
+    ],
+    "modifications": [
+      "If reaching your shins is difficult, wrap your arms behind your thighs instead."
+    ],
+    "benefits": ["Glutes, Lower Back, Hamstrings, Hips"]
+  },
+  {
+    "id": "demo-legs-up-the-wall",
+    "name": "Legs Up the Wall",
+    "image": "/images/exercises/demo/legs-up-the-wall.png",
+    "instructions": [
+      "Sit on the floor with the side of your hip touching the wall.",
+      "Lie back and swing your legs up onto the wall in one smooth motion.",
+      "Slide your hips as close to the wall as comfortable and extend your legs straight up.",
+      "Rest your arms by your sides with your palms facing up."
+    ],
+    "tips": ["Keep your legs relaxed and avoid locking your knees."],
+    "modifications": [
+      "If your hamstrings are tight, move your hips slightly away from the wall.",
+      "Place a cushion or folded blanket under your hips for extra support."
+    ],
+    "benefits": ["Glutes, Lower Back, Hamstrings, Hips"]
+  },
+  {
+    "id": "demo-downward-facing-dog",
+    "name": "Downward-Facing Dog",
+    "image": "/images/exercises/demo/downward-facing-dog.png",
+    "instructions": [
+      "Begin on hands and knees in a tabletop position.",
+      "Tuck your toes under, press your palms into the floor, and extend your arms and legs to lift your hips up and back.",
+      "Push your chest toward your thighs and your heels toward the floor."
+    ],
+    "tips": [
+      "Relax your shoulders and let your head hang between your arms.",
+      "Distribute your weight evenly between hands and feet.",
+      "Keep a slight bend in your knees to avoid hyperextension."
+    ],
+    "modifications": [
+      "For less intensity, bend your knees more or place your hands on the edge of a chair.",
+      "To reduce pressure on your wrists, place your forearms on the floor or use a block under your hands."
+    ],
+    "benefits": ["Glutes, Lower Back, Hamstrings, Shoulders, Calves"]
+  },
+  {
+    "id": "demo-lunge",
+    "name": "Lunge",
+    "image": "/images/exercises/demo/lunge.png",
+    "instructions": [
+      "Begin in a kneeling position with your arms at your sides.",
+      "Step one foot forward, placing it flat on the floor in front of you.",
+      "Push your hips forward and raise your arms overhead.",
+      "Lift your chest and reach toward the ceiling."
+    ],
+    "tips": [
+      "Keep your front knee stable and align it directly above your ankle.",
+      "Engage your back leg, pressing the top of your foot into the floor.",
+      "Keep your torso upright and avoid arching your lower back."
+    ],
+    "modifications": [
+      "To reduce intensity, keep your hands on your front thigh.",
+      "Place a towel or cushion under your back knee for support.",
+      "Hold onto a wall or chair for balance if needed."
+    ],
+    "benefits": ["Abdomen, Lower Back, Quadriceps, Hips, Psoas"]
+  }
+]

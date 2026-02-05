@@ -34,4 +34,5 @@ export enum Language {
 export enum ValidReferences {
   Polux = 'polux',
   Rapido = 'rapido',
+  Demo = 'demo',
 }

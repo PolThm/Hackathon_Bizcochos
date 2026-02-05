@@ -21,7 +21,7 @@ import { useParams } from 'next/navigation';
 import { useRouter } from '@/i18n/routing';
 import Image from 'next/image';
 import { getItem, setItem } from '@/utils/indexedDB';
-import { getExercisesByLocale } from '@/utils/exercises';
+import { useExercises } from '@/hooks/useExercises';
 import { API_BASE_URL } from '@/utils/config';
 import { Routine } from '@/types';
 import { MODAL_MAX_WIDTH } from '@/constants/layout';
@@ -51,16 +51,16 @@ export default function NewRoutinePage() {
   const autoScrollPausedUntilRef = useRef(0);
   const touchStartXRef = useRef<number | null>(null);
   const swipeHandledRef = useRef(false);
+  const exercisesLibrary = useExercises(locale);
 
   // Resolve exercise images from library (by locale)
   const exercisesWithImage = useMemo(() => {
     if (!proposedRoutine) return [];
-    const library = getExercisesByLocale(locale);
     return proposedRoutine.exercises.map((ex) => ({
       ...ex,
-      image: library.find((e) => e.id === ex.exerciseId)?.image ?? '',
+      image: exercisesLibrary.find((e) => e.id === ex.exerciseId)?.image ?? '',
     }));
-  }, [proposedRoutine, locale]);
+  }, [proposedRoutine, exercisesLibrary]);
 
   const exerciseCount = exercisesWithImage.length;
 
@@ -191,12 +191,18 @@ export default function NewRoutinePage() {
     if (isRefinement) setIsRefineModalOpen(false);
 
     try {
+      const saved = await getItem('isDemoActivated');
+      const isDemoActivated = saved === true || saved === 'true';
       const response = await fetch(`${API_BASE_URL}/api/generateRoutine`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ prompt, locale }),
+        body: JSON.stringify({
+          prompt,
+          locale,
+          isDemoActivated: !!isDemoActivated,
+        }),
       });
 
       if (!response.ok) {

@@ -28,7 +28,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import { setItem, getItem } from '@/utils/indexedDB';
-import { getExercisesByLocale } from '@/utils/exercises';
+import { useExercises } from '@/hooks/useExercises';
 
 export default function SetupPage() {
   const router = useRouter();
@@ -43,6 +43,7 @@ export default function SetupPage() {
   const [allRoutines] = useObjectStorage<Routine[]>('allRoutines', []);
   const hasNoRoutines = allRoutines.length === 0;
   const t = useTranslations('setup');
+  const allExercises = useExercises(currentLocale);
   const tCommon = useTranslations('common');
 
   // TODO: See if it's better to keep or remove the default routines
@@ -316,7 +317,6 @@ export default function SetupPage() {
 
     // Use translated name from library when exerciseId is set
     if (exercise.exerciseId) {
-      const allExercises = getExercisesByLocale(currentLocale);
       const libraryExercise = allExercises.find(
         (ex) => ex.id === exercise.exerciseId,
       );

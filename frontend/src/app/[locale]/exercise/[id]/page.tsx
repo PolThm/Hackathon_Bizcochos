@@ -15,7 +15,7 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { getExercisesByLocale } from '@/utils/exercises';
+import { useExercises } from '@/hooks/useExercises';
 import { Link } from '@/i18n/routing';
 
 const BACK_HREF_BY_FROM: Record<string, string> = {
@@ -30,7 +30,7 @@ export default function ExerciseDetailsPage() {
   const t = useTranslations('exerciseDetails');
   const exerciseId = params.id as string;
   const locale = (params?.locale as string) ?? 'en';
-  const allExercises = getExercisesByLocale(locale);
+  const allExercises = useExercises(locale);
   const from = searchParams.get('from');
   const backHref = (from && BACK_HREF_BY_FROM[from]) ?? '/library';
 

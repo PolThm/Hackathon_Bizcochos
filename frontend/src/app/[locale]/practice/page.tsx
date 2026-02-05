@@ -31,7 +31,7 @@ import { useTranslations } from 'next-intl';
 import { MODAL_MAX_WIDTH } from '@/constants/layout';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { getExercisesByLocale } from '@/utils/exercises';
+import { useExercises } from '@/hooks/useExercises';
 
 import { useConsecutiveDays } from '@/contexts/ConsecutiveDaysContext';
 import SwitchRoutineTitle from '@/components/SwitchRoutineTitle';
@@ -47,7 +47,7 @@ export default function Practice() {
   const { incrementConsecutiveDays } = useConsecutiveDays();
   const params = useParams();
   const currentLocale = params.locale as string;
-  const allExercises = getExercisesByLocale(currentLocale);
+  const allExercises = useExercises(currentLocale);
   const theme = useTheme();
   const [allRoutines] = useObjectStorage<Routine[]>('allRoutines', []);
   const hasNoRoutines = allRoutines.length === 0;

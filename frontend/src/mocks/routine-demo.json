@@ -1,0 +1,56 @@
+{
+    "id": "demo",
+    "name": "Mobility Flow",
+    "breakDuration": 5,
+    "preparationDuration": 5,
+    "exercises": [
+      {
+        "id": 1,
+        "name": "Demo Upward Salute",
+        "duration": 50,
+        "exerciseId": "demo-upward-salute"
+      },
+      {
+        "id": 2,
+        "name": "Demo Standing Forward Bend",
+        "duration": 60,
+        "exerciseId": "demo-standing-forward-bend"
+      },
+      {
+        "id": 3,
+        "name": "Demo Upward-Facing Dog",
+        "duration": 50,
+        "exerciseId": "demo-upward-facing-dog"
+      },
+      {
+        "id": 4,
+        "name": "Demo Child's Pose",
+        "duration": 60,
+        "exerciseId": "demo-childs-pose"
+      },
+      {
+        "id": 5,
+        "name": "Demo Knees-to-chest",
+        "duration": 40,
+        "exerciseId": "demo-knees-to-chest"
+      },
+      {
+        "id": 6,
+        "name": "Demo Legs Up the Wall",
+        "duration": 60,
+        "exerciseId": "demo-legs-up-the-wall"
+      },
+      {
+        "id": 7,
+        "name": "Downward-Facing Dog",
+        "duration": 40,
+        "exerciseId": "demo-downward-facing-dog"
+      },
+      {
+        "id": 8,
+        "name": "Lunge",
+        "duration": 40,
+        "exerciseId": "demo-lunge"
+      }
+    ]
+  }

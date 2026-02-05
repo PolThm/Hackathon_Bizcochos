@@ -1,0 +1,156 @@
+[
+  {
+    "id": "demo-upward-salute",
+    "name": "Saludo hacia arriba",
+    "image": "/images/exercises/demo/upward-salute.png",
+    "instructions": [
+      "Comienza de pie, con los pies separados al ancho de caderas y los brazos a los lados.",
+      "Balancea lentamente los brazos hacia los lados y arriba por encima de la cabeza.",
+      "Mantén las manos separadas al ancho de hombros y estíralas hacia el techo.",
+      "Relaja los hombros y mira ligeramente hacia arriba."
+    ],
+    "tips": [
+      "Afirma los pies firmemente en el suelo y distribuye el peso uniformemente.",
+      "Activa los músculos del core para evitar arquear la espalda baja."
+    ],
+    "modifications": [
+      "Para menos intensidad, coloca las manos detrás de la cabeza o sobre las caderas."
+    ],
+    "benefits": ["Abdomen, Dorsales, Pecho, Hombros, Oblicuos, Espalda alta, Columna vertebral"]
+  },
+  {
+    "id": "demo-standing-forward-bend",
+    "name": "Muñeca de trapo",
+    "image": "/images/exercises/demo/standing-forward-bend.png",
+    "instructions": [
+      "Comienza de pie, con los pies separados al ancho de caderas y las rodillas ligeramente flexionadas.",
+      "Inhala y extiende los brazos por encima de la cabeza, alargando la columna vertebral.",
+      "Exhala y dobla lentamente hacia adelante desde las caderas, dejando que la parte superior del cuerpo cuelgue.",
+      "Sujeta los muslos y deja que tu cabeza y brazos cuelguen pesadamente."
+    ],
+    "tips": [
+      "Mantén el peso distribuido uniformemente entre los talones y las plantas de los pies.",
+      "Concéntrate en alargar la columna en lugar de intentar tocar el suelo."
+    ],
+    "modifications": [
+      "Flexiona más las rodillas para evitar forzar la espalda.",
+      "Usa un bloque o una silla para apoyar los codos si te resulta difícil llegar al suelo."
+    ],
+    "benefits": ["Glúteos, Espalda baja, Isquiotibiales, Caderas, Hombros, Pantorrillas"]
+  },
+  {
+    "id": "demo-upward-facing-dog",
+    "name": "Perro hacia arriba",
+    "image": "/images/exercises/demo/upward-facing-dog.png",
+    "instructions": [
+      "Comienza tumbado boca abajo con las piernas extendidas y las manos bajo los hombros.",
+      "Presiona las palmas contra el suelo, estira los brazos para levantar la parte superior del cuerpo y las piernas del suelo.",
+      "Eleva el pecho, relaja los hombros y mira ligeramente hacia arriba."
+    ],
+    "tips": [
+      "Solo el empeine de los pies y las palmas deben tocar el suelo.",
+      "Mantén los brazos rectos pero evita bloquear los codos."
+    ],
+    "modifications": ["Para menos intensidad, mantén los muslos en el suelo."],
+    "benefits": ["Abdomen, Pecho, Columna vertebral, Psoas"]
+  },
+  {
+    "id": "demo-childs-pose",
+    "name": "Postura del niño",
+    "image": "/images/exercises/demo/childs-pose.png",
+    "instructions": [
+      "Comienza a cuatro patas en posición de mesa.",
+      "Separa las rodillas y junta los dedos gordos de los pies para que se toquen.",
+      "Siéntate sobre los talones, luego estira los brazos hacia adelante y baja el pecho hacia el suelo.",
+      "Relaja las caderas y apoya la frente en el suelo."
+    ],
+    "tips": [
+      "Camina con las yemas de los dedos hacia adelante para aumentar el estiramiento.",
+      "Permite que el pecho se hunda hacia el suelo."
+    ],
+    "modifications": [
+      "Para menos intensidad, no separes tanto las rodillas.",
+      "Si tu frente no llega al suelo, apóyala en un bloque o manta doblada."
+    ],
+    "benefits": ["Tobillos, Espalda baja, Caderas, Hombros, Espinillas, Pies"]
+  },
+  {
+    "id": "demo-knees-to-chest",
+    "name": "Rodillas al pecho",
+    "image": "/images/exercises/demo/knees-to-chest.png",
+    "instructions": [
+      "Comienza tumbado boca arriba con las piernas extendidas y los brazos a los lados.",
+      "Flexiona las rodillas y llévalas hacia el pecho.",
+      "Rodea las espinillas con los brazos y tira suavemente de ellas más cerca del pecho."
+    ],
+    "tips": [
+      "Relaja la cabeza y el cuello en el suelo.",
+      "Mantén la espalda baja presionada contra el suelo."
+    ],
+    "modifications": [
+      "Si no puedes alcanzar tus espinillas, rodea los muslos con los brazos."
+    ],
+    "benefits": ["Glúteos, Espalda baja, Isquiotibiales, Caderas"]
+  },
+  {
+    "id": "demo-legs-up-the-wall",
+    "name": "Piernas en la pared",
+    "image": "/images/exercises/demo/legs-up-the-wall.png",
+    "instructions": [
+      "Comienza sentado en el suelo con el costado de la cadera tocando la pared.",
+      "Túmbate y balancea las piernas hacia arriba contra la pared en un solo movimiento.",
+      "Desliza las caderas lo más cerca de la pared que sea cómodo y extiende las piernas rectas hacia arriba por la pared.",
+      "Descansa los brazos a los lados con las palmas hacia arriba."
+    ],
+    "tips": [
+      "Mantén las piernas relativamente relajadas y evita bloquear las rodillas."
+    ],
+    "modifications": [
+      "Si los isquiotibiales están tensos, aleja ligeramente las caderas de la pared.",
+      "Coloca un cojín o manta doblada bajo las caderas para mayor apoyo."
+    ],
+    "benefits": ["Glúteos, Espalda baja, Isquiotibiales, Caderas"]
+  },
+  {
+    "id": "demo-downward-facing-dog",
+    "name": "Perro boca abajo",
+    "image": "/images/exercises/demo/downward-facing-dog.png",
+    "instructions": [
+      "Comienza a cuatro patas en posición de mesa.",
+      "Mete los dedos de los pies, presiona las palmas contra el suelo y estira los brazos y piernas para levantar las caderas hacia arriba y atrás.",
+      "Empuja el pecho hacia los muslos y los talones hacia el suelo."
+    ],
+    "tips": [
+      "Relaja los hombros y deja que la cabeza cuelgue entre los brazos.",
+      "Distribuye tu peso uniformemente entre las manos y los pies.",
+      "Mantén una ligera flexión en las rodillas para evitar la hiperextensión."
+    ],
+    "modifications": [
+      "Para menos intensidad, flexiona más las rodillas o coloca las manos en el borde de una silla.",
+      "Para reducir la presión en las muñecas, coloca los antebrazos en el suelo o usa un bloque bajo las manos."
+    ],
+    "benefits": ["Glúteos, Espalda baja, Isquiotibiales, Hombros, Pantorrillas"]
+  },
+  {
+    "id": "demo-lunge",
+    "name": "Estocada",
+    "image": "/images/exercises/demo/lunge.png",
+    "instructions": [
+      "Comienza de rodillas con los brazos a los lados.",
+      "Da un paso adelante con una pierna, colocando el pie plano en el suelo frente a ti.",
+      "Empuja las caderas hacia adelante y levanta los brazos por encima de la cabeza.",
+      "Levanta el pecho y estírate hacia el techo."
+    ],
+    "tips": [
+      "Mantén la rodilla delantera estable y alineada directamente sobre el tobillo.",
+      "Activa la pierna trasera, presionando el empeine del pie contra el suelo.",
+      "Mantén el torso erguido y evita arquear la espalda baja."
+    ],
+    "modifications": [
+      "Para menos intensidad, mantén las manos en el muslo delantero.",
+      "Coloca una toalla o cojín bajo la rodilla trasera para apoyo.",
+      "Sujétate a una pared o silla para el equilibrio si es necesario."
+    ],
+    "benefits": ["Abdomen, Espalda baja, Cuádriceps, Caderas, Psoas"]
+  }
+]

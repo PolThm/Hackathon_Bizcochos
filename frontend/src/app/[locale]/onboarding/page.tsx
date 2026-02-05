@@ -288,7 +288,7 @@ export default function OnboardingPage() {
               disabled={stravaConnected}
               startIcon={
                 <Image
-                  src='/images/strava-logo.svg'
+                  src='/images/strava-logo.png'
                   alt={t('stravaAlt')}
                   width={24}
                   height={24}

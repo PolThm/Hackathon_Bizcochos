@@ -15,22 +15,57 @@ export default function LoadingState({
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [frontendFadeIn, setFrontendFadeIn] = useState(true);
   const [backendFadeIn, setBackendFadeIn] = useState(true);
-  const prevStepLengthRef = useRef(0);
 
-  // When backend sends a new step, fade in the new message (only when adding, not on initial mount)
+  // New states for the staggered queue
+  const [displayedMessage, setDisplayedMessage] = useState<string | null>(null);
+  const [messageQueue, setMessageQueue] = useState<string[]>([]);
+  const isDisplayingRef = useRef(false);
+
+  // 1. Add new incoming messages to the queue
   useEffect(() => {
-    if (stepMessages.length > prevStepLengthRef.current) {
-      const hadPrevious = prevStepLengthRef.current > 0;
-      prevStepLengthRef.current = stepMessages.length;
-      if (hadPrevious) {
-        setBackendFadeIn(false);
-        const timer = setTimeout(() => {
-          setBackendFadeIn(true);
-        }, 300);
-        return () => clearTimeout(timer);
-      }
+    if (stepMessages.length > 0) {
+      const lastMessage = stepMessages[stepMessages.length - 1];
+      setMessageQueue((prev) => {
+        // Prevent adding the same message if it somehow duplicates
+        if (prev.length > 0 && prev[prev.length - 1] === lastMessage)
+          return prev;
+        return [...prev, lastMessage];
+      });
     }
-  }, [stepMessages.length]);
+  }, [stepMessages.length]); // We only care about the length change to pick up new ones
+
+  // 2. Process the queue
+  useEffect(() => {
+    if (messageQueue.length > 0 && !isDisplayingRef.current) {
+      const processNextMessage = () => {
+        if (messageQueue.length === 0) {
+          isDisplayingRef.current = false;
+          return;
+        }
+
+        isDisplayingRef.current = true;
+        const nextMsg = messageQueue[0];
+
+        // Remove the message we're about to show from the queue
+        setMessageQueue((prev) => prev.slice(1));
+
+        // Fade out previous
+        setBackendFadeIn(false);
+
+        setTimeout(() => {
+          setDisplayedMessage(nextMsg);
+          setBackendFadeIn(true);
+
+          // Keep it visible for at least 2.5 seconds
+          setTimeout(() => {
+            isDisplayingRef.current = false;
+          }, 2500);
+        }, 300);
+      };
+
+      processNextMessage();
+    }
+  }, [messageQueue, displayedMessage]);
 
   // Rotate frontend messages every 7s
   useEffect(() => {
@@ -44,10 +79,7 @@ export default function LoadingState({
     return () => clearInterval(interval);
   }, [messages.length]);
 
-  const hasBackendSteps = stepMessages.length > 0;
-  const backendText = hasBackendSteps
-    ? stepMessages[stepMessages.length - 1]
-    : null;
+  const hasBackendSteps = displayedMessage !== null;
   const frontendText = messages[currentMessageIndex];
 
   return (
@@ -118,7 +150,7 @@ export default function LoadingState({
           gap: 1,
         }}
       >
-        {backendText && (
+        {displayedMessage && (
           <Fade in={backendFadeIn} timeout={300}>
             <Box
               sx={{
@@ -149,7 +181,7 @@ export default function LoadingState({
                   },
                 }}
               >
-                {backendText}
+                {displayedMessage}
               </Typography>
             </Box>
           </Fade>

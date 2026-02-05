@@ -219,6 +219,27 @@ export async function* streamAgenticRoutine(
     };
   };
 
+  const analyzer = async (state) => {
+    const lastMessage = state.messages[state.messages.length - 1];
+    const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
+    const lang =
+      safeLocale === "en"
+        ? "English"
+        : safeLocale === "fr"
+          ? "French"
+          : "Spanish";
+
+    const response = await model.invoke([
+      new SystemMessage(`Analyze the context (Weather, Calendar, Strava, Profile). 
+      Generate exactly 3 very brief thoughts (max 60 characters each) about what you see.
+      Be specific (e.g., mention the temperature, a specific Strava activity, or a free slot).
+      Language: ${lang}.
+      Output ONLY a JSON object: { "thoughts": ["...", "...", "..."] }`),
+      lastMessage,
+    ]);
+    return { messages: [response] };
+  };
+
   const planner = async (state) => {
     const exercisesPath = path.join(
       __dirname,
@@ -244,10 +265,11 @@ export async function* streamAgenticRoutine(
     const response = await plannerModel.invoke([
       new SystemMessage(`You are a fitness AI.
       1. MANDATORY: Put an event on Google Calendar (if connected). USE 'create_calendar_event' NOW for a 30m slot (with the name of the routine). The slot MUST be booked AFTER the current time, never in the past.
-      2. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
-      3. Write a short and catchy "name" in ${langInstruction} (30 characters maximum, without mentioning the routine duration, and without mentioning the user's name).
-      4. Write "description" in ${langInstruction} (between 100 and 300 characters maximum, without mentioning the exercise names, without mentioning the routine name, and without mentioning the routine duration). The description MUST: (a) mention the user's first name naturally at least once; (b) explain why this routine was chosen—if possible, reference today's context (weather (if it’s brings something interesting, but don’t focus on the temperature of the current moment, but rather on the overall weather for the day), calendar, schedule) that justifies these choices; otherwise explain more globally why it fits the user's profile (goals, level, limitations).
-      5. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 900 seconds (5–15 minutes). Never exceed 900 seconds total. The longer the routine, the greater the number of exercises should be (an exercise should be at minimum 15 seconds, and at most 60 seconds). Choose the exercise durations smartly regarding each exercise nature and user's profile.
+      2. REASONING: Before calling a tool or outputting JSON, provide a brief sentence in ${langInstruction} explaining what you are doing (e.g., "I'm booking a slot at 4 PM as you're free").
+      3. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
+      4. Write a short and catchy "name" in ${langInstruction} (30 characters maximum, without mentioning the routine duration, and without mentioning the user's name).
+      5. Write "description" in ${langInstruction} (between 100 and 300 characters maximum, without mentioning the exercise names, without mentioning the routine name, and without mentioning the routine duration). The description MUST: (a) mention the user's first name naturally at least once; (b) explain why this routine was chosen—if possible, reference today's context (weather (if it’s brings something interesting, but don’t focus on the temperature of the current moment, but rather on the overall weather for the day), calendar, schedule) that justifies these choices; otherwise explain more globally why it fits the user's profile (goals, level, limitations).
+      6. DURATION (STRICT): The SUM of all exercise "duration" values MUST be between 300 and 900 seconds (5–15 minutes). Never exceed 900 seconds total. The longer the routine, the greater the number of exercises should be (an exercise should be at minimum 15 seconds, and at most 60 seconds). Choose the exercise durations smartly regarding each exercise nature and user's profile.
       Available exercises: ${JSON.stringify(exercises)}
       Be fast. One-shot.`),
       ...state.messages,
@@ -257,31 +279,17 @@ export async function* streamAgenticRoutine(
 
   const workflow = new StateGraph(GraphState)
     .addNode("fetcher", fetchContextNode)
+    .addNode("analyzer", analyzer)
     .addNode("tools", (state) => toolNode.invoke(state))
     .addNode("planner", planner)
     .addEdge(START, "fetcher")
-    .addEdge("fetcher", "planner")
+    .addEdge("fetcher", "analyzer")
+    .addEdge("analyzer", "planner")
     .addConditionalEdges("planner", (state) => {
       const last = state.messages[state.messages.length - 1];
       return last.tool_calls?.length > 0 ? "tools" : END;
     })
     .addEdge("tools", "planner");
-
-  const stepMessages = {
-    en: {
-      fetcher: "Analyzing context and scheduling",
-      calendarReserved: "Reserving slot in your Google Calendar",
-    },
-    fr: {
-      fetcher: "Analyse du contexte et planification",
-      calendarReserved: "Réservation de créneau dans ton calendrier Google",
-    },
-    es: {
-      fetcher: "Analizando contexto y planificación",
-      calendarReserved: "Reservando slot en tu calendario Google",
-    },
-  };
-  const t = stepMessages[locale] ?? stepMessages.en;
 
   const app = workflow.compile();
   const stream = await app.stream(
@@ -294,24 +302,38 @@ export async function* streamAgenticRoutine(
     const nodeName = Object.keys(update)[0];
     const data = update[nodeName];
 
-    if (nodeName === "fetcher") {
-      yield {
-        type: "step",
-        node: "fetcher",
-        description: t.fetcher,
-      };
-    } else if (nodeName === "tools") {
-      for (const msg of data.messages) {
-        if (msg.content.includes("Successfully")) {
-          yield {
-            type: "step",
-            node: "tools",
-            description: t.calendarReserved,
-          };
+    if (nodeName === "analyzer") {
+      const content = data.messages[data.messages.length - 1].content;
+      try {
+        const jsonMatch = content.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const parsed = JSON.parse(jsonMatch[0]);
+          if (parsed.thoughts && Array.isArray(parsed.thoughts)) {
+            for (const thought of parsed.thoughts) {
+              yield {
+                type: "step",
+                node: "analyzer",
+                description: thought,
+              };
+            }
+          }
         }
+      } catch (e) {
+        console.error("Analyzer parse error:", e);
       }
     } else if (nodeName === "planner") {
-      const content = data.messages[data.messages.length - 1].content;
+      const lastMsg = data.messages[data.messages.length - 1];
+      const content = lastMsg.content;
+
+      // If there is reasoning content (not just JSON), yield it
+      if (content && content.trim() && !content.trim().startsWith("{")) {
+        yield {
+          type: "step",
+          node: "planner",
+          description: content.trim().split("\n")[0], // Take first line of reasoning
+        };
+      }
+
       const jsonMatch = content.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         try {
@@ -332,7 +354,7 @@ export async function* streamAgenticRoutine(
             }));
           }
         } catch (e) {
-          console.error("JSON parse error:", e);
+          // It might just be reasoning without JSON yet
         }
       }
     }

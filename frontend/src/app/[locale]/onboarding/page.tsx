@@ -319,6 +319,94 @@ export default function OnboardingPage() {
               {t('stravaPrivacy')}
             </Typography>
           </Box>
+
+          {/* Apple Health Section */}
+          <Box sx={{ width: '100%', textAlign: 'center' }}>
+            <Typography variant='body1' textAlign='left' sx={{ mb: 2 }}>
+              {t('appleHealthIntro')}
+            </Typography>
+            <Button
+              variant='outlined'
+              disabled={true}
+              startIcon={
+                <Image
+                  src='/images/apple-logo.png'
+                  alt={t('appleHealthAlt')}
+                  width={24}
+                  height={24}
+                  style={{ objectFit: 'contain' }}
+                />
+              }
+              sx={{
+                borderRadius: '12px',
+                py: 1.5,
+                px: 4,
+                textTransform: 'none',
+                borderColor: 'rgba(0,0,0,0.1)',
+                color: 'text.disabled',
+                width: '100%',
+                '&.Mui-disabled': {
+                  borderColor: 'rgba(0,0,0,0.1)',
+                  color: 'text.disabled',
+                },
+              }}
+            >
+              {t('connectAppleHealth')}
+            </Button>
+            <Typography
+              variant='caption'
+              color='text.secondary'
+              textAlign='center'
+              display='block'
+              sx={{ mt: 1 }}
+            >
+              {t('comingSoon')}
+            </Typography>
+          </Box>
+
+          {/* MyFitnessPal Section */}
+          <Box sx={{ width: '100%', textAlign: 'center' }}>
+            <Typography variant='body1' textAlign='left' sx={{ mb: 2 }}>
+              {t('myFitnessPalIntro')}
+            </Typography>
+            <Button
+              variant='outlined'
+              disabled={true}
+              startIcon={
+                <Image
+                  src='/images/myfitnesspal-logo.png'
+                  alt={t('myFitnessPalAlt')}
+                  width={24}
+                  height={24}
+                  style={{ objectFit: 'contain' }}
+                />
+              }
+              sx={{
+                borderRadius: '12px',
+                py: 1.5,
+                px: 4,
+                textTransform: 'none',
+                borderColor: 'rgba(0,0,0,0.1)',
+                color: 'text.disabled',
+                width: '100%',
+                '&.Mui-disabled': {
+                  borderColor: 'rgba(0,0,0,0.1)',
+                  color: 'text.disabled',
+                },
+              }}
+            >
+              {t('connectMyFitnessPal')}
+            </Button>
+            <Typography
+              variant='caption'
+              color='text.secondary'
+              textAlign='center'
+              display='block'
+              sx={{ mt: 1 }}
+            >
+              {t('comingSoon')}
+            </Typography>
+          </Box>
         </Box>
       )}
 

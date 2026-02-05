@@ -182,6 +182,13 @@
     "connectStrava": "Connecter Strava",
     "stravaConnected": "Strava connecté !",
     "stravaPrivacy": "On consulte tes activités seulement pour ajuster l'intensité",
+    "appleHealthIntro": "Connecte Apple Health pour synchroniser tes données de santé",
+    "appleHealthAlt": "Apple Health",
+    "connectAppleHealth": "Connecter Apple Health",
+    "myFitnessPalIntro": "Connecte MyFitnessPal pour synchroniser tes données de nutrition",
+    "myFitnessPalAlt": "MyFitnessPal",
+    "connectMyFitnessPal": "Connecter MyFitnessPal",
+    "comingSoon": "Bientôt disponible",
     "continue": "Continuer",
     "finish": "Créer ma première Routine !"
   },

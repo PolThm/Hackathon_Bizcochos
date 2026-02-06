@@ -2,6 +2,7 @@
   "name": "hackathon-bizcochos",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",

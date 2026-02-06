@@ -6,8 +6,7 @@
 const VORTEX_BALL_ANIMATION = {
   duration: '2.2s',
   easing: 'ease-in',
-  delayTopRight: '0.6s',
-  delayBottomLeft: '0.8s',
+  delay: '0.2s',
 } as const;
 
 export const vortexBallTopRightKeyframes = {

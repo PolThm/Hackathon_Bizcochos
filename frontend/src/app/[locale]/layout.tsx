@@ -16,7 +16,6 @@ import PWAInstallPrompt from '@/components/PWAInstallPrompt';
 import OfflineIndicator from '@/components/OfflineIndicator';
 import AppInitializer from '@/components/AppInitializer';
 import PullToRefreshWrapper from '@/components/PullToRefreshWrapper';
-import { SplashScreen } from '@/components/SplashScreen';
 
 export async function generateMetadata({
   params: { locale },
@@ -123,7 +122,6 @@ export default async function RootLayout({
             <ConsecutiveDaysProvider>
               <AppInitializer />
               <NextIntlClientProvider messages={messages}>
-                <SplashScreen />
                 <PullToRefreshProvider>
                   <Container
                     maxWidth='xs'

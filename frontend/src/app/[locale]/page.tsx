@@ -465,10 +465,7 @@ export default function Home() {
               backgroundColor: theme.palette.secondary.main,
               transform: 'translate(-50%, -50%) scale(0.12)',
               opacity: 0,
-              animation: {
-                xs: `vortexBallTopRight ${vortexBallAnimationConfig.duration} ${vortexBallAnimationConfig.easing} 0.6s forwards`,
-                sm: `vortexBallTopRight ${vortexBallAnimationConfig.duration} ${vortexBallAnimationConfig.easing} forwards`,
-              },
+              animation: `vortexBallTopRight ${vortexBallAnimationConfig.duration} ${vortexBallAnimationConfig.easing} forwards`,
             }}
           />
           <Box
@@ -482,10 +479,7 @@ export default function Home() {
               backgroundColor: theme.palette.primary.main,
               transform: 'translate(-50%, -50%) scale(0.12)',
               opacity: 0,
-              animation: {
-                xs: `vortexBallBottomLeft ${vortexBallAnimationConfig.duration} ${vortexBallAnimationConfig.easing} 0.8s forwards`,
-                sm: `vortexBallBottomLeft ${vortexBallAnimationConfig.duration} ${vortexBallAnimationConfig.easing} 0.2s forwards`,
-              },
+              animation: `vortexBallBottomLeft ${vortexBallAnimationConfig.duration} ${vortexBallAnimationConfig.easing} ${vortexBallAnimationConfig.delay} forwards`,
             }}
           />
         </Box>

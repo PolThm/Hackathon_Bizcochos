@@ -2,7 +2,10 @@ import "dotenv/config";
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { generateRoutineFromPrompt } from "./services/routineGeneratorService.js";
-import { streamAgenticRoutine } from "./services/langgraphService.js";
+import {
+  streamAgenticRoutine,
+  streamDemoRoutine,
+} from "./services/langgraphService.js";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -51,20 +54,20 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
   reply.type("application/x-ndjson").send(stream);
 
   try {
-    const finalPrompt =
-      prompt ||
-      "Please generate my routine for today based on my context (weather, calendar, strava, emails).";
-    const agentStream = streamAgenticRoutine(
-      finalPrompt,
-      locale,
-      latitude,
-      longitude,
-      googleToken,
-      userProfile,
-      timeZone,
-      stravaToken,
-      isDemoActivated,
-    );
+    const agentStream = isDemoActivated
+      ? streamDemoRoutine(locale)
+      : streamAgenticRoutine(
+          prompt ||
+            "Please generate my routine for today based on my context (weather, calendar, strava, emails).",
+          locale,
+          latitude,
+          longitude,
+          googleToken,
+          userProfile,
+          timeZone,
+          stravaToken,
+          false,
+        );
 
     for await (const chunk of agentStream) {
       if (chunk.type === "final") {

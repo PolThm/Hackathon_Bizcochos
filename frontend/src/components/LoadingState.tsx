@@ -17,29 +17,14 @@ export default function LoadingState({
   const [currentFrontendIndex, setCurrentFrontendIndex] = useState(0);
   const [frontendFadeIn, setFrontendFadeIn] = useState(true);
   const [backendFadeIn, setBackendFadeIn] = useState(true);
-  const [rotationIndex, setRotationIndex] = useState(0);
   const [rotationQueue, setRotationQueue] = useState<string[]>([]);
 
-  // 1. Sync the rotation queue with incoming stepMessages
+  // 1. Sync the rotation queue with incoming stepMessages (for frontend message hiding logic)
   useEffect(() => {
     if (stepMessages.length > 0) {
       setRotationQueue(stepMessages);
     }
   }, [stepMessages]);
-
-  // 2. Start a rotation timer that cycles through the rotationQueue every 7 seconds
-  useEffect(() => {
-    if (rotationQueue.length > 0) {
-      const interval = setInterval(() => {
-        setBackendFadeIn(false);
-        setTimeout(() => {
-          setRotationIndex((prev) => (prev + 1) % rotationQueue.length);
-          setBackendFadeIn(true);
-        }, 500);
-      }, 7000); // Change AI thought every 7 seconds
-      return () => clearInterval(interval);
-    }
-  }, [rotationQueue.length]);
 
   // 3. Rotate generic frontend messages every 7s (only when shown)
   useEffect(() => {
@@ -54,9 +39,10 @@ export default function LoadingState({
     return () => clearInterval(interval);
   }, [messages.length, hideFrontendMessages, rotationQueue.length]);
 
-  const hasBackendSteps = rotationQueue.length > 0;
+  const hasBackendSteps = stepMessages.length > 0;
+  // Show the most recent message (last in array) so each new streamed message appears immediately
   const displayedBackendText = hasBackendSteps
-    ? rotationQueue[rotationIndex]
+    ? stepMessages[stepMessages.length - 1]
     : null;
   const frontendText = messages[currentFrontendIndex];
 

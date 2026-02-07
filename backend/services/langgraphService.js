@@ -231,10 +231,16 @@ export async function* streamAgenticRoutine(
           : "Spanish";
 
     const response = await model.invoke([
-      new SystemMessage(`Analyze the context (Weather, Calendar, Strava, Profile). 
-      Generate exactly 3 very brief thoughts (max 60 characters each). Be specific (e.g., temperature, a Strava activity, a free slot). End each thought with "...".
-      Language: ${lang}.
-      Output ONLY a JSON object: { "thoughts": ["...", "...", "..."] }`),
+      new SystemMessage(`You are analyzing the user's context to prepare a personalized mobility routine.
+      
+      RULES:
+      1. MENTION APIs or data sources. Strava / Calendar/ Weather (talk no more than once about the ones that are not connected).
+      2. FOCUS on: the user's profile (name, goals, level, injuries), what they want to work on.
+      3. AVOID: free slots, trivial details, and raw temperature. If mentioning weather, focus on the day's overall feel (e.g., "Chilly day, warming up properly...") rather than numbers.
+      4. STYLE: Brief reasoning sentences in ${lang} (max 60 chars each), like explaining your strategy. End each with "...".
+      5. COUNT: Generate exactly 20 thoughts.
+      
+      Output ONLY a JSON object: { "thoughts": ["...", "...", ...] }`),
       lastMessage,
     ]);
     return { messages: [response] };
@@ -261,7 +267,7 @@ export async function* streamAgenticRoutine(
 
     const plannerModel = model.bindTools(tools);
     const response = await plannerModel.invoke([
-      new SystemMessage(`You are a world-class personal trainer and mobility expert.
+      new SystemMessage(`You are a world-class personal trainer and mobility / stretching expert.
       
       CRITICAL REASONING RULES:
       1. ANALYZE STRAVA: Look at the "Strava (Last activities)".
@@ -283,6 +289,7 @@ export async function* streamAgenticRoutine(
          - Mention the user's name naturally.
          - NO generic filler like "this is for you" or "adapting to your activity".
       6. DURATION (STRICT): Total duration between 300 and 900 seconds (5–15 minutes).
+      7. EXERCISE DURATION (STRICT): Each exercise MUST be between 15 and 60 seconds. Never exceed 60 seconds per exercise. The longer the total routine, the more exercises you must include (e.g., 5 min → ~5–6 exercises, 15 min → ~12–15 exercises).
       
       Available exercises: ${JSON.stringify(exercises)}
       Be precise. One-shot.`),
@@ -353,20 +360,27 @@ export async function* streamAgenticRoutine(
         try {
           finalRoutine = JSON.parse(jsonMatch[0]);
 
-          // Enforce 5–10 min total duration: scale down if AI exceeded 600s
+          // Enforce per-exercise duration (15–60s) and total duration (max 600s)
           const exercises = finalRoutine.exercises || [];
-          const totalSeconds = exercises.reduce(
+          const clampDuration = (d) =>
+            Math.max(15, Math.min(60, Math.round(d || 0)));
+          let processed = exercises.map((ex) => ({
+            ...ex,
+            duration: clampDuration(ex.duration),
+          }));
+          const totalSeconds = processed.reduce(
             (sum, ex) => sum + (ex.duration || 0),
             0,
           );
           const MAX_TOTAL_SECONDS = 600;
           if (totalSeconds > MAX_TOTAL_SECONDS && totalSeconds > 0) {
             const scale = MAX_TOTAL_SECONDS / totalSeconds;
-            finalRoutine.exercises = exercises.map((ex) => ({
+            processed = processed.map((ex) => ({
               ...ex,
-              duration: Math.max(15, Math.round((ex.duration || 0) * scale)),
+              duration: clampDuration((ex.duration || 0) * scale),
             }));
           }
+          finalRoutine.exercises = processed;
         } catch (e) {
           // It might just be reasoning without JSON yet
         }

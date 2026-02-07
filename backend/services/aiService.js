@@ -1,11 +1,9 @@
-import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const client = new OpenAI({
-  baseURL: process.env.ENDPOINT_URL,
-});
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 /**
  * Generic AI service to handle completions.
@@ -14,23 +12,27 @@ export const generateCompletion = async (systemPrompt, userPrompt) => {
   console.log("AI Service: Generating completion...");
 
   try {
-    const response = await client.chat.completions.create({
-      model: "gpt-5-nano",
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt },
-      ],
-      response_format: { type: "json_object" },
+    const model = genAI.getGenerativeModel({
+      model: "gemini-3-pro-preview",
+      systemInstruction: systemPrompt,
     });
 
-    const content = response.choices[0].message.content;
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: userPrompt }] }],
+      generationConfig: {
+        responseMimeType: "application/json",
+      },
+    });
+
+    const response = await result.response;
+    const content = response.text();
 
     return {
       content: content,
       raw: response,
     };
   } catch (error) {
-    console.error("OpenAI API Error:", error);
+    console.error("Gemini API Error:", error);
     throw error;
   }
 };

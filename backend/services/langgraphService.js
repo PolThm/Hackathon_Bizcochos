@@ -1,5 +1,5 @@
 import { Annotation, StateGraph, START, END } from "@langchain/langgraph";
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { DynamicStructuredTool } from "@langchain/core/tools";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
@@ -191,9 +191,9 @@ export async function* streamAgenticRoutine(
 ) {
   const tools = createTools(googleToken, stravaToken, userProfile);
   const toolNode = new ToolNode(tools);
-  const model = new ChatOpenAI({
-    modelName: "gpt-5-nano",
-    configuration: { baseURL: process.env.ENDPOINT_URL },
+  const model = new ChatGoogleGenerativeAI({
+    model: "gemini-3-pro-preview",
+    apiKey: process.env.GEMINI_API_KEY,
   });
 
   const fetchContextNode = async () => {
@@ -208,7 +208,7 @@ export async function* streamAgenticRoutine(
     const currentTimeIso = now.toISOString();
     return {
       messages: [
-        new SystemMessage(`CONTEXT:
+        new HumanMessage(`CONTEXT:
       - Weather: ${weather}
       - Calendar: ${calendar}
       - Strava (Last activities): ${strava}

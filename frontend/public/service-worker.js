@@ -66,6 +66,11 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Cache API only supports GET requests - skip POST/PUT/etc to avoid "Request method 'POST' is unsupported"
+  if (request.method !== 'GET') {
+    return;
+  }
+
   // Cache First strategy for static assets
   if (
     request.destination === 'image' ||

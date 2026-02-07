@@ -41,8 +41,8 @@ The core of **Routines** is its "Smart Recovery" architecture, powered by **Gemi
 ### Installation
 1.  **Clone the repo:**
     ```bash
-    git clone https://github.com/your-repo/routines.git
-    cd routines
+    git clone https://github.com/PolThm/Hackathon_Bizcochos.git
+    cd Hackathon_Bizcochos
     ```
 2.  **Install dependencies:**
     ```bash

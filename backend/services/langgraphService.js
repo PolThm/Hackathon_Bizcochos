@@ -192,7 +192,7 @@ export async function* streamAgenticRoutine(
   const tools = createTools(googleToken, stravaToken, userProfile);
   const toolNode = new ToolNode(tools);
   const model = new ChatGoogleGenerativeAI({
-    modelName: "gemini-3-pro-preview",
+    model: "gemini-3-pro-preview",
     apiKey: process.env.GEMINI_API_KEY,
   });
 
@@ -208,7 +208,7 @@ export async function* streamAgenticRoutine(
     const currentTimeIso = now.toISOString();
     return {
       messages: [
-        new SystemMessage(`CONTEXT:
+        new HumanMessage(`CONTEXT:
       - Weather: ${weather}
       - Calendar: ${calendar}
       - Strava (Last activities): ${strava}

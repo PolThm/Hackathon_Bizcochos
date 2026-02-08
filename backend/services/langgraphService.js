@@ -14,6 +14,31 @@ const __dirname = path.dirname(__filename);
 
 // --- 2. Define State ---
 
+// --- 1. Exercise Cache ---
+const exerciseCache = new Map();
+
+async function getExercises(locale, isDemoActivated) {
+  const safeLocale = ["en", "fr", "es", "it"].includes(locale) ? locale : "en";
+  const cacheKey = `${safeLocale}-${isDemoActivated}`;
+  if (exerciseCache.has(cacheKey)) return exerciseCache.get(cacheKey);
+
+  const exercisesFile = isDemoActivated
+    ? `demo-exercises-${safeLocale}.json`
+    : `all-exercises-${safeLocale}.json`;
+  const exercisesPath = path.join(__dirname, "..", "common", exercisesFile);
+
+  try {
+    const fileContent = await fs.readFile(exercisesPath, "utf-8");
+    const data = JSON.parse(fileContent);
+    exerciseCache.set(cacheKey, data);
+    return data;
+  } catch (e) {
+    return [];
+  }
+}
+
+// --- 2. Define State ---
+
 const GraphState = Annotation.Root({
   messages: Annotation({
     reducer: (x, y) => x.concat(y),
@@ -26,6 +51,10 @@ const GraphState = Annotation.Root({
   timeZone: Annotation({
     reducer: (x, y) => y ?? x,
     default: () => "Europe/Rome",
+  }),
+  iterationCount: Annotation({
+    reducer: (x, y) => x + y,
+    default: () => 0,
   }),
 });
 
@@ -55,40 +84,35 @@ const createTools = (
   const searchExercises = new DynamicStructuredTool({
     name: "search_exercises",
     description:
-      "Search for exercises by name or benefits (e.g. 'psoas', 'back', 'warmup'). Returns a list of exercises with their IDs and names.",
+      "Search for exercises by name or benefits. Provide a comma-separated list of keywords (e.g. 'psoas, hips, back').",
     schema: z.object({
-      query: z
-        .string()
-        .describe(
-          "The search term (e.g., 'hamstrings', 'shoulders', 'morning').",
-        ),
+      query: z.string().describe("Comma-separated keywords."),
     }),
     func: async ({ query }) => {
-      try {
-        const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
-        const exercisesFile = isDemoActivated
-          ? `demo-exercises-${safeLocale}.json`
-          : `all-exercises-${safeLocale}.json`;
-        const exercisesPath = path.join(
-          __dirname,
-          "..",
-          "common",
-          exercisesFile,
-        );
-        const fileContent = await fs.readFile(exercisesPath, "utf-8");
-        const exercises = JSON.parse(fileContent);
-        const q = query.toLowerCase();
-        const results = exercises
-          .filter(
-            (ex) =>
-              ex.name.toLowerCase().includes(q) ||
-              ex.benefits.some((b) => b.toLowerCase().includes(q)),
-          )
-          .map((ex) => ({ id: ex.id, name: ex.name, benefits: ex.benefits }));
-        return JSON.stringify(results.slice(0, 20));
-      } catch (e) {
-        return "Error searching exercises.";
+      let exercises = await getExercises(locale, isDemoActivated);
+      const keywords = query
+        .toLowerCase()
+        .split(",")
+        .map((k) => k.trim());
+      let filtered = exercises.filter((ex) =>
+        keywords.some(
+          (k) =>
+            ex.name.toLowerCase().includes(k) ||
+            ex.benefits.some((b) => b.toLowerCase().includes(k)),
+        ),
+      );
+
+      // Fallback: if no results, return some random basic exercises so we never have 0
+      if (filtered.length === 0) {
+        filtered = exercises.slice(0, 10);
       }
+
+      const results = filtered.map((ex) => ({
+        id: ex.id,
+        name: ex.name,
+        benefits: ex.benefits,
+      }));
+      return JSON.stringify(results.slice(0, 30));
     },
   });
 
@@ -99,12 +123,16 @@ const createTools = (
     func: async () => {
       if (!stravaToken) return "Strava not connected.";
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
         const response = await fetch(
           "https://www.strava.com/api/v3/athlete/activities?per_page=5",
           {
             headers: { Authorization: `Bearer ${stravaToken}` },
+            signal: controller.signal,
           },
         );
+        clearTimeout(timeoutId);
         if (!response.ok) return "Error fetching Strava activities.";
         const activities = await response.json();
         if (!activities.length) return "No recent activities.";
@@ -115,7 +143,7 @@ const createTools = (
           )
           .join("\n");
       } catch (e) {
-        return "Error connecting to Strava.";
+        return "Strava unavailable (timeout or error).";
       }
     },
   });
@@ -129,9 +157,13 @@ const createTools = (
     }),
     func: async ({ latitude, longitude }) => {
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
         const response = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code`,
+          { signal: controller.signal },
         );
+        clearTimeout(timeoutId);
         const data = await response.json();
         return `Weather: ${data.current.temperature_2m}°C, Code: ${data.current.weather_code}`;
       } catch (e) {
@@ -152,16 +184,21 @@ const createTools = (
         const start = new Date(now.setHours(0, 0, 0, 0)).toISOString();
         const end = new Date(now.setHours(23, 59, 59, 999)).toISOString();
         const url = `https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${start}&timeMax=${end}&singleEvents=true&orderBy=startTime`;
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
         const response = await fetch(url, {
           headers: { Authorization: `Bearer ${token}` },
+          signal: controller.signal,
         });
+        clearTimeout(timeoutId);
         const data = await response.json();
         if (!data.items?.length) return "Free day.";
         return data.items
           .map((e) => `${e.start.dateTime || e.start.date}: ${e.summary}`)
           .join("\n");
       } catch (e) {
-        return "Error reading calendar.";
+        return "Calendar unavailable.";
       }
     },
   });
@@ -184,9 +221,11 @@ const createTools = (
       const now = new Date();
       const startTime = new Date(args.startTime);
       if (startTime < now) {
-        return "Cannot schedule in the past. The slot must start at or after the current time.";
+        return "Cannot schedule in the past.";
       }
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
         const response = await fetch(
           `https://www.googleapis.com/calendar/v3/calendars/primary/events`,
           {
@@ -195,6 +234,7 @@ const createTools = (
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
+            signal: controller.signal,
             body: JSON.stringify({
               summary: args.summary,
               description: args.description,
@@ -207,11 +247,12 @@ const createTools = (
             }),
           },
         );
+        clearTimeout(timeoutId);
         return response.ok
           ? "Successfully created the calendar event."
-          : "Failed to create event.";
+          : "Failed to create event (API error).";
       } catch (e) {
-        return "Error creating event.";
+        return "Calendar event creation failed (timeout).";
       }
     },
   });
@@ -275,34 +316,24 @@ export async function* streamAgenticRoutine(
   };
 
   const planner = async (state) => {
-    const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
-    const langInstruction =
-      safeLocale === "en"
-        ? "English"
-        : safeLocale === "fr"
-          ? "French"
-          : "Spanish";
-
     const plannerModel = model.bindTools(tools);
     const response = await plannerModel.invoke([
-      new SystemMessage(`You are a world-class personal trainer and mobility / stretching expert.
+      new SystemMessage(`You are a world-class personal trainer.
       
-      CRITICAL REASONING RULES:
-      1. ANALYZE context (Strava, Weather, Calendar, Profile).
-      2. PARALLEL TOOLS: You MUST call 'search_exercises' and 'create_calendar_event' in the SAME turn if possible to save time.
-      3. SEARCH: Use 'search_exercises' to find suitable exercises. Do not guess exercise IDs.
-      4. REASONING: Provide brief sentences in ${langInstruction} (max 60 chars each, ending with "...") explaining your strategy.
+      CRITICAL RULES:
+      1. TOOL USE: Call 'search_exercises' (with ALL needed keywords) and 'create_calendar_event' IMMEDIATELY.
+      2. NO HALLUCINATIONS: Use ONLY IDs from search results.
+      3. STOP: Once tools return, output ONLY JSON. No filler.
       
       TASK:
-      1. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
-      2. Write a short and catchy "name" in ${langInstruction} (30 characters maximum).
-      3. Write "description" in ${langInstruction} (100-300 chars). Be specific about Strava activities and the calendar slot.
-      4. DURATION: Total duration between 300 and 900 seconds. Each exercise 15-60s.
+      Generate JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
+      - Routine Duration: Goal is ~600s (10 min).
+      - Exercise Duration: 15-60s each.
       
-      Be precise. Stream the JSON as soon as you have the exercise IDs.`),
+      Be extremely fast.`),
       ...state.messages,
     ]);
-    return { messages: [response] };
+    return { messages: [response], iterationCount: 1 };
   };
 
   const workflow = new StateGraph(GraphState)
@@ -313,6 +344,8 @@ export async function* streamAgenticRoutine(
     .addEdge("fetcher", "planner")
     .addConditionalEdges("planner", (state) => {
       const last = state.messages[state.messages.length - 1];
+      const count = state.iterationCount || 0;
+      if (count >= 2) return END;
       return last.tool_calls?.length > 0 ? "tools" : END;
     })
     .addEdge("tools", "planner");
@@ -322,6 +355,25 @@ export async function* streamAgenticRoutine(
     { messages: [new HumanMessage(userPrompt)], locale, timeZone },
     { streamMode: ["messages", "updates"] },
   );
+
+  const TOOL_DESCRIPTIONS = {
+    en: {
+      search_exercises: "Picking exercises...",
+      create_calendar_event: "Syncing calendar...",
+    },
+    fr: {
+      search_exercises: "Choix des exercices...",
+      create_calendar_event: "Synchro calendario...",
+    },
+    es: {
+      search_exercises: "Eligiendo ejercicios...",
+      create_calendar_event: "Sincronizando calendario...",
+    },
+    it: {
+      search_exercises: "Scelta esercizi...",
+      create_calendar_event: "Sincronizzo calendario...",
+    },
+  };
 
   let finalRoutine = null;
   let fullContent = "";
@@ -354,7 +406,7 @@ export async function* streamAgenticRoutine(
               }
             }
           } catch (e) {
-            // Ignore partial parse errors
+            // No-op
           }
         }
       }
@@ -367,29 +419,19 @@ export async function* streamAgenticRoutine(
         const content = lastMsg.content;
 
         if (lastMsg.tool_calls?.length > 0) {
+          const safeLocale = ["en", "fr", "es", "it"].includes(locale)
+            ? locale
+            : "en";
           for (const tc of lastMsg.tool_calls) {
+            const desc =
+              TOOL_DESCRIPTIONS[safeLocale]?.[tc.name] ||
+              TOOL_DESCRIPTIONS.en[tc.name] ||
+              `Using ${tc.name}...`;
             yield {
               type: "step",
               node: "tools",
-              description: `Using tool: ${tc.name}...`,
+              description: desc,
             };
-          }
-        }
-
-        // Reasoning lines
-        if (content && content.trim() && !content.trim().startsWith("{")) {
-          const lines = content
-            .trim()
-            .split("\n")
-            .filter((l) => l.trim() && !l.trim().startsWith("{"));
-          for (const line of lines) {
-            if (line.length > 5 && !line.includes('":')) {
-              yield {
-                type: "step",
-                node: "planner",
-                description: line,
-              };
-            }
           }
         }
 

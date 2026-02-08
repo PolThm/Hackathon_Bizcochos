@@ -66,7 +66,7 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
           userProfile,
           timeZone,
           stravaToken,
-          false,
+          isDemoActivated,
         );
 
     for await (const chunk of agentStream) {

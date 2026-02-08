@@ -16,7 +16,7 @@
     "modifications": [
       "Para menos intensidad, coloca las manos detrás de la cabeza o sobre las caderas."
     ],
-    "benefits": ["Abdomen, Dorsales, Pecho, Hombros, Oblicuos, Espalda alta, Columna vertebral"]
+    "benefits": ["Abdomen, Dorsales, Pecho, Hombros, Oblicuos, Espalda alta, Columna"]
   },
   {
     "id": "demo-standing-forward-bend",
@@ -52,7 +52,7 @@
       "Mantén los brazos rectos pero evita bloquear los codos."
     ],
     "modifications": ["Para menos intensidad, mantén los muslos en el suelo."],
-    "benefits": ["Abdomen, Pecho, Columna vertebral, Psoas"]
+    "benefits": ["Abdomen, Pecho, Columna, Psoas"]
   },
   {
     "id": "demo-childs-pose",

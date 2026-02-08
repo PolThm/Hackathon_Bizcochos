@@ -35,7 +35,7 @@
       "Mantén los brazos rectos pero evita bloquear los codos."
     ],
     "modifications": ["Para menos intensidad, mantén los muslos en el suelo."],
-    "benefits": ["Psoas, Columna vertebral, Pecho, Abdomen"]
+    "benefits": ["Psoas, Columna, Pecho, Abdomen"]
   },
   {
     "id": "f0e3ea656db8",
@@ -106,7 +106,7 @@
     "modifications": [
       "Coloca cojines o bloques bajo los muslos externos para apoyo."
     ],
-    "benefits": ["Ingle, Columna vertebral, Caderas"]
+    "benefits": ["Ingle, Columna, Caderas"]
   },
   {
     "id": "4ddbeefbc1a9",
@@ -123,7 +123,7 @@
       "Si la torsión es demasiado intensa, coloca un cojín o bloque bajo la rodilla flexionada para apoyo."
     ],
     "benefits": [
-      "Columna vertebral, Banda iliotibial, Espalda alta, Oblicuos, Pecho, Espalda baja, Glúteos"
+      "Columna, Banda iliotibial, Espalda alta, Oblicuos, Pecho, Espalda baja, Glúteos"
     ]
   },
   {
@@ -185,7 +185,7 @@
       "Para menos intensidad, coloca las manos detrás de la cabeza o sobre las caderas."
     ],
     "benefits": [
-      "Columna vertebral, Espalda alta, Oblicuos, Hombros, Pecho, Dorsales, Abdomen"
+      "Columna, Espalda alta, Oblicuos, Hombros, Pecho, Dorsales, Abdomen"
     ]
   },
   {
@@ -443,7 +443,7 @@
       "Para menos intensidad, mantén la parte superior del cuerpo apoyada en los codos."
     ],
     "benefits": [
-      "Rodillas, Pies, Psoas, Columna vertebral, Espinillas, Caderas, Cuádriceps, Espalda baja, Tobillos, Abdomen"
+      "Rodillas, Pies, Psoas, Columna, Espinillas, Caderas, Cuádriceps, Espalda baja, Tobillos, Abdomen"
     ]
   },
   {
@@ -544,7 +544,7 @@
       "Para menos intensidad, no camines tanto con las manos."
     ],
     "benefits": [
-      "Columna vertebral, Espalda alta, Hombros, Pecho, Espalda baja, Abdomen"
+      "Columna, Espalda alta, Hombros, Pecho, Espalda baja, Abdomen"
     ]
   },
   {
@@ -559,7 +559,7 @@
     "tips": ["Relaja el cuello y los hombros y mantén la mirada hacia abajo."],
     "modifications": [],
     "benefits": [
-      "Columna vertebral, Banda iliotibial, Caderas, Isquiotibiales, Espalda baja, Glúteos"
+      "Columna, Banda iliotibial, Caderas, Isquiotibiales, Espalda baja, Glúteos"
     ]
   },
   {
@@ -575,7 +575,7 @@
     "tips": ["Alarga la columna vertebral y mantén la espalda recta."],
     "modifications": [],
     "benefits": [
-      "Columna vertebral, Banda iliotibial, Espalda alta, Oblicuos, Caderas, Pecho, Espalda baja, Glúteos"
+      "Columna, Banda iliotibial, Espalda alta, Oblicuos, Caderas, Pecho, Espalda baja, Glúteos"
     ]
   },
   {
@@ -686,7 +686,7 @@
       "Mantén una ligera flexión en las rodillas si tus isquiotibiales están tensos."
     ],
     "benefits": [
-      "Pantorrillas, Columna vertebral, Espalda alta, Hombros, Isquiotibiales, Espalda baja"
+      "Pantorrillas, Columna, Espalda alta, Hombros, Isquiotibiales, Espalda baja"
     ]
   },
   {
@@ -707,7 +707,7 @@
       "Siéntate sobre una manta doblada para elevar las caderas y mejorar la comodidad."
     ],
     "benefits": [
-      "Ingle, Pantorrillas, Columna vertebral, Espalda alta, Caderas, Isquiotibiales, Espalda baja, Glúteos"
+      "Ingle, Pantorrillas, Columna, Espalda alta, Caderas, Isquiotibiales, Espalda baja, Glúteos"
     ]
   },
   {
@@ -766,7 +766,7 @@
       "Flexiona ligeramente las rodillas si estirar las piernas es incómodo."
     ],
     "benefits": [
-      "Pantorrillas, Columna vertebral, Cuello, Espalda alta, Hombros, Isquiotibiales, Espalda baja, Glúteos"
+      "Pantorrillas, Columna, Cuello, Espalda alta, Hombros, Isquiotibiales, Espalda baja, Glúteos"
     ]
   },
   {
@@ -826,7 +826,7 @@
       "Si tienes problemas de cuello, mantén la cabeza en una posición neutral en lugar de levantar y meter la barbilla."
     ],
     "benefits": [
-      "Columna vertebral, Cuello, Espalda alta, Espalda baja, Abdomen"
+      "Columna, Cuello, Espalda alta, Espalda baja, Abdomen"
     ]
   },
   {
@@ -894,7 +894,7 @@
       "Si el estiramiento es demasiado difícil, mantén ambos pies planos en el suelo y evita cruzar las piernas."
     ],
     "benefits": [
-      "Columna vertebral, Banda iliotibial, Espalda alta, Oblicuos, Caderas, Pecho, Espalda baja, Glúteos, Dorsales"
+      "Columna, Banda iliotibial, Espalda alta, Oblicuos, Caderas, Pecho, Espalda baja, Glúteos, Dorsales"
     ]
   },
   {
@@ -1013,7 +1013,7 @@
       "Si entrelazar los dedos es incómodo, mantén las manos separadas al ancho de hombros.",
       "Para un estiramiento más profundo, inclínate suavemente hacia un lado y luego hacia el otro mientras te estiras por encima de la cabeza."
     ],
-    "benefits": ["Columna vertebral, Cuello, Hombros"]
+    "benefits": ["Columna, Cuello, Hombros"]
   },
   {
     "id": "f1255f567f4a",
@@ -1031,7 +1031,7 @@
     "modifications": [
       "Si estirar por encima de la cabeza es incómodo, coloca la mano en el costado de la cabeza."
     ],
-    "benefits": ["Columna vertebral, Oblicuos, Espalda baja, Dorsales, Abdomen"]
+    "benefits": ["Columna, Oblicuos, Espalda baja, Dorsales, Abdomen"]
   },
   {
     "id": "ea2238142fa7",
@@ -1051,7 +1051,7 @@
       "Si sientes molestias en el hombro, baja ligeramente los codos.",
       "Para mayor apoyo, practica la postura con la espalda contra una pared."
     ],
-    "benefits": ["Columna vertebral, Cuello, Espalda alta, Hombros, Pecho"]
+    "benefits": ["Columna, Cuello, Espalda alta, Hombros, Pecho"]
   },
   {
     "id": "30e412dcd293",
@@ -1070,7 +1070,7 @@
       "Si tienes dolor de cuello, limita el rango de movimiento a un nivel cómodo.",
       "Si experimentas molestias o mareos, detén el ejercicio inmediatamente."
     ],
-    "benefits": ["Columna vertebral, Cuello, Espalda alta, Hombros"]
+    "benefits": ["Columna, Cuello, Espalda alta, Hombros"]
   },
   {
     "id": "645bd9988c9a",
@@ -1089,7 +1089,7 @@
     "modifications": [
       "Si tienes dolor de cuello, limita el rango de movimiento a un nivel cómodo."
     ],
-    "benefits": ["Columna vertebral, Cuello, Espalda alta, Hombros"]
+    "benefits": ["Columna, Cuello, Espalda alta, Hombros"]
   },
   {
     "id": "b27eb0cbd0ae",
@@ -1119,7 +1119,7 @@
     "tips": ["Mantén el core activado y los pies planos en el suelo."],
     "modifications": [],
     "benefits": [
-      "Columna vertebral, Cuello, Espalda alta, Hombros, Espalda baja"
+      "Columna, Cuello, Espalda alta, Hombros, Espalda baja"
     ]
   },
   {
@@ -1232,7 +1232,7 @@
       "Para menos intensidad, mantén los brazos flexionados con las manos en las caderas."
     ],
     "benefits": [
-      "Rodillas, Columna vertebral, Banda iliotibial, Oblicuos, Hombros, Caderas, Espalda baja, Dorsales, Abdomen"
+      "Rodillas, Columna, Banda iliotibial, Oblicuos, Hombros, Caderas, Espalda baja, Dorsales, Abdomen"
     ]
   },
   {
@@ -1252,7 +1252,7 @@
       "Si te cuesta alcanzar el pie, toca tu espinilla o rodilla."
     ],
     "benefits": [
-      "Columna vertebral, Espalda alta, Oblicuos, Hombros, Caderas, Isquiotibiales, Espalda baja, Glúteos, Abdomen"
+      "Columna, Espalda alta, Oblicuos, Hombros, Caderas, Isquiotibiales, Espalda baja, Glúteos, Abdomen"
     ]
   },
   {
@@ -2272,7 +2272,7 @@
     "modifications": [
       "Si las palmas no se tocan, presiona el dorso de las manos una contra la otra."
     ],
-    "benefits": ["Tríceps, Espalda Alta, Hombros, Dorsales"]
+    "benefits": ["Tríceps, Espalda alta, Hombros, Dorsales"]
   },
   {
     "id": "64c897a254bf",
@@ -2305,7 +2305,7 @@
     "modifications": [
       "Para menos intensidad, realiza el ejercicio con los brazos cruzados frente al pecho."
     ],
-    "benefits": ["Columna, Cuello, Espalda Alta, Hombros"]
+    "benefits": ["Columna, Cuello, Espalda alta, Hombros"]
   },
   {
     "id": "3bda0249e5c3",
@@ -2357,7 +2357,7 @@
       "Mantén las caderas alineadas con las rodillas."
     ],
     "modifications": [],
-    "benefits": ["Columna, Espalda Alta, Hombros, Pecho, Dorsales"]
+    "benefits": ["Columna, Espalda alta, Hombros, Pecho, Dorsales"]
   },
   {
     "id": "3bac00c5b8ea",
@@ -2377,7 +2377,7 @@
       "Realiza el estiramiento con un cojín bajo las rodillas para mayor comodidad."
     ],
     "benefits": [
-      "Psoas, Columna, Espalda Alta, Hombros, Cuádriceps, Pecho, Abdomen"
+      "Psoas, Columna, Espalda alta, Hombros, Cuádriceps, Pecho, Abdomen"
     ]
   },
   {
@@ -2397,7 +2397,7 @@
       "Para menos intensidad, mantén el pecho en el suelo y solo levanta la pierna."
     ],
     "benefits": [
-      "Psoas, Columna, Espalda Alta, Hombros, Caderas, Cuádriceps, Pecho, Abdomen"
+      "Psoas, Columna, Espalda alta, Hombros, Caderas, Cuádriceps, Pecho, Abdomen"
     ]
   },
   {
@@ -2416,7 +2416,7 @@
       "Para menos intensidad, no levantes el pecho y los muslos del suelo o agarra solo una pierna a la vez."
     ],
     "benefits": [
-      "Psoas, Columna, Espalda Alta, Hombros, Caderas, Cuádriceps, Pecho, Abdomen"
+      "Psoas, Columna, Espalda alta, Hombros, Caderas, Cuádriceps, Pecho, Abdomen"
     ]
   },
   {
@@ -2446,7 +2446,7 @@
     ],
     "tips": ["Mantén la espalda recta y los hombros relajados."],
     "modifications": [],
-    "benefits": ["Columna, Cuello, Espalda Alta, Hombros"]
+    "benefits": ["Columna, Cuello, Espalda alta, Hombros"]
   },
   {
     "id": "dddb9558312f",
@@ -2473,7 +2473,7 @@
     ],
     "tips": ["Alarga la columna y mantén la espalda recta."],
     "modifications": [],
-    "benefits": ["Columna, Banda Iliotibial, Caderas, Zona Lumbar, Glúteos"]
+    "benefits": ["Columna, Banda iliotibial, Caderas, Zona Lumbar, Glúteos"]
   },
   {
     "id": "7fe07c67edfd",
@@ -2505,7 +2505,7 @@
       "Si tienes dolor de rodilla, coloca un cojín bajo la rodilla trasera como apoyo."
     ],
     "benefits": [
-      "Psoas, Banda Iliotibial, Oblicuos, Caderas, Cuádriceps, Zona Lumbar, Dorsales"
+      "Psoas, Banda iliotibial, Oblicuos, Caderas, Cuádriceps, Zona Lumbar, Dorsales"
     ]
   },
   {
@@ -2521,7 +2521,7 @@
       "Mantén los brazos rectos y levanta el pecho para abrir los hombros."
     ],
     "modifications": [],
-    "benefits": ["Banda Iliotibial, Caderas, Zona Lumbar, Glúteos"]
+    "benefits": ["Banda iliotibial, Caderas, Zona Lumbar, Glúteos"]
   },
   {
     "id": "cf1857ade38c",
@@ -2534,7 +2534,7 @@
     ],
     "tips": ["Mantén los hombros planos sobre el suelo."],
     "modifications": [],
-    "benefits": ["Columna, Banda Iliotibial, Caderas, Zona Lumbar, Glúteos"]
+    "benefits": ["Columna, Banda iliotibial, Caderas, Zona Lumbar, Glúteos"]
   },
   {
     "id": "84cc27796b48",
@@ -2587,7 +2587,7 @@
       "Reduce la profundidad de la inclinación lateral si la flexibilidad es limitada.",
       "Realiza el movimiento más lentamente para mantener un mejor control."
     ],
-    "benefits": ["Banda Iliotibial, Oblicuos, Hombros, Core, Abdomen"]
+    "benefits": ["Banda iliotibial, Oblicuos, Hombros, Core, Abdomen"]
   },
   {
     "id": "dc8ab33332e7",
@@ -2684,7 +2684,7 @@
     "modifications": [
       "Coloca la mano en una pared o silla como apoyo adicional."
     ],
-    "benefits": ["Ingle, Banda Iliotibial, Caderas"]
+    "benefits": ["Ingle, Banda iliotibial, Caderas"]
   },
   {
     "id": "235f70820956",
@@ -2863,7 +2863,7 @@
       "Usa un bloque bajo la mano como apoyo extra."
     ],
     "benefits": [
-      "Psoas, Columna, Espalda Alta, Hombros, Caderas, Pecho, Zona Lumbar"
+      "Psoas, Columna, Espalda alta, Hombros, Caderas, Pecho, Zona Lumbar"
     ]
   },
   {
@@ -2896,7 +2896,7 @@
       "Evita redondear la espalda alta."
     ],
     "modifications": [],
-    "benefits": ["Cuello, Espalda Alta"]
+    "benefits": ["Cuello, Espalda alta"]
   },
   {
     "id": "ebcee3a909bf",
@@ -3107,7 +3107,7 @@
     ],
     "tips": ["Mantén ambos pies apuntando recto hacia adelante."],
     "modifications": [],
-    "benefits": ["Gemelos, Pies, Tobillos, Dedos de los Pies"]
+    "benefits": ["Gemelos, Pies, Tobillos, Dedos de los pies"]
   },
   {
     "id": "5def953ec1f9",
@@ -3149,7 +3149,7 @@
     ],
     "tips": ["Distribuye el peso uniformemente entre ambas manos."],
     "modifications": [],
-    "benefits": ["Pies, Dedos de los Pies"]
+    "benefits": ["Pies, Dedos de los pies"]
   },
   {
     "id": "4b5a36c791cc",
@@ -3184,7 +3184,7 @@
     "modifications": [
       "Usa una mesa o silla como apoyo si no tienes acceso a una pared."
     ],
-    "benefits": ["Gemelos, Pies, Tobillos, Dedos de los Pies"]
+    "benefits": ["Gemelos, Pies, Tobillos, Dedos de los pies"]
   },
   {
     "id": "aac59fcfc45f",
@@ -3482,7 +3482,7 @@
       "Mantén las manos más bajas si la flexibilidad o fuerza limita la altura de las rodillas."
     ],
     "benefits": [
-      "Rodillas, Gemelos, Pies, Caderas, Isquiotibiales, Cuádriceps, Core, Tobillos, Dedos de los Pies, Glúteos"
+      "Rodillas, Gemelos, Pies, Caderas, Isquiotibiales, Cuádriceps, Core, Tobillos, Dedos de los pies, Glúteos"
     ]
   },
   {
@@ -3504,7 +3504,7 @@
       "Reduce la altura de la patada si la flexibilidad es limitada."
     ],
     "benefits": [
-      "Rodillas, Gemelos, Pies, Caderas, Isquiotibiales, Cuádriceps, Core, Tobillos, Dedos de los Pies, Glúteos"
+      "Rodillas, Gemelos, Pies, Caderas, Isquiotibiales, Cuádriceps, Core, Tobillos, Dedos de los pies, Glúteos"
     ]
   },
   {

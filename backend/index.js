@@ -76,8 +76,21 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
         const exercisesFile = isDemoActivated
           ? `demo-exercises-${safeLocale}.json`
           : `all-exercises-${safeLocale}.json`;
-        const localePath = path.join(__dirname, "common", exercisesFile);
-        const localeContent = await fs.readFile(localePath, "utf-8");
+        const localePath = path.join(
+          __dirname,
+          "backend",
+          "common",
+          exercisesFile,
+        );
+        // Fallback for directory structure differences
+        let finalPath = localePath;
+        try {
+          await fs.access(finalPath);
+        } catch {
+          finalPath = path.join(__dirname, "common", exercisesFile);
+        }
+
+        const localeContent = await fs.readFile(finalPath, "utf-8");
         const localeExercises = JSON.parse(localeContent);
         const idToName = Object.fromEntries(
           localeExercises.map((ex) => [ex.id, ex.name]),
@@ -93,6 +106,37 @@ fastify.post("/api/generateDailyRoutine", async (request, reply) => {
         routine.preparationDuration = 5;
 
         stream.push(JSON.stringify({ type: "data", data: routine }) + "\n");
+      } else if (chunk.type === "partial_exercise") {
+        // Enrich partial exercise with name if possible
+        const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
+        const exercisesFile = isDemoActivated
+          ? `demo-exercises-${safeLocale}.json`
+          : `all-exercises-${safeLocale}.json`;
+
+        try {
+          let localePath = path.join(
+            __dirname,
+            "backend",
+            "common",
+            exercisesFile,
+          );
+          try {
+            await fs.access(localePath);
+          } catch {
+            localePath = path.join(__dirname, "common", exercisesFile);
+          }
+
+          const localeContent = await fs.readFile(localePath, "utf-8");
+          const localeExercises = JSON.parse(localeContent);
+          const found = localeExercises.find((e) => e.id === chunk.data.id);
+          if (found) {
+            chunk.data.name = found.name;
+          }
+        } catch (e) {
+          // Ignore enrichment errors for partial chunks
+        }
+
+        stream.push(JSON.stringify(chunk) + "\n");
       } else {
         stream.push(JSON.stringify(chunk) + "\n");
       }

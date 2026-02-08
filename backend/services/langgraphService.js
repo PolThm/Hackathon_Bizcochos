@@ -7,6 +7,7 @@ import { z } from "zod";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { parse as partialParse } from "partial-json";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,7 +31,13 @@ const GraphState = Annotation.Root({
 
 // --- 3. Define Nodes and Graph Factory ---
 
-const createTools = (googleToken, stravaToken, userProfile) => {
+const createTools = (
+  googleToken,
+  stravaToken,
+  userProfile,
+  locale = "en",
+  isDemoActivated = false,
+) => {
   const getUserInfo = new DynamicStructuredTool({
     name: "get_user_info",
     description: "Get user's profile information.",
@@ -42,6 +49,46 @@ const createTools = (googleToken, stravaToken, userProfile) => {
       - Goals: ${userProfile.goals}
       - Fitness Level: ${userProfile.level}
       - Injuries/Limitations: ${userProfile.limitations || "None"}`;
+    },
+  });
+
+  const searchExercises = new DynamicStructuredTool({
+    name: "search_exercises",
+    description:
+      "Search for exercises by name or benefits (e.g. 'psoas', 'back', 'warmup'). Returns a list of exercises with their IDs and names.",
+    schema: z.object({
+      query: z
+        .string()
+        .describe(
+          "The search term (e.g., 'hamstrings', 'shoulders', 'morning').",
+        ),
+    }),
+    func: async ({ query }) => {
+      try {
+        const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
+        const exercisesFile = isDemoActivated
+          ? `demo-exercises-${safeLocale}.json`
+          : `all-exercises-${safeLocale}.json`;
+        const exercisesPath = path.join(
+          __dirname,
+          "..",
+          "common",
+          exercisesFile,
+        );
+        const fileContent = await fs.readFile(exercisesPath, "utf-8");
+        const exercises = JSON.parse(fileContent);
+        const q = query.toLowerCase();
+        const results = exercises
+          .filter(
+            (ex) =>
+              ex.name.toLowerCase().includes(q) ||
+              ex.benefits.some((b) => b.toLowerCase().includes(q)),
+          )
+          .map((ex) => ({ id: ex.id, name: ex.name, benefits: ex.benefits }));
+        return JSON.stringify(results.slice(0, 20));
+      } catch (e) {
+        return "Error searching exercises.";
+      }
     },
   });
 
@@ -175,6 +222,7 @@ const createTools = (googleToken, stravaToken, userProfile) => {
     createCalendarEvent,
     getUserInfo,
     getStravaActivities,
+    searchExercises,
   ];
 };
 
@@ -189,7 +237,13 @@ export async function* streamAgenticRoutine(
   stravaToken = null,
   isDemoActivated = false,
 ) {
-  const tools = createTools(googleToken, stravaToken, userProfile);
+  const tools = createTools(
+    googleToken,
+    stravaToken,
+    userProfile,
+    locale,
+    isDemoActivated,
+  );
   const toolNode = new ToolNode(tools);
   const model = new ChatGoogleGenerativeAI({
     model: "gemini-3-pro-preview",
@@ -215,48 +269,15 @@ export async function* streamAgenticRoutine(
       - Profile: ${info}
       - Current time (UTC): ${currentTimeIso}
       
-      MANDATORY: Put an event on Google Calendar (if connected). Call 'create_calendar_event' for a 30m FREE slot TODAY (with the name of the routine). The slot MUST be booked AFTER the current time, never before. ColorId 6, TimeZone ${timeZone}. Then generate the routine JSON.`),
+      MANDATORY: 
+      1. Put an event on Google Calendar (if connected). Call 'create_calendar_event' for a 30m FREE slot TODAY (with the name of the routine). The slot MUST be booked AFTER the current time, never before. ColorId 6, TimeZone ${timeZone}.
+      2. SEARCH for appropriate exercises using 'search_exercises' based on the context (Strava activities, user goals, etc.).
+      3. Generate the routine JSON.`),
       ],
     };
   };
 
-  const analyzer = async (state) => {
-    const lastMessage = state.messages[state.messages.length - 1];
-    const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
-    const lang =
-      safeLocale === "en"
-        ? "English"
-        : safeLocale === "fr"
-          ? "French"
-          : "Spanish";
-
-    const response = await model.invoke([
-      new SystemMessage(`You are analyzing the user's context to prepare a personalized mobility routine.
-      
-      RULES:
-      1. MENTION APIs or data sources. Strava / Calendar/ Weather (talk no more than once about the ones that are not connected).
-      2. FOCUS on: the user's profile (name, goals, level, injuries), what they want to work on.
-      3. AVOID: free slots, trivial details, and raw temperature. If mentioning weather, focus on the day's overall feel (e.g., "Chilly day, warming up properly...") rather than numbers.
-      4. STYLE: Brief reasoning sentences in ${lang} (max 60 chars each), like explaining your strategy. End each with "...".
-      5. COUNT: Generate exactly 20 thoughts.
-      
-      Output ONLY a JSON object: { "thoughts": ["...", "...", ...] }`),
-      lastMessage,
-    ]);
-    return { messages: [response] };
-  };
-
   const planner = async (state) => {
-    const exercisesFile = isDemoActivated
-      ? "demo-exercises-en.json"
-      : "all-exercises-en.json";
-    const exercisesPath = path.join(__dirname, "..", "common", exercisesFile);
-    const fileContent = await fs.readFile(exercisesPath, "utf-8");
-    const exercises = JSON.parse(fileContent).map((ex) => ({
-      id: ex.id,
-      name: ex.name,
-    }));
-
     const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
     const langInstruction =
       safeLocale === "en"
@@ -270,29 +291,18 @@ export async function* streamAgenticRoutine(
       new SystemMessage(`You are a world-class personal trainer and mobility / stretching expert.
       
       CRITICAL REASONING RULES:
-      1. ANALYZE STRAVA: Look at the "Strava (Last activities)".
-         - If the user did a "Run" or "Ride" recently: Prioritize exercises for Psoas, Hamstrings, Quads, and Lower Back. Focus on recovery.
-         - If the user did "Weight Training": Focus on stretching the muscle groups involved or general full-body mobility.
-         - If NO activities are shown in the last 2-3 days: The user is likely sedentary. Prioritize "Opening" exercises (Chest, Shoulders, Hip Flexors) and overall activation.
-      2. ANALYZE WEATHER: If it's cold, include a longer warmup. If it's sunny/nice, encourage the user's mood.
-      3. CALENDAR: If the user has a busy day, keep the routine efficient.
+      1. ANALYZE context (Strava, Weather, Calendar, Profile).
+      2. PARALLEL TOOLS: You MUST call 'search_exercises' and 'create_calendar_event' in the SAME turn if possible to save time.
+      3. SEARCH: Use 'search_exercises' to find suitable exercises. Do not guess exercise IDs.
+      4. REASONING: Provide brief sentences in ${langInstruction} (max 60 chars each, ending with "...") explaining your strategy.
       
       TASK:
-      1. MANDATORY: Put an event on Google Calendar (if connected). USE 'create_calendar_event' NOW for a 30m slot (with the name of the routine). The slot MUST be booked AFTER the current time, never in the past.
-      2. REASONING: Before calling a tool or outputting JSON, provide a brief sentence in ${langInstruction} explaining your strategy based on Strava/Weather (e.g., "I see you ran 10km, so I'm focusing on your legs").
-      3. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
-      4. Write a short and catchy "name" in ${langInstruction} (30 characters maximum).
-      5. Write "description" in ${langInstruction} (100-300 chars). You MUST be extremely specific:
-         - Mention the EXACT distance or duration of the last Strava activity (e.g., "After your 6.5km run...").
-         - Mention the EXACT time slot you chose for the calendar (e.g., "...I scheduled this session for 18:30 today").
-         - Explain the physiological benefit (e.g., "...to release your tight hamstrings").
-         - Mention the user's name naturally.
-         - NO generic filler like "this is for you" or "adapting to your activity".
-      6. DURATION (STRICT): Total duration between 300 and 900 seconds (5–15 minutes).
-      7. EXERCISE DURATION (STRICT): Each exercise MUST be between 15 and 60 seconds. Never exceed 60 seconds per exercise. The longer the total routine, the more exercises you must include (e.g., 5 min → ~5–6 exercises, 15 min → ~12–15 exercises).
+      1. Output routine JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
+      2. Write a short and catchy "name" in ${langInstruction} (30 characters maximum).
+      3. Write "description" in ${langInstruction} (100-300 chars). Be specific about Strava activities and the calendar slot.
+      4. DURATION: Total duration between 300 and 900 seconds. Each exercise 15-60s.
       
-      Available exercises: ${JSON.stringify(exercises)}
-      Be precise. One-shot.`),
+      Be precise. Stream the JSON as soon as you have the exercise IDs.`),
       ...state.messages,
     ]);
     return { messages: [response] };
@@ -300,12 +310,10 @@ export async function* streamAgenticRoutine(
 
   const workflow = new StateGraph(GraphState)
     .addNode("fetcher", fetchContextNode)
-    .addNode("analyzer", analyzer)
     .addNode("tools", (state) => toolNode.invoke(state))
     .addNode("planner", planner)
     .addEdge(START, "fetcher")
-    .addEdge("fetcher", "analyzer")
-    .addEdge("analyzer", "planner")
+    .addEdge("fetcher", "planner")
     .addConditionalEdges("planner", (state) => {
       const last = state.messages[state.messages.length - 1];
       return last.tool_calls?.length > 0 ? "tools" : END;
@@ -315,80 +323,136 @@ export async function* streamAgenticRoutine(
   const app = workflow.compile();
   const stream = await app.stream(
     { messages: [new HumanMessage(userPrompt)], locale, timeZone },
-    { streamMode: "updates" },
+    { streamMode: ["messages", "updates"] },
   );
 
   let finalRoutine = null;
-  for await (const update of stream) {
-    const nodeName = Object.keys(update)[0];
-    const data = update[nodeName];
+  let fullContent = "";
+  let yieldedExerciseIds = new Set();
 
-    if (nodeName === "analyzer") {
-      const content = data.messages[data.messages.length - 1].content;
-      try {
-        const jsonMatch = content.match(/\{[\s\S]*\}/);
+  for await (const [mode, update] of stream) {
+    if (mode === "messages") {
+      const [msg, metadata] = update;
+      if (metadata.langgraph_node === "planner" && msg.content) {
+        fullContent += msg.content;
+
+        // Try to parse partial JSON
+        const jsonMatch = fullContent.match(/\{[\s\S]*\}/);
         if (jsonMatch) {
-          const parsed = JSON.parse(jsonMatch[0]);
-          if (parsed.thoughts && Array.isArray(parsed.thoughts)) {
-            for (const thought of parsed.thoughts) {
+          try {
+            const partial = partialParse(jsonMatch[0]);
+            if (
+              partial &&
+              partial.exercises &&
+              Array.isArray(partial.exercises)
+            ) {
+              for (const ex of partial.exercises) {
+                if (ex.id && !yieldedExerciseIds.has(ex.id)) {
+                  yieldedExerciseIds.add(ex.id);
+                  yield {
+                    type: "partial_exercise",
+                    data: ex,
+                  };
+                }
+              }
+            }
+          } catch (e) {
+            // Ignore partial parse errors
+          }
+        }
+      }
+    } else if (mode === "updates") {
+      const nodeName = Object.keys(update)[0];
+      const data = update[nodeName];
+
+      if (nodeName === "planner") {
+        const lastMsg = data.messages[data.messages.length - 1];
+        const content = lastMsg.content;
+
+        if (lastMsg.tool_calls?.length > 0) {
+          for (const tc of lastMsg.tool_calls) {
+            yield {
+              type: "step",
+              node: "tools",
+              description: `Using tool: ${tc.name}...`,
+            };
+          }
+        }
+
+        // Reasoning lines
+        if (content && content.trim() && !content.trim().startsWith("{")) {
+          const lines = content
+            .trim()
+            .split("\n")
+            .filter((l) => l.trim() && !l.trim().startsWith("{"));
+          for (const line of lines) {
+            if (line.length > 5 && !line.includes('":')) {
               yield {
                 type: "step",
-                node: "analyzer",
-                description: thought,
+                node: "planner",
+                description: line,
               };
             }
           }
         }
-      } catch (e) {
-        console.error("Analyzer parse error:", e);
-      }
-    } else if (nodeName === "planner") {
-      const lastMsg = data.messages[data.messages.length - 1];
-      const content = lastMsg.content;
 
-      // If there is reasoning content (not just JSON), yield it
-      if (content && content.trim() && !content.trim().startsWith("{")) {
-        yield {
-          type: "step",
-          node: "planner",
-          description: content.trim().split("\n")[0], // Take first line of reasoning
-        };
-      }
-
-      const jsonMatch = content.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        try {
-          finalRoutine = JSON.parse(jsonMatch[0]);
-
-          // Enforce per-exercise duration (15–60s) and total duration (max 600s)
-          const exercises = finalRoutine.exercises || [];
-          const clampDuration = (d) =>
-            Math.max(15, Math.min(60, Math.round(d || 0)));
-          let processed = exercises.map((ex) => ({
-            ...ex,
-            duration: clampDuration(ex.duration),
-          }));
-          const totalSeconds = processed.reduce(
-            (sum, ex) => sum + (ex.duration || 0),
-            0,
-          );
-          const MAX_TOTAL_SECONDS = 600;
-          if (totalSeconds > MAX_TOTAL_SECONDS && totalSeconds > 0) {
-            const scale = MAX_TOTAL_SECONDS / totalSeconds;
-            processed = processed.map((ex) => ({
-              ...ex,
-              duration: clampDuration((ex.duration || 0) * scale),
-            }));
+        const finalJsonMatch = content.match(/\{[\s\S]*\}/);
+        if (finalJsonMatch) {
+          try {
+            finalRoutine = JSON.parse(finalJsonMatch[0]);
+          } catch (e) {
+            // No-op
           }
-          finalRoutine.exercises = processed;
-        } catch (e) {
-          // It might just be reasoning without JSON yet
         }
       }
     }
   }
 
-  if (finalRoutine) yield { type: "final", data: finalRoutine };
+  if (finalRoutine) {
+    // Post-process final routine
+    const exercises = finalRoutine.exercises || [];
+    const clampDuration = (d) => Math.max(15, Math.min(60, Math.round(d || 0)));
+    let processed = exercises.map((ex) => ({
+      ...ex,
+      duration: clampDuration(ex.duration),
+    }));
+
+    const totalSeconds = processed.reduce(
+      (sum, ex) => sum + (ex.duration || 0),
+      0,
+    );
+    const MAX_TOTAL_SECONDS = 900;
+    if (totalSeconds > MAX_TOTAL_SECONDS && totalSeconds > 0) {
+      const scale = MAX_TOTAL_SECONDS / totalSeconds;
+      processed = processed.map((ex) => ({
+        ...ex,
+        duration: clampDuration((ex.duration || 0) * scale),
+      }));
+    }
+    finalRoutine.exercises = processed;
+    // Fill in exercise names if missing (since the planner might only have IDs)
+    const safeLocale = ["en", "fr", "es"].includes(locale) ? locale : "en";
+    const exercisesFile = isDemoActivated
+      ? `demo-exercises-${safeLocale}.json`
+      : `all-exercises-${safeLocale}.json`;
+    const exercisesPath = path.join(__dirname, "..", "common", exercisesFile);
+    try {
+      const fileContent = await fs.readFile(exercisesPath, "utf-8");
+      const allExercises = JSON.parse(fileContent);
+      const idToName = Object.fromEntries(
+        allExercises.map((ex) => [ex.id, ex.name]),
+      );
+
+      finalRoutine.exercises = finalRoutine.exercises.map((ex) => ({
+        ...ex,
+        name: ex.name || idToName[ex.id] || "Unknown Exercise",
+      }));
+    } catch (e) {
+      console.error("Error enrichment:", e);
+    }
+
+    yield { type: "final", data: finalRoutine };
+  }
 }
 
 const DEMO_STEP_MESSAGES = {

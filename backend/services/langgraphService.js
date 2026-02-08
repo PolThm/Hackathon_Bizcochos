@@ -12,8 +12,6 @@ import { getModel } from "./aiService.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// --- 2. Define State ---
-
 // --- 1. Caches ---
 const exerciseCache = new Map();
 const contextCache = new Map(); // Stores { weather, strava, calendar, timestamp }
@@ -239,6 +237,8 @@ export async function* streamAgenticRoutine(
       1. TOOL USE: Call 'search_exercises' (with ALL needed keywords) and 'create_calendar_event' IMMEDIATELY.
       2. NO HALLUCINATIONS: Use ONLY IDs from search results.
       3. STOP: Once tools return, output ONLY JSON. No filler.
+      4. NEVER mention or reference other Google Calendar events in the routine description or in the calendar event description. The calendar context is only for scheduling—do not cite meetings, appointments, or other events in any text.
+      5. NEVER mention the exact temperature at the precise moment in the routine description. You may refer to the general weather of the day (e.g., warm, cold, sunny, mild) but never the specific current temperature (e.g., "14°C right now").
       
       TASK:
       Generate JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
@@ -283,10 +283,6 @@ export async function* streamAgenticRoutine(
     es: {
       search_exercises: "Eligiendo ejercicios...",
       create_calendar_event: "Sincronizando calendario...",
-    },
-    it: {
-      search_exercises: "Scelta esercizi...",
-      create_calendar_event: "Sincronizzo calendario...",
     },
   };
 

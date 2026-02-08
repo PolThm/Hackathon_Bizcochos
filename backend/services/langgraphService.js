@@ -379,17 +379,38 @@ export async function* streamAgenticRoutine(
     { streamMode: ["messages", "updates"] },
   );
 
+  const SEARCH_EXERCISES_STEPS = {
+    en: [
+      "Loading your context...",
+      "Analyzing your profile...",
+      "Picking exercises...",
+      "Planning your routine...",
+      "Almost ready...",
+    ],
+    fr: [
+      "Chargement du contexte...",
+      "Analyse de ton profil...",
+      "Choix des exercices...",
+      "Planification de ta routine...",
+      "Presque prêt...",
+    ],
+    es: [
+      "Cargando tu contexto...",
+      "Analizando tu perfil...",
+      "Eligiendo ejercicios...",
+      "Planificando tu rutina...",
+      "Casi listo...",
+    ],
+  };
+
   const TOOL_DESCRIPTIONS = {
     en: {
-      search_exercises: "Picking exercises...",
       create_calendar_event: "Syncing calendar...",
     },
     fr: {
-      search_exercises: "Choix des exercices...",
       create_calendar_event: "Synchronisation du calendrier...",
     },
     es: {
-      search_exercises: "Eligiendo ejercicios...",
       create_calendar_event: "Sincronizando calendario...",
     },
   };
@@ -449,15 +470,28 @@ export async function* streamAgenticRoutine(
             ) {
               continue;
             }
-            const desc =
-              TOOL_DESCRIPTIONS[safeLocale]?.[tc.name] ||
-              TOOL_DESCRIPTIONS.en[tc.name] ||
-              `Using ${tc.name}...`;
-            yield {
-              type: "step",
-              node: "tools",
-              description: desc,
-            };
+            if (tc.name === "search_exercises") {
+              const steps =
+                SEARCH_EXERCISES_STEPS[safeLocale] || SEARCH_EXERCISES_STEPS.en;
+              for (const step of steps) {
+                yield {
+                  type: "step",
+                  node: "tools",
+                  description: step,
+                };
+                await new Promise((r) => setTimeout(r, 600));
+              }
+            } else {
+              const desc =
+                TOOL_DESCRIPTIONS[safeLocale]?.[tc.name] ||
+                TOOL_DESCRIPTIONS.en[tc.name] ||
+                `Using ${tc.name}...`;
+              yield {
+                type: "step",
+                node: "tools",
+                description: desc,
+              };
+            }
           }
         }
 

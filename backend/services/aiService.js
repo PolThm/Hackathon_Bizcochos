@@ -1,38 +1,77 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { ChatOpenAI } from "@langchain/openai";
+import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+/**
+ * Model Factory: Returns a LangChain ChatModel based on provider and model name.
+ */
+export const getModel = (options = {}) => {
+  const provider = options.provider || process.env.AI_PROVIDER || "google";
+  const modelName = options.modelName || process.env.AI_MODEL;
+
+  // Base configuration
+  const config = {};
+
+  if (provider === "openai") {
+    config.modelName = modelName || "gpt-4o";
+    config.apiKey = process.env.OPENAI_API_KEY;
+  } else {
+    config.model = modelName || "gemini-1.5-flash";
+    config.apiKey = process.env.GEMINI_API_KEY;
+  }
+
+  // Handle Temperature: ONLY add it if explicitly requested and NOT a known strict model
+  const temperature =
+    options.temperature ??
+    (process.env.AI_TEMPERATURE
+      ? parseFloat(process.env.AI_TEMPERATURE)
+      : undefined);
+
+  // Logic to detect models that typically don't allow temperature adjustments (reasoning models)
+  const isStrictModel =
+    modelName &&
+    (modelName.startsWith("o1") ||
+      modelName.startsWith("o3") ||
+      modelName.includes("nano") ||
+      modelName.includes("reasoning"));
+
+  if (temperature !== undefined && !isStrictModel) {
+    config.temperature = temperature;
+  }
+
+  if (provider === "openai") {
+    return new ChatOpenAI(config);
+  }
+
+  // Default to Google
+  return new ChatGoogleGenerativeAI(config);
+};
 
 /**
- * Generic AI service to handle completions.
+ * Generic completion helper using the model factory.
  */
-export const generateCompletion = async (systemPrompt, userPrompt) => {
-  console.log("AI Service: Generating completion...");
+export const generateCompletion = async (
+  systemPrompt,
+  userPrompt,
+  options = {},
+) => {
+  const model = getModel(options);
 
   try {
-    const model = genAI.getGenerativeModel({
-      model: "gemini-3-pro-preview",
-      systemInstruction: systemPrompt,
-    });
-
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: userPrompt }] }],
-      generationConfig: {
-        responseMimeType: "application/json",
-      },
-    });
-
-    const response = await result.response;
-    const content = response.text();
+    const response = await model.invoke([
+      new SystemMessage(systemPrompt),
+      new HumanMessage(userPrompt),
+    ]);
 
     return {
-      content: content,
+      content: response.content,
       raw: response,
     };
   } catch (error) {
-    console.error("Gemini API Error:", error);
+    console.error(`AI Service (${model.constructor.name}) Error:`, error);
     throw error;
   }
 };

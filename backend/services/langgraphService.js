@@ -1,5 +1,4 @@
 import { Annotation, StateGraph, START, END } from "@langchain/langgraph";
-import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { DynamicStructuredTool } from "@langchain/core/tools";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
@@ -8,6 +7,7 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { parse as partialParse } from "partial-json";
+import { getModel } from "./aiService.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -245,10 +245,7 @@ export async function* streamAgenticRoutine(
     isDemoActivated,
   );
   const toolNode = new ToolNode(tools);
-  const model = new ChatGoogleGenerativeAI({
-    model: "gemini-3-pro-preview",
-    apiKey: process.env.GEMINI_API_KEY,
-  });
+  const model = getModel();
 
   const fetchContextNode = async () => {
     const [weather, calendar, info, strava] = await Promise.all([

@@ -17,7 +17,6 @@ const __dirname = path.dirname(__filename);
 // --- 1. Caches ---
 const exerciseCache = new Map();
 const contextCache = new Map(); // Stores { weather, strava, calendar, timestamp }
-const routineCache = new Map(); // Stores { routine, timestamp }
 
 async function getExercises(locale, isDemoActivated) {
   const safeLocale = ["en", "fr", "es", "it"].includes(locale) ? locale : "en";
@@ -159,20 +158,6 @@ export async function* streamAgenticRoutine(
   stravaToken = null,
   isDemoActivated = false,
 ) {
-  // 1. Check Routine Cache
-  const routineCacheKey = `${userPrompt}-${locale}-${isDemoActivated}-${userProfile?.name || "anon"}-${stravaToken || "no-strava"}`;
-  const cachedRoutine = routineCache.get(routineCacheKey);
-  if (cachedRoutine && Date.now() - cachedRoutine.timestamp < 3600000) {
-    // 1 hour TTL for routines
-    yield {
-      type: "step",
-      node: "cache",
-      description: "Loading routine from memory...",
-    };
-    yield { type: "final", data: cachedRoutine.data };
-    return;
-  }
-
   const tools = createTools(
     googleToken,
     stravaToken,
@@ -419,12 +404,6 @@ export async function* streamAgenticRoutine(
     } catch (e) {
       console.error("Error enrichment:", e);
     }
-
-    // Save to Cache
-    routineCache.set(routineCacheKey, {
-      data: finalRoutine,
-      timestamp: Date.now(),
-    });
 
     yield { type: "final", data: finalRoutine };
   }

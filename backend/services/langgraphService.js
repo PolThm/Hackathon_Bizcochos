@@ -227,6 +227,28 @@ export async function* streamAgenticRoutine(
   const toolNode = new ToolNode(tools);
   const model = getModel();
 
+  function buildProfileSummary(profile) {
+    if (!profile) return "Unknown.";
+    const parts = [
+      `Name: ${profile.name || "Unknown"}`,
+      `Level: ${profile.level || "Beginner"}`,
+      `Goals: ${profile.goals || "Mobility"}`,
+    ];
+    if (profile.limitations && profile.limitations.trim()) {
+      parts.push(`Pain/Limitations (PRIORITY): ${profile.limitations.trim()}`);
+    } else {
+      parts.push("Pain/Limitations: None specified");
+    }
+    return parts.join(", ");
+  }
+
+  const effectiveUserPrompt =
+    userPrompt && userPrompt.trim()
+      ? userPrompt.trim()
+      : userProfile?.limitations?.trim()
+        ? `Generate my routine for today. IMPORTANT: I have pain/limitations: "${userProfile.limitations.trim()}". Prioritize exercises that target these areas and relieve my discomfort.`
+        : `Generate my routine for today based on my context (weather, calendar, strava) and my profile (level: ${userProfile?.level || "Beginner"}, goals: ${userProfile?.goals || "Mobility"}).`;
+
   const fetchContextNode = async () => {
     const [weather, strava, calendar, info] = await Promise.all([
       getCachedContext(`weather-${latitude}-${longitude}`, async () => {
@@ -286,21 +308,20 @@ export async function* streamAgenticRoutine(
           clearTimeout(timeoutId);
         }
       }),
-      Promise.resolve(
-        userProfile
-          ? `${userProfile.name}, Goals: ${userProfile.goals}`
-          : "Unknown",
-      ),
+      Promise.resolve(buildProfileSummary(userProfile)),
     ]);
 
     return {
       messages: [
-        new HumanMessage(`CONTEXT: Current Time: ${new Date().toISOString()} (Timezone: ${timeZone}), Weather: ${weather}, Strava: ${strava}, Calendar: ${calendar}, Profile: ${info}.
+        new HumanMessage(`CONTEXT: Current Time: ${new Date().toISOString()} (Timezone: ${timeZone}), Weather: ${weather}, Strava: ${strava}, Calendar: ${calendar}.
+        
+        USER PROFILE (CRITICAL - use for personalization):
+        ${info}
         
         TASK: 
         1. Call 'create_calendar_event' for a 30m slot TODAY.
-        2. Call 'search_exercises' for appropriate moves.
-        3. Generate JSON.`),
+        2. Call 'search_exercises' with English keywords from the user's PAIN ZONES (e.g. "lower back pain"/"mal de dos" → "lower back, spine, hips, hamstrings"; "knee"/"genou" → "knees, quadriceps"; "shoulder"/"épaule" → "shoulders"). If no limitations, use goals (Mobility/Strength/Recovery).
+        3. Generate JSON with exercises that DIRECTLY target the user's profile.`),
       ],
     };
   };
@@ -308,19 +329,30 @@ export async function* streamAgenticRoutine(
     const plannerModel = model.bindTools(tools);
     const response = await plannerModel.invoke([
       new SystemMessage(`You are a world-class personal trainer.
-      
+
+      PERSONALIZATION (MANDATORY):
+      - If the user has PAIN/LIMITATIONS: Choose 6-10 exercises that TARGET those areas. Use search_exercises with keywords from their limitations (e.g. "lower back, spine, hips" for back pain; "knees, quadriceps" for knee pain; "shoulders, neck" for shoulder pain). Vary durations: 30-45s for gentle stretches, 45-60s for key mobility moves. NEVER use the same generic routine—adapt to their specific pain.
+      - If Level=Beginner: 6-8 exercises, 30-45s each, gentler flow. Avoid intense holds.
+      - If Level=Intermediate: 8-10 exercises, 35-55s each, balanced intensity.
+      - If Level=Advanced: 8-12 exercises, 40-60s each, can include more challenging holds.
+      - If Goals=Recovery: Focus on gentle, restorative moves. 6-8 exercises, 40-60s each.
+      - If Goals=Strength: Include some active holds. 8-10 exercises.
+      - NEVER output 10 identical 60s exercises. Vary both count and duration based on profile.
+
       CRITICAL RULES:
-      1. TOOL USE: Call 'search_exercises' (with ALL needed keywords) and 'create_calendar_event' IMMEDIATELY.
+      1. TOOL USE: Call 'search_exercises' (with keywords from user's pain/limitations or goals) and 'create_calendar_event' IMMEDIATELY.
       2. NO HALLUCINATIONS: Use ONLY IDs from search results.
       3. STOP: Once tools return, output ONLY JSON. No filler.
       4. NEVER mention or reference other Google Calendar events in the routine description or in the calendar event description. The calendar context is only for scheduling—do not cite meetings, appointments, or other events in any text.
       5. NEVER mention the exact temperature at the precise moment in the routine description. You may refer to the general weather of the day (e.g., warm, cold, sunny, mild) but never the specific current temperature (e.g., "14°C right now").
-      
+      6. NEVER mention duration, seconds, or minutes in the routine description (e.g. no "8 exercises of 45s", no "10 min flow").
+
       TASK:
       Generate JSON: { "id": "...", "name": "...", "description": "...", "exercises": [{ "id": "...", "duration": seconds }] }
-      - Routine Duration: Goal is ~600s (10 min).
-      - Exercise Duration: 15-60s each.
-      
+      - Total routine: 360-600s. Vary exercise count (6-12) and VARY each exercise duration smartly based on the nature of the exercise and the user's profile (e.g. 30, 45, 40, 50, 35, 55—never identical for all).
+      - Routine name: MAX 30 characters. Short and catchy, reflecting pain/goals.
+      - Description: Reflect the user's pain/goals. Do NOT mention duration or exercise count.
+
       Be extremely fast.`),
       ...state.messages,
     ]);
@@ -343,7 +375,7 @@ export async function* streamAgenticRoutine(
 
   const app = workflow.compile();
   const stream = await app.stream(
-    { messages: [new HumanMessage(userPrompt)], locale, timeZone },
+    { messages: [new HumanMessage(effectiveUserPrompt)], locale, timeZone },
     { streamMode: ["messages", "updates"] },
   );
 
@@ -354,7 +386,7 @@ export async function* streamAgenticRoutine(
     },
     fr: {
       search_exercises: "Choix des exercices...",
-      create_calendar_event: "Synchro calendario...",
+      create_calendar_event: "Synchronisation du calendrier...",
     },
     es: {
       search_exercises: "Eligiendo ejercicios...",
@@ -410,6 +442,13 @@ export async function* streamAgenticRoutine(
             ? locale
             : "en";
           for (const tc of lastMsg.tool_calls) {
+            if (
+              tc.name === "create_calendar_event" &&
+              !safeGoogleToken &&
+              !process.env.GOOGLE_CALENDAR_TOKEN
+            ) {
+              continue;
+            }
             const desc =
               TOOL_DESCRIPTIONS[safeLocale]?.[tc.name] ||
               TOOL_DESCRIPTIONS.en[tc.name] ||
@@ -442,6 +481,18 @@ export async function* streamAgenticRoutine(
       ...ex,
       duration: clampDuration(ex.duration),
     }));
+
+    // If all durations are identical, vary them (30, 45, 40, 50, 35, 55, ...)
+    const durations = processed.map((ex) => ex.duration);
+    const allSame =
+      durations.length > 0 && durations.every((d) => d === durations[0]);
+    if (allSame && processed.length > 1) {
+      const variants = [30, 45, 40, 50, 35, 55, 45, 40, 50, 35];
+      processed = processed.map((ex, i) => ({
+        ...ex,
+        duration: variants[i % variants.length],
+      }));
+    }
 
     const totalSeconds = processed.reduce(
       (sum, ex) => sum + (ex.duration || 0),

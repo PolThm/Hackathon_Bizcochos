@@ -73,6 +73,7 @@ const createTools = (
   userProfile,
   locale = "en",
   isDemoActivated = false,
+  timeZone = "Europe/Rome",
 ) => {
   const searchExercises = new DynamicStructuredTool({
     name: "search_exercises",
@@ -113,8 +114,41 @@ const createTools = (
     }),
     func: async (args) => {
       const token = googleToken || process.env.GOOGLE_CALENDAR_TOKEN;
-      if (!token) return "Calendar not connected.";
+      if (!token) {
+        console.log("Calendar tool: No token found.");
+        return "Calendar not connected.";
+      }
+
+      const start = new Date(args.startTime);
+      const end = new Date(args.endTime);
+
+      if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+        console.error(
+          "Calendar tool: Invalid dates provided.",
+          args.startTime,
+          args.endTime,
+        );
+        return "Failed: Invalid date format.";
+      }
+
+      if (end <= start) {
+        console.error(
+          "Calendar tool: End time is before or equal to start time.",
+          args.startTime,
+          args.endTime,
+        );
+        return "Failed: End time must be after start time.";
+      }
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
       try {
+        console.log("Calendar tool: Creating event...", {
+          summary: args.summary,
+          start: start.toISOString(),
+          end: end.toISOString(),
+          timeZone: args.timeZone || timeZone,
+        });
         const response = await fetch(
           `https://www.googleapis.com/calendar/v3/calendars/primary/events`,
           {
@@ -127,17 +161,38 @@ const createTools = (
               summary: args.summary,
               description: args.description,
               start: {
-                dateTime: args.startTime,
-                timeZone: args.timeZone || "UTC",
+                dateTime: start.toISOString(),
+                timeZone: args.timeZone || timeZone || "UTC",
               },
-              end: { dateTime: args.endTime, timeZone: args.timeZone || "UTC" },
+              end: {
+                dateTime: end.toISOString(),
+                timeZone: args.timeZone || timeZone || "UTC",
+              },
               colorId: "6",
             }),
+            signal: controller.signal,
           },
         );
-        return response.ok ? "Success." : "Failed.";
+        if (!response.ok) {
+          const errBody = await response.text();
+          console.error(
+            "Calendar tool: Google API error:",
+            response.status,
+            errBody,
+          );
+          return `Failed: ${response.status} - ${errBody}`;
+        }
+        console.log("Calendar tool: Success.");
+        return "Success.";
       } catch (e) {
+        if (e.name === "AbortError") {
+          console.error("Calendar tool: Timeout.");
+          return "Error: Timeout.";
+        }
+        console.error("Calendar tool: Exception:", e);
         return "Error.";
+      } finally {
+        clearTimeout(timeoutId);
       }
     },
   });
@@ -156,12 +211,18 @@ export async function* streamAgenticRoutine(
   stravaToken = null,
   isDemoActivated = false,
 ) {
+  const safeGoogleToken =
+    googleToken === "null" || googleToken === "undefined" ? null : googleToken;
+  const safeStravaToken =
+    stravaToken === "null" || stravaToken === "undefined" ? null : stravaToken;
+
   const tools = createTools(
-    googleToken,
-    stravaToken,
+    safeGoogleToken,
+    safeStravaToken,
     userProfile,
     locale,
     isDemoActivated,
+    timeZone,
   );
   const toolNode = new ToolNode(tools);
   const model = getModel();
@@ -169,45 +230,60 @@ export async function* streamAgenticRoutine(
   const fetchContextNode = async () => {
     const [weather, strava, calendar, info] = await Promise.all([
       getCachedContext(`weather-${latitude}-${longitude}`, async () => {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
         try {
           const res = await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`,
+            { signal: controller.signal },
           );
           const data = await res.json();
           return `${data.current.temperature_2m}°C`;
         } catch {
           return "Unknown";
+        } finally {
+          clearTimeout(timeoutId);
         }
       }),
-      getCachedContext(`strava-${stravaToken}`, async () => {
-        if (!stravaToken) return "Not connected.";
+      getCachedContext(`strava-${safeStravaToken}`, async () => {
+        if (!safeStravaToken) return "Not connected.";
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
         try {
           const res = await fetch(
             "https://www.strava.com/api/v3/athlete/activities?per_page=1",
             {
-              headers: { Authorization: `Bearer ${stravaToken}` },
+              headers: { Authorization: `Bearer ${safeStravaToken}` },
+              signal: controller.signal,
             },
           );
           const data = await res.json();
           return data[0] ? `${data[0].name} (${data[0].type})` : "None.";
         } catch {
           return "Error.";
+        } finally {
+          clearTimeout(timeoutId);
         }
       }),
-      getCachedContext(`calendar-${googleToken}`, async () => {
-        const token = googleToken || process.env.GOOGLE_CALENDAR_TOKEN;
+      getCachedContext(`calendar-${safeGoogleToken}`, async () => {
+        const token = safeGoogleToken || process.env.GOOGLE_CALENDAR_TOKEN;
         if (!token) return "Not connected.";
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
         try {
           const res = await fetch(
             `https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${new Date().toISOString()}&maxResults=3`,
             {
               headers: { Authorization: `Bearer ${token}` },
+              signal: controller.signal,
             },
           );
           const data = await res.json();
           return data.items?.map((i) => i.summary).join(", ") || "Free.";
         } catch {
           return "Error.";
+        } finally {
+          clearTimeout(timeoutId);
         }
       }),
       Promise.resolve(
@@ -219,7 +295,7 @@ export async function* streamAgenticRoutine(
 
     return {
       messages: [
-        new HumanMessage(`CONTEXT: Weather: ${weather}, Strava: ${strava}, Calendar: ${calendar}, Profile: ${info}.
+        new HumanMessage(`CONTEXT: Current Time: ${new Date().toISOString()} (Timezone: ${timeZone}), Weather: ${weather}, Strava: ${strava}, Calendar: ${calendar}, Profile: ${info}.
         
         TASK: 
         1. Call 'create_calendar_event' for a 30m slot TODAY.

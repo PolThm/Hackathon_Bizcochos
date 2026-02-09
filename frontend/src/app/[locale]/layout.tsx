@@ -16,6 +16,7 @@ import PWAInstallPrompt from '@/components/PWAInstallPrompt';
 import OfflineIndicator from '@/components/OfflineIndicator';
 import AppInitializer from '@/components/AppInitializer';
 import PullToRefreshWrapper from '@/components/PullToRefreshWrapper';
+import { PostHogProvider } from '@/components/PostHogProvider';
 
 export async function generateMetadata({
   params: { locale },
@@ -116,34 +117,36 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body>
-        <AppRouterCacheProvider options={{ key: 'css' }}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <ConsecutiveDaysProvider>
-              <AppInitializer />
-              <NextIntlClientProvider messages={messages}>
-                <PullToRefreshProvider>
-                  <Container
-                    maxWidth='xs'
-                    disableGutters
-                    sx={{
-                      minHeight: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      border: { sm: '1px solid' },
-                      borderColor: 'secondary.main',
-                    }}
-                  >
-                    <Navbar />
-                    <PullToRefreshWrapper>{children}</PullToRefreshWrapper>
-                  </Container>
-                </PullToRefreshProvider>
-                <PWAInstallPrompt />
-                <OfflineIndicator />
-              </NextIntlClientProvider>
-            </ConsecutiveDaysProvider>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <PostHogProvider>
+          <AppRouterCacheProvider options={{ key: 'css' }}>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <ConsecutiveDaysProvider>
+                <AppInitializer />
+                <NextIntlClientProvider messages={messages}>
+                  <PullToRefreshProvider>
+                    <Container
+                      maxWidth='xs'
+                      disableGutters
+                      sx={{
+                        minHeight: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        border: { sm: '1px solid' },
+                        borderColor: 'secondary.main',
+                      }}
+                    >
+                      <Navbar />
+                      <PullToRefreshWrapper>{children}</PullToRefreshWrapper>
+                    </Container>
+                  </PullToRefreshProvider>
+                  <PWAInstallPrompt />
+                  <OfflineIndicator />
+                </NextIntlClientProvider>
+              </ConsecutiveDaysProvider>
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

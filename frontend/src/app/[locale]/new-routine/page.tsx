@@ -189,6 +189,7 @@ export default function NewRoutinePage() {
 
     setIsGenerating(true);
     if (isRefinement) setIsRefineModalOpen(false);
+    console.log('Routine generation may take some time, please be patient...');
 
     try {
       const saved = await getItem('isDemoActivated');

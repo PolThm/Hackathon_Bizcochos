@@ -1047,6 +1047,45 @@ export default function Home() {
           )}
         </Box>
       </Box>
+
+      {/* Privacy & Terms - only in welcome mode */}
+      {!userProfile && (
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: 16,
+            left: 0,
+            right: 0,
+            display: 'flex',
+            gap: 0.75,
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            zIndex: 1,
+          }}
+        >
+          <Link
+            href='/privacy'
+            style={{
+              color: 'inherit',
+              fontSize: '0.75rem',
+              opacity: 0.8,
+            }}
+          >
+            {tCommon('privacyPolicy')}
+          </Link>
+          <span style={{ opacity: 0.8 }}>•</span>
+          <Link
+            href='/terms'
+            style={{
+              color: 'inherit',
+              fontSize: '0.75rem',
+              opacity: 0.8,
+            }}
+          >
+            {tCommon('termsOfUse')}
+          </Link>
+        </Box>
+      )}
     </Box>
   );
 }

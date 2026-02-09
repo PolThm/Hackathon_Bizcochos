@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 import { Language, ValidReferences, Routine } from '@/types';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import routinePolux from '@/mocks/routine-polux.json';
 import routineRapido from '@/mocks/routine-rapido.json';
 import ConfirmModal from '@/components/ConfirmModal';
@@ -287,7 +288,36 @@ export default function ParametersPage() {
         </Button>
       </Box>
 
-      <Box sx={{ textAlign: 'center' }}>
+      <Box sx={{ textAlign: 'center', mt: -0.75 }}>
+        <Box
+          sx={{
+            mb: 1,
+            display: 'flex',
+            gap: 0.75,
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Link
+            href='/privacy'
+            style={{
+              color: 'inherit',
+              fontSize: '0.75rem',
+            }}
+          >
+            {t('privacyPolicy')}
+          </Link>
+          <span>•</span>
+          <Link
+            href='/terms'
+            style={{
+              color: 'inherit',
+              fontSize: '0.75rem',
+            }}
+          >
+            {t('termsOfUse')}
+          </Link>
+        </Box>
         <Typography variant='body2' color='text.secondary'>
           {VERSION} • {t('developedBy')}
         </Typography>

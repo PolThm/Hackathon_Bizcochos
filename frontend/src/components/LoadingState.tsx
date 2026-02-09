@@ -27,7 +27,7 @@ export default function LoadingState({
     }
   }, [stepMessages]);
 
-  // 2. Start a rotation timer that cycles through the rotationQueue every 7 seconds
+  // 2. Start a rotation timer that cycles through the rotationQueue every 3.5 seconds
   useEffect(() => {
     if (rotationQueue.length > 0) {
       const interval = setInterval(() => {
@@ -36,12 +36,12 @@ export default function LoadingState({
           setRotationIndex((prev) => (prev + 1) % rotationQueue.length);
           setBackendFadeIn(true);
         }, 500);
-      }, 7000); // Change AI thought every 7 seconds
+      }, 3500); // Change AI thought every 3.5 seconds
       return () => clearInterval(interval);
     }
   }, [rotationQueue.length]);
 
-  // 3. Rotate generic frontend messages every 7s (only when shown)
+  // 3. Rotate generic frontend messages every 3.5s (only when shown)
   useEffect(() => {
     if (hideFrontendMessages && rotationQueue.length > 0) return;
     const interval = setInterval(() => {
@@ -50,7 +50,7 @@ export default function LoadingState({
         setCurrentFrontendIndex((prev) => (prev + 1) % messages.length);
         setFrontendFadeIn(true);
       }, 500);
-    }, 7000);
+    }, 3500);
     return () => clearInterval(interval);
   }, [messages.length, hideFrontendMessages, rotationQueue.length]);
 

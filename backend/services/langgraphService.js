@@ -12,6 +12,20 @@ import { getModel } from "./aiService.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+/** Extract string content from LangChain message content (handles Gemini returning array of parts) */
+function getContentAsString(content) {
+  if (content == null) return "";
+  if (typeof content === "string") return content;
+  if (Array.isArray(content)) {
+    return content
+      .map((part) =>
+        typeof part === "string" ? part : (part?.text ?? part?.content ?? ""),
+      )
+      .join("");
+  }
+  return String(content);
+}
+
 // --- 1. Caches ---
 const exerciseCache = new Map();
 const contextCache = new Map(); // Stores { weather, strava, calendar, timestamp }
@@ -423,7 +437,7 @@ export async function* streamAgenticRoutine(
     if (mode === "messages") {
       const [msg, metadata] = update;
       if (metadata.langgraph_node === "planner" && msg.content) {
-        fullContent += msg.content;
+        fullContent += getContentAsString(msg.content);
 
         // Try to parse partial JSON
         const jsonMatch = fullContent.match(/\{[\s\S]*\}/);
@@ -456,7 +470,7 @@ export async function* streamAgenticRoutine(
 
       if (nodeName === "planner") {
         const lastMsg = data.messages[data.messages.length - 1];
-        const content = lastMsg.content;
+        const content = getContentAsString(lastMsg?.content);
 
         if (lastMsg.tool_calls?.length > 0) {
           const safeLocale = ["en", "fr", "es", "it"].includes(locale)

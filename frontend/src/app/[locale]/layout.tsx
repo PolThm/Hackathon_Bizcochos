@@ -34,8 +34,12 @@ export async function generateMetadata({
     }
   ).metadata;
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://routines-ai.vercel.app';
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
   return {
-    metadataBase: new URL('https://routines-app.vercel.app'),
+    metadataBase: new URL(siteUrl),
     title: metadata?.title || 'Routines',
     description:
       metadata?.description ||
@@ -67,13 +71,16 @@ export async function generateMetadata({
         { url: '/icons-512.png', sizes: '512x512', type: 'image/png' },
       ],
     },
+    ...(googleVerification && {
+      verification: { google: googleVerification },
+    }),
     openGraph: {
       title: metadata?.title || 'Routines',
       description:
         metadata?.description ||
         'Stretching app powered by AI. By Pol Thomas & Alessio Pelliccione.',
       type: 'website',
-      url: 'https://routines-app.vercel.app',
+      url: siteUrl,
       siteName: 'Routines',
       images: [
         {

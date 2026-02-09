@@ -16,7 +16,9 @@
     "referenceAlreadyUsed": "Esta rutina ya está en tu lista",
     "reset": "Restablecimiento",
     "resetRoutinesConfirm": "Restablecer todas las rutinas? Esta acción es irreversible.",
-    "letsGo": "¡Vamos!"
+    "letsGo": "¡Vamos!",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfUse": "Condiciones de uso"
   },
   "home": {
     "start": "COMENZAR",
@@ -65,7 +67,9 @@
     "goToPractice": "Comenzar la práctica",
     "dailyRoutine": "Rutina del día",
     "noRoutinesMessage": "Aún no tienes rutinas.",
-    "or": "O"
+    "or": "O",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfUse": "Condiciones de uso"
   },
   "library": {
     "library": "Biblioteca",
@@ -191,7 +195,7 @@
     "connectMyFitnessPal": "Conectar MyFitnessPal",
     "comingSoon": "Próximamente",
     "continue": "Continuar",
-    "finish": "¡Crear mi primera Rutina!"
+    "finish": "Crear mi primera Rutina"
   },
   "pwa": {
     "installPrompt": {

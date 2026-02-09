@@ -116,6 +116,9 @@ export default function OnboardingPage() {
     if (activeStep === 0 && profile.name) {
       setActiveStep(1);
     } else if (activeStep === 1) {
+      console.log(
+        'Routine generation may take some time, please be patient...',
+      );
       localStorage.setItem('userProfile', JSON.stringify(profile));
       router.replace('/');
     }

@@ -1058,6 +1058,7 @@ export default function Home() {
             right: 0,
             display: 'flex',
             gap: 0.75,
+            alignItems: 'center',
             justifyContent: 'center',
             flexWrap: 'wrap',
             zIndex: 1,
@@ -1073,7 +1074,7 @@ export default function Home() {
           >
             {tCommon('privacyPolicy')}
           </Link>
-          <span style={{ opacity: 0.8 }}>•</span>
+          <span style={{ opacity: 0.8, marginTop: '2px' }}>•</span>
           <Link
             href='/terms'
             style={{

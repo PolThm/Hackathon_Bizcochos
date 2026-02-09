@@ -295,6 +295,7 @@ export default function ParametersPage() {
             display: 'flex',
             gap: 0.75,
             justifyContent: 'center',
+            alignItems: 'center',
             flexWrap: 'wrap',
           }}
         >
@@ -303,16 +304,18 @@ export default function ParametersPage() {
             style={{
               color: 'inherit',
               fontSize: '0.75rem',
+              opacity: 0.8,
             }}
           >
             {t('privacyPolicy')}
           </Link>
-          <span>•</span>
+          <span style={{ opacity: 0.8, marginTop: '2px' }}>•</span>
           <Link
             href='/terms'
             style={{
               color: 'inherit',
               fontSize: '0.75rem',
+              opacity: 0.8,
             }}
           >
             {t('termsOfUse')}

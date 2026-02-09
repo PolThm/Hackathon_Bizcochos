@@ -82,7 +82,7 @@ export default function TermsPage() {
 
       <Box sx={{ mt: 4 }}>
         <Link
-          href='/parameters'
+          href='/'
           style={{ color: 'inherit', textDecoration: 'underline' }}
         >
           ← Back to app

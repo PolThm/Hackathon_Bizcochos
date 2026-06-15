@@ -19,7 +19,7 @@ export const getModel = (options = {}) => {
     config.modelName = modelName || "gpt-4o";
     config.apiKey = process.env.OPENAI_API_KEY;
   } else {
-    config.model = modelName || "gemini-1.5-flash";
+    config.model = modelName || "gemini-2.5-flash";
     config.apiKey = process.env.GEMINI_API_KEY;
   }
 
